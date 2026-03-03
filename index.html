@@ -22,19 +22,20 @@
             --teal: #0EA5E9;
             --teal-dark: #0284C7;
             --gold: #F59E0B;
-            --green: #10B981;
+            --green: #22C55E;
+            --green-dark: #16A34A;
             --bg-light: #F8FAFC;
             --bg-white: #FFFFFF;
             --text-dark: #0F172A;
             --text-body: #475569;
             --text-muted: #94A3B8;
             --border: #E2E8F0;
-            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
-            --shadow-lg: 0 10px 25px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.03);
-            --shadow-xl: 0 20px 50px -12px rgba(0,0,0,0.15);
-            --radius: 16px;
-            --radius-sm: 10px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 12px -2px rgba(0,0,0,0.06);
+            --shadow-lg: 0 12px 32px -4px rgba(0,0,0,0.08);
+            --shadow-xl: 0 24px 56px -12px rgba(0,0,0,0.12);
+            --radius: 20px;
+            --radius-sm: 12px;
             --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -86,13 +87,13 @@
         [data-lang="ta"] h1, [data-lang="ta"] h2, [data-lang="ta"] h3, [data-lang="ta"] h4,
         [data-lang="te"] h1, [data-lang="te"] h2, [data-lang="te"] h3, [data-lang="te"] h4,
         [data-lang="kn"] h1, [data-lang="kn"] h2, [data-lang="kn"] h3, [data-lang="kn"] h4 {
-            font-size: 0.82em;
-            line-height: 1.3;
+            font-size: 0.85em;
+            line-height: 1.35;
         }
 
-        [data-lang="ta"] p, [data-lang="ta"] span, [data-lang="ta"] a, [data-lang="ta"] div,
-        [data-lang="te"] p, [data-lang="te"] span, [data-lang="te"] a, [data-lang="te"] div,
-        [data-lang="kn"] p, [data-lang="kn"] span, [data-lang="kn"] a, [data-lang="kn"] div {
+        [data-lang="ta"] p, [data-lang="ta"] a, [data-lang="ta"] li, [data-lang="ta"] label, [data-lang="ta"] td,
+        [data-lang="te"] p, [data-lang="te"] a, [data-lang="te"] li, [data-lang="te"] label, [data-lang="te"] td,
+        [data-lang="kn"] p, [data-lang="kn"] a, [data-lang="kn"] li, [data-lang="kn"] label, [data-lang="kn"] td {
             font-size: 0.92em;
             line-height: 1.6;
         }
@@ -229,6 +230,11 @@
         [data-lang="mr"] * {
             word-break: break-word;
             overflow-wrap: break-word;
+        }
+
+        /* Smooth font transition when switching languages */
+        body, h1, h2, h3, h4, p, a, span {
+            transition: font-size 0.2s ease, line-height 0.2s ease;
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -409,6 +415,22 @@
         .navbar.scrolled .logo-sub { color: var(--text-muted); }
         .footer .logo-sub { color: rgba(255,255,255,0.35); }
 
+        .logo-sub-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 3px;
+        }
+
+        .logo-sub-line {
+            flex: 0 0 16px;
+            height: 1px;
+            background: rgba(255,255,255,0.25);
+        }
+
+        .navbar.scrolled .logo-sub-line { background: var(--border); }
+        .footer .logo-sub-line { background: rgba(255,255,255,0.15); }
+
         .logo-icon-wrap {
             position: relative;
             width: 42px; height: 42px;
@@ -537,7 +559,8 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, rgba(15,27,76,0.92) 0%, rgba(26,45,109,0.88) 40%, rgba(12,61,95,0.9) 100%);
+            padding-top: 100px;
+            background: linear-gradient(135deg, rgba(15,27,76,0.95) 0%, rgba(26,45,109,0.92) 40%, rgba(12,61,95,0.93) 100%);
             overflow: hidden;
         }
 
@@ -559,7 +582,7 @@
             position: absolute;
             bottom: -30%; left: -10%;
             width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(230,57,70,0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(34,197,94,0.1) 0%, transparent 70%);
             border-radius: 50%;
             animation: pulse 10s ease-in-out infinite reverse;
             z-index: 2;
@@ -757,12 +780,12 @@
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 4.5vw, 3.8rem);
+            font-size: clamp(2.2rem, 3.8vw, 3.2rem);
             color: #fff;
             font-weight: 800;
             letter-spacing: -0.03em;
             margin-bottom: 24px;
-            line-height: 1.1;
+            line-height: 1.15;
         }
 
         .hero h1 .highlight {
@@ -804,15 +827,15 @@
         }
 
         .btn-primary {
-            background: var(--accent);
+            background: var(--green);
             color: #fff;
-            box-shadow: 0 4px 20px rgba(230,57,70,0.35);
+            box-shadow: 0 4px 20px rgba(34,197,94,0.3);
         }
 
         .btn-primary:hover {
-            background: var(--accent-light);
+            background: var(--green-dark);
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(230,57,70,0.45);
+            box-shadow: 0 8px 30px rgba(34,197,94,0.4);
         }
 
         .btn-outline {
@@ -987,22 +1010,24 @@
            SECTIONS COMMON
         ═══════════════════════════════════════════ */
         .section {
-            padding: 100px 0;
+            padding: 120px 0;
         }
 
         .section-label {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 6px 16px;
-            background: rgba(14,165,233,0.08);
+            padding: 7px 18px;
+            background: rgba(34,197,94,0.08);
+            border: 1px solid rgba(34,197,94,0.15);
             border-radius: 50px;
-            color: var(--teal-dark);
-            font-size: 0.8rem;
+            color: var(--green-dark);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.06em;
-            margin-bottom: 16px;
+            letter-spacing: 0.08em;
+            margin-bottom: 20px;
         }
 
         .section-title {
@@ -1036,17 +1061,18 @@
         }
 
         .about-feature {
-            padding: 20px;
-            background: var(--bg-light);
+            padding: 24px;
+            background: var(--bg-white);
             border-radius: var(--radius);
             border: 1px solid var(--border);
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .about-feature:hover {
             background: #fff;
             box-shadow: var(--shadow-lg);
-            transform: translateY(-4px);
+            transform: translateY(-3px);
+            border-color: rgba(34,197,94,0.2);
         }
 
         .about-feature .feat-icon {
@@ -1440,7 +1466,7 @@
            CTA SECTION
         ═══════════════════════════════════════════ */
         .cta-section {
-            padding: 100px 0;
+            padding: 120px 0;
             text-align: center;
         }
 
@@ -1466,7 +1492,7 @@
             position: absolute;
             bottom: -40%; left: -10%;
             width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(230,57,70,0.12) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(34,197,94,0.12) 0%, transparent 70%);
             border-radius: 50%;
         }
 
@@ -1909,7 +1935,7 @@
                                 </div>
                             </div>
                             <div class="hero-card-item">
-                                <div class="icon-circle" style="background:rgba(230,57,70,0.12); color:#E63946;">&#128274;</div>
+                                <div class="icon-circle" style="background:rgba(34,197,94,0.1); color:#16A34A;">&#128274;</div>
                                 <div>
                                     <div class="item-label" data-i18n="card_sec_label">Security</div>
                                     <div class="item-value" data-i18n="card_sec_value">Bank-Grade Encryption</div>
@@ -2110,7 +2136,7 @@
                     <p data-i18n="step3_desc">Receive approval within 48 hours with transparent terms and competitive interest rates.</p>
                 </div>
                 <div class="step-card reveal reveal-delay-3">
-                    <div class="step-number" style="background: linear-gradient(135deg, #E63946, #FF6B6B);">4</div>
+                    <div class="step-number" style="background: linear-gradient(135deg, #22C55E, #4ADE80);">4</div>
                     <h4 data-i18n="step4_title">Direct Disbursement</h4>
                     <p data-i18n="step4_desc">Funds transferred directly to your bank account — no intermediaries, no delays.</p>
                 </div>
@@ -2128,14 +2154,58 @@
             </div>
             <div class="partners-grid">
                 <div class="partner-card reveal">
-                    <div class="partner-logo" style="background: linear-gradient(135deg, #0EA5E9, #0284C7);">AF</div>
-                    <h3>Avanti Finance Pvt. Ltd.</h3>
-                    <p data-i18n="partner1_desc">NBFC partner for inclusive microfinance lending across rural India</p>
+                    <span class="partner-badge">&#10003; Verified Partner</span>
+                    <div class="partner-card-top">
+                        <div class="partner-logo" style="background: #fff; padding: 6px;"><img src="https://cdn.prod.website-files.com/62b021b93249a93ae7b2b3bb/68a45ce57112350d83895117_Avanti%20Logo_2.webp" alt="Avanti Finance" style="width:100%; height:100%; object-fit:contain; border-radius:10px;"></div>
+                        <div class="partner-info">
+                            <h3>Avanti Finance Pvt. Ltd.</h3>
+                            <span class="partner-type">NBFC Partner</span>
+                        </div>
+                    </div>
+                    <div class="partner-card-body">
+                        <p data-i18n="partner1_desc">NBFC partner for inclusive microfinance lending across rural India</p>
+                        <div class="partner-stats">
+                            <div class="partner-stat">
+                                <span class="partner-stat-value">15+</span>
+                                <span class="partner-stat-label">States</span>
+                            </div>
+                            <div class="partner-stat">
+                                <span class="partner-stat-value">30K+</span>
+                                <span class="partner-stat-label">Loans</span>
+                            </div>
+                            <div class="partner-stat">
+                                <span class="partner-stat-value">98%</span>
+                                <span class="partner-stat-label">Approval Rate</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="partner-card reveal reveal-delay-1">
-                    <div class="partner-logo" style="background: linear-gradient(135deg, #10B981, #059669);">UB</div>
-                    <h3>Unity Small Finance Bank</h3>
-                    <p data-i18n="partner2_desc">Banking partner enabling last-mile financial service delivery</p>
+                    <span class="partner-badge">&#10003; Verified Partner</span>
+                    <div class="partner-card-top">
+                        <div class="partner-logo" style="background: #F5C518; padding: 6px;"><img src="https://logo.clearbit.com/unitybank.in" alt="Unity Small Finance Bank" style="width:100%; height:100%; object-fit:contain; border-radius:10px;" onerror="this.parentElement.innerHTML='<span style=color:#1a1a1a;font-size:1.1rem;font-weight:800>U</span>'"></div>
+                        <div class="partner-info">
+                            <h3>Unity Small Finance Bank</h3>
+                            <span class="partner-type">Banking Partner</span>
+                        </div>
+                    </div>
+                    <div class="partner-card-body">
+                        <p data-i18n="partner2_desc">Banking partner enabling last-mile financial service delivery</p>
+                        <div class="partner-stats">
+                            <div class="partner-stat">
+                                <span class="partner-stat-value">10+</span>
+                                <span class="partner-stat-label">States</span>
+                            </div>
+                            <div class="partner-stat">
+                                <span class="partner-stat-value">20K+</span>
+                                <span class="partner-stat-label">Accounts</span>
+                            </div>
+                            <div class="partner-stat">
+                                <span class="partner-stat-value">4.8★</span>
+                                <span class="partner-stat-label">Rating</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2999,42 +3069,96 @@
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
         // ═══════════════════════════════════════════
-        // ANIMATED COUNTERS
+        // ANIMATED COUNTERS (Running Numbers)
         // ═══════════════════════════════════════════
-        function animateCounters() {
-            document.querySelectorAll('.stat-number').forEach(el => {
-                const text = el.textContent;
-                const match = text.match(/(\d+)/);
-                if (!match) return;
+        function animateValue(el, originalHTML, target, decimals, prefix, suffix, accentSuffix, duration) {
+            let start = null;
+            const ease = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
-                const target = parseInt(match[1]);
-                const suffix = text.replace(match[1], '').replace(/\d/g, '');
-                let current = 0;
-                const duration = 2000;
-                const step = target / (duration / 16);
+            function frame(ts) {
+                if (!start) start = ts;
+                const progress = Math.min((ts - start) / duration, 1);
+                const easedProgress = ease(progress);
+                const current = easedProgress * target;
+                const display = decimals > 0 ? current.toFixed(decimals) : Math.floor(current);
 
-                function update() {
-                    current += step;
-                    if (current >= target) {
-                        el.innerHTML = text.replace(match[1], target + '').replace('+', '<span class="accent">+</span>').replace('%', '<span class="accent">%</span>').replace('Cr', '<span class="accent">Cr</span>');
-                        return;
-                    }
-                    el.innerHTML = text.replace(match[1], Math.floor(current) + '').replace('+', '<span class="accent">+</span>').replace('%', '<span class="accent">%</span>').replace('Cr', '<span class="accent">Cr</span>');
-                    requestAnimationFrame(update);
+                if (accentSuffix) {
+                    el.innerHTML = prefix + display + '<span class="accent">' + accentSuffix + '</span>';
+                } else {
+                    el.textContent = prefix + display + suffix;
                 }
 
-                const statObserver = new IntersectionObserver((entries) => {
+                if (progress < 1) {
+                    requestAnimationFrame(frame);
+                } else {
+                    el.innerHTML = originalHTML;
+                }
+            }
+            requestAnimationFrame(frame);
+        }
+
+        function setupCounters() {
+            // Impact section stat-numbers (have <span class="accent"> children)
+            document.querySelectorAll('.stat-number').forEach(el => {
+                const originalHTML = el.innerHTML;
+                const text = el.textContent.trim();
+
+                // Parse: prefix(₹) + number + K/Cr suffix + accent(+/%)
+                const m = text.match(/^([₹]?)(\d+\.?\d*)(K?)(Cr?)([+%]?)$/);
+                if (!m) return;
+
+                const prefix = m[1];
+                const num = parseFloat(m[2]);
+                const decimals = m[2].includes('.') ? m[2].split('.')[1].length : 0;
+                const kSuffix = m[3];
+                const crSuffix = m[4];
+                const symbol = m[5];
+                const accentPart = crSuffix + symbol; // e.g. "Cr+" or "+" or "%"
+
+                const statObs = new IntersectionObserver((entries) => {
                     if (entries[0].isIntersecting) {
-                        update();
-                        statObserver.disconnect();
+                        animateValue(el, originalHTML, num, decimals, prefix, kSuffix + crSuffix + symbol, kSuffix + (accentPart || ''), 2000);
+                        statObs.disconnect();
                     }
                 }, { threshold: 0.5 });
+                statObs.observe(el);
+            });
 
-                statObserver.observe(el);
+            // Hero section stat h3 elements (plain text like "10+", "50K+", "99.2%")
+            document.querySelectorAll('.hero-stat h3').forEach(el => {
+                const text = el.textContent.trim();
+                const m = text.match(/^(\d+\.?\d*)(K?)([+%]?)$/);
+                if (!m) return;
+
+                const originalText = text;
+                const num = parseFloat(m[1]);
+                const decimals = m[1].includes('.') ? m[1].split('.')[1].length : 0;
+                const suffix = m[2] + m[3];
+
+                const heroObs = new IntersectionObserver((entries) => {
+                    if (entries[0].isIntersecting) {
+                        let start = null;
+                        const duration = 2000;
+                        const ease = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+                        function frame(ts) {
+                            if (!start) start = ts;
+                            const progress = Math.min((ts - start) / duration, 1);
+                            const current = ease(progress) * num;
+                            const display = decimals > 0 ? current.toFixed(decimals) : Math.floor(current);
+                            el.textContent = display + suffix;
+                            if (progress < 1) requestAnimationFrame(frame);
+                            else el.textContent = originalText;
+                        }
+                        requestAnimationFrame(frame);
+                        heroObs.disconnect();
+                    }
+                }, { threshold: 0.5 });
+                heroObs.observe(el);
             });
         }
 
-        animateCounters();
+        setupCounters();
 
         // ═══════════════════════════════════════════
         // SMOOTH SCROLL
