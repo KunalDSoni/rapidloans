@@ -396,10 +396,15 @@
         }
 
         .logo-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-family: 'Inter', 'Playfair Display', sans-serif;
+            font-size: 1.4rem;
             font-weight: 800;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.01em;
+            color: #E63946;
+        }
+
+        .navbar.scrolled .logo-name {
+            color: #E63946;
         }
 
         .logo-sub {
@@ -433,7 +438,7 @@
 
         .logo-icon-wrap {
             position: relative;
-            width: 42px; height: 42px;
+            width: 52px; height: 52px;
             flex-shrink: 0;
             display: flex; align-items: center; justify-content: center;
         }
@@ -444,29 +449,78 @@
         }
 
         .logo-icon {
-            width: 42px; height: 42px;
+            width: 52px; height: 52px;
             display: flex; align-items: center; justify-content: center;
             flex-shrink: 0;
             position: relative;
-            filter: drop-shadow(0 1px 3px rgba(15,27,76,0.25));
-            transition: transform 0.3s ease, filter 0.3s ease;
+            filter: drop-shadow(0 2px 6px rgba(15,27,76,0.2));
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease;
         }
 
         .logo-svg {
             width: 100%; height: 100%;
         }
 
+        /* Swoosh arc animation */
+        .logo-arc-upper {
+            stroke-dasharray: 120;
+            stroke-dashoffset: 120;
+            animation: drawArc 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+        }
+
+        .logo-arc-lower {
+            stroke-dasharray: 100;
+            stroke-dashoffset: -100;
+            animation: drawArcReverse 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
+        }
+
+        @keyframes drawArc {
+            to { stroke-dashoffset: 0; }
+        }
+
+        @keyframes drawArcReverse {
+            to { stroke-dashoffset: 0; }
+        }
+
+        .logo-rl-text {
+            animation: fadeInScale 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.7); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Continuous subtle animation on hover */
+        .logo:hover .logo-arc-upper {
+            animation: arcPulse 2s ease-in-out infinite;
+        }
+
+        .logo:hover .logo-arc-lower {
+            animation: arcPulseReverse 2s ease-in-out infinite 0.3s;
+        }
+
+        @keyframes arcPulse {
+            0%, 100% { stroke-dashoffset: 0; opacity: 1; }
+            50% { stroke-dashoffset: 15; opacity: 0.7; }
+        }
+
+        @keyframes arcPulseReverse {
+            0%, 100% { stroke-dashoffset: 0; opacity: 1; }
+            50% { stroke-dashoffset: -12; opacity: 0.7; }
+        }
+
         .logo-name-accent {
-            color: var(--teal);
+            color: #2AABE2;
         }
 
         .navbar.scrolled .logo-name-accent {
-            color: var(--teal-dark);
+            color: #0EA5E9;
         }
 
         .logo:hover .logo-icon {
-            transform: scale(1.06);
-            filter: drop-shadow(0 3px 10px rgba(14,165,233,0.3)) drop-shadow(0 1px 3px rgba(15,27,76,0.2));
+            transform: scale(1.08);
+            filter: drop-shadow(0 4px 14px rgba(14,165,233,0.25)) drop-shadow(0 2px 4px rgba(15,27,76,0.15));
         }
 
         @keyframes logoBreath {
@@ -1804,19 +1858,16 @@
         <div class="container">
             <a href="#" class="logo">
                 <div class="logo-icon-wrap">
-                    <div class="logo-pulse-ring"></div>
-                    <div class="logo-pulse-ring logo-pulse-ring-2"></div>
                     <div class="logo-icon">
-                        <svg class="logo-svg" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path class="logo-shield" d="M20 2L36 10V22C36 30.84 29.16 38 20 40C10.84 38 4 30.84 4 22V10L20 2Z" fill="url(#shieldGrad)" stroke="rgba(255,255,255,0.3)" stroke-width="0.5"/>
-                            <text x="20" y="25" text-anchor="middle" fill="white" font-family="'Playfair Display', serif" font-weight="700" font-size="13" font-style="italic">RL</text>
-                            <defs>
-                                <linearGradient id="shieldGrad" x1="4" y1="2" x2="36" y2="40" gradientUnits="userSpaceOnUse">
-                                    <stop offset="0%" stop-color="#0F1B4C"/>
-                                    <stop offset="40%" stop-color="#1a2d6d"/>
-                                    <stop offset="100%" stop-color="#0EA5E9"/>
-                                </linearGradient>
-                            </defs>
+                        <svg class="logo-svg" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Upper red swoosh arc -->
+                            <path class="logo-arc-upper" d="M8 32 C8 14, 28 2, 52 12" stroke="#E63946" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+                            <!-- Lower blue swoosh arc -->
+                            <path class="logo-arc-lower" d="M52 28 C52 46, 32 58, 8 48" stroke="#2AABE2" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+                            <!-- RL text -->
+                            <g class="logo-rl-text">
+                                <text x="30" y="38" text-anchor="middle" font-family="'Inter', 'Arial Black', sans-serif" font-weight="900" font-size="22" fill="#2AABE2" letter-spacing="-1">RL</text>
+                            </g>
                         </svg>
                     </div>
                 </div>
@@ -1824,7 +1875,7 @@
                     <span class="logo-name">Rapid<span class="logo-name-accent">Loans</span></span>
                     <span class="logo-sub-wrap">
                         <span class="logo-sub-line"></span>
-                        <span class="logo-sub" data-i18n="logo_rbi">RBI Regulated Banking Correspondent</span>
+                        <span class="logo-sub" data-i18n="logo_rbi">Under RBI Regulated Banking Correspondent</span>
                         <span class="logo-sub-line"></span>
                     </span>
                 </div>
@@ -2156,7 +2207,14 @@
                 <div class="partner-card reveal">
                     <span class="partner-badge">&#10003; Verified Partner</span>
                     <div class="partner-card-top">
-                        <div class="partner-logo" style="background: #fff; padding: 6px;"><img src="https://cdn.prod.website-files.com/62b021b93249a93ae7b2b3bb/68a45ce57112350d83895117_Avanti%20Logo_2.webp" alt="Avanti Finance" style="width:100%; height:100%; object-fit:contain; border-radius:10px;"></div>
+                        <div class="partner-logo" style="background: #FFF9E6; padding: 4px;">
+                            <svg viewBox="0 0 60 60" width="52" height="52" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="30" cy="30" r="22" fill="none" stroke="#E8A317" stroke-width="4" stroke-dasharray="20 8" transform="rotate(-30 30 30)" opacity="0.6"/>
+                                <circle cx="30" cy="30" r="15" fill="none" stroke="#D4941A" stroke-width="3.5" stroke-dasharray="14 6" transform="rotate(60 30 30)" opacity="0.8"/>
+                                <circle cx="30" cy="30" r="8" fill="#E8A317" opacity="0.3"/>
+                                <text x="30" y="35" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" font-weight="800" fill="#2D3748">AF</text>
+                            </svg>
+                        </div>
                         <div class="partner-info">
                             <h3>Avanti Finance Pvt. Ltd.</h3>
                             <span class="partner-type">NBFC Partner</span>
@@ -2183,7 +2241,16 @@
                 <div class="partner-card reveal reveal-delay-1">
                     <span class="partner-badge">&#10003; Verified Partner</span>
                     <div class="partner-card-top">
-                        <div class="partner-logo" style="background: #F5C518; padding: 6px;"><img src="https://logo.clearbit.com/unitybank.in" alt="Unity Small Finance Bank" style="width:100%; height:100%; object-fit:contain; border-radius:10px;" onerror="this.parentElement.innerHTML='<span style=color:#1a1a1a;font-size:1.1rem;font-weight:800>U</span>'"></div>
+                        <div class="partner-logo" style="background: #F5C518; padding: 4px;">
+                            <svg viewBox="0 0 60 60" width="52" height="52" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="12" y="14" width="8" height="32" rx="1" fill="#1A1A1A"/>
+                                <rect x="26" y="14" width="8" height="32" rx="1" fill="#1A1A1A"/>
+                                <rect x="40" y="14" width="8" height="32" rx="1" fill="#1A1A1A"/>
+                                <rect x="8" y="22" width="44" height="7" rx="1" fill="#1A1A1A"/>
+                                <rect x="8" y="35" width="44" height="7" rx="1" fill="#1A1A1A"/>
+                                <rect x="12" y="14" width="8" height="32" rx="1" fill="#F5C518" opacity="0.15"/>
+                            </svg>
+                        </div>
                         <div class="partner-info">
                             <h3>Unity Small Finance Bank</h3>
                             <span class="partner-type">Banking Partner</span>
@@ -2244,16 +2311,12 @@
                     <a href="#" class="logo">
                         <div class="logo-icon-wrap">
                             <div class="logo-icon">
-                                <svg class="logo-svg" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path class="logo-shield" d="M20 2L36 10V22C36 30.84 29.16 38 20 40C10.84 38 4 30.84 4 22V10L20 2Z" fill="url(#shieldGradF)" stroke="rgba(255,255,255,0.3)" stroke-width="0.5"/>
-                                    <text x="20" y="25" text-anchor="middle" fill="white" font-family="'Playfair Display', serif" font-weight="700" font-size="13" font-style="italic">RL</text>
-                                    <defs>
-                                        <linearGradient id="shieldGradF" x1="4" y1="2" x2="36" y2="40" gradientUnits="userSpaceOnUse">
-                                            <stop offset="0%" stop-color="#0F1B4C"/>
-                                            <stop offset="40%" stop-color="#1a2d6d"/>
-                                            <stop offset="100%" stop-color="#0EA5E9"/>
-                                        </linearGradient>
-                                    </defs>
+                                <svg class="logo-svg" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path class="logo-arc-upper" d="M8 32 C8 14, 28 2, 52 12" stroke="#E63946" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+                                    <path class="logo-arc-lower" d="M52 28 C52 46, 32 58, 8 48" stroke="#2AABE2" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+                                    <g class="logo-rl-text">
+                                        <text x="30" y="38" text-anchor="middle" font-family="'Inter', 'Arial Black', sans-serif" font-weight="900" font-size="22" fill="#2AABE2" letter-spacing="-1">RL</text>
+                                    </g>
                                 </svg>
                             </div>
                         </div>
@@ -2261,7 +2324,7 @@
                             <span class="logo-name">Rapid<span class="logo-name-accent">Loans</span></span>
                             <span class="logo-sub-wrap">
                                 <span class="logo-sub-line"></span>
-                                <span class="logo-sub" data-i18n="logo_rbi">RBI Regulated Banking Correspondent</span>
+                                <span class="logo-sub" data-i18n="logo_rbi">Under RBI Regulated Banking Correspondent</span>
                                 <span class="logo-sub-line"></span>
                             </span>
                         </div>
@@ -2397,7 +2460,7 @@
                 footer_copy: "&copy; 2025 Rapid Loans India Pvt. Ltd. All rights reserved.",
                 footer_terms: "Terms & Conditions",
                 footer_privacy: "Privacy Policy",
-                logo_rbi: "RBI Regulated Banking Correspondent",
+                logo_rbi: "Under RBI Regulated Banking Correspondent",
                 trust_rbi: "RBI Regulated",
                 trust_rbi_desc: "Registered Banking Correspondent under Reserve Bank of India guidelines",
                 trust_secure: "Bank-Grade Security",
@@ -2495,7 +2558,7 @@
                 footer_copy: "&copy; 2025 रैपिड लोन्स इंडिया प्रा. लि. सर्वाधिकार सुरक्षित।",
                 footer_terms: "नियम और शर्तें",
                 footer_privacy: "गोपनीयता नीति",
-                logo_rbi: "RBI विनियमित बैंकिंग कॉरेस्पोंडेंट",
+                logo_rbi: "RBI विनियमित बैंकिंग कॉरेस्पोंडेंट के अंतर्गत",
                 trust_rbi: "RBI विनियमित",
                 trust_rbi_desc: "भारतीय रिज़र्व बैंक दिशानिर्देशों के तहत पंजीकृत बैंकिंग कॉरेस्पोंडेंट",
                 trust_secure: "बैंक-ग्रेड सुरक्षा",
@@ -2593,7 +2656,7 @@
                 footer_copy: "&copy; 2025 રેપિડ લોન્સ ઈન્ડિયા પ્રા. લિ. સર્વાધિકાર સુરક્ષિત.",
                 footer_terms: "નિયમો અને શરતો",
                 footer_privacy: "ગોપનીયતા નીતિ",
-                logo_rbi: "RBI નિયમિત બેંકિંગ કોરસ્પોન્ડન્ટ",
+                logo_rbi: "RBI નિયમિત બેંકિંગ કોરસ્પોન્ડન્ટ હેઠળ",
                 trust_rbi: "RBI નિયમિત",
                 trust_rbi_desc: "ભારતીય રિઝર્વ બેંક માર્ગદર્શિકા હેઠળ નોંધાયેલ બેંકિંગ કોરસ્પોન્ડન્ટ",
                 trust_secure: "બેંક-ગ્રેડ સુરક્ષા",
@@ -2691,7 +2754,7 @@
                 footer_copy: "&copy; 2025 रॅपिड लोन्स इंडिया प्रा. लि. सर्व हक्क राखीव.",
                 footer_terms: "अटी आणि शर्ती",
                 footer_privacy: "गोपनीयता धोरण",
-                logo_rbi: "RBI नियमित बँकिंग कॉरस्पॉन्डंट",
+                logo_rbi: "RBI नियमित बँकिंग कॉरस्पॉन्डंट अंतर्गत",
                 trust_rbi: "RBI नियमित",
                 trust_rbi_desc: "भारतीय रिझर्व्ह बँक मार्गदर्शक तत्त्वांनुसार नोंदणीकृत बँकिंग कॉरस्पॉन्डंट",
                 trust_secure: "बँक-ग्रेड सुरक्षा",
