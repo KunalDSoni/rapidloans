@@ -1,0 +1,2266 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rapid Loans — Modern Banking Correspondent | Empowering Rural India</title>
+    <meta name="description" content="Rapid Loans is a tech-first banking correspondent providing inclusive microloans and financial services across rural India through advanced technology.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Gujarati:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ═══════════════════════════════════════════
+           CSS RESET & VARIABLES
+        ═══════════════════════════════════════════ */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #0F1B4C;
+            --primary-light: #1a2d6d;
+            --accent: #E63946;
+            --accent-light: #ff4d5a;
+            --teal: #0EA5E9;
+            --teal-dark: #0284C7;
+            --gold: #F59E0B;
+            --green: #10B981;
+            --bg-light: #F8FAFC;
+            --bg-white: #FFFFFF;
+            --text-dark: #0F172A;
+            --text-body: #475569;
+            --text-muted: #94A3B8;
+            --border: #E2E8F0;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+            --shadow-lg: 0 10px 25px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.03);
+            --shadow-xl: 0 20px 50px -12px rgba(0,0,0,0.15);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-body);
+            background: var(--bg-white);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        [data-lang="hi"] body,
+        [data-lang="hi"] h1, [data-lang="hi"] h2, [data-lang="hi"] h3, [data-lang="hi"] h4, [data-lang="hi"] p, [data-lang="hi"] a, [data-lang="hi"] span, [data-lang="hi"] div {
+            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+        }
+
+        [data-lang="gu"] body,
+        [data-lang="gu"] h1, [data-lang="gu"] h2, [data-lang="gu"] h3, [data-lang="gu"] h4, [data-lang="gu"] p, [data-lang="gu"] a, [data-lang="gu"] span, [data-lang="gu"] div {
+            font-family: 'Noto Sans Gujarati', 'Inter', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        img { max-width: 100%; display: block; }
+        ul { list-style: none; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ═══════════════════════════════════════════
+           LANGUAGE SWITCHER
+        ═══════════════════════════════════════════ */
+        .lang-switcher {
+            position: relative;
+            z-index: 1001;
+        }
+
+        .lang-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px;
+            color: rgba(255,255,255,0.85);
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+
+        .navbar.scrolled .lang-btn {
+            background: rgba(15,27,76,0.06);
+            border-color: var(--border);
+            color: var(--text-dark);
+        }
+
+        .lang-btn:hover {
+            background: rgba(255,255,255,0.18);
+        }
+
+        .navbar.scrolled .lang-btn:hover {
+            background: rgba(15,27,76,0.1);
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: var(--shadow-xl);
+            overflow: hidden;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: all 0.25s ease;
+            min-width: 160px;
+        }
+
+        .lang-switcher.open .lang-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-body);
+            cursor: pointer;
+            transition: background 0.2s;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            font-family: inherit;
+        }
+
+        .lang-option:hover {
+            background: var(--bg-light);
+        }
+
+        .lang-option.active {
+            background: rgba(14,165,233,0.06);
+            color: var(--teal-dark);
+            font-weight: 600;
+        }
+
+        .lang-option .lang-native {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-left: auto;
+        }
+
+        .lang-option.active .lang-native { color: var(--teal-dark); }
+
+        /* ═══════════════════════════════════════════
+           NAVIGATION
+        ═══════════════════════════════════════════ */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.4s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 12px 0;
+            box-shadow: 0 1px 20px rgba(0,0,0,0.06);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: #fff;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .navbar.scrolled .logo { color: var(--primary); }
+
+        .logo-text-wrap {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .logo-name {
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .logo-sub {
+            font-size: 0.58rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 0.04em;
+            margin-top: 2px;
+            text-transform: uppercase;
+        }
+
+        .navbar.scrolled .logo-sub { color: var(--text-muted); }
+        .footer .logo-sub { color: rgba(255,255,255,0.35); }
+
+        .logo-icon {
+            width: 42px; height: 42px;
+            background: linear-gradient(135deg, var(--accent), var(--teal));
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            color: #fff;
+            font-weight: 900;
+            font-size: 1rem;
+            letter-spacing: -0.5px;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+            animation: logoBreath 3s ease-in-out infinite;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: conic-gradient(
+                from 0deg,
+                transparent 0%,
+                rgba(255,255,255,0.3) 25%,
+                transparent 50%,
+                rgba(255,255,255,0.15) 75%,
+                transparent 100%
+            );
+            animation: logoSpin 4s linear infinite;
+            z-index: 0;
+        }
+
+        .logo-icon::after {
+            content: 'RL';
+            position: relative;
+            z-index: 1;
+            font-weight: 900;
+            font-size: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .logo:hover .logo-icon {
+            transform: scale(1.1) rotate(-5deg);
+            box-shadow: 0 0 24px rgba(14,165,233,0.5), 0 0 48px rgba(230,57,70,0.25);
+            border-radius: 14px;
+        }
+
+        .logo:hover .logo-icon::before {
+            animation-duration: 1.5s;
+        }
+
+        @keyframes logoSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes logoBreath {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(14,165,233,0), 0 2px 8px rgba(0,0,0,0.1); }
+            50% { box-shadow: 0 0 16px 2px rgba(14,165,233,0.25), 0 2px 8px rgba(0,0,0,0.1); }
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.85);
+            position: relative;
+            letter-spacing: 0.01em;
+            white-space: nowrap;
+        }
+
+        .navbar.scrolled .nav-links a { color: var(--text-body); }
+
+        .nav-links a:hover { color: #fff; }
+        .navbar.scrolled .nav-links a:hover { color: var(--primary); }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-cta {
+            padding: 10px 24px !important;
+            background: var(--accent) !important;
+            color: #fff !important;
+            border-radius: 50px !important;
+            font-weight: 600 !important;
+            font-size: 0.88rem !important;
+            transition: all 0.3s ease !important;
+            box-shadow: 0 4px 15px rgba(230,57,70,0.3);
+        }
+
+        .nav-cta:hover {
+            background: var(--accent-light) !important;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(230,57,70,0.4) !important;
+        }
+
+        .nav-cta::after { display: none !important; }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+            background: none;
+            border: none;
+        }
+
+        .hamburger span {
+            width: 24px; height: 2px;
+            background: #fff;
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled .hamburger span { background: var(--primary); }
+
+        /* ═══════════════════════════════════════════
+           HERO SECTION
+        ═══════════════════════════════════════════ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(15,27,76,0.92) 0%, rgba(26,45,109,0.88) 40%, rgba(12,61,95,0.9) 100%);
+            overflow: hidden;
+        }
+
+        /* Hero uses pure gradient, no background images */
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%; right: -20%;
+            width: 800px; height: 800px;
+            background: radial-gradient(circle, rgba(14,165,233,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 8s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%; left: -10%;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(230,57,70,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 10s ease-in-out infinite reverse;
+            z-index: 2;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        .hero > .container {
+            position: relative;
+            z-index: 3;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 50px;
+            color: var(--teal);
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+            clear: both;
+        }
+
+        .hero-badge .dot {
+            width: 8px; height: 8px;
+            background: var(--green);
+            border-radius: 50%;
+            animation: blink 2s infinite;
+            flex-shrink: 0;
+        }
+
+        /* Trust bar */
+        .trust-bar {
+            padding: 10px 0;
+            background: rgba(255,255,255,0.04);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            position: relative;
+            z-index: 4;
+        }
+
+        .trust-bar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.6);
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+
+        .trust-item svg {
+            flex-shrink: 0;
+        }
+
+        .trust-item strong {
+            color: rgba(255,255,255,0.85);
+        }
+
+        /* Trust section */
+        .trust-section {
+            padding: 48px 0;
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            align-items: center;
+        }
+
+        .trust-card {
+            text-align: center;
+            padding: 24px 16px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            background: var(--bg-light);
+            transition: all 0.3s ease;
+        }
+
+        .trust-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .trust-card-icon {
+            width: 48px; height: 48px;
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 12px;
+            font-size: 1.3rem;
+        }
+
+        .trust-card h4 {
+            font-size: 0.88rem;
+            margin-bottom: 4px;
+            color: var(--text-dark);
+        }
+
+        .trust-card p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 4.5vw, 3.8rem);
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--teal), var(--green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+            margin-bottom: 36px;
+            max-width: 520px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(230,57,70,0.35);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(230,57,70,0.45);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #fff;
+            border: 1.5px solid rgba(255,255,255,0.25);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.4);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 48px;
+            padding-top: 28px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .hero-stat h3 {
+            font-size: 1.8rem;
+            color: #fff;
+            font-weight: 800;
+        }
+
+        .hero-stat p {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 36px;
+            backdrop-filter: blur(20px);
+            width: 100%;
+            max-width: 460px;
+        }
+
+        .hero-card-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .hero-card-icon {
+            width: 52px; height: 52px;
+            background: linear-gradient(135deg, var(--teal), var(--green));
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .hero-card-title {
+            color: #fff;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .hero-card-subtitle {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.8rem;
+            margin-top: 2px;
+        }
+
+        .hero-card-items {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .hero-card-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 16px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .hero-card-item:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateX(4px);
+        }
+
+        .hero-card-item .icon-circle {
+            width: 38px; height: 38px;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .hero-card-item .item-label {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .hero-card-item .item-value {
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .floating-badge {
+            position: absolute;
+            background: rgba(255,255,255,0.95);
+            border-radius: 16px;
+            padding: 12px 18px;
+            box-shadow: var(--shadow-xl);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-badge.top-right {
+            top: -10px; right: -10px;
+            animation-delay: 0s;
+        }
+
+        .floating-badge.bottom-left {
+            bottom: -10px; left: -10px;
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .floating-badge .badge-icon {
+            width: 34px; height: 34px;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .floating-badge .badge-text {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .floating-badge .badge-sub {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        /* ═══════════════════════════════════════════
+           SECTIONS COMMON
+        ═══════════════════════════════════════════ */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(14,165,233,0.08);
+            border-radius: 50px;
+            color: var(--teal-dark);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        .section-desc {
+            font-size: 1.05rem;
+            color: var(--text-body);
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        /* ═══════════════════════════════════════════
+           ABOUT / MISSION SECTION
+        ═══════════════════════════════════════════ */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 36px;
+        }
+
+        .about-feature {
+            padding: 20px;
+            background: var(--bg-light);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .about-feature:hover {
+            background: #fff;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .about-feature .feat-icon {
+            width: 42px; height: 42px;
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+
+        .about-feature h4 {
+            font-size: 0.92rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .about-feature p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            border-radius: 24px;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .about-image-badge {
+            position: absolute;
+            bottom: -16px;
+            right: -16px;
+            background: var(--primary);
+            color: #fff;
+            padding: 20px 28px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .about-image-badge h3 {
+            color: #fff;
+            font-size: 1.8rem;
+        }
+
+        .about-image-badge p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* ═══════════════════════════════════════════
+           SERVICES SECTION
+        ═══════════════════════════════════════════ */
+        .services { background: var(--bg-light); }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .services-header .section-desc {
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 32px;
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--teal), var(--green));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover::before { transform: scaleX(1); }
+
+        .service-card:hover {
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-6px);
+        }
+
+        .service-icon {
+            width: 52px; height: 52px;
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            font-size: 0.88rem;
+            color: var(--text-body);
+            line-height: 1.7;
+        }
+
+        /* ═══════════════════════════════════════════
+           STATS / IMPACT SECTION
+        ═══════════════════════════════════════════ */
+        .impact {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a2d6d 100%);
+            padding: 72px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .impact::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 28px 16px;
+        }
+
+        .stat-number {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-number .accent { color: var(--teal); }
+
+        .stat-label {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: 500;
+        }
+
+        /* ═══════════════════════════════════════════
+           HOW IT WORKS
+        ═══════════════════════════════════════════ */
+        .how-it-works-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .how-it-works-header .section-desc { margin: 0 auto; }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+            position: relative;
+        }
+
+        .steps-grid::before {
+            content: '';
+            position: absolute;
+            top: 42px;
+            left: 12%;
+            right: 12%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--teal), var(--green), var(--gold), var(--accent));
+            border-radius: 2px;
+            z-index: 0;
+        }
+
+        .step-card {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 84px; height: 84px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 20px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #fff;
+            position: relative;
+        }
+
+        .step-number::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background: inherit;
+            opacity: 0.15;
+        }
+
+        .step-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .step-card p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            max-width: 220px;
+            margin: 0 auto;
+        }
+
+        /* ═══════════════════════════════════════════
+           PARTNERS SECTION
+        ═══════════════════════════════════════════ */
+        .partners { background: var(--bg-light); }
+
+        .partners-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .partners-header .section-desc { margin: 0 auto; }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .partner-card {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 36px;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .partner-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .partner-logo {
+            width: 68px; height: 68px;
+            border-radius: 18px;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .partner-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+
+        .partner-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ═══════════════════════════════════════════
+           CTA SECTION
+        ═══════════════════════════════════════════ */
+        .cta-section {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .cta-card {
+            background: linear-gradient(135deg, var(--primary), #1a2d6d);
+            border-radius: 28px;
+            padding: 72px 48px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-card::before {
+            content: '';
+            position: absolute;
+            top: -50%; right: -20%;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(14,165,233,0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-card::after {
+            content: '';
+            position: absolute;
+            bottom: -40%; left: -10%;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(230,57,70,0.12) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-content h2 {
+            font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .cta-content p {
+            color: rgba(255,255,255,0.6);
+            font-size: 1.05rem;
+            max-width: 550px;
+            margin: 0 auto 32px;
+            line-height: 1.8;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-white {
+            background: #fff;
+            color: var(--primary);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        /* ═══════════════════════════════════════════
+           FOOTER
+        ═══════════════════════════════════════════ */
+        .footer {
+            background: #060D2E;
+            padding: 72px 0 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 48px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .footer-brand .logo {
+            color: #fff;
+            margin-bottom: 14px;
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.88rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social a {
+            width: 40px; height: 40px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            display: flex; align-items: center; justify-content: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--teal);
+            border-color: var(--teal);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 18px;
+        }
+
+        .footer-col a {
+            display: block;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.85rem;
+            padding: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .footer-col a:hover {
+            color: var(--teal);
+            transform: translateX(4px);
+        }
+
+        .footer-bottom {
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-bottom p {
+            color: rgba(255,255,255,0.25);
+            font-size: 0.8rem;
+        }
+
+        /* ═══════════════════════════════════════════
+           SCROLL ANIMATIONS
+        ═══════════════════════════════════════════ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        /* ═══════════════════════════════════════════
+           RESPONSIVE - TABLET
+        ═══════════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero-visual { display: none; }
+            .hero { min-height: auto; padding: 140px 0 80px; }
+            .hero h1 { font-size: 2.6rem; }
+            .hero-desc { max-width: 100%; }
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .about-image { height: 360px; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .steps-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+            .steps-grid::before { display: none; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+            .trust-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* ═══════════════════════════════════════════
+           RESPONSIVE - MOBILE
+        ═══════════════════════════════════════════ */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%; left: 0; right: 0;
+                background: #fff;
+                padding: 20px 24px;
+                box-shadow: var(--shadow-lg);
+                border-radius: 0 0 var(--radius) var(--radius);
+                gap: 0;
+            }
+
+            .nav-links.active a {
+                color: var(--text-body) !important;
+                padding: 12px 0;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links.active a:last-child { border-bottom: none; }
+
+            .nav-links.active .nav-cta {
+                margin-top: 12px;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .hero { min-height: auto; padding: 120px 0 64px; }
+            .hero h1 { font-size: 2rem; }
+            .hero-desc { font-size: 1rem; }
+            .hero-stats { gap: 24px; flex-wrap: wrap; }
+            .hero-stat h3 { font-size: 1.5rem; }
+            .hero-stat p { font-size: 0.72rem; }
+
+            .section { padding: 64px 0; }
+            .section-title { font-size: 1.7rem; }
+
+            .services-grid { grid-template-columns: 1fr; }
+            .service-card { padding: 28px; }
+
+            .stats-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+            .stat-number { font-size: 2.2rem; }
+            .stat-card { padding: 20px 12px; }
+
+            .steps-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+            .step-number { width: 68px; height: 68px; font-size: 1.3rem; }
+
+            .partners-grid { grid-template-columns: 1fr; }
+            .partner-card { padding: 28px; }
+
+            .about-features { grid-template-columns: 1fr; gap: 12px; }
+            .about-image { height: 260px; }
+            .about-image-badge {
+                position: relative;
+                bottom: auto; right: auto;
+                margin-top: 16px;
+                display: inline-block;
+            }
+
+            .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+
+            .cta-card { padding: 44px 20px; border-radius: 20px; }
+            .cta-content h2 { font-size: 1.5rem; }
+            .cta-content p { font-size: 0.95rem; }
+
+            .lang-btn { padding: 5px 10px; font-size: 0.75rem; }
+        }
+
+        /* ═══════════════════════════════════════════
+           RESPONSIVE - SMALL MOBILE
+        ═══════════════════════════════════════════ */
+        @media (max-width: 480px) {
+            .container { padding: 0 16px; }
+            .hero { padding: 110px 0 56px; }
+            .hero h1 { font-size: 1.75rem; }
+            .trust-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .trust-card { padding: 16px 12px; }
+            .trust-card h4 { font-size: 0.8rem; }
+            .trust-card p { font-size: 0.7rem; }
+            .trust-section { padding: 32px 0; }
+            .logo-sub { font-size: 0.5rem; }
+            .hero-desc { font-size: 0.92rem; margin-bottom: 28px; }
+            .hero-actions { flex-direction: column; width: 100%; }
+            .btn { width: 100%; justify-content: center; padding: 14px 24px; }
+            .hero-stats { flex-direction: column; gap: 16px; }
+            .hero-badge { font-size: 0.72rem; padding: 6px 14px; }
+
+            .about-grid { gap: 28px; }
+            .about-image { height: 220px; }
+            .section-title { font-size: 1.5rem; }
+            .section-desc { font-size: 0.92rem; }
+
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .stat-number { font-size: 1.9rem; }
+
+            .steps-grid { grid-template-columns: 1fr; gap: 20px; }
+            .step-number { width: 60px; height: 60px; font-size: 1.2rem; }
+
+            .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+
+            .cta-card { padding: 36px 16px; }
+            .cta-actions { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#" class="logo">
+                <div class="logo-icon"></div>
+                <div class="logo-text-wrap">
+                    <span class="logo-name">RapidLoans</span>
+                    <span class="logo-sub" data-i18n="logo_rbi">RBI Regulated Banking Correspondent</span>
+                </div>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#about" data-i18n="nav_about">About</a>
+                <a href="#services" data-i18n="nav_services">Services</a>
+                <a href="#process" data-i18n="nav_process">How It Works</a>
+                <a href="#partners" data-i18n="nav_partners">Partners</a>
+                <a href="#contact" class="nav-cta" data-i18n="nav_contact">Contact Us</a>
+            </div>
+            <div class="nav-right">
+                <div class="lang-switcher" id="langSwitcher">
+                    <button class="lang-btn" id="langBtn" onclick="toggleLangDropdown()">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        <span id="currentLang">EN</span>
+                        <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="lang-dropdown" id="langDropdown">
+                        <button class="lang-option active" onclick="setLanguage('en')">
+                            English <span class="lang-native">EN</span>
+                        </button>
+                        <button class="lang-option" onclick="setLanguage('hi')">
+                            Hindi <span class="lang-native">हिन्दी</span>
+                        </button>
+                        <button class="lang-option" onclick="setLanguage('gu')">
+                            Gujarati <span class="lang-native">ગુજરાતી</span>
+                        </button>
+                    </div>
+                </div>
+                <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════ HERO ═══════════════════════ -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1 data-i18n="hero_title">Empowering <span class="highlight">Rural India</span> Through Inclusive Finance</h1>
+                    <p class="hero-desc" data-i18n="hero_desc">Rapid Loans is a tech-first banking correspondent bridging financial gaps for underserved communities — delivering microloans, collection, and servicing through cutting-edge technology.</p>
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn btn-primary">
+                            <span data-i18n="hero_cta">Get Started</span>
+                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                        <a href="#about" class="btn btn-outline" data-i18n="hero_learn">Learn More</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <h3>10+</h3>
+                            <p data-i18n="stat_states">States Covered</p>
+                        </div>
+                        <div class="hero-stat">
+                            <h3>50K+</h3>
+                            <p data-i18n="stat_loans">Loans Disbursed</p>
+                        </div>
+                        <div class="hero-stat">
+                            <h3>99.2%</h3>
+                            <p data-i18n="stat_digital">Digital Processing</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-card">
+                        <div class="hero-card-header">
+                            <div class="hero-card-icon">&#9889;</div>
+                            <div>
+                                <div class="hero-card-title" data-i18n="card_title">Instant Loan Access</div>
+                                <div class="hero-card-subtitle" data-i18n="card_subtitle">Paperless & Digital-First</div>
+                            </div>
+                        </div>
+                        <div class="hero-card-items">
+                            <div class="hero-card-item">
+                                <div class="icon-circle" style="background:rgba(16,185,129,0.12); color:#10B981;">&#10003;</div>
+                                <div>
+                                    <div class="item-label" data-i18n="card_loan_type">Loan Type</div>
+                                    <div class="item-value" data-i18n="card_loan_value">Microloans & Group Loans</div>
+                                </div>
+                            </div>
+                            <div class="hero-card-item">
+                                <div class="icon-circle" style="background:rgba(14,165,233,0.12); color:#0EA5E9;">&#9201;</div>
+                                <div>
+                                    <div class="item-label" data-i18n="card_time_label">Processing Time</div>
+                                    <div class="item-value" data-i18n="card_time_value">Under 48 Hours</div>
+                                </div>
+                            </div>
+                            <div class="hero-card-item">
+                                <div class="icon-circle" style="background:rgba(245,158,11,0.12); color:#F59E0B;">&#128202;</div>
+                                <div>
+                                    <div class="item-label" data-i18n="card_tech_label">Technology</div>
+                                    <div class="item-value" data-i18n="card_tech_value">AI-Powered Underwriting</div>
+                                </div>
+                            </div>
+                            <div class="hero-card-item">
+                                <div class="icon-circle" style="background:rgba(230,57,70,0.12); color:#E63946;">&#128274;</div>
+                                <div>
+                                    <div class="item-label" data-i18n="card_sec_label">Security</div>
+                                    <div class="item-value" data-i18n="card_sec_value">Bank-Grade Encryption</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floating-badge top-right">
+                        <div class="badge-icon" style="background:rgba(16,185,129,0.12); color:#10B981;">&#10003;</div>
+                        <div>
+                            <div class="badge-text" data-i18n="badge_approved">Approved</div>
+                            <div class="badge-sub" data-i18n="badge_time">In 2 minutes</div>
+                        </div>
+                    </div>
+                    <div class="floating-badge bottom-left">
+                        <div class="badge-icon" style="background:rgba(14,165,233,0.12); color:#0EA5E9;">&#128179;</div>
+                        <div>
+                            <div class="badge-text" data-i18n="badge_disbursed">Disbursed</div>
+                            <div class="badge-sub" data-i18n="badge_bank">Direct to bank</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════ TRUST SIGNALS ═══════════════════════ -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-card reveal">
+                    <div class="trust-card-icon" style="background: rgba(16,185,129,0.1); color: #10B981;">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h4 data-i18n="trust_rbi">RBI Regulated</h4>
+                    <p data-i18n="trust_rbi_desc">Registered Banking Correspondent under Reserve Bank of India guidelines</p>
+                </div>
+                <div class="trust-card reveal reveal-delay-1">
+                    <div class="trust-card-icon" style="background: rgba(14,165,233,0.1); color: #0EA5E9;">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    </div>
+                    <h4 data-i18n="trust_secure">Bank-Grade Security</h4>
+                    <p data-i18n="trust_secure_desc">256-bit SSL encryption, ISO 27001 compliant data protection</p>
+                </div>
+                <div class="trust-card reveal reveal-delay-2">
+                    <div class="trust-card-icon" style="background: rgba(245,158,11,0.1); color: #F59E0B;">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h4 data-i18n="trust_customers">50,000+ Customers</h4>
+                    <p data-i18n="trust_customers_desc">Trusted by thousands of families across 10+ states in India</p>
+                </div>
+                <div class="trust-card reveal reveal-delay-3">
+                    <div class="trust-card-icon" style="background: rgba(124,58,237,0.1); color: #7C3AED;">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h4 data-i18n="trust_compliant">100% Compliant</h4>
+                    <p data-i18n="trust_compliant_desc">Fully compliant with RBI, SEBI & all regulatory frameworks</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════ ABOUT ═══════════════════════ -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="reveal">
+                    <span class="section-label">&#9672; <span data-i18n="about_label">Who We Are</span></span>
+                    <h2 class="section-title" data-i18n="about_title">New Age, Tech-First<br>Banking Correspondent</h2>
+                    <p class="section-desc" data-i18n="about_desc">Rapid Loans Private Limited is a Modern Banking Correspondent headquartered in Mumbai with a registered office in Ahmedabad. We partner with Banks and NBFCs to deliver comprehensive loan origination, collection, and servicing through advanced technology — creating an inclusive finance platform for all of India.</p>
+                    <div class="about-features">
+                        <div class="about-feature reveal reveal-delay-1">
+                            <div class="feat-icon" style="background: rgba(14,165,233,0.1); color: var(--teal);">&#127919;</div>
+                            <h4 data-i18n="feat_origination">Loan Origination</h4>
+                            <p data-i18n="feat_origination_desc">End-to-end digital onboarding with AI verification</p>
+                        </div>
+                        <div class="about-feature reveal reveal-delay-2">
+                            <div class="feat-icon" style="background: rgba(16,185,129,0.1); color: var(--green);">&#128200;</div>
+                            <h4 data-i18n="feat_collection">Collection Services</h4>
+                            <p data-i18n="feat_collection_desc">Automated reminders and seamless payment tracking</p>
+                        </div>
+                        <div class="about-feature reveal reveal-delay-3">
+                            <div class="feat-icon" style="background: rgba(245,158,11,0.1); color: var(--gold);">&#129309;</div>
+                            <h4 data-i18n="feat_inclusive">Inclusive Finance</h4>
+                            <p data-i18n="feat_inclusive_desc">Tailored products based on socio-economic status</p>
+                        </div>
+                        <div class="about-feature reveal reveal-delay-4">
+                            <div class="feat-icon" style="background: rgba(230,57,70,0.1); color: var(--accent);">&#128640;</div>
+                            <h4 data-i18n="feat_tech">Tech Platform</h4>
+                            <p data-i18n="feat_tech_desc">Advanced technology powering every transaction</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image-wrapper reveal">
+                    <img src="https://rapidloans.ai/wp-content/uploads/2024/07/2151252039.jpg" alt="Rural empowerment through financial inclusion" class="about-image">
+                    <div class="about-image-badge">
+                        <h3 data-i18n="about_since">Since 2020</h3>
+                        <p data-i18n="about_serving">Serving Rural India</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════ SERVICES ═══════════════════════ -->
+    <section class="section services" id="services">
+        <div class="container">
+            <div class="services-header reveal">
+                <span class="section-label">&#9672; <span data-i18n="services_label">What We Do</span></span>
+                <h2 class="section-title" data-i18n="services_title">Comprehensive Financial Services</h2>
+                <p class="section-desc" data-i18n="services_desc">From origination to servicing, we cover the entire lending lifecycle with technology at the core.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-icon" style="background: rgba(14,165,233,0.1); color: var(--teal);">&#128196;</div>
+                    <h3 data-i18n="svc1_title">Microloan Origination</h3>
+                    <p data-i18n="svc1_desc">End-to-end digital loan origination for micro and small loans, powered by AI-driven credit assessment and instant KYC verification.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-icon" style="background: rgba(16,185,129,0.1); color: var(--green);">&#127974;</div>
+                    <h3 data-i18n="svc2_title">Banking Correspondent</h3>
+                    <p data-i18n="svc2_desc">Acting as a technology-enabled extension of banks and NBFCs, bringing formal financial services directly to rural and semi-urban doorsteps.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-3">
+                    <div class="service-icon" style="background: rgba(245,158,11,0.1); color: var(--gold);">&#128176;</div>
+                    <h3 data-i18n="svc3_title">Collection & Servicing</h3>
+                    <p data-i18n="svc3_desc">Automated collection management with real-time tracking, digital payment options, and intelligent follow-up workflows for borrowers.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-icon" style="background: rgba(230,57,70,0.1); color: var(--accent);">&#128101;</div>
+                    <h3 data-i18n="svc4_title">Group Lending</h3>
+                    <p data-i18n="svc4_desc">Community-based lending programs designed for self-help groups and joint liability groups, fostering financial inclusion at grassroot levels.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-icon" style="background: rgba(124,58,237,0.1); color: #7C3AED;">&#128202;</div>
+                    <h3 data-i18n="svc5_title">Credit Assessment</h3>
+                    <p data-i18n="svc5_desc">Proprietary scoring models that go beyond traditional credit bureaus — leveraging alternative data to assess creditworthiness of first-time borrowers.</p>
+                </div>
+                <div class="service-card reveal reveal-delay-3">
+                    <div class="service-icon" style="background: rgba(236,72,153,0.1); color: #EC4899;">&#128241;</div>
+                    <h3 data-i18n="svc6_title">Digital Payments</h3>
+                    <p data-i18n="svc6_desc">Seamless UPI, NACH, and e-mandate integrations enabling borrowers to make repayments effortlessly from anywhere using their mobile devices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════ IMPACT STATS ═══════════════════════ -->
+    <section class="impact">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card reveal">
+                    <div class="stat-number">10<span class="accent">+</span></div>
+                    <div class="stat-label" data-i18n="impact_states">States Covered</div>
+                </div>
+                <div class="stat-card reveal reveal-delay-1">
+                    <div class="stat-number">50K<span class="accent">+</span></div>
+                    <div class="stat-label" data-i18n="impact_loans">Loans Disbursed</div>
+                </div>
+                <div class="stat-card reveal reveal-delay-2">
+                    <div class="stat-number">&#8377;100<span class="accent">Cr+</span></div>
+                    <div class="stat-label" data-i18n="impact_aum">AUM Managed</div>
+                </div>
+                <div class="stat-card reveal reveal-delay-3">
+                    <div class="stat-number">99<span class="accent">%</span></div>
+                    <div class="stat-label" data-i18n="impact_digital">Digital Processing</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════ HOW IT WORKS ═══════════════════════ -->
+    <section class="section" id="process">
+        <div class="container">
+            <div class="how-it-works-header reveal">
+                <span class="section-label">&#9672; <span data-i18n="process_label">The Process</span></span>
+                <h2 class="section-title" data-i18n="process_title">How It Works</h2>
+                <p class="section-desc" data-i18n="process_desc">A simple, technology-driven journey from application to disbursement.</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card reveal">
+                    <div class="step-number" style="background: linear-gradient(135deg, #0EA5E9, #38BDF8);">1</div>
+                    <h4 data-i18n="step1_title">Apply Online</h4>
+                    <p data-i18n="step1_desc">Submit your application digitally through our mobile-first platform with minimal documentation.</p>
+                </div>
+                <div class="step-card reveal reveal-delay-1">
+                    <div class="step-number" style="background: linear-gradient(135deg, #10B981, #34D399);">2</div>
+                    <h4 data-i18n="step2_title">Instant Verification</h4>
+                    <p data-i18n="step2_desc">AI-powered KYC and credit assessment processes your application in minutes, not days.</p>
+                </div>
+                <div class="step-card reveal reveal-delay-2">
+                    <div class="step-number" style="background: linear-gradient(135deg, #F59E0B, #FBBF24);">3</div>
+                    <h4 data-i18n="step3_title">Quick Approval</h4>
+                    <p data-i18n="step3_desc">Receive approval within 48 hours with transparent terms and competitive interest rates.</p>
+                </div>
+                <div class="step-card reveal reveal-delay-3">
+                    <div class="step-number" style="background: linear-gradient(135deg, #E63946, #FF6B6B);">4</div>
+                    <h4 data-i18n="step4_title">Direct Disbursement</h4>
+                    <p data-i18n="step4_desc">Funds transferred directly to your bank account — no intermediaries, no delays.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════ PARTNERS ═══════════════════════ -->
+    <section class="section partners" id="partners">
+        <div class="container">
+            <div class="partners-header reveal">
+                <span class="section-label">&#9672; <span data-i18n="partners_label">Our Partners</span></span>
+                <h2 class="section-title" data-i18n="partners_title">Trusted Banking Partners</h2>
+                <p class="section-desc" data-i18n="partners_desc">We collaborate with leading banks and NBFCs to deliver reliable financial services across India.</p>
+            </div>
+            <div class="partners-grid">
+                <div class="partner-card reveal">
+                    <div class="partner-logo" style="background: linear-gradient(135deg, #0EA5E9, #0284C7);">AF</div>
+                    <h3>Avanti Finance Pvt. Ltd.</h3>
+                    <p data-i18n="partner1_desc">NBFC partner for inclusive microfinance lending across rural India</p>
+                </div>
+                <div class="partner-card reveal reveal-delay-1">
+                    <div class="partner-logo" style="background: linear-gradient(135deg, #10B981, #059669);">UB</div>
+                    <h3>Unity Small Finance Bank</h3>
+                    <p data-i18n="partner2_desc">Banking partner enabling last-mile financial service delivery</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════ CTA ═══════════════════════ -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <div class="cta-card reveal">
+                <div class="cta-content">
+                    <h2 data-i18n="cta_title">Ready to Transform Financial Access?</h2>
+                    <p data-i18n="cta_desc">Partner with Rapid Loans to bring inclusive financial services to underserved communities. Let's build a financially inclusive India together.</p>
+                    <div class="cta-actions">
+                        <a href="mailto:info@rapidloans.ai" class="btn btn-white">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                            info@rapidloans.ai
+                        </a>
+                        <a href="tel:+918369495365" class="btn btn-outline">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            +91 83694 95365
+                        </a>
+                    </div>
+                    <p style="margin-top: 20px; font-size: 0.82rem; color: rgba(255,255,255,0.35);" data-i18n="cta_address">
+                        Ground Floor, Raja Complex, Vijay Cross Roads, Navarangpura, Ahmedabad — 380009, Gujarat
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <div class="logo-icon"></div>
+                        <div class="logo-text-wrap">
+                            <span class="logo-name">RapidLoans</span>
+                            <span class="logo-sub" data-i18n="logo_rbi">RBI Regulated Banking Correspondent</span>
+                        </div>
+                    </a>
+                    <p data-i18n="footer_desc">A Modern Banking Correspondent providing comprehensive loan origination, collection, and servicing through advanced technology across India.</p>
+                    <div class="footer-social">
+                        <a href="https://www.linkedin.com/company/rapid-loans-india/" target="_blank" aria-label="LinkedIn">in</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="footer_company">Company</h4>
+                    <a href="#about" data-i18n="nav_about">About Us</a>
+                    <a href="#services" data-i18n="nav_services">Our Services</a>
+                    <a href="#partners" data-i18n="nav_partners">Partners</a>
+                    <a href="#contact" data-i18n="nav_contact">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="footer_services">Services</h4>
+                    <a href="#services" data-i18n="svc1_title">Microloan Origination</a>
+                    <a href="#services" data-i18n="svc2_title">Banking Correspondent</a>
+                    <a href="#services" data-i18n="svc3_title">Collection & Servicing</a>
+                    <a href="#services" data-i18n="svc4_title">Group Lending</a>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="footer_contact">Contact</h4>
+                    <a href="mailto:info@rapidloans.ai">info@rapidloans.ai</a>
+                    <a href="tel:+918369495365">+91 83694 95365</a>
+                    <a href="#" data-i18n="footer_ahmedabad">Ahmedabad, Gujarat</a>
+                    <a href="#" data-i18n="footer_mumbai">Mumbai, Maharashtra</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer_copy">&copy; 2025 Rapid Loans India Pvt. Ltd. All rights reserved.</p>
+                <p>
+                    <a href="#" style="color: rgba(255,255,255,0.35); margin-right: 20px;" data-i18n="footer_terms">Terms & Conditions</a>
+                    <a href="#" style="color: rgba(255,255,255,0.35);" data-i18n="footer_privacy">Privacy Policy</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══════════════════════ SCRIPTS ═══════════════════════ -->
+    <script>
+        // ═══════════════════════════════════════════
+        // TRANSLATIONS
+        // ═══════════════════════════════════════════
+        const translations = {
+            en: {
+                nav_about: "About",
+                nav_services: "Services",
+                nav_process: "How It Works",
+                nav_partners: "Partners",
+                nav_contact: "Contact Us",
+                hero_badge: "RBI Regulated Entity",
+                hero_title: 'Empowering <span class="highlight">Rural India</span> Through Inclusive Finance',
+                hero_desc: "Rapid Loans is a tech-first banking correspondent bridging financial gaps for underserved communities — delivering microloans, collection, and servicing through cutting-edge technology.",
+                hero_cta: "Get Started",
+                hero_learn: "Learn More",
+                stat_states: "States Covered",
+                stat_loans: "Loans Disbursed",
+                stat_digital: "Digital Processing",
+                card_title: "Instant Loan Access",
+                card_subtitle: "Paperless & Digital-First",
+                card_loan_type: "Loan Type",
+                card_loan_value: "Microloans & Group Loans",
+                card_time_label: "Processing Time",
+                card_time_value: "Under 48 Hours",
+                card_tech_label: "Technology",
+                card_tech_value: "AI-Powered Underwriting",
+                card_sec_label: "Security",
+                card_sec_value: "Bank-Grade Encryption",
+                badge_approved: "Approved",
+                badge_time: "In 2 minutes",
+                badge_disbursed: "Disbursed",
+                badge_bank: "Direct to bank",
+                about_label: "Who We Are",
+                about_title: "New Age, Tech-First<br>Banking Correspondent",
+                about_desc: "Rapid Loans Private Limited is a Modern Banking Correspondent headquartered in Mumbai with a registered office in Ahmedabad. We partner with Banks and NBFCs to deliver comprehensive loan origination, collection, and servicing through advanced technology — creating an inclusive finance platform for all of India.",
+                about_since: "Since 2020",
+                about_serving: "Serving Rural India",
+                feat_origination: "Loan Origination",
+                feat_origination_desc: "End-to-end digital onboarding with AI verification",
+                feat_collection: "Collection Services",
+                feat_collection_desc: "Automated reminders and seamless payment tracking",
+                feat_inclusive: "Inclusive Finance",
+                feat_inclusive_desc: "Tailored products based on socio-economic status",
+                feat_tech: "Tech Platform",
+                feat_tech_desc: "Advanced technology powering every transaction",
+                services_label: "What We Do",
+                services_title: "Comprehensive Financial Services",
+                services_desc: "From origination to servicing, we cover the entire lending lifecycle with technology at the core.",
+                svc1_title: "Microloan Origination",
+                svc1_desc: "End-to-end digital loan origination for micro and small loans, powered by AI-driven credit assessment and instant KYC verification.",
+                svc2_title: "Banking Correspondent",
+                svc2_desc: "Acting as a technology-enabled extension of banks and NBFCs, bringing formal financial services directly to rural and semi-urban doorsteps.",
+                svc3_title: "Collection & Servicing",
+                svc3_desc: "Automated collection management with real-time tracking, digital payment options, and intelligent follow-up workflows for borrowers.",
+                svc4_title: "Group Lending",
+                svc4_desc: "Community-based lending programs designed for self-help groups and joint liability groups, fostering financial inclusion at grassroot levels.",
+                svc5_title: "Credit Assessment",
+                svc5_desc: "Proprietary scoring models that go beyond traditional credit bureaus — leveraging alternative data to assess creditworthiness of first-time borrowers.",
+                svc6_title: "Digital Payments",
+                svc6_desc: "Seamless UPI, NACH, and e-mandate integrations enabling borrowers to make repayments effortlessly from anywhere using their mobile devices.",
+                impact_states: "States Covered",
+                impact_loans: "Loans Disbursed",
+                impact_aum: "AUM Managed",
+                impact_digital: "Digital Processing",
+                process_label: "The Process",
+                process_title: "How It Works",
+                process_desc: "A simple, technology-driven journey from application to disbursement.",
+                step1_title: "Apply Online",
+                step1_desc: "Submit your application digitally through our mobile-first platform with minimal documentation.",
+                step2_title: "Instant Verification",
+                step2_desc: "AI-powered KYC and credit assessment processes your application in minutes, not days.",
+                step3_title: "Quick Approval",
+                step3_desc: "Receive approval within 48 hours with transparent terms and competitive interest rates.",
+                step4_title: "Direct Disbursement",
+                step4_desc: "Funds transferred directly to your bank account — no intermediaries, no delays.",
+                partners_label: "Our Partners",
+                partners_title: "Trusted Banking Partners",
+                partners_desc: "We collaborate with leading banks and NBFCs to deliver reliable financial services across India.",
+                partner1_desc: "NBFC partner for inclusive microfinance lending across rural India",
+                partner2_desc: "Banking partner enabling last-mile financial service delivery",
+                cta_title: "Ready to Transform Financial Access?",
+                cta_desc: "Partner with Rapid Loans to bring inclusive financial services to underserved communities. Let's build a financially inclusive India together.",
+                cta_address: "Ground Floor, Raja Complex, Vijay Cross Roads, Navarangpura, Ahmedabad — 380009, Gujarat",
+                footer_desc: "A Modern Banking Correspondent providing comprehensive loan origination, collection, and servicing through advanced technology across India.",
+                footer_company: "Company",
+                footer_services: "Services",
+                footer_contact: "Contact",
+                footer_ahmedabad: "Ahmedabad, Gujarat",
+                footer_mumbai: "Mumbai, Maharashtra",
+                footer_copy: "&copy; 2025 Rapid Loans India Pvt. Ltd. All rights reserved.",
+                footer_terms: "Terms & Conditions",
+                footer_privacy: "Privacy Policy",
+                logo_rbi: "RBI Regulated Banking Correspondent",
+                trust_rbi: "RBI Regulated",
+                trust_rbi_desc: "Registered Banking Correspondent under Reserve Bank of India guidelines",
+                trust_secure: "Bank-Grade Security",
+                trust_secure_desc: "256-bit SSL encryption, ISO 27001 compliant data protection",
+                trust_customers: "50,000+ Customers",
+                trust_customers_desc: "Trusted by thousands of families across 10+ states in India",
+                trust_compliant: "100% Compliant",
+                trust_compliant_desc: "Fully compliant with RBI, SEBI & all regulatory frameworks"
+            },
+            hi: {
+                nav_about: "हमारे बारे में",
+                nav_services: "सेवाएं",
+                nav_process: "कैसे काम करता है",
+                nav_partners: "साझेदार",
+                nav_contact: "संपर्क करें",
+                hero_badge: "RBI विनियमित संस्था",
+                hero_title: 'समावेशी वित्त के माध्यम से <span class="highlight">ग्रामीण भारत</span> का सशक्तिकरण',
+                hero_desc: "रैपिड लोन्स एक टेक-फर्स्ट बैंकिंग कॉरेस्पोंडेंट है जो वंचित समुदायों के लिए वित्तीय अंतर को पाटता है — अत्याधुनिक तकनीक के माध्यम से माइक्रोलोन, संग्रहण और सेवाएं प्रदान करता है।",
+                hero_cta: "शुरू करें",
+                hero_learn: "और जानें",
+                stat_states: "राज्य कवर किए",
+                stat_loans: "ऋण वितरित",
+                stat_digital: "डिजिटल प्रोसेसिंग",
+                card_title: "तुरंत ऋण पहुंच",
+                card_subtitle: "पेपरलेस और डिजिटल-फर्स्ट",
+                card_loan_type: "ऋण प्रकार",
+                card_loan_value: "माइक्रोलोन और समूह ऋण",
+                card_time_label: "प्रोसेसिंग समय",
+                card_time_value: "48 घंटे से कम",
+                card_tech_label: "तकनीक",
+                card_tech_value: "AI-संचालित अंडरराइटिंग",
+                card_sec_label: "सुरक्षा",
+                card_sec_value: "बैंक-ग्रेड एन्क्रिप्शन",
+                badge_approved: "स्वीकृत",
+                badge_time: "2 मिनट में",
+                badge_disbursed: "वितरित",
+                badge_bank: "सीधे बैंक में",
+                about_label: "हम कौन हैं",
+                about_title: "नई पीढ़ी का, टेक-फर्स्ट<br>बैंकिंग कॉरेस्पोंडेंट",
+                about_desc: "रैपिड लोन्स प्राइवेट लिमिटेड मुंबई में मुख्यालय और अहमदाबाद में पंजीकृत कार्यालय के साथ एक आधुनिक बैंकिंग कॉरेस्पोंडेंट है। हम बैंकों और NBFCs के साथ साझेदारी करके उन्नत तकनीक के माध्यम से व्यापक ऋण उत्पत्ति, संग्रहण और सेवा प्रदान करते हैं — पूरे भारत के लिए एक समावेशी वित्त मंच बनाते हैं।",
+                about_since: "2020 से",
+                about_serving: "ग्रामीण भारत की सेवा में",
+                feat_origination: "ऋण उत्पत्ति",
+                feat_origination_desc: "AI सत्यापन के साथ एंड-टू-एंड डिजिटल ऑनबोर्डिंग",
+                feat_collection: "संग्रहण सेवाएं",
+                feat_collection_desc: "स्वचालित रिमाइंडर और सहज भुगतान ट्रैकिंग",
+                feat_inclusive: "समावेशी वित्त",
+                feat_inclusive_desc: "सामाजिक-आर्थिक स्थिति के आधार पर अनुकूलित उत्पाद",
+                feat_tech: "टेक प्लेटफॉर्म",
+                feat_tech_desc: "हर लेनदेन को शक्ति देने वाली उन्नत तकनीक",
+                services_label: "हम क्या करते हैं",
+                services_title: "व्यापक वित्तीय सेवाएं",
+                services_desc: "उत्पत्ति से लेकर सेवा तक, हम तकनीक को केंद्र में रखकर पूरे ऋण जीवनचक्र को कवर करते हैं।",
+                svc1_title: "माइक्रोलोन उत्पत्ति",
+                svc1_desc: "AI-संचालित क्रेडिट मूल्यांकन और तत्काल KYC सत्यापन द्वारा संचालित सूक्ष्म और लघु ऋणों के लिए एंड-टू-एंड डिजिटल ऋण उत्पत्ति।",
+                svc2_title: "बैंकिंग कॉरेस्पोंडेंट",
+                svc2_desc: "बैंकों और NBFCs के तकनीक-सक्षम विस्तार के रूप में कार्य करते हुए, ग्रामीण और अर्ध-शहरी द्वार पर सीधे औपचारिक वित्तीय सेवाएं लाना।",
+                svc3_title: "संग्रहण और सेवा",
+                svc3_desc: "रियल-टाइम ट्रैकिंग, डिजिटल भुगतान विकल्प और उधारकर्ताओं के लिए बुद्धिमान फॉलो-अप वर्कफ़्लो के साथ स्वचालित संग्रहण प्रबंधन।",
+                svc4_title: "समूह ऋण",
+                svc4_desc: "स्वयं सहायता समूहों और संयुक्त देयता समूहों के लिए डिज़ाइन किए गए समुदाय-आधारित ऋण कार्यक्रम, जमीनी स्तर पर वित्तीय समावेशन को बढ़ावा देते हैं।",
+                svc5_title: "क्रेडिट मूल्यांकन",
+                svc5_desc: "पारंपरिक क्रेडिट ब्यूरो से परे जाने वाले मालिकाना स्कोरिंग मॉडल — पहली बार उधार लेने वालों की साख का आकलन करने के लिए वैकल्पिक डेटा का लाभ उठाते हैं।",
+                svc6_title: "डिजिटल भुगतान",
+                svc6_desc: "सहज UPI, NACH और ई-मैंडेट एकीकरण जो उधारकर्ताओं को अपने मोबाइल उपकरणों का उपयोग करके कहीं से भी आसानी से पुनर्भुगतान करने में सक्षम बनाते हैं।",
+                impact_states: "राज्य कवर किए",
+                impact_loans: "ऋण वितरित",
+                impact_aum: "AUM प्रबंधित",
+                impact_digital: "डिजिटल प्रोसेसिंग",
+                process_label: "प्रक्रिया",
+                process_title: "कैसे काम करता है",
+                process_desc: "आवेदन से वितरण तक एक सरल, तकनीक-संचालित यात्रा।",
+                step1_title: "ऑनलाइन आवेदन करें",
+                step1_desc: "न्यूनतम दस्तावेजों के साथ हमारे मोबाइल-फर्स्ट प्लेटफॉर्म के माध्यम से डिजिटल रूप से अपना आवेदन जमा करें।",
+                step2_title: "तुरंत सत्यापन",
+                step2_desc: "AI-संचालित KYC और क्रेडिट मूल्यांकन आपके आवेदन को दिनों में नहीं, मिनटों में प्रोसेस करता है।",
+                step3_title: "त्वरित अनुमोदन",
+                step3_desc: "पारदर्शी शर्तों और प्रतिस्पर्धी ब्याज दरों के साथ 48 घंटों के भीतर अनुमोदन प्राप्त करें।",
+                step4_title: "सीधे वितरण",
+                step4_desc: "सीधे आपके बैंक खाते में फंड ट्रांसफर — कोई मध्यस्थ नहीं, कोई देरी नहीं।",
+                partners_label: "हमारे साझेदार",
+                partners_title: "विश्वसनीय बैंकिंग साझेदार",
+                partners_desc: "हम पूरे भारत में विश्वसनीय वित्तीय सेवाएं प्रदान करने के लिए प्रमुख बैंकों और NBFCs के साथ सहयोग करते हैं।",
+                partner1_desc: "ग्रामीण भारत में समावेशी माइक्रोफाइनेंस ऋण के लिए NBFC साझेदार",
+                partner2_desc: "अंतिम-मील वित्तीय सेवा वितरण सक्षम करने वाला बैंकिंग साझेदार",
+                cta_title: "वित्तीय पहुंच को बदलने के लिए तैयार हैं?",
+                cta_desc: "वंचित समुदायों में समावेशी वित्तीय सेवाएं लाने के लिए रैपिड लोन्स के साथ भागीदारी करें। आइए मिलकर एक वित्तीय रूप से समावेशी भारत का निर्माण करें।",
+                cta_address: "ग्राउंड फ्लोर, राजा कॉम्प्लेक्स, विजय क्रॉस रोड्स, नवरंगपुरा, अहमदाबाद — 380009, गुजरात",
+                footer_desc: "एक आधुनिक बैंकिंग कॉरेस्पोंडेंट जो पूरे भारत में उन्नत तकनीक के माध्यम से व्यापक ऋण उत्पत्ति, संग्रहण और सेवा प्रदान करता है।",
+                footer_company: "कंपनी",
+                footer_services: "सेवाएं",
+                footer_contact: "संपर्क",
+                footer_ahmedabad: "अहमदाबाद, गुजरात",
+                footer_mumbai: "मुंबई, महाराष्ट्र",
+                footer_copy: "&copy; 2025 रैपिड लोन्स इंडिया प्रा. लि. सर्वाधिकार सुरक्षित।",
+                footer_terms: "नियम और शर्तें",
+                footer_privacy: "गोपनीयता नीति",
+                logo_rbi: "RBI विनियमित बैंकिंग कॉरेस्पोंडेंट",
+                trust_rbi: "RBI विनियमित",
+                trust_rbi_desc: "भारतीय रिज़र्व बैंक दिशानिर्देशों के तहत पंजीकृत बैंकिंग कॉरेस्पोंडेंट",
+                trust_secure: "बैंक-ग्रेड सुरक्षा",
+                trust_secure_desc: "256-बिट SSL एन्क्रिप्शन, ISO 27001 अनुपालित डेटा सुरक्षा",
+                trust_customers: "50,000+ ग्राहक",
+                trust_customers_desc: "भारत के 10+ राज्यों में हजारों परिवारों द्वारा विश्वसनीय",
+                trust_compliant: "100% अनुपालित",
+                trust_compliant_desc: "RBI, SEBI और सभी नियामक ढांचे के साथ पूर्ण अनुपालन"
+            },
+            gu: {
+                nav_about: "અમારા વિશે",
+                nav_services: "સેવાઓ",
+                nav_process: "કેવી રીતે કામ કરે છે",
+                nav_partners: "ભાગીદારો",
+                nav_contact: "સંપર્ક કરો",
+                hero_badge: "RBI નિયમિત સંસ્થા",
+                hero_title: 'સમાવેશી નાણાં દ્વારા <span class="highlight">ગ્રામીણ ભારત</span>નું સશક્તિકરણ',
+                hero_desc: "રેપિડ લોન્સ એક ટેક-ફર્સ્ટ બેંકિંગ કોરસ્પોન્ડન્ટ છે જે વંચિત સમુદાયો માટે નાણાકીય અંતર ભરે છે — અત્યાધુનિક ટેકનોલોજી દ્વારા માઇક્રોલોન, કલેક્શન અને સર્વિસિંગ પ્રદાન કરે છે.",
+                hero_cta: "શરૂ કરો",
+                hero_learn: "વધુ જાણો",
+                stat_states: "રાજ્યો આવરી લીધા",
+                stat_loans: "લોન વિતરિત",
+                stat_digital: "ડિજિટલ પ્રોસેસિંગ",
+                card_title: "ત્વરિત લોન ઍક્સેસ",
+                card_subtitle: "પેપરલેસ અને ડિજિટલ-ફર્સ્ટ",
+                card_loan_type: "લોન પ્રકાર",
+                card_loan_value: "માઇક્રોલોન અને ગ્રૂપ લોન",
+                card_time_label: "પ્રોસેસિંગ સમય",
+                card_time_value: "48 કલાકથી ઓછો",
+                card_tech_label: "ટેકનોલોજી",
+                card_tech_value: "AI-સંચાલિત અંડરરાઇટિંગ",
+                card_sec_label: "સુરક્ષા",
+                card_sec_value: "બેંક-ગ્રેડ એન્ક્રિપ્શન",
+                badge_approved: "મંજૂર",
+                badge_time: "2 મિનિટમાં",
+                badge_disbursed: "વિતરિત",
+                badge_bank: "સીધું બેંકમાં",
+                about_label: "અમે કોણ છીએ",
+                about_title: "નવા યુગનું, ટેક-ફર્સ્ટ<br>બેંકિંગ કોરસ્પોન્ડન્ટ",
+                about_desc: "રેપિડ લોન્સ પ્રાઈવેટ લિમિટેડ મુંબઈ મુખ્યાલય અને અમદાવાદમાં રજિસ્ટર્ડ ઓફિસ ધરાવતું આધુનિક બેંકિંગ કોરસ્પોન્ડન્ટ છે. અમે બેંકો અને NBFCs સાથે ભાગીદારી કરીને અદ્યતન ટેકનોલોજી દ્વારા વ્યાપક લોન ઓરિજિનેશન, કલેક્શન અને સર્વિસિંગ પ્રદાન કરીએ છીએ — સમગ્ર ભારત માટે સમાવેશી નાણાં પ્લેટફોર્મ બનાવીએ છીએ.",
+                about_since: "2020 થી",
+                about_serving: "ગ્રામીણ ભારતની સેવામાં",
+                feat_origination: "લોન ઓરિજિનેશન",
+                feat_origination_desc: "AI ચકાસણી સાથે એન્ડ-ટુ-એન્ડ ડિજિટલ ઓનબોર્ડિંગ",
+                feat_collection: "કલેક્શન સેવાઓ",
+                feat_collection_desc: "ઓટોમેટેડ રિમાઇન્ડર્સ અને સરળ ચૂકવણી ટ્રેકિંગ",
+                feat_inclusive: "સમાવેશી નાણાં",
+                feat_inclusive_desc: "સામાજિક-આર્થિક સ્થિતિ પર આધારિત અનુકૂળ ઉત્પાદનો",
+                feat_tech: "ટેક પ્લેટફોર્મ",
+                feat_tech_desc: "દરેક વ્યવહારને શક્તિ આપતી અદ્યતન ટેકનોલોજી",
+                services_label: "અમે શું કરીએ છીએ",
+                services_title: "વ્યાપક નાણાકીય સેવાઓ",
+                services_desc: "ઓરિજિનેશનથી લઈને સર્વિસિંગ સુધી, અમે ટેકનોલોજીને કેન્દ્રમાં રાખીને સમગ્ર લેન્ડિંગ જીવનચક્રને આવરી લઈએ છીએ.",
+                svc1_title: "માઇક્રોલોન ઓરિજિનેશન",
+                svc1_desc: "AI-સંચાલિત ક્રેડિટ મૂલ્યાંકન અને ત્વરિત KYC ચકાસણી દ્વારા સંચાલિત સૂક્ષ્મ અને નાના ઋણો માટે એન્ડ-ટુ-એન્ડ ડિજિટલ લોન ઓરિજિનેશન.",
+                svc2_title: "બેંકિંગ કોરસ્પોન્ડન્ટ",
+                svc2_desc: "બેંકો અને NBFCs ના ટેકનોલોજી-સક્ષમ વિસ્તરણ તરીકે કાર્ય કરતા, ગ્રામીણ અને અર્ધ-શહેરી દરવાજે સીધી ઔપચારિક નાણાકીય સેવાઓ લાવવી.",
+                svc3_title: "કલેક્શન અને સર્વિસિંગ",
+                svc3_desc: "રિયલ-ટાઇમ ટ્રેકિંગ, ડિજિટલ ચૂકવણી વિકલ્પો અને ઋણ લેનારાઓ માટે બુદ્ધિશાળી ફોલો-અપ વર્કફ્લો સાથે ઓટોમેટેડ કલેક્શન મેનેજમેન્ટ.",
+                svc4_title: "ગ્રૂપ લેન્ડિંગ",
+                svc4_desc: "સ્વ-સહાય જૂથો અને સંયુક્ત જવાબદારી જૂથો માટે રચાયેલ સમુદાય-આધારિત ધિરાણ કાર્યક્રમો, જમીની સ્તરે નાણાકીય સમાવેશનને પ્રોત્સાહન આપે છે.",
+                svc5_title: "ક્રેડિટ મૂલ્યાંકન",
+                svc5_desc: "પરંપરાગત ક્રેડિટ બ્યુરોથી આગળ જતા માલિકી સ્કોરિંગ મોડેલ — પ્રથમ વખત ઉધાર લેનારાઓની ધિરાણપાત્રતાનું મૂલ્યાંકન કરવા વૈકલ્પિક ડેટાનો ઉપયોગ.",
+                svc6_title: "ડિજિટલ ચૂકવણી",
+                svc6_desc: "સરળ UPI, NACH અને ઈ-મેન્ડેટ એકીકરણ જે ઋણ લેનારાઓને તેમના મોબાઈલ ઉપકરણોનો ઉપયોગ કરીને ગમે ત્યાંથી સરળતાથી ચુકવણી કરવામાં સક્ષમ બનાવે છે.",
+                impact_states: "રાજ્યો આવરી લીધા",
+                impact_loans: "લોન વિતરિત",
+                impact_aum: "AUM મેનેજ",
+                impact_digital: "ડિજિટલ પ્રોસેસિંગ",
+                process_label: "પ્રક્રિયા",
+                process_title: "કેવી રીતે કામ કરે છે",
+                process_desc: "અરજીથી વિતરણ સુધીની સરળ, ટેકનોલોજી-સંચાલિત યાત્રા.",
+                step1_title: "ઓનલાઈન અરજી કરો",
+                step1_desc: "ન્યૂનતમ દસ્તાવેજો સાથે અમારા મોબાઈલ-ફર્સ્ટ પ્લેટફોર્મ દ્વારા ડિજિટલ રીતે તમારી અરજી સબમિટ કરો.",
+                step2_title: "ત્વરિત ચકાસણી",
+                step2_desc: "AI-સંચાલિત KYC અને ક્રેડિટ મૂલ્યાંકન તમારી અરજીને દિવસોમાં નહીં, મિનિટોમાં પ્રોસેસ કરે છે.",
+                step3_title: "ઝડપી મંજૂરી",
+                step3_desc: "પારદર્શક શરતો અને સ્પર્ધાત્મક વ્યાજ દરો સાથે 48 કલાકમાં મંજૂરી મેળવો.",
+                step4_title: "સીધું વિતરણ",
+                step4_desc: "સીધા તમારા બેંક ખાતામાં ફંડ ટ્રાન્સફર — કોઈ મધ્યસ્થી નહીં, કોઈ વિલંબ નહીં.",
+                partners_label: "અમારા ભાગીદારો",
+                partners_title: "વિશ્વસનીય બેંકિંગ ભાગીદારો",
+                partners_desc: "અમે સમગ્ર ભારતમાં વિશ્વસનીય નાણાકીય સેવાઓ પ્રદાન કરવા અગ્રણી બેંકો અને NBFCs સાથે સહયોગ કરીએ છીએ.",
+                partner1_desc: "ગ્રામીણ ભારતમાં સમાવેશી માઇક્રોફાઇનાન્સ ધિરાણ માટે NBFC ભાગીદાર",
+                partner2_desc: "અંતિમ-માઈલ નાણાકીય સેવા વિતરણ સક્ષમ કરતા બેંકિંગ ભાગીદાર",
+                cta_title: "નાણાકીય પહોંચ બદલવા તૈયાર છો?",
+                cta_desc: "વંચિત સમુદાયોમાં સમાવેશી નાણાકીય સેવાઓ લાવવા રેપિડ લોન્સ સાથે ભાગીદારી કરો. ચાલો સાથે મળીને નાણાકીય રીતે સમાવેશી ભારતનું નિર્માણ કરીએ.",
+                cta_address: "ગ્રાઉન્ડ ફ્લોર, રાજા કોમ્પ્લેક્સ, વિજય ક્રોસ રોડ્સ, નવરંગપુરા, અમદાવાદ — 380009, ગુજરાત",
+                footer_desc: "એક આધુનિક બેંકિંગ કોરસ્પોન્ડન્ટ જે સમગ્ર ભારતમાં અદ્યતન ટેકનોલોજી દ્વારા વ્યાપક લોન ઓરિજિનેશન, કલેક્શન અને સર્વિસિંગ પ્રદાન કરે છે.",
+                footer_company: "કંપની",
+                footer_services: "સેવાઓ",
+                footer_contact: "સંપર્ક",
+                footer_ahmedabad: "અમદાવાદ, ગુજરાત",
+                footer_mumbai: "મુંબઈ, મહારાષ્ટ્ર",
+                footer_copy: "&copy; 2025 રેપિડ લોન્સ ઈન્ડિયા પ્રા. લિ. સર્વાધિકાર સુરક્ષિત.",
+                footer_terms: "નિયમો અને શરતો",
+                footer_privacy: "ગોપનીયતા નીતિ",
+                logo_rbi: "RBI નિયમિત બેંકિંગ કોરસ્પોન્ડન્ટ",
+                trust_rbi: "RBI નિયમિત",
+                trust_rbi_desc: "ભારતીય રિઝર્વ બેંક માર્ગદર્શિકા હેઠળ નોંધાયેલ બેંકિંગ કોરસ્પોન્ડન્ટ",
+                trust_secure: "બેંક-ગ્રેડ સુરક્ષા",
+                trust_secure_desc: "256-બિટ SSL એન્ક્રિપ્શન, ISO 27001 અનુપાલિત ડેટા સુરક્ષા",
+                trust_customers: "50,000+ ગ્રાહકો",
+                trust_customers_desc: "ભારતના 10+ રાજ્યોમાં હજારો પરિવારો દ્વારા વિશ્વસનીય",
+                trust_compliant: "100% અનુપાલિત",
+                trust_compliant_desc: "RBI, SEBI અને તમામ નિયમનકારી માળખા સાથે સંપૂર્ણ અનુપાલન"
+            }
+        };
+
+        // ═══════════════════════════════════════════
+        // LANGUAGE SWITCHING
+        // ═══════════════════════════════════════════
+        let currentLanguage = 'en';
+
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            document.documentElement.setAttribute('data-lang', lang);
+
+            const langLabels = { en: 'EN', hi: 'HI', gu: 'GU' };
+            document.getElementById('currentLang').textContent = langLabels[lang];
+
+            // Update all translatable elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Update active state in dropdown
+            document.querySelectorAll('.lang-option').forEach(opt => opt.classList.remove('active'));
+            document.querySelector(`.lang-option[onclick="setLanguage('${lang}')"]`).classList.add('active');
+
+            // Close dropdown
+            document.getElementById('langSwitcher').classList.remove('open');
+        }
+
+        function toggleLangDropdown() {
+            document.getElementById('langSwitcher').classList.toggle('open');
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            const switcher = document.getElementById('langSwitcher');
+            if (!switcher.contains(e.target)) {
+                switcher.classList.remove('open');
+            }
+        });
+
+        // ═══════════════════════════════════════════
+        // NAVBAR
+        // ═══════════════════════════════════════════
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        function toggleNav() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // ═══════════════════════════════════════════
+        // SCROLL REVEAL
+        // ═══════════════════════════════════════════
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // ═══════════════════════════════════════════
+        // ANIMATED COUNTERS
+        // ═══════════════════════════════════════════
+        function animateCounters() {
+            document.querySelectorAll('.stat-number').forEach(el => {
+                const text = el.textContent;
+                const match = text.match(/(\d+)/);
+                if (!match) return;
+
+                const target = parseInt(match[1]);
+                const suffix = text.replace(match[1], '').replace(/\d/g, '');
+                let current = 0;
+                const duration = 2000;
+                const step = target / (duration / 16);
+
+                function update() {
+                    current += step;
+                    if (current >= target) {
+                        el.innerHTML = text.replace(match[1], target + '').replace('+', '<span class="accent">+</span>').replace('%', '<span class="accent">%</span>').replace('Cr', '<span class="accent">Cr</span>');
+                        return;
+                    }
+                    el.innerHTML = text.replace(match[1], Math.floor(current) + '').replace('+', '<span class="accent">+</span>').replace('%', '<span class="accent">%</span>').replace('Cr', '<span class="accent">Cr</span>');
+                    requestAnimationFrame(update);
+                }
+
+                const statObserver = new IntersectionObserver((entries) => {
+                    if (entries[0].isIntersecting) {
+                        update();
+                        statObserver.disconnect();
+                    }
+                }, { threshold: 0.5 });
+
+                statObserver.observe(el);
+            });
+        }
+
+        animateCounters();
+
+        // ═══════════════════════════════════════════
+        // SMOOTH SCROLL
+        // ═══════════════════════════════════════════
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
