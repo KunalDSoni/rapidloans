@@ -79,59 +79,156 @@
             font-family: 'Noto Sans Telugu', 'Inter', sans-serif;
         }
 
-        /* Scale down large text for scripts that render bigger */
+        /* ═══════════════════════════════════════════
+           INDIC SCRIPT SCALING — Tamil, Telugu, Kannada
+           These scripts render ~30-40% larger than Latin
+        ═══════════════════════════════════════════ */
+        [data-lang="ta"] h1, [data-lang="ta"] h2, [data-lang="ta"] h3, [data-lang="ta"] h4,
+        [data-lang="te"] h1, [data-lang="te"] h2, [data-lang="te"] h3, [data-lang="te"] h4,
+        [data-lang="kn"] h1, [data-lang="kn"] h2, [data-lang="kn"] h3, [data-lang="kn"] h4 {
+            font-size: 0.82em;
+            line-height: 1.3;
+        }
+
+        [data-lang="ta"] p, [data-lang="ta"] span, [data-lang="ta"] a, [data-lang="ta"] div,
+        [data-lang="te"] p, [data-lang="te"] span, [data-lang="te"] a, [data-lang="te"] div,
+        [data-lang="kn"] p, [data-lang="kn"] span, [data-lang="kn"] a, [data-lang="kn"] div {
+            font-size: 0.92em;
+            line-height: 1.6;
+        }
+
         [data-lang="ta"] .hero h1,
         [data-lang="te"] .hero h1,
         [data-lang="kn"] .hero h1 {
-            font-size: clamp(1.8rem, 3.2vw, 2.8rem);
-            line-height: 1.25;
-        }
-
-        [data-lang="ta"] .section-title,
-        [data-lang="te"] .section-title,
-        [data-lang="kn"] .section-title {
-            font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+            font-size: clamp(1.5rem, 2.8vw, 2.4rem) !important;
+            line-height: 1.35;
         }
 
         [data-lang="ta"] .hero-desc,
         [data-lang="te"] .hero-desc,
         [data-lang="kn"] .hero-desc {
-            font-size: 0.95rem;
+            font-size: 0.9rem !important;
+            line-height: 1.7;
+        }
+
+        [data-lang="ta"] .section-title,
+        [data-lang="te"] .section-title,
+        [data-lang="kn"] .section-title {
+            font-size: clamp(1.3rem, 2.2vw, 1.9rem) !important;
         }
 
         [data-lang="ta"] .about-title,
         [data-lang="te"] .about-title,
         [data-lang="kn"] .about-title {
-            font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+            font-size: clamp(1.3rem, 2.2vw, 1.9rem) !important;
         }
 
         [data-lang="ta"] .cta h2,
         [data-lang="te"] .cta h2,
         [data-lang="kn"] .cta h2 {
-            font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+            font-size: clamp(1.3rem, 2.2vw, 1.9rem) !important;
         }
 
         [data-lang="ta"] .service-card h3,
         [data-lang="te"] .service-card h3,
         [data-lang="kn"] .service-card h3 {
-            font-size: 1.05rem;
+            font-size: 0.95rem !important;
+        }
+
+        [data-lang="ta"] .service-card p,
+        [data-lang="te"] .service-card p,
+        [data-lang="kn"] .service-card p {
+            font-size: 0.82rem !important;
         }
 
         [data-lang="ta"] .step h3,
         [data-lang="te"] .step h3,
         [data-lang="kn"] .step h3 {
-            font-size: 1.05rem;
+            font-size: 0.95rem !important;
+        }
+
+        [data-lang="ta"] .step p,
+        [data-lang="te"] .step p,
+        [data-lang="kn"] .step p {
+            font-size: 0.82rem !important;
+        }
+
+        [data-lang="ta"] .nav-links a,
+        [data-lang="te"] .nav-links a,
+        [data-lang="kn"] .nav-links a {
+            font-size: 0.82rem !important;
+        }
+
+        [data-lang="ta"] .nav-cta,
+        [data-lang="te"] .nav-cta,
+        [data-lang="kn"] .nav-cta {
+            font-size: 0.8rem !important;
+        }
+
+        [data-lang="ta"] .btn,
+        [data-lang="te"] .btn,
+        [data-lang="kn"] .btn {
+            font-size: 0.88rem !important;
+        }
+
+        [data-lang="ta"] .hero-badge,
+        [data-lang="te"] .hero-badge,
+        [data-lang="kn"] .hero-badge {
+            font-size: 0.72rem !important;
+        }
+
+        [data-lang="ta"] .hero-stat p,
+        [data-lang="te"] .hero-stat p,
+        [data-lang="kn"] .hero-stat p {
+            font-size: 0.68rem !important;
+        }
+
+        [data-lang="ta"] .footer-col p,
+        [data-lang="te"] .footer-col p,
+        [data-lang="kn"] .footer-col p,
+        [data-lang="ta"] .footer-col a,
+        [data-lang="te"] .footer-col a,
+        [data-lang="kn"] .footer-col a {
+            font-size: 0.82rem !important;
         }
 
         [data-lang="ta"] .loan-card h3,
         [data-lang="te"] .loan-card h3,
         [data-lang="kn"] .loan-card h3 {
-            font-size: 1.1rem;
+            font-size: 0.95rem !important;
         }
 
+        [data-lang="ta"] .loan-card p,
+        [data-lang="te"] .loan-card p,
+        [data-lang="kn"] .loan-card p,
+        [data-lang="ta"] .loan-card span,
+        [data-lang="te"] .loan-card span,
+        [data-lang="kn"] .loan-card span {
+            font-size: 0.78rem !important;
+        }
+
+        /* ═══════════════════════════════════════════
+           INDIC SCRIPT SCALING — Marathi (Devanagari)
+           Slightly larger than Tamil/Telugu/Kannada
+        ═══════════════════════════════════════════ */
         [data-lang="mr"] .hero h1 {
-            font-size: clamp(2rem, 3.5vw, 3rem);
-            line-height: 1.2;
+            font-size: clamp(1.8rem, 3.2vw, 2.8rem) !important;
+            line-height: 1.25;
+        }
+
+        [data-lang="mr"] .section-title,
+        [data-lang="mr"] .about-title,
+        [data-lang="mr"] .cta h2 {
+            font-size: clamp(1.4rem, 2.5vw, 2.1rem) !important;
+        }
+
+        /* Prevent text overflow for all Indic scripts */
+        [data-lang="ta"] *,
+        [data-lang="te"] *,
+        [data-lang="kn"] *,
+        [data-lang="mr"] * {
+            word-break: break-word;
+            overflow-wrap: break-word;
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -1385,8 +1482,8 @@
             .hero h1 { font-size: 2.6rem; }
             [data-lang="ta"] .hero h1,
             [data-lang="te"] .hero h1,
-            [data-lang="kn"] .hero h1 { font-size: 2rem; }
-            [data-lang="mr"] .hero h1 { font-size: 2.3rem; }
+            [data-lang="kn"] .hero h1 { font-size: 1.7rem !important; }
+            [data-lang="mr"] .hero h1 { font-size: 2.1rem !important; }
             .hero-desc { max-width: 100%; }
             .about-grid { grid-template-columns: 1fr; gap: 40px; }
             .about-image { height: 360px; }
@@ -1435,8 +1532,11 @@
             .hero h1 { font-size: 2rem; }
             [data-lang="ta"] .hero h1,
             [data-lang="te"] .hero h1,
-            [data-lang="kn"] .hero h1 { font-size: 1.6rem; }
-            [data-lang="mr"] .hero h1 { font-size: 1.8rem; }
+            [data-lang="kn"] .hero h1 { font-size: 1.35rem !important; }
+            [data-lang="mr"] .hero h1 { font-size: 1.6rem !important; }
+            [data-lang="ta"] .section-title,
+            [data-lang="te"] .section-title,
+            [data-lang="kn"] .section-title { font-size: 1.3rem !important; }
             .hero-desc { font-size: 1rem; }
             .hero-stats { gap: 24px; flex-wrap: wrap; }
             .hero-stat h3 { font-size: 1.5rem; }
@@ -1485,8 +1585,17 @@
             .hero h1 { font-size: 1.75rem; }
             [data-lang="ta"] .hero h1,
             [data-lang="te"] .hero h1,
-            [data-lang="kn"] .hero h1 { font-size: 1.35rem; }
-            [data-lang="mr"] .hero h1 { font-size: 1.5rem; }
+            [data-lang="kn"] .hero h1 { font-size: 1.15rem !important; }
+            [data-lang="mr"] .hero h1 { font-size: 1.35rem !important; }
+            [data-lang="ta"] .section-title,
+            [data-lang="te"] .section-title,
+            [data-lang="kn"] .section-title { font-size: 1.1rem !important; }
+            [data-lang="ta"] .service-card h3,
+            [data-lang="te"] .service-card h3,
+            [data-lang="kn"] .service-card h3 { font-size: 0.85rem !important; }
+            [data-lang="ta"] .btn,
+            [data-lang="te"] .btn,
+            [data-lang="kn"] .btn { font-size: 0.82rem !important; }
             .trust-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
             .trust-card { padding: 16px 12px; }
             .trust-card h4 { font-size: 0.8rem; }
