@@ -438,89 +438,127 @@
 
         .logo-icon-wrap {
             position: relative;
-            width: 52px; height: 52px;
+            width: 56px; height: 56px;
             flex-shrink: 0;
             display: flex; align-items: center; justify-content: center;
-        }
-
-        .logo-pulse-ring,
-        .logo-pulse-ring-2 {
-            display: none;
         }
 
         .logo-icon {
-            width: 52px; height: 52px;
+            width: 56px; height: 56px;
             display: flex; align-items: center; justify-content: center;
             flex-shrink: 0;
             position: relative;
-            filter: drop-shadow(0 2px 6px rgba(15,27,76,0.2));
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease;
+            filter: drop-shadow(0 2px 8px rgba(42,171,226,0.2));
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), filter 0.5s ease;
         }
 
-        .logo-svg {
-            width: 100%; height: 100%;
+        .logo-svg { width: 100%; height: 100%; overflow: visible; }
+
+        /* ── Arc draw-in on page load ── */
+        .logo-arc-red {
+            stroke-dasharray: 140;
+            stroke-dashoffset: 140;
+            animation: drawStroke 1.6s cubic-bezier(0.65, 0, 0.35, 1) 0.2s forwards;
         }
 
-        /* Swoosh arc animation */
-        .logo-arc-upper {
-            stroke-dasharray: 120;
-            stroke-dashoffset: 120;
-            animation: drawArc 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+        .logo-arc-blue {
+            stroke-dasharray: 140;
+            stroke-dashoffset: -140;
+            animation: drawStrokeReverse 1.6s cubic-bezier(0.65, 0, 0.35, 1) 0.4s forwards;
         }
 
-        .logo-arc-lower {
-            stroke-dasharray: 100;
-            stroke-dashoffset: -100;
-            animation: drawArcReverse 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
+        @keyframes drawStroke {
+            to { stroke-dashoffset: 0; }
         }
-
-        @keyframes drawArc {
+        @keyframes drawStrokeReverse {
             to { stroke-dashoffset: 0; }
         }
 
-        @keyframes drawArcReverse {
-            to { stroke-dashoffset: 0; }
-        }
-
+        /* ── RL text entrance ── */
         .logo-rl-text {
-            animation: fadeInScale 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+            animation: rlAppear 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s both;
         }
 
-        @keyframes fadeInScale {
-            from { opacity: 0; transform: scale(0.7); }
-            to { opacity: 1; transform: scale(1); }
+        @keyframes rlAppear {
+            0%   { opacity: 0; transform: scale(0.3) translateY(4px); }
+            60%  { opacity: 1; transform: scale(1.08) translateY(-1px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        /* Continuous subtle animation on hover */
-        .logo:hover .logo-arc-upper {
-            animation: arcPulse 2s ease-in-out infinite;
+        /* ── Glow ring pulse ── */
+        .logo-glow-ring {
+            animation: glowPulse 3s ease-in-out infinite 2s;
         }
 
-        .logo:hover .logo-arc-lower {
-            animation: arcPulseReverse 2s ease-in-out infinite 0.3s;
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0; r: 24; }
+            50% { opacity: 0.15; r: 28; }
         }
 
-        @keyframes arcPulse {
-            0%, 100% { stroke-dashoffset: 0; opacity: 1; }
-            50% { stroke-dashoffset: 15; opacity: 0.7; }
+        /* ── Orbiting particle ── */
+        .logo-orbit-dot {
+            animation: orbitSpin 5s linear infinite 2s;
+            transform-origin: 30px 30px;
+            opacity: 0;
         }
 
-        @keyframes arcPulseReverse {
-            0%, 100% { stroke-dashoffset: 0; opacity: 1; }
-            50% { stroke-dashoffset: -12; opacity: 0.7; }
+        .logo-orbit-dot.loaded { opacity: 1; }
+
+        @keyframes orbitSpin {
+            0%   { transform: rotate(0deg) translateX(22px); opacity: 0.8; }
+            25%  { opacity: 0.4; }
+            50%  { opacity: 0.9; }
+            75%  { opacity: 0.3; }
+            100% { transform: rotate(360deg) translateX(22px); opacity: 0.8; }
+        }
+
+        /* ── Shimmer on arc (continuous) ── */
+        .logo-arc-shimmer {
+            animation: shimmerSlide 4s linear infinite 2.5s;
+        }
+
+        @keyframes shimmerSlide {
+            0%   { offset-distance: 0%; opacity: 0; }
+            10%  { opacity: 0.9; }
+            90%  { opacity: 0.9; }
+            100% { offset-distance: 100%; opacity: 0; }
+        }
+
+        /* ── Hover state ── */
+        .logo:hover .logo-icon {
+            transform: scale(1.1);
+            filter: drop-shadow(0 4px 18px rgba(42,171,226,0.35)) drop-shadow(0 2px 6px rgba(230,57,70,0.15));
+        }
+
+        .logo:hover .logo-arc-red {
+            animation: arcBreathe 2.5s ease-in-out infinite;
+        }
+
+        .logo:hover .logo-arc-blue {
+            animation: arcBreatheB 2.5s ease-in-out infinite 0.4s;
+        }
+
+        @keyframes arcBreathe {
+            0%, 100% { stroke-dashoffset: 0; stroke-width: 3.8; }
+            50%      { stroke-dashoffset: 12; stroke-width: 5; }
+        }
+
+        @keyframes arcBreatheB {
+            0%, 100% { stroke-dashoffset: 0; stroke-width: 3.8; }
+            50%      { stroke-dashoffset: -10; stroke-width: 5; }
         }
 
         .logo-name-accent {
             color: #2AABE2;
+            transition: color 0.3s ease;
         }
 
         .navbar.scrolled .logo-name-accent {
             color: #0EA5E9;
         }
 
-        .logo:hover .logo-icon {
-            transform: scale(1.08);
-            filter: drop-shadow(0 4px 14px rgba(14,165,233,0.25)) drop-shadow(0 2px 4px rgba(15,27,76,0.15));
+        .logo:hover .logo-name-accent {
+            color: #1A9BD7;
         }
 
         @keyframes logoBreath {
@@ -1860,13 +1898,51 @@
                 <div class="logo-icon-wrap">
                     <div class="logo-icon">
                         <svg class="logo-svg" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Upper red swoosh arc -->
-                            <path class="logo-arc-upper" d="M8 32 C8 14, 28 2, 52 12" stroke="#E63946" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-                            <!-- Lower blue swoosh arc -->
-                            <path class="logo-arc-lower" d="M52 28 C52 46, 32 58, 8 48" stroke="#2AABE2" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-                            <!-- RL text -->
-                            <g class="logo-rl-text">
-                                <text x="30" y="38" text-anchor="middle" font-family="'Inter', 'Arial Black', sans-serif" font-weight="900" font-size="22" fill="#2AABE2" letter-spacing="-1">RL</text>
+                            <defs>
+                                <!-- Red gradient for upper arc -->
+                                <linearGradient id="redArcGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#FF6B6B"/>
+                                    <stop offset="50%" stop-color="#E63946"/>
+                                    <stop offset="100%" stop-color="#C62828"/>
+                                </linearGradient>
+                                <!-- Blue gradient for lower arc -->
+                                <linearGradient id="blueArcGrad" x1="100%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stop-color="#64D2FF"/>
+                                    <stop offset="50%" stop-color="#2AABE2"/>
+                                    <stop offset="100%" stop-color="#0277BD"/>
+                                </linearGradient>
+                                <!-- Text gradient -->
+                                <linearGradient id="rlTextGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#1E88E5"/>
+                                    <stop offset="100%" stop-color="#2AABE2"/>
+                                </linearGradient>
+                                <!-- Soft glow filter -->
+                                <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+                                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                                </filter>
+                            </defs>
+                            <!-- Background glow ring -->
+                            <circle class="logo-glow-ring" cx="30" cy="30" r="24" fill="none" stroke="#2AABE2" stroke-width="1" opacity="0"/>
+                            <!-- Upper red swoosh — thick, expressive arc -->
+                            <path class="logo-arc-red" d="M6 35 C4 16, 22 1, 54 10" stroke="url(#redArcGrad)" stroke-width="3.8" stroke-linecap="round" fill="none"/>
+                            <!-- Red arc tip flare -->
+                            <circle cx="54" cy="10" r="2" fill="#E63946" opacity="0.5" class="logo-arc-red" style="animation-delay: 1.8s">
+                                <animate attributeName="r" values="1;3;1" dur="3s" repeatCount="indefinite" begin="2s"/>
+                                <animate attributeName="opacity" values="0.2;0.6;0.2" dur="3s" repeatCount="indefinite" begin="2s"/>
+                            </circle>
+                            <!-- Lower blue swoosh — thick, expressive arc -->
+                            <path class="logo-arc-blue" d="M54 25 C56 44, 38 59, 6 50" stroke="url(#blueArcGrad)" stroke-width="3.8" stroke-linecap="round" fill="none"/>
+                            <!-- Blue arc tip flare -->
+                            <circle cx="6" cy="50" r="2" fill="#2AABE2" opacity="0.5" class="logo-arc-blue" style="animation-delay: 2s">
+                                <animate attributeName="r" values="1;3;1" dur="3s" repeatCount="indefinite" begin="2.2s"/>
+                                <animate attributeName="opacity" values="0.2;0.6;0.2" dur="3s" repeatCount="indefinite" begin="2.2s"/>
+                            </circle>
+                            <!-- Orbiting particle -->
+                            <circle class="logo-orbit-dot" cx="30" cy="8" r="1.5" fill="#2AABE2" opacity="0"/>
+                            <!-- RL text with shadow -->
+                            <g class="logo-rl-text" filter="url(#softGlow)">
+                                <text x="30" y="37" text-anchor="middle" font-family="'Inter', 'Arial Black', sans-serif" font-weight="900" font-size="21" fill="url(#rlTextGrad)" letter-spacing="-0.5">RL</text>
                             </g>
                         </svg>
                     </div>
@@ -2312,10 +2388,22 @@
                         <div class="logo-icon-wrap">
                             <div class="logo-icon">
                                 <svg class="logo-svg" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path class="logo-arc-upper" d="M8 32 C8 14, 28 2, 52 12" stroke="#E63946" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-                                    <path class="logo-arc-lower" d="M52 28 C52 46, 32 58, 8 48" stroke="#2AABE2" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+                                    <defs>
+                                        <linearGradient id="redArcGradF" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="#FF6B6B"/><stop offset="50%" stop-color="#E63946"/><stop offset="100%" stop-color="#C62828"/>
+                                        </linearGradient>
+                                        <linearGradient id="blueArcGradF" x1="100%" y1="0%" x2="0%" y2="100%">
+                                            <stop offset="0%" stop-color="#64D2FF"/><stop offset="50%" stop-color="#2AABE2"/><stop offset="100%" stop-color="#0277BD"/>
+                                        </linearGradient>
+                                        <linearGradient id="rlTextGradF" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="#1E88E5"/><stop offset="100%" stop-color="#2AABE2"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle class="logo-glow-ring" cx="30" cy="30" r="24" fill="none" stroke="#2AABE2" stroke-width="1" opacity="0"/>
+                                    <path class="logo-arc-red" d="M6 35 C4 16, 22 1, 54 10" stroke="url(#redArcGradF)" stroke-width="3.8" stroke-linecap="round" fill="none"/>
+                                    <path class="logo-arc-blue" d="M54 25 C56 44, 38 59, 6 50" stroke="url(#blueArcGradF)" stroke-width="3.8" stroke-linecap="round" fill="none"/>
                                     <g class="logo-rl-text">
-                                        <text x="30" y="38" text-anchor="middle" font-family="'Inter', 'Arial Black', sans-serif" font-weight="900" font-size="22" fill="#2AABE2" letter-spacing="-1">RL</text>
+                                        <text x="30" y="37" text-anchor="middle" font-family="'Inter', 'Arial Black', sans-serif" font-weight="900" font-size="21" fill="url(#rlTextGradF)" letter-spacing="-0.5">RL</text>
                                     </g>
                                 </svg>
                             </div>
@@ -2852,7 +2940,7 @@
                 footer_copy: "&copy; 2025 ரேபிட் லோன்ஸ் இந்தியா பிரை. லிட். அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.",
                 footer_terms: "விதிமுறைகள் & நிபந்தனைகள்",
                 footer_privacy: "தனியுரிமைக் கொள்கை",
-                logo_rbi: "RBI ஒழுங்குபடுத்தப்பட்ட வங்கி நிருபர்",
+                logo_rbi: "RBI ஒழுங்குபடுத்தப்பட்ட வங்கி நிருபர் கீழ்",
                 trust_rbi: "RBI ஒழுங்குபடுத்தப்பட்டது",
                 trust_rbi_desc: "இந்திய ரிசர்வ் வங்கி வழிகாட்டுதல்களின் கீழ் பதிவுசெய்யப்பட்ட வங்கி நிருபர்",
                 trust_secure: "வங்கி-தர பாதுகாப்பு",
@@ -2950,7 +3038,7 @@
                 footer_copy: "&copy; 2025 ರ‍ಯಾಪಿಡ್ ಲೋನ್ಸ್ ಇಂಡಿಯಾ ಪ್ರೈ. ಲಿ. ಎಲ್ಲ ಹಕ್ಕುಗಳನ್ನು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ.",
                 footer_terms: "ನಿಯಮಗಳು & ಷರತ್ತುಗಳು",
                 footer_privacy: "ಗೌಪ್ಯತಾ ನೀತಿ",
-                logo_rbi: "RBI ನಿಯಂತ್ರಿತ ಬ್ಯಾಂಕಿಂಗ್ ಕರೆಸ್ಪಾಂಡೆಂಟ್",
+                logo_rbi: "RBI ನಿಯಂತ್ರಿತ ಬ್ಯಾಂಕಿಂಗ್ ಕರೆಸ್ಪಾಂಡೆಂಟ್ ಅಡಿಯಲ್ಲಿ",
                 trust_rbi: "RBI ನಿಯಂತ್ರಿತ",
                 trust_rbi_desc: "ಭಾರತೀಯ ರಿಸರ್ವ್ ಬ್ಯಾಂಕ್ ಮಾರ್ಗಸೂಚಿಗಳ ಅಡಿಯಲ್ಲಿ ನೋಂದಾಯಿತ ಬ್ಯಾಂಕಿಂಗ್ ಕರೆಸ್ಪಾಂಡೆಂಟ್",
                 trust_secure: "ಬ್ಯಾಂಕ್-ಗ್ರೇಡ್ ಭದ್ರತೆ",
@@ -3048,7 +3136,7 @@
                 footer_copy: "&copy; 2025 రాపిడ్ లోన్స్ ఇండియా ప్రై. లిమి. అన్ని హక్కులు రిజర్వ్ చేయబడ్డాయి.",
                 footer_terms: "నిబంధనలు & షరతులు",
                 footer_privacy: "గోప్యతా విధానం",
-                logo_rbi: "RBI నియంత్రిత బ్యాంకింగ్ కరస్పాండెంట్",
+                logo_rbi: "RBI నియంత్రిత బ్యాంకింగ్ కరస్పాండెంట్ కింద",
                 trust_rbi: "RBI నియంత్రిత",
                 trust_rbi_desc: "భారతీయ రిజర్వ్ బ్యాంక్ మార్గదర్శకాల కింద నమోదిత బ్యాంకింగ్ కరస్పాండెంట్",
                 trust_secure: "బ్యాంక్-గ్రేడ్ భద్రత",
@@ -3222,6 +3310,13 @@
         }
 
         setupCounters();
+
+        // ═══════════════════════════════════════════
+        // LOGO ORBIT DOT ACTIVATION
+        // ═══════════════════════════════════════════
+        setTimeout(() => {
+            document.querySelectorAll('.logo-orbit-dot').forEach(dot => dot.classList.add('loaded'));
+        }, 2000);
 
         // ═══════════════════════════════════════════
         // SMOOTH SCROLL
