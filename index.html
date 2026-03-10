@@ -743,6 +743,17 @@
 
         .navbar.scrolled .logo { color: var(--primary); }
 
+        .logo-icon {
+            width: 52px;
+            height: 52px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+        .navbar.scrolled .logo-icon {
+            width: 44px;
+            height: 44px;
+        }
+
         .logo-text-wrap {
             display: flex;
             flex-direction: column;
@@ -2131,7 +2142,7 @@
             width: 100%;
             max-width: 1100px;
             margin: 0 auto;
-            overflow: visible;
+            overflow: hidden;
         }
 
         .services-carousel-track {
@@ -3260,12 +3271,14 @@
             .section-title { font-size: 1.7rem; }
 
             .services-carousel-track { height: 300px; }
-            .service-card { width: 280px; padding: 24px; }
+            .service-card { width: 260px; padding: 24px; }
             .service-card[data-pos="left"] { transform: translateX(-105%) scale(0.82); opacity: 0.5; }
             .service-card[data-pos="right"] { transform: translateX(5%) scale(0.82); opacity: 0.5; }
+            .service-card[data-pos="far-left"],
+            .service-card[data-pos="far-right"] { opacity: 0; pointer-events: none; }
             .services-carousel-nav { width: 36px; height: 36px; font-size: 1rem; }
-            .services-carousel-nav.prev { left: -4px; }
-            .services-carousel-nav.next { right: -4px; }
+            .services-carousel-nav.prev { left: 4px; }
+            .services-carousel-nav.next { right: 4px; }
 
 
             .steps-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -3285,9 +3298,10 @@
 
             .footer-grid { grid-template-columns: 1fr; gap: 28px; }
 
-            .cta-card { padding: 44px 20px; border-radius: 20px; }
+            .cta-card { padding: 44px 20px; border-radius: 20px; overflow: hidden; }
             .cta-content h2 { font-size: 1.5rem; }
             .cta-content p { font-size: 0.95rem; }
+            .cta-orb { transform: scale(0.6); }
 
             .lang-btn { padding: 5px 10px; font-size: 0.75rem; }
 
@@ -3360,8 +3374,14 @@
 
             .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
 
-            .cta-card { padding: 36px 16px; }
+            .services-carousel-track { height: 280px; }
+            .service-card { width: 240px; padding: 20px; }
+            .service-card[data-pos="left"] { transform: translateX(-100%) scale(0.78); opacity: 0.3; }
+            .service-card[data-pos="right"] { transform: translateX(0%) scale(0.78); opacity: 0.3; }
+
+            .cta-card { padding: 36px 16px; overflow: hidden; }
             .cta-actions { flex-direction: column; }
+            .cta-orb { display: none; }
 
             /* Theme & lang switchers small mobile */
             .theme-toggle-btn { width: 30px; height: 30px; }
@@ -3381,8 +3401,9 @@
     <nav class="navbar" id="navbar">
         <div class="container">
             <a href="#" class="logo">
+                <img src="Images/Logo.png" alt="Rapid Loans Logo" class="logo-icon">
                 <div class="logo-text-wrap">
-                    <span class="logo-name" data-i18n="logo_name" data-i18n-html="true">Rapid<span class="logo-name-loans">Loans</span><span class="logo-name-ai">.ai</span></span>
+                    <span class="logo-name" data-i18n="logo_name" data-i18n-html="true">Rapid<span class="logo-name-loans">Loans</span></span>
                     <span class="logo-sub-wrap">
 
                         <span class="logo-sub" data-i18n="logo_rbi">Under RBI Regulated Banking Correspondent</span>
@@ -4302,10 +4323,11 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a href="#" class="logo">
+                        <img src="Images/Logo.png" alt="Rapid Loans Logo" class="logo-icon">
                         <div class="logo-text-wrap">
-                            <span class="logo-name" data-i18n="logo_name" data-i18n-html="true">Rapid<span class="logo-name-loans">Loans</span><span class="logo-name-ai">.ai</span></span>
+                            <span class="logo-name" data-i18n="logo_name" data-i18n-html="true">Rapid<span class="logo-name-loans">Loans</span></span>
                             <span class="logo-sub-wrap">
-        
+
                                 <span class="logo-sub" data-i18n="logo_rbi">Under RBI Regulated Banking Correspondent</span>
         
                             </span>
@@ -4512,7 +4534,7 @@
                 footer_disclosures: 'Partner Disclosures',
                 read_more: 'Read more',
                 read_less: 'Read less',
-                logo_name: 'Rapid<span class="logo-name-loans">Loans</span><span class="logo-name-ai">.ai</span>',
+                logo_name: 'Rapid<span class="logo-name-loans">Loans</span>',
                 dir1_name: 'Hemendrasinh Solanki',
                 dir2_name: 'Mahesh Ahuja',
                 mgmt1_name: 'Prashant Mane',
@@ -4687,7 +4709,7 @@
                 footer_disclosures: 'साझेदार प्रकटीकरण',
                 read_more: 'और पढ़ें',
                 read_less: 'कम पढ़ें',
-                logo_name: 'रैपिड<span class="logo-name-loans">लोन्स</span><span class="logo-name-ai">.ai</span>',
+                logo_name: 'रैपिड<span class="logo-name-loans">लोन्स</span>',
                 dir1_name: 'हेमेन्द्रसिंह सोलंकी',
                 dir2_name: 'महेश आहूजा',
                 mgmt1_name: 'प्रशांत माने',
@@ -4862,7 +4884,7 @@
                 footer_disclosures: 'ભાગીદાર જાહેરાતો',
                 read_more: 'વધુ વાંચો',
                 read_less: 'ઓછું વાંચો',
-                logo_name: 'રેપિડ<span class="logo-name-loans">લોન્સ</span><span class="logo-name-ai">.ai</span>',
+                logo_name: 'રેપિડ<span class="logo-name-loans">લોન્સ</span>',
                 dir1_name: 'હેમેન્દ્રસિંહ સોલંકી',
                 dir2_name: 'મહેશ આહુજા',
                 mgmt1_name: 'પ્રશાંત માને',
@@ -5037,7 +5059,7 @@
                 footer_disclosures: 'भागीदार प्रकटीकरणे',
                 read_more: 'आणखी वाचा',
                 read_less: 'कमी वाचा',
-                logo_name: 'रॅपिड<span class="logo-name-loans">लोन्स</span><span class="logo-name-ai">.ai</span>',
+                logo_name: 'रॅपिड<span class="logo-name-loans">लोन्स</span>',
                 dir1_name: 'हेमेंद्रसिंह सोलंकी',
                 dir2_name: 'महेश आहुजा',
                 mgmt1_name: 'प्रशांत माने',
@@ -5212,7 +5234,7 @@
                 footer_disclosures: 'கூட்டாளர் வெளிப்படுத்தல்கள்',
                 read_more: 'மேலும் படிக்க',
                 read_less: 'குறைவாக படிக்க',
-                logo_name: 'ரேபிட்<span class="logo-name-loans">லோன்ஸ்</span><span class="logo-name-ai">.ai</span>',
+                logo_name: 'ரேபிட்<span class="logo-name-loans">லோன்ஸ்</span>',
                 dir1_name: 'ஹேமேந்திரசிங் சோலங்கி',
                 dir2_name: 'மகேஷ் ஆஹுஜா',
                 mgmt1_name: 'பிரஷாந்த் மானே',
@@ -5387,7 +5409,7 @@
                 footer_disclosures: 'ಪಾಲುದಾರ ಬಹಿರಂಗಪಡಿಸುವಿಕೆಗಳು',
                 read_more: 'ಹೆಚ್ಚು ಓದಿ',
                 read_less: 'ಕಡಿಮೆ ಓದಿ',
-                logo_name: 'ರ‍ಾಪಿಡ್<span class="logo-name-loans">ಲೋನ್ಸ್</span><span class="logo-name-ai">.ai</span>',
+                logo_name: 'ರ‍ಾಪಿಡ್<span class="logo-name-loans">ಲೋನ್ಸ್</span>',
                 dir1_name: 'ಹೇಮೇಂದ್ರಸಿಂಹ ಸೋಲಂಕಿ',
                 dir2_name: 'ಮಹೇಶ್ ಆಹೂಜಾ',
                 mgmt1_name: 'ಪ್ರಶಾಂತ್ ಮಾನೆ',
@@ -5562,7 +5584,7 @@
                 footer_disclosures: 'భాగస్వామ్య వెల్లడింపులు',
                 read_more: 'మరిన్ని చదువు',
                 read_less: 'తక్కువ చదువు',
-                logo_name: 'ర్యాపిడ్<span class="logo-name-loans">లోన్స్</span><span class="logo-name-ai">.ai</span>',
+                logo_name: 'ర్యాపిడ్<span class="logo-name-loans">లోన్స్</span>',
                 dir1_name: 'హేమేంద్రసింహ సోలంకి',
                 dir2_name: 'మహేష్ ఆహుజా',
                 mgmt1_name: 'ప్రశాంత్ మానే',
@@ -5737,7 +5759,7 @@
                 footer_disclosures: 'অংশীদার প্রকাশ',
                 read_more: 'আরও পড়ুন',
                 read_less: 'কম পড়ুন',
-                logo_name: 'র‍্যাপিড<span class="logo-name-loans">লোন্স</span><span class="logo-name-ai">.ai</span>',
+                logo_name: 'র‍্যাপিড<span class="logo-name-loans">লোন্স</span>',
                 dir1_name: 'হেমেন্দ্রসিং সোলাঙ্কি',
                 dir2_name: 'মহেশ আহুজা',
                 mgmt1_name: 'প্রশান্ত মানে',
@@ -5912,7 +5934,7 @@
                 footer_disclosures: 'ਭਾਈਵਾਲ ਖੁਲਾਸੇ',
                 read_more: 'ਹੋਰ ਪੜ੍ਹੋ',
                 read_less: 'ਘੱਟ ਪੜ੍ਹੋ',
-                logo_name: 'ਰੈਪਿਡ<span class="logo-name-loans">ਲੋਨਜ਼</span><span class="logo-name-ai">.ai</span>',
+                logo_name: 'ਰੈਪਿਡ<span class="logo-name-loans">ਲੋਨਜ਼</span>',
                 dir1_name: 'ਹੇਮੇਂਦਰਸਿੰਘ ਸੋਲੰਕੀ',
                 dir2_name: 'ਮਹੇਸ਼ ਆਹੂਜਾ',
                 mgmt1_name: 'ਪ੍ਰਸ਼ਾਂਤ ਮਾਨੇ',
@@ -6087,7 +6109,7 @@
                 footer_disclosures: 'പങ്കാളി വെളിപ്പെടുത്തലുകൾ',
                 read_more: 'കൂടുതൽ വായിക്കുക',
                 read_less: 'കുറവായി വായിക്കുക',
-                logo_name: 'റാപിഡ്<span class="logo-name-loans">ലോൺസ്</span><span class="logo-name-ai">.ai</span>',
+                logo_name: 'റാപിഡ്<span class="logo-name-loans">ലോൺസ്</span>',
                 dir1_name: 'ഹേമേന്ദ്രസിംഹ് സോലങ്കി',
                 dir2_name: 'മഹേഷ് ആഹുജ',
                 mgmt1_name: 'പ്രശാന്ത് മാനെ',
@@ -6262,7 +6284,7 @@
                 footer_disclosures: 'ଭାଗୀଦାର ପ୍ରକାଶ',
                 read_more: 'ଅଧିକ ପଢନ୍ତୁ',
                 read_less: 'କମ ପଢନ୍ତୁ',
-                logo_name: 'ର୍ୟାପିଡ<span class="logo-name-loans">ଲୋନ୍ସ</span><span class="logo-name-ai">.ai</span>',
+                logo_name: 'ର୍ୟାପିଡ<span class="logo-name-loans">ଲୋନ୍ସ</span>',
                 dir1_name: 'ହେମେନ୍ଦ୍ରସିଂହ ସୋଲଙ୍କି',
                 dir2_name: 'ମହେଶ ଆହୁଜା',
                 mgmt1_name: 'ପ୍ରଶାନ୍ତ ମାନେ',
@@ -6437,7 +6459,7 @@
                 footer_disclosures: 'অংশীদাৰ প্ৰকাশ',
                 read_more: 'অধিক পঢ়ুন',
                 read_less: 'কম পঢ়ুন',
-                logo_name: 'ৰেপিড<span class="logo-name-loans">লোন্স</span><span class="logo-name-ai">.ai</span>',
+                logo_name: 'ৰেপিড<span class="logo-name-loans">লোন্স</span>',
                 dir1_name: 'হেমেন্দ্ৰসিংহ সোলাংকি',
                 dir2_name: 'মহেশ আহুজা',
                 mgmt1_name: 'প্�ৰশান্ত মানে',
