@@ -954,6 +954,11 @@
 
         .navbar.scrolled .hamburger span { background: var(--t-text-dark); }
 
+        /* Hamburger to X animation */
+        .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
         /* ═══════════════════════════════════════════
            HERO SECTION
         ═══════════════════════════════════════════ */
@@ -1803,6 +1808,10 @@
             max-width: 700px;
             margin: 0 auto;
         }
+        @keyframes mapFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
         .india-map-img {
             display: block;
             width: 100%;
@@ -1811,15 +1820,16 @@
             opacity: 0.9;
             position: relative;
             z-index: 2;
+            animation: mapFloat 5s ease-in-out infinite;
         }
-        /* Theme opacity for colored map */
-        [data-site-theme="white"] .india-map-img { opacity: 0.9; }
-        [data-site-theme="pre-dawn"] .india-map-img { opacity: 0.85; }
-        [data-site-theme="sunrise"] .india-map-img { opacity: 0.85; }
-        [data-site-theme="daytime"] .india-map-img { opacity: 0.85; }
-        [data-site-theme="dusk"] .india-map-img { opacity: 0.8; }
-        [data-site-theme="sunset"] .india-map-img { opacity: 0.8; }
-        [data-site-theme="night"] .india-map-img { opacity: 0.75; }
+        /* Theme-adaptive map: adjust outline visibility per theme */
+        [data-site-theme="white"] .india-map-img { opacity: 0.9; filter: none; }
+        [data-site-theme="pre-dawn"] .india-map-img { opacity: 0.85; filter: brightness(1.3) drop-shadow(0 0 1px rgba(255,255,255,0.15)); }
+        [data-site-theme="sunrise"] .india-map-img { opacity: 0.85; filter: brightness(1.15); }
+        [data-site-theme="daytime"] .india-map-img { opacity: 0.85; filter: brightness(1.1); }
+        [data-site-theme="dusk"] .india-map-img { opacity: 0.85; filter: brightness(1.35) drop-shadow(0 0 1px rgba(255,255,255,0.2)); }
+        [data-site-theme="sunset"] .india-map-img { opacity: 0.85; filter: brightness(1.25) drop-shadow(0 0 1px rgba(255,200,150,0.15)); }
+        [data-site-theme="night"] .india-map-img { opacity: 0.8; filter: brightness(1.5) drop-shadow(0 0 2px rgba(255,255,255,0.2)); }
         .map-state-label {
             position: absolute;
             transform: translate(-50%, -50%);
@@ -3435,6 +3445,168 @@
             .lang-icon { width: 20px; height: 20px; font-size: 0.7rem; }
 
         }
+
+        /* ═══════════════════════════════════════════
+           COMPREHENSIVE MOBILE RESPONSIVE FIXES
+        ═══════════════════════════════════════════ */
+
+        /* Global overflow prevention */
+        html, body {
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+
+        img, video, canvas, svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* ── Tablet (1024px) ── */
+        @media (max-width: 1024px) {
+            .disclosure-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .disclosure-card { padding: 28px; }
+            .network-map-container { max-width: 100%; }
+            .network-map-inner { max-width: 100%; }
+        }
+
+        /* ── Mobile (768px) ── */
+        @media (max-width: 768px) {
+            .section { padding: 56px 0; }
+            .section-title { font-size: 1.6rem; line-height: 1.3; }
+            .section-desc { font-size: 0.92rem; }
+
+            /* Hero tightening */
+            .hero h1 { line-height: 1.2; }
+            .hero-desc { max-width: 100%; }
+            .hero-actions { gap: 12px; }
+
+            /* Map responsive */
+            .network-map-inner { max-width: 100%; padding: 0 8px; }
+            .india-map-img { animation: none; }
+
+            /* Disclosure */
+            .disclosure-grid { grid-template-columns: 1fr; gap: 20px; }
+            .disclosure-card { padding: 24px; }
+            .disclosure-card h3 { font-size: 1.1rem; }
+
+            /* About */
+            .about-features { grid-template-columns: 1fr; gap: 12px; }
+            .about-feature { padding: 18px; }
+
+            /* Partners */
+            .partners-grid { grid-template-columns: 1fr; gap: 20px; }
+            .partner-card { padding: 24px; }
+
+            /* Team */
+            .team-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+            .team-card-info { padding: 16px; }
+            .team-card-info h3 { font-size: 1.05rem; }
+
+            /* How it works */
+            .step-card h3 { font-size: 1rem; }
+            .step-card p { font-size: 0.85rem; }
+
+            /* CTA */
+            .cta-content h2 { font-size: 1.4rem; line-height: 1.3; }
+
+            /* Footer */
+            .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+            .footer-col h4 { margin-bottom: 12px; }
+            .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+
+            /* Bharat shuffle */
+            .bharat-shuffle-text h2 { font-size: 1.6rem; }
+        }
+
+        /* ── Small Mobile (480px) ── */
+        @media (max-width: 480px) {
+            .container { padding: 0 14px; }
+            .section { padding: 44px 0; }
+
+            /* Logo smaller on mobile */
+            .logo-icon { width: 38px; height: 38px; }
+            .navbar.scrolled .logo-icon { width: 34px; height: 34px; }
+            .logo-name { font-size: 1.1rem; }
+            .logo-sub { font-size: 0.45rem; letter-spacing: 0.03em; }
+
+            /* Hero */
+            .hero h1 { font-size: 1.6rem; line-height: 1.25; }
+            .hero-badge { font-size: 0.68rem; padding: 5px 12px; }
+            .hero-desc { font-size: 0.88rem; }
+            .btn { padding: 12px 20px; font-size: 0.88rem; }
+
+            /* Stats */
+            .hero-stats { gap: 12px; margin-top: 32px; padding-top: 20px; }
+            .hero-stat h3 { font-size: 1.3rem; }
+            .hero-stat p { font-size: 0.68rem; }
+
+            /* Section titles */
+            .section-title { font-size: 1.35rem; }
+            .section-desc { font-size: 0.88rem; }
+
+            /* Map */
+            .network-map-container { border-radius: 10px; }
+            .network-map-inner { padding: 0; }
+
+            /* Cards general */
+            .disclosure-card { padding: 20px; }
+            .disclosure-card h3 { font-size: 1rem; }
+            .about-feature { padding: 14px; }
+            .about-feature h4 { font-size: 0.88rem; }
+            .about-feature p { font-size: 0.8rem; }
+
+            /* Partners */
+            .partner-card { padding: 20px; }
+            .partner-card h3 { font-size: 1rem; }
+
+            /* Team */
+            .team-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .team-card-info { padding: 12px; }
+            .team-card-info h3 { font-size: 0.95rem; }
+
+            /* Services carousel */
+            .services-carousel-track { height: 260px; }
+            .service-card { width: 220px; padding: 16px; }
+            .service-card h3 { font-size: 1rem; }
+
+            /* Steps */
+            .step-number { width: 54px; height: 54px; font-size: 1.1rem; }
+            .step-card h3 { font-size: 0.92rem; }
+            .step-card p { font-size: 0.8rem; }
+
+            /* CTA */
+            .cta-card { padding: 32px 14px; border-radius: 16px; }
+            .cta-content h2 { font-size: 1.25rem; }
+            .cta-content p { font-size: 0.88rem; }
+
+            /* Bharat shuffle */
+            .bharat-shuffle-text h2 { font-size: 1.35rem; }
+            .bharat-shuffle-stack { max-width: 300px; }
+            .shuffle-card { border-radius: 12px; }
+        }
+
+        /* ── Very Small (360px) ── */
+        @media (max-width: 360px) {
+            .container { padding: 0 12px; }
+            .hero { padding: 100px 0 48px; }
+            .hero h1 { font-size: 1.4rem; }
+            .section-title { font-size: 1.2rem; }
+            .btn { padding: 11px 18px; font-size: 0.82rem; }
+            .hero-stat h3 { font-size: 1.15rem; }
+            .team-grid { grid-template-columns: 1fr; }
+            .trust-grid { grid-template-columns: 1fr; }
+            .trust-card { border-right: none !important; border-bottom: 1px solid var(--t-card-border); }
+            .trust-card:last-child { border-bottom: none; }
+            .service-card { width: 200px; padding: 14px; }
+            .services-carousel-track { height: 240px; }
+            .logo-name { font-size: 1rem; }
+            .logo-icon { width: 34px; height: 34px; }
+            .navbar.scrolled .logo-icon { width: 30px; height: 30px; }
+        }
+
     </style>
 </head>
 <body>
@@ -4030,7 +4202,6 @@
             <div class="reveal">
                 <div class="network-map-container" id="networkMap">
                     <div class="network-map-inner">
-                        <canvas id="networkParticleCanvas" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;"></canvas>
                         <img src="Images/india-map.png" alt="India Network Map" class="india-map-img">
                     </div>
                     <div class="map-stats-overlay">
@@ -6574,13 +6745,27 @@
         });
 
         function toggleNav() {
-            document.getElementById('navLinks').classList.toggle('active');
+            const nav = document.getElementById('navLinks');
+            const hamburger = document.getElementById('hamburger');
+            nav.classList.toggle('active');
+            hamburger.classList.toggle('active');
         }
 
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 document.getElementById('navLinks').classList.remove('active');
+                document.getElementById('hamburger').classList.remove('active');
             });
+        });
+
+        // Close mobile nav on outside click
+        document.addEventListener('click', (e) => {
+            const nav = document.getElementById('navLinks');
+            const hamburger = document.getElementById('hamburger');
+            if (nav.classList.contains('active') && !nav.contains(e.target) && !hamburger.contains(e.target)) {
+                nav.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
         });
 
         // ═══════════════════════════════════════════
@@ -7268,162 +7453,7 @@
     })();
     </script>
 
-    <!-- Stripe-style Network Particles -->
-    <script>
-    (function() {
-        const canvas = document.getElementById('networkParticleCanvas');
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-        let W, H, particles = [], curves = [], nodes = [], raf;
-        let isVisible = false;
-
-        // Color palettes per particle group
-        const palettes = [
-            { colors: ['#a855f7','#7c3aed','#6d28d9'], cx: 0.15, cy: 0.45 }, // Purple cluster (left)
-            { colors: ['#ec4899','#f472b6','#db2777'], cx: 0.55, cy: 0.35 }, // Pink cluster (center-top)
-            { colors: ['#f97316','#fb923c','#ea580c'], cx: 0.85, cy: 0.2 },  // Orange cluster (top-right)
-            { colors: ['#3b82f6','#60a5fa','#2563eb'], cx: 0.2, cy: 0.8 },   // Blue cluster (bottom-left)
-            { colors: ['#ef4444','#f87171','#dc2626'], cx: 0.75, cy: 0.15 },  // Red cluster (top-right)
-            { colors: ['#8b5cf6','#a78bfa','#7c3aed'], cx: 0.6, cy: 0.7 },   // Violet cluster (bottom-right)
-        ];
-
-        // Curved connection lines
-        const curvesDef = [
-            { x1: 0.05, y1: 0.3, cx1: 0.25, cy1: 0.05, cx2: 0.55, cy2: 0.1, x2: 0.9, y2: 0.15, color: 'rgba(236,72,153,0.25)', width: 1.5 },
-            { x1: 0.1, y1: 0.95, cx1: 0.3, cy1: 0.55, cx2: 0.5, cy2: 0.45, x2: 0.85, y2: 0.55, color: 'rgba(168,85,247,0.2)', width: 1.2 },
-            { x1: 0.0, y1: 0.6, cx1: 0.2, cy1: 0.4, cx2: 0.6, cy2: 0.7, x2: 0.95, y2: 0.65, color: 'rgba(236,72,153,0.18)', width: 1 },
-            { x1: 0.15, y1: 0.08, cx1: 0.3, cy1: 0.15, cx2: 0.5, cy2: 0.25, x2: 0.7, y2: 0.3, color: 'rgba(249,115,22,0.2)', width: 1 },
-        ];
-
-        // Node points on curves
-        const nodesDef = [
-            { x: 0.52, y: 0.28, r: 5 },
-            { x: 0.42, y: 0.52, r: 4 },
-            { x: 0.7, y: 0.22, r: 6 },
-            { x: 0.25, y: 0.7, r: 4 },
-            { x: 0.65, y: 0.58, r: 5 },
-        ];
-
-        function resize() {
-            const section = canvas.parentElement;
-            const dpr = Math.min(window.devicePixelRatio || 1, 2);
-            W = section.offsetWidth;
-            H = section.offsetHeight;
-            canvas.width = W * dpr;
-            canvas.height = H * dpr;
-            canvas.style.width = W + 'px';
-            canvas.style.height = H + 'px';
-            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-            initParticles();
-        }
-
-        function initParticles() {
-            particles = [];
-            const count = Math.min(Math.floor(W * H / 800), 600);
-
-            palettes.forEach(p => {
-                const n = Math.floor(count / palettes.length);
-                for (let i = 0; i < n; i++) {
-                    // Gaussian-like spread around cluster center
-                    const angle = Math.random() * Math.PI * 2;
-                    const dist = (Math.random() + Math.random() + Math.random()) / 3;
-                    const spread = Math.min(W, H) * 0.35;
-                    const x = p.cx * W + Math.cos(angle) * dist * spread;
-                    const y = p.cy * H + Math.sin(angle) * dist * spread;
-
-                    particles.push({
-                        x, y,
-                        ox: x, oy: y,
-                        r: Math.random() * 2.5 + 0.5,
-                        color: p.colors[Math.floor(Math.random() * p.colors.length)],
-                        alpha: Math.random() * 0.6 + 0.2,
-                        vx: (Math.random() - 0.5) * 0.15,
-                        vy: (Math.random() - 0.5) * 0.15,
-                        phase: Math.random() * Math.PI * 2,
-                    });
-                }
-            });
-        }
-
-        function drawCurves(t) {
-            curvesDef.forEach(c => {
-                ctx.beginPath();
-                ctx.moveTo(c.x1 * W, c.y1 * H);
-                ctx.bezierCurveTo(
-                    c.cx1 * W, c.cy1 * H,
-                    c.cx2 * W, c.cy2 * H,
-                    c.x2 * W, c.y2 * H
-                );
-                ctx.strokeStyle = c.color;
-                ctx.lineWidth = c.width;
-                ctx.stroke();
-            });
-        }
-
-        function drawNodes(t) {
-            nodesDef.forEach(n => {
-                const x = n.x * W;
-                const y = n.y * H;
-                const pulse = 1 + Math.sin(t * 0.002 + n.x * 10) * 0.3;
-
-                // Outer ring
-                ctx.beginPath();
-                ctx.arc(x, y, n.r * pulse * 1.8, 0, Math.PI * 2);
-                ctx.strokeStyle = 'rgba(236,72,153,0.3)';
-                ctx.lineWidth = 1.5;
-                ctx.stroke();
-
-                // Inner dot
-                ctx.beginPath();
-                ctx.arc(x, y, n.r * 0.5 * pulse, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(236,72,153,0.6)';
-                ctx.fill();
-            });
-        }
-
-        function draw(t) {
-            if (!isVisible) { raf = requestAnimationFrame(draw); return; }
-
-            ctx.clearRect(0, 0, W, H);
-
-            // Draw curves
-            drawCurves(t);
-
-            // Draw particles
-            particles.forEach(p => {
-                p.x += p.vx + Math.sin(t * 0.001 + p.phase) * 0.05;
-                p.y += p.vy + Math.cos(t * 0.001 + p.phase) * 0.05;
-
-                // Soft boundary bounce
-                if (p.x < -20 || p.x > W + 20) p.vx *= -1;
-                if (p.y < -20 || p.y > H + 20) p.vy *= -1;
-
-                const flicker = 0.7 + Math.sin(t * 0.003 + p.phase) * 0.3;
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                ctx.fillStyle = p.color;
-                ctx.globalAlpha = p.alpha * flicker;
-                ctx.fill();
-                ctx.globalAlpha = 1;
-            });
-
-            // Draw nodes
-            drawNodes(t);
-
-            raf = requestAnimationFrame(draw);
-        }
-
-        // Intersection observer
-        const obs = new IntersectionObserver(entries => {
-            entries.forEach(e => { isVisible = e.isIntersecting; });
-        }, { threshold: 0.05 });
-
-        resize();
-        obs.observe(canvas.parentElement);
-        window.addEventListener('resize', resize);
-        raf = requestAnimationFrame(draw);
-    })();
-    </script>
+    <!-- Animation removed -->
 
 </body>
 </html>
