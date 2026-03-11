@@ -1798,10 +1798,52 @@
             border-radius: 24px;
             overflow: hidden;
         }
+        .network-map-inner {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+        }
         .india-map-img {
             display: block;
             width: 100%;
             height: auto;
+            transition: opacity 0.8s ease;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+        /* Theme opacity for colored map */
+        [data-site-theme="white"] .india-map-img { opacity: 0.9; }
+        [data-site-theme="pre-dawn"] .india-map-img { opacity: 0.85; }
+        [data-site-theme="sunrise"] .india-map-img { opacity: 0.85; }
+        [data-site-theme="daytime"] .india-map-img { opacity: 0.85; }
+        [data-site-theme="dusk"] .india-map-img { opacity: 0.8; }
+        [data-site-theme="sunset"] .india-map-img { opacity: 0.8; }
+        [data-site-theme="night"] .india-map-img { opacity: 0.75; }
+        .map-state-label {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--t-text-dark);
+            background: var(--t-card-bg);
+            padding: 3px 10px;
+            border-radius: 20px;
+            border: 1px solid var(--t-card-border);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            pointer-events: none;
+            z-index: 3;
+            transition: color 0.6s ease, background 0.6s ease, border-color 0.6s ease;
+            white-space: nowrap;
+            opacity: 0.9;
+        }
+        @media (max-width: 768px) {
+            .map-state-label { font-size: 0.65rem; }
+        }
+        @media (max-width: 480px) {
+            .map-state-label { font-size: 0.52rem; }
         }
         .map-stats-overlay {
             position: absolute;
@@ -3987,7 +4029,10 @@
             </div>
             <div class="reveal">
                 <div class="network-map-container" id="networkMap">
-                    <img src="Images/India.png" alt="India Network Map" class="india-map-img">
+                    <div class="network-map-inner">
+                        <canvas id="networkParticleCanvas" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;"></canvas>
+                        <img src="Images/india-map.png" alt="India Network Map" class="india-map-img">
+                    </div>
                     <div class="map-stats-overlay">
                         <div class="map-stat-pill"><span class="map-stat-dot" style="background:#22C55E;"></span> 6 States</div>
                         <div class="map-stat-pill"><span class="map-stat-dot" style="background:#0EA5E9;"></span> 121 Locations</div>
@@ -6757,6 +6802,8 @@
 
     <!-- Network map is a plain image, no JS needed -->
 
+    
+
     <!-- ═══════════════════════ GLOBAL THEME GRADIENT + CONTROLS ═══════════════════════ -->
     <script>
     (function() {
@@ -7218,6 +7265,163 @@
         resize();
         obs.observe(canvas.parentElement);
         window.addEventListener('resize', resize);
+    })();
+    </script>
+
+    <!-- Stripe-style Network Particles -->
+    <script>
+    (function() {
+        const canvas = document.getElementById('networkParticleCanvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let W, H, particles = [], curves = [], nodes = [], raf;
+        let isVisible = false;
+
+        // Color palettes per particle group
+        const palettes = [
+            { colors: ['#a855f7','#7c3aed','#6d28d9'], cx: 0.15, cy: 0.45 }, // Purple cluster (left)
+            { colors: ['#ec4899','#f472b6','#db2777'], cx: 0.55, cy: 0.35 }, // Pink cluster (center-top)
+            { colors: ['#f97316','#fb923c','#ea580c'], cx: 0.85, cy: 0.2 },  // Orange cluster (top-right)
+            { colors: ['#3b82f6','#60a5fa','#2563eb'], cx: 0.2, cy: 0.8 },   // Blue cluster (bottom-left)
+            { colors: ['#ef4444','#f87171','#dc2626'], cx: 0.75, cy: 0.15 },  // Red cluster (top-right)
+            { colors: ['#8b5cf6','#a78bfa','#7c3aed'], cx: 0.6, cy: 0.7 },   // Violet cluster (bottom-right)
+        ];
+
+        // Curved connection lines
+        const curvesDef = [
+            { x1: 0.05, y1: 0.3, cx1: 0.25, cy1: 0.05, cx2: 0.55, cy2: 0.1, x2: 0.9, y2: 0.15, color: 'rgba(236,72,153,0.25)', width: 1.5 },
+            { x1: 0.1, y1: 0.95, cx1: 0.3, cy1: 0.55, cx2: 0.5, cy2: 0.45, x2: 0.85, y2: 0.55, color: 'rgba(168,85,247,0.2)', width: 1.2 },
+            { x1: 0.0, y1: 0.6, cx1: 0.2, cy1: 0.4, cx2: 0.6, cy2: 0.7, x2: 0.95, y2: 0.65, color: 'rgba(236,72,153,0.18)', width: 1 },
+            { x1: 0.15, y1: 0.08, cx1: 0.3, cy1: 0.15, cx2: 0.5, cy2: 0.25, x2: 0.7, y2: 0.3, color: 'rgba(249,115,22,0.2)', width: 1 },
+        ];
+
+        // Node points on curves
+        const nodesDef = [
+            { x: 0.52, y: 0.28, r: 5 },
+            { x: 0.42, y: 0.52, r: 4 },
+            { x: 0.7, y: 0.22, r: 6 },
+            { x: 0.25, y: 0.7, r: 4 },
+            { x: 0.65, y: 0.58, r: 5 },
+        ];
+
+        function resize() {
+            const section = canvas.parentElement;
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            W = section.offsetWidth;
+            H = section.offsetHeight;
+            canvas.width = W * dpr;
+            canvas.height = H * dpr;
+            canvas.style.width = W + 'px';
+            canvas.style.height = H + 'px';
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            initParticles();
+        }
+
+        function initParticles() {
+            particles = [];
+            const count = Math.min(Math.floor(W * H / 800), 600);
+
+            palettes.forEach(p => {
+                const n = Math.floor(count / palettes.length);
+                for (let i = 0; i < n; i++) {
+                    // Gaussian-like spread around cluster center
+                    const angle = Math.random() * Math.PI * 2;
+                    const dist = (Math.random() + Math.random() + Math.random()) / 3;
+                    const spread = Math.min(W, H) * 0.35;
+                    const x = p.cx * W + Math.cos(angle) * dist * spread;
+                    const y = p.cy * H + Math.sin(angle) * dist * spread;
+
+                    particles.push({
+                        x, y,
+                        ox: x, oy: y,
+                        r: Math.random() * 2.5 + 0.5,
+                        color: p.colors[Math.floor(Math.random() * p.colors.length)],
+                        alpha: Math.random() * 0.6 + 0.2,
+                        vx: (Math.random() - 0.5) * 0.15,
+                        vy: (Math.random() - 0.5) * 0.15,
+                        phase: Math.random() * Math.PI * 2,
+                    });
+                }
+            });
+        }
+
+        function drawCurves(t) {
+            curvesDef.forEach(c => {
+                ctx.beginPath();
+                ctx.moveTo(c.x1 * W, c.y1 * H);
+                ctx.bezierCurveTo(
+                    c.cx1 * W, c.cy1 * H,
+                    c.cx2 * W, c.cy2 * H,
+                    c.x2 * W, c.y2 * H
+                );
+                ctx.strokeStyle = c.color;
+                ctx.lineWidth = c.width;
+                ctx.stroke();
+            });
+        }
+
+        function drawNodes(t) {
+            nodesDef.forEach(n => {
+                const x = n.x * W;
+                const y = n.y * H;
+                const pulse = 1 + Math.sin(t * 0.002 + n.x * 10) * 0.3;
+
+                // Outer ring
+                ctx.beginPath();
+                ctx.arc(x, y, n.r * pulse * 1.8, 0, Math.PI * 2);
+                ctx.strokeStyle = 'rgba(236,72,153,0.3)';
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
+
+                // Inner dot
+                ctx.beginPath();
+                ctx.arc(x, y, n.r * 0.5 * pulse, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(236,72,153,0.6)';
+                ctx.fill();
+            });
+        }
+
+        function draw(t) {
+            if (!isVisible) { raf = requestAnimationFrame(draw); return; }
+
+            ctx.clearRect(0, 0, W, H);
+
+            // Draw curves
+            drawCurves(t);
+
+            // Draw particles
+            particles.forEach(p => {
+                p.x += p.vx + Math.sin(t * 0.001 + p.phase) * 0.05;
+                p.y += p.vy + Math.cos(t * 0.001 + p.phase) * 0.05;
+
+                // Soft boundary bounce
+                if (p.x < -20 || p.x > W + 20) p.vx *= -1;
+                if (p.y < -20 || p.y > H + 20) p.vy *= -1;
+
+                const flicker = 0.7 + Math.sin(t * 0.003 + p.phase) * 0.3;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = p.color;
+                ctx.globalAlpha = p.alpha * flicker;
+                ctx.fill();
+                ctx.globalAlpha = 1;
+            });
+
+            // Draw nodes
+            drawNodes(t);
+
+            raf = requestAnimationFrame(draw);
+        }
+
+        // Intersection observer
+        const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => { isVisible = e.isIntersecting; });
+        }, { threshold: 0.05 });
+
+        resize();
+        obs.observe(canvas.parentElement);
+        window.addEventListener('resize', resize);
+        raf = requestAnimationFrame(draw);
     })();
     </script>
 
