@@ -1670,17 +1670,27 @@
             align-items: center;
             gap: 8px;
             padding: 7px 18px;
-            background: rgba(99,91,255,0.06);
-            border: 1px solid rgba(99,91,255,0.12);
+            background: var(--sl-bg, rgba(99,91,255,0.06));
+            border: 1px solid var(--sl-border, rgba(99,91,255,0.12));
             border-radius: 50px;
-            color: var(--accent);
+            color: var(--sl-color, var(--accent));
             font-family: 'Inter', sans-serif;
             font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.08em;
             margin-bottom: 20px;
+            transition: background 0.6s ease, border-color 0.6s ease, color 0.6s ease;
         }
+
+        /* Section label theme colors */
+        [data-site-theme="white"] { --sl-bg: rgba(99,91,255,0.06); --sl-border: rgba(99,91,255,0.12); --sl-color: #635BFF; }
+        [data-site-theme="pre-dawn"] { --sl-bg: rgba(255,200,150,0.12); --sl-border: rgba(255,180,120,0.25); --sl-color: #FFB87A; }
+        [data-site-theme="sunrise"] { --sl-bg: rgba(255,160,80,0.12); --sl-border: rgba(255,140,60,0.25); --sl-color: #FF9A4C; }
+        [data-site-theme="daytime"] { --sl-bg: rgba(60,180,255,0.12); --sl-border: rgba(60,160,240,0.25); --sl-color: #4CB4FF; }
+        [data-site-theme="dusk"] { --sl-bg: rgba(200,160,255,0.12); --sl-border: rgba(180,140,240,0.25); --sl-color: #C8A0FF; }
+        [data-site-theme="sunset"] { --sl-bg: rgba(255,130,80,0.12); --sl-border: rgba(255,110,60,0.25); --sl-color: #FF8250; }
+        [data-site-theme="night"] { --sl-bg: rgba(140,180,255,0.12); --sl-border: rgba(120,160,240,0.25); --sl-color: #8CB4FF; }
 
         .section-title {
             font-size: clamp(1.8rem, 3.5vw, 2.8rem);
