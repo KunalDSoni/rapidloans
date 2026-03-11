@@ -977,7 +977,7 @@
         .hero-gradient-canvas {
             position: absolute;
             inset: 0;
-            z-index: 1;
+            z-index: 2;
             opacity: var(--t-canvas-opacity);
             transition: opacity 0.8s ease;
             pointer-events: none;
@@ -1361,7 +1361,8 @@
             background: var(--t-item-bg);
             color: var(--t-text-dark);
             border: 1.5px solid var(--t-item-border);
-            backdrop-filter: blur(var(--t-card-blur));
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             transition: all 0.3s ease;
         }
 
@@ -1409,9 +1410,9 @@
             padding: 36px;
             width: 100%;
             max-width: 460px;
-            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
-            backdrop-filter: blur(var(--t-card-blur));
-            -webkit-backdrop-filter: blur(var(--t-card-blur));
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             transition: background 0.6s ease, border-color 0.6s ease;
         }
 
@@ -1612,12 +1613,12 @@
         .floating-badge {
             position: absolute;
             background: var(--t-badge-bg);
-            backdrop-filter: blur(var(--t-card-blur));
-            -webkit-backdrop-filter: blur(var(--t-card-blur));
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--t-card-border);
             border-radius: 14px;
             padding: 12px 18px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12);
             display: flex;
             align-items: center;
             gap: 10px;
