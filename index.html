@@ -880,12 +880,12 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 32px;
+            gap: 24px;
         }
 
         .nav-links a {
             font-family: 'Inter', -apple-system, sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
             color: var(--t-text-body);
             position: relative;
@@ -928,6 +928,20 @@
         }
 
         .nav-cta::after { display: none !important; }
+
+        /* Nav compact for medium screens */
+        @media (max-width: 1200px) and (min-width: 769px) {
+            .nav-links { gap: 16px; }
+            .nav-links a { font-size: 0.8rem; }
+            .nav-cta { padding: 7px 16px !important; font-size: 0.8rem !important; }
+        }
+        @media (max-width: 960px) and (min-width: 769px) {
+            .nav-links { gap: 10px; }
+            .nav-links a { font-size: 0.75rem; }
+            .nav-cta { padding: 6px 14px !important; font-size: 0.75rem !important; }
+            .nav-right { gap: 8px; }
+            .lang-btn { font-size: 0.75rem; padding: 6px 10px; }
+        }
 
         .nav-right {
             display: flex;
@@ -2188,7 +2202,7 @@
         /* ═══════════════════════════════════════════
            SERVICES SECTION
         ═══════════════════════════════════════════ */
-        .services { background: var(--t-section-alt-bg); position: relative; overflow: hidden; transition: background 0.6s ease; }
+        .services { background: var(--t-section-alt-bg); position: relative; transition: background 0.6s ease; }
 
         .services-header {
             text-align: center;
@@ -2205,7 +2219,8 @@
             width: 100%;
             max-width: 1100px;
             margin: 0 auto;
-            overflow: hidden;
+            overflow: visible;
+            padding: 0 32px;
         }
 
         .services-carousel-track {
@@ -2216,6 +2231,7 @@
             position: relative;
             height: 340px;
             perspective: 1200px;
+            overflow: hidden;
         }
 
         .service-card {
@@ -2328,32 +2344,34 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 44px;
-            height: 44px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
-            background: var(--t-card-bg);
+            background: var(--accent);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--t-card-border);
-            color: var(--t-text-heading);
-            font-size: 1.2rem;
+            border: none;
+            color: #fff;
+            font-size: 1.4rem;
+            font-weight: 700;
             cursor: pointer;
             z-index: 10;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 4px 16px rgba(99,91,255,0.35);
         }
 
         .services-carousel-nav:hover {
-            background: var(--accent);
+            background: var(--accent-light);
             color: #fff;
-            border-color: var(--accent);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 20px rgba(99,91,255,0.45);
         }
 
-        .services-carousel-nav.prev { left: -22px; }
-        .services-carousel-nav.next { right: -22px; }
+        .services-carousel-nav.prev { left: -8px; }
+        .services-carousel-nav.next { right: -8px; }
 
         .service-icon {
             width: 56px; height: 56px;
@@ -3267,8 +3285,8 @@
             .about-image { height: 360px; }
             .services-carousel-track { height: 320px; }
             .service-card { width: 300px; padding: 28px; }
-            .services-carousel-nav.prev { left: -10px; }
-            .services-carousel-nav.next { right: -10px; }
+            .services-carousel-nav.prev { left: -4px; }
+            .services-carousel-nav.next { right: -4px; }
             .steps-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
             .steps-grid::before { display: none; }
             .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
@@ -3339,7 +3357,8 @@
             .service-card[data-pos="right"] { transform: translateX(5%) scale(0.82); opacity: 0.5; }
             .service-card[data-pos="far-left"],
             .service-card[data-pos="far-right"] { opacity: 0; pointer-events: none; }
-            .services-carousel-nav { width: 36px; height: 36px; font-size: 1rem; }
+            .services-carousel-nav { width: 40px; height: 40px; }
+            .services-carousel-nav svg { width: 18px; height: 18px; }
             .services-carousel-nav.prev { left: 4px; }
             .services-carousel-nav.next { right: 4px; }
 
@@ -3618,6 +3637,245 @@
             .navbar.scrolled .logo-icon { width: 30px; height: 30px; }
         }
 
+        /* ═══════════════════════════════════════════
+           LOAN CALCULATOR
+        ═══════════════════════════════════════════ */
+        .calc-section {
+            background: var(--t-section-alt-bg);
+            padding: 100px 0;
+        }
+        .calc-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        .calc-form {
+            background: var(--t-card-bg);
+            border: 1px solid var(--t-card-border);
+            border-radius: var(--radius);
+            padding: 36px;
+            box-shadow: var(--shadow-lg);
+            backdrop-filter: blur(var(--t-card-blur));
+            -webkit-backdrop-filter: blur(var(--t-card-blur));
+        }
+        .calc-field {
+            margin-bottom: 28px;
+        }
+        .calc-field:last-child {
+            margin-bottom: 0;
+        }
+        .calc-field label {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--t-text-dark);
+            margin-bottom: 10px;
+        }
+        .calc-field label span.calc-val {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent-light);
+        }
+        .calc-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: var(--t-card-border);
+            outline: none;
+            cursor: pointer;
+        }
+        .calc-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid #fff;
+            box-shadow: 0 2px 8px rgba(99,91,255,0.35);
+            cursor: pointer;
+            transition: transform 0.15s ease;
+        }
+        .calc-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+        }
+        .calc-slider::-moz-range-thumb {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid #fff;
+            box-shadow: 0 2px 8px rgba(99,91,255,0.35);
+            cursor: pointer;
+        }
+        .calc-result {
+            background: var(--t-card-bg);
+            border: 1px solid var(--t-card-border);
+            border-radius: var(--radius);
+            padding: 36px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            backdrop-filter: blur(var(--t-card-blur));
+            -webkit-backdrop-filter: blur(var(--t-card-blur));
+        }
+        .calc-emi-wrap {
+            margin-bottom: 32px;
+        }
+        .calc-emi-label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--t-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .calc-emi-value {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1.1;
+        }
+        .calc-emi-value span {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--t-text-muted);
+        }
+        .calc-breakdown {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+        .calc-breakdown-item {
+            background: var(--t-item-bg);
+            border: 1px solid var(--t-item-border);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+        }
+        .calc-breakdown-item .cb-label {
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--t-text-muted);
+            margin-bottom: 4px;
+        }
+        .calc-breakdown-item .cb-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--t-text-dark);
+        }
+        .calc-donut-wrap {
+            display: flex;
+            justify-content: center;
+            margin-top: 8px;
+        }
+        .calc-donut-wrap svg {
+            width: 160px;
+            height: 160px;
+        }
+        .calc-legend {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 16px;
+            font-size: 0.82rem;
+            color: var(--t-text-body);
+        }
+        .calc-legend span::before {
+            content: '';
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+        .calc-legend .leg-principal::before { background: var(--accent); }
+        .calc-legend .leg-interest::before { background: var(--teal); }
+
+        @media (max-width: 768px) {
+            .calc-layout {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+            .calc-emi-value { font-size: 2rem; }
+        }
+        @media (max-width: 480px) {
+            .calc-form, .calc-result { padding: 24px; }
+            .calc-breakdown { grid-template-columns: 1fr; }
+        }
+
+        /* ═══ Loan Calculator — Dark/Colored Theme Overrides ═══ */
+        [data-site-theme="night"] .calc-emi-value,
+        [data-site-theme="pre-dawn"] .calc-emi-value,
+        [data-site-theme="dusk"] .calc-emi-value,
+        [data-site-theme="sunset"] .calc-emi-value {
+            color: #FFFFFF;
+        }
+        [data-site-theme="night"] .calc-field label span.calc-val,
+        [data-site-theme="pre-dawn"] .calc-field label span.calc-val,
+        [data-site-theme="dusk"] .calc-field label span.calc-val,
+        [data-site-theme="sunset"] .calc-field label span.calc-val {
+            color: #FFFFFF;
+        }
+        [data-site-theme="night"] .calc-slider::-webkit-slider-thumb,
+        [data-site-theme="pre-dawn"] .calc-slider::-webkit-slider-thumb,
+        [data-site-theme="dusk"] .calc-slider::-webkit-slider-thumb,
+        [data-site-theme="sunset"] .calc-slider::-webkit-slider-thumb {
+            background: #FFFFFF;
+            border-color: rgba(255,255,255,0.3);
+            box-shadow: 0 2px 8px rgba(255,255,255,0.25);
+        }
+        [data-site-theme="night"] .calc-slider::-moz-range-thumb,
+        [data-site-theme="pre-dawn"] .calc-slider::-moz-range-thumb,
+        [data-site-theme="dusk"] .calc-slider::-moz-range-thumb,
+        [data-site-theme="sunset"] .calc-slider::-moz-range-thumb {
+            background: #FFFFFF;
+            border-color: rgba(255,255,255,0.3);
+            box-shadow: 0 2px 8px rgba(255,255,255,0.25);
+        }
+        [data-site-theme="night"] .calc-slider,
+        [data-site-theme="pre-dawn"] .calc-slider,
+        [data-site-theme="dusk"] .calc-slider,
+        [data-site-theme="sunset"] .calc-slider {
+            background: rgba(255,255,255,0.2);
+        }
+        [data-site-theme="night"] .calc-legend .leg-principal::before,
+        [data-site-theme="pre-dawn"] .calc-legend .leg-principal::before,
+        [data-site-theme="dusk"] .calc-legend .leg-principal::before,
+        [data-site-theme="sunset"] .calc-legend .leg-principal::before {
+            background: #FFFFFF;
+        }
+        [data-site-theme="night"] .calc-legend .leg-interest::before,
+        [data-site-theme="pre-dawn"] .calc-legend .leg-interest::before,
+        [data-site-theme="dusk"] .calc-legend .leg-interest::before,
+        [data-site-theme="sunset"] .calc-legend .leg-interest::before {
+            background: var(--teal);
+        }
+        /* Donut chart colors for dark themes */
+        [data-site-theme="night"] #donutPrincipal,
+        [data-site-theme="pre-dawn"] #donutPrincipal,
+        [data-site-theme="dusk"] #donutPrincipal,
+        [data-site-theme="sunset"] #donutPrincipal {
+            stroke: #FFFFFF;
+        }
+
+        /* Colored (non-dark) themes — softer accent for readability */
+        [data-site-theme="sunrise"] .calc-emi-value,
+        [data-site-theme="daytime"] .calc-emi-value {
+            color: var(--t-text-dark);
+        }
+        [data-site-theme="sunrise"] .calc-field label span.calc-val,
+        [data-site-theme="daytime"] .calc-field label span.calc-val {
+            color: var(--t-text-dark);
+        }
+
     </style>
 </head>
 <body>
@@ -3642,6 +3900,7 @@
                 <a href="#network" data-i18n="nav_network">Network</a>
                 <a href="#partners" data-i18n="nav_partners">Partners</a>
                 <a href="#board" data-i18n="nav_leadership">Leadership</a>
+                <a href="#calculator" data-i18n="nav_calculator">Loan Calculator</a>
                 <a href="#contact" class="nav-cta" data-i18n="nav_contact">Contact Us</a>
             </div>
             <div class="nav-right">
@@ -4033,7 +4292,7 @@
                 <p class="section-desc" data-i18n="services_desc">From origination to servicing, we cover the entire lending lifecycle with technology at the core.</p>
             </div>
             <div class="services-carousel-wrapper">
-                <button class="services-carousel-nav prev" aria-label="Previous service">&#10094;</button>
+                <button class="services-carousel-nav prev" aria-label="Previous service"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
                 <div class="services-carousel-track">
                     <div class="service-card" data-pos="hidden">
                         <div class="service-icon svc-icon-origination" style="background: rgba(99,91,255,0.08); color: var(--accent);">
@@ -4129,7 +4388,7 @@
                         <p data-i18n="svc6_desc">Seamless UPI, NACH, and e-mandate integrations enabling borrowers to make repayments effortlessly from anywhere using their mobile devices.</p>
                     </div>
                 </div>
-                <button class="services-carousel-nav next" aria-label="Next service">&#10095;</button>
+                <button class="services-carousel-nav next" aria-label="Next service"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
                 <div class="services-carousel-dots"></div>
             </div>
 
@@ -4449,6 +4708,71 @@
     </section>
 
 
+    <!-- ═══════════════════════ LOAN CALCULATOR ═══════════════════════ -->
+    <section class="calc-section section" id="calculator">
+        <div class="container">
+            <div class="reveal" style="text-align:center; margin-bottom:48px;">
+                <span class="section-label">&#9672; <span data-i18n="calc_label">Plan Your Loan</span></span>
+                <h2 class="section-title" data-i18n="calc_title">Loan Calculator</h2>
+                <p class="section-desc" style="margin:0 auto;"><span data-i18n="calc_desc">Estimate your monthly EMI instantly. Adjust the loan amount, interest rate, and tenure to find the plan that fits your needs.</span></p>
+            </div>
+            <div class="calc-layout">
+                <!-- LEFT: Sliders -->
+                <div class="calc-form reveal">
+                    <div class="calc-field">
+                        <label><span data-i18n="calc_loan_amount">Loan Amount</span> <span class="calc-val" id="calcAmtVal">&#8377;5,00,000</span></label>
+                        <input type="range" class="calc-slider" id="calcAmt" min="10000" max="5000000" step="10000" value="500000" oninput="updateCalc()">
+                    </div>
+                    <div class="calc-field">
+                        <label><span data-i18n="calc_interest_rate">Interest Rate</span> <span class="calc-val" id="calcRateVal">10%</span></label>
+                        <input type="range" class="calc-slider" id="calcRate" min="1" max="30" step="0.5" value="10" oninput="updateCalc()">
+                    </div>
+                    <div class="calc-field">
+                        <label><span data-i18n="calc_tenure">Tenure</span> <span class="calc-val" id="calcTenureVal">24 months</span></label>
+                        <input type="range" class="calc-slider" id="calcTenure" min="3" max="360" step="1" value="24" oninput="updateCalc()">
+                    </div>
+                </div>
+                <!-- RIGHT: Results -->
+                <div class="calc-result reveal reveal-delay-1">
+                    <div class="calc-emi-wrap">
+                        <div class="calc-emi-label" data-i18n="calc_monthly_emi">Monthly EMI</div>
+                        <div class="calc-emi-value" id="calcEMI">&#8377;23,073</div>
+                    </div>
+                    <div class="calc-breakdown">
+                        <div class="calc-breakdown-item">
+                            <div class="cb-label" data-i18n="calc_total_principal">Total Principal</div>
+                            <div class="cb-value" id="calcPrincipal">&#8377;5,00,000</div>
+                        </div>
+                        <div class="calc-breakdown-item">
+                            <div class="cb-label" data-i18n="calc_total_interest">Total Interest</div>
+                            <div class="cb-value" id="calcInterest">&#8377;53,748</div>
+                        </div>
+                        <div class="calc-breakdown-item">
+                            <div class="cb-label" data-i18n="calc_total_amount">Total Amount</div>
+                            <div class="cb-value" id="calcTotal">&#8377;5,53,748</div>
+                        </div>
+                        <div class="calc-breakdown-item">
+                            <div class="cb-label" data-i18n="calc_tenure_label">Tenure</div>
+                            <div class="cb-value" id="calcTenureDisp">2 yrs 0 mo</div>
+                        </div>
+                    </div>
+                    <!-- Donut Chart -->
+                    <div class="calc-donut-wrap">
+                        <svg viewBox="0 0 36 36" id="calcDonut">
+                            <circle cx="18" cy="18" r="15.915" fill="none" stroke="var(--t-card-border)" stroke-width="3"/>
+                            <circle id="donutInterest" cx="18" cy="18" r="15.915" fill="none" stroke="var(--teal)" stroke-width="3" stroke-dasharray="10 90" stroke-dashoffset="25" stroke-linecap="round" style="transition: stroke-dasharray 0.4s ease;"/>
+                            <circle id="donutPrincipal" cx="18" cy="18" r="15.915" fill="none" stroke="var(--accent)" stroke-width="3" stroke-dasharray="90 10" stroke-dashoffset="25" stroke-linecap="round" style="transition: stroke-dasharray 0.4s ease;"/>
+                        </svg>
+                    </div>
+                    <div class="calc-legend">
+                        <span class="leg-principal" data-i18n="calc_principal">Principal</span>
+                        <span class="leg-interest" data-i18n="calc_interest">Interest</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ═══════════════════════ CTA ═══════════════════════ -->
     <section class="cta-section" id="contact">
         <div class="container">
@@ -4572,6 +4896,7 @@
                     <a href="#management" data-i18n="footer_mgmt">Management Team</a>
                     <a href="#network" data-i18n="footer_network">Our Network</a>
                     <a href="#partners-disclosure" data-i18n="footer_disclosures">Partner Disclosures</a>
+                    <a href="#calculator" data-i18n="footer_calculator">Loan Calculator</a>
                     <a href="#contact" data-i18n="nav_contact">Contact</a>
                 </div>
                 <div class="footer-col">
@@ -4779,6 +5104,27 @@
                 mgmt2_bio: 'An astute professional with extensive experience leading micro-finance operations, designing policies, overseeing customer service, and implementing technology solutions for rapid, responsible growth.',
                 mgmt3_role: 'Head of Human Resources',
                 mgmt3_bio: '13 years in retail banking and client investment portfolio management at ICICI, CITI, and KOTAK. Multi-dimensional expertise spanning employee engagement, training, sales, and operations.'
+            ,
+                nav_calculator: 'Loan Calculator',
+                calc_label: 'Plan Your Loan',
+                calc_title: 'Loan Calculator',
+                calc_desc: 'Estimate your monthly EMI instantly. Adjust the loan amount, interest rate, and tenure to find the plan that fits your needs.',
+                calc_loan_amount: 'Loan Amount',
+                calc_interest_rate: 'Interest Rate',
+                calc_tenure: 'Tenure',
+                calc_monthly_emi: 'Monthly EMI',
+                calc_total_principal: 'Total Principal',
+                calc_total_interest: 'Total Interest',
+                calc_total_amount: 'Total Amount',
+                calc_tenure_label: 'Tenure',
+                calc_principal: 'Principal',
+                calc_interest: 'Interest',
+                calc_months: 'months',
+                calc_month: 'month',
+                calc_yrs: 'yrs',
+                calc_yr: 'yr',
+                calc_mo: 'mo',
+                footer_calculator: 'Loan Calculator'
             },
             hi: {
                 nav_about: "हमारे बारे में",
@@ -4954,6 +5300,27 @@
                 mgmt2_bio: 'एक चतुर पेशेवर जो सूक्ष्म-वित्त संचालन का नेतृत्व, नीतियों का डिजाइन, ग्राहक सेवा की देखरेख और तेजी से, जिम्मेदार विकास के लिए प्रौद्योगिकी समाधान लागू करने में व्यापक अनुभव रखते हैं।',
                 mgmt3_role: 'मानव संसाधन प्रमुख',
                 mgmt3_bio: 'ICICI, CITI, और KOTAK में खुदरा बैंकिंग और क्लाइंट निवेश पोर्टफोलियो प्रबंधन में 13 वर्षों का अनुभव। कर्मचारी जुड़ाव, प्रशिक्षण, बिक्री और संचालन के आयामों में बहुआयामी विशेषज्ञता।'
+            ,
+                nav_calculator: 'ऋण कैलकुलेटर',
+                calc_label: 'अपना ऋण प्लान करें',
+                calc_title: 'ऋण कैलकुलेटर',
+                calc_desc: 'अपनी मासिक EMI तुरंत जानें। ऋण राशि, ब्याज दर और अवधि को अपनी ज़रूरत के अनुसार एडजस्ट करें।',
+                calc_loan_amount: 'ऋण राशि',
+                calc_interest_rate: 'ब्याज दर',
+                calc_tenure: 'अवधि',
+                calc_monthly_emi: 'मासिक EMI',
+                calc_total_principal: 'कुल मूलधन',
+                calc_total_interest: 'कुल ब्याज',
+                calc_total_amount: 'कुल राशि',
+                calc_tenure_label: 'अवधि',
+                calc_principal: 'मूलधन',
+                calc_interest: 'ब्याज',
+                calc_months: 'महीने',
+                calc_month: 'महीना',
+                calc_yrs: 'वर्ष',
+                calc_yr: 'वर्ष',
+                calc_mo: 'म.',
+                footer_calculator: 'ऋण कैलकुलेटर'
             },
             gu: {
                 nav_about: "અમારા વિશે",
@@ -5129,6 +5496,27 @@
                 mgmt2_bio: 'એક તીક્ષ્ણ વ્યાવસાયિક જે સૂક્ષ્મ-ધિરાણ કામગીરીનું નેતૃત્વ, નીતિઓનું નિર્માણ, ગ્રાહક સેવાની દેખરેખ અને ઝડપી, જવાબદારી વૃદ્ધि માટે તકનીક ઉકેલો અમલમાં મૂકવામાં વ્યાપક અનુભવ ધરાવે છે.',
                 mgmt3_role: 'માનવ સંસાધન નેતા',
                 mgmt3_bio: 'ICICI, CITI, અને KOTAK માં પછાળ બેંકિંગ અને ક્લાયંટ રોકાણ પોર્ટફોલિયો વ્યવસ્થાપનમાં 13 વર્ષો અનુભવ. કર્મચારી જોડાણ, તાલીમ, વેચાણ અને કામગીરી આવતા બહુ-પરિમાણીય માહિતી.'
+            ,
+                nav_calculator: 'લોન કેલ્ક્યુલેટર',
+                calc_label: 'તમારી લોન પ્લાન કરો',
+                calc_title: 'લોન કેલ્ક્યુલેટર',
+                calc_desc: 'તમારી માસિક EMI તરત જ જાણો। લોનની રકમ, વ્યાજ દર અને અવધિ તમારી જરૂરિયાત મુજબ એડજસ્ટ કરો.',
+                calc_loan_amount: 'લોનની રકમ',
+                calc_interest_rate: 'વ્યાજ દર',
+                calc_tenure: 'અવધિ',
+                calc_monthly_emi: 'માસિક EMI',
+                calc_total_principal: 'કુલ મુદ્દલ',
+                calc_total_interest: 'કુલ વ્યાજ',
+                calc_total_amount: 'કુલ રકમ',
+                calc_tenure_label: 'અવધિ',
+                calc_principal: 'મુદ્દલ',
+                calc_interest: 'વ્યાજ',
+                calc_months: 'મહિના',
+                calc_month: 'મહિનો',
+                calc_yrs: 'વર્ષ',
+                calc_yr: 'વર્ષ',
+                calc_mo: 'મ.',
+                footer_calculator: 'લોન કેલ્ક્યુલેટર'
             },
             mr: {
                 nav_about: "आमच्याबद्दल",
@@ -5304,6 +5692,27 @@
                 mgmt2_bio: 'एक चतुर व्यावसायिक जो सूक्ष्मवित्त संचालन नेतृत्व, धोरण डिजाइन, ग्राहक सेवा पर्यवेक्षण आणि द्रुत, जबाबदारीत्व-पूर्ण वाढीसाठी तंत्रज्ञान समाधान लागू करण्यात विस्तृत अनुभव आहे.',
                 mgmt3_role: 'मानव संसाधन प्रमुख',
                 mgmt3_bio: 'ICICI, CITI, आणि KOTAK मध्ये खुदरा बँकिंग आणि क्लायंट गुंतवणूक पोर्टफोलिओ व्यवस्थापनात 13 वर्षांचा अनुभव. कर्मचारी संलग्नता, प्रशिक्षण, विक्रय आणि संचालन आयामांमधील बहु-आयामी विशेषज्ञता.'
+            ,
+                nav_calculator: 'कर्ज कॅल्क्युलेटर',
+                calc_label: 'तुमचे कर्ज प्लान करा',
+                calc_title: 'कर्ज कॅल्क्युलेटर',
+                calc_desc: 'तुमची मासिक EMI लगेच जाणून घ्या. कर्जाची रक्कम, व्याज दर आणि कालावधी तुमच्या गरजेनुसार समायोजित करा.',
+                calc_loan_amount: 'कर्जाची रक्कम',
+                calc_interest_rate: 'व्याज दर',
+                calc_tenure: 'कालावधी',
+                calc_monthly_emi: 'मासिक EMI',
+                calc_total_principal: 'एकूण मुद्दल',
+                calc_total_interest: 'एकूण व्याज',
+                calc_total_amount: 'एकूण रक्कम',
+                calc_tenure_label: 'कालावधी',
+                calc_principal: 'मुद्दल',
+                calc_interest: 'व्याज',
+                calc_months: 'महिने',
+                calc_month: 'महिना',
+                calc_yrs: 'वर्षे',
+                calc_yr: 'वर्ष',
+                calc_mo: 'म.',
+                footer_calculator: 'कर्ज कॅल्क्युलेटर'
             },
             ta: {
                 nav_about: "எங்களைப் பற்றி",
@@ -5479,6 +5888,27 @@
                 mgmt2_bio: 'ஒரு புத்திசாலியான பেশாদார் நுண்ணிய நிதி செயல்பாட்டை தலைமை இடுதல், নীதிகளை வடிவமைத்தல், பயனர் சேவையை அதிகாரம் மற்றும் விரைவு, உত்തரவாத வளர்ச்சிக்கான தொழில்நுட்ப সমাধানங்களை செயல்படுத்துதல் ஆகியவற்றில் விস்தரமான அভிজ்ఞతை கொண்டு உள்ளார்.',
                 mgmt3_role: 'மனித வளங்கள் பிரதிதும்',
                 mgmt3_bio: 'ICICI, CITI மற்றும் KOTAK இல் சில வணிக வங்கி மற்றும் கிளையன்ட் முதலீட்டு இலாக வ్యవस్థaപन 13 ஆண்டுகள் અનુभв. कर्मচारी जुड़ाव, प्रशिक्षण, विक्रय, और संचालन आयामों में बहु-आयामी mainstay.'
+            ,
+                nav_calculator: 'கடன் கால்குலேட்டர்',
+                calc_label: 'உங்கள் கடனைத் திட்டமிடுங்கள்',
+                calc_title: 'கடன் கால்குலேட்டர்',
+                calc_desc: 'உங்கள் மாதாந்திர EMI-ஐ உடனடியாக மதிப்பிடுங்கள். கடன் தொகை, வட்டி விகிதம் மற்றும் காலத்தை உங்கள் தேவைக்கேற்ப சரிசெய்யுங்கள்.',
+                calc_loan_amount: 'கடன் தொகை',
+                calc_interest_rate: 'வட்டி விகிதம்',
+                calc_tenure: 'காலம்',
+                calc_monthly_emi: 'மாதாந்திர EMI',
+                calc_total_principal: 'மொத்த அசல்',
+                calc_total_interest: 'மொத்த வட்டி',
+                calc_total_amount: 'மொத்த தொகை',
+                calc_tenure_label: 'காலம்',
+                calc_principal: 'அசல்',
+                calc_interest: 'வட்டி',
+                calc_months: 'மாதங்கள்',
+                calc_month: 'மாதம்',
+                calc_yrs: 'ஆண்டுகள்',
+                calc_yr: 'ஆண்டு',
+                calc_mo: 'மா.',
+                footer_calculator: 'கடன் கால்குலேட்டர்'
             },
             kn: {
                 nav_about: "ನಮ್ಮ ಬಗ್ಗೆ",
@@ -5654,6 +6084,27 @@
                 mgmt2_bio: 'ಒಂದು ತಿವ್ರಬುದ್ಧಿ ವೃತ್ತಿಜೀವಿ ಸೂಕ್ಷ್ಮ-ಆರ್ಥಿಕ ಕಾರ್ಯಾಭಿವೃದ್ಧಿ ನಿರ್ವಹಿಸುತ್ತಿದ್ದಾರೆ, ನೀತಿಮತ್ತೆ ರಚನೆ, ಗ್ರಾಹಕ ಸೇವೆ ಮೇಲ್ವಿಚಾರಣೆ ಮತ್ತು ವೇಗವಾದ, ಜವಾಬ್ದಾರಿ ಬೆಳವಣಿಗೆಗಾಗಿ ತಂತ್ರಜ್ಞಾನ ಪರಿಹಾರ ಅನುಸ್ಮಾರಕ ವ್ಯಾಪಕ ಅನುಭವ ಹೊಂದುತ್ತಿದ್ದಾರೆ.',
                 mgmt3_role: 'ಮಾನವ ಮೂಲ ಮುಖ್ಯ',
                 mgmt3_bio: 'ICICI, CITI, ಮತ್ತು KOTAK ನಲ್ಲಿ ಪ್ರಸರ ಬ್ಯಾಂಕಿಂಗ್ ಮತ್ತು ಕ್ಲೈಂಟ್ ಹೂಡಿಕೆ ಪೋರ್ಟ್‍ಫೋಲಿಯೋ ನಿರ್ವಹಣೆ 13 ವರ್ಷಗಳ ಅನುಭವ. ಕರ್ಮಚಾರಿ ಜೋಡಣೆ, ತರಬೇತಿ, ಮಾರಾಟ, ಮತ್ತು ಕಾರ್ಯಾಭಿವೃದ್ಧಿ ಆಯಾಮ ವಿರುದ್ಧವಾಗಿ ಬಹುಆಯಾಮೀಯ ಕ್ಷಮತೆ.'
+            ,
+                nav_calculator: 'ಸಾಲ ಕ್ಯಾಲ್ಕುಲೇಟರ್',
+                calc_label: 'ನಿಮ್ಮ ಸಾಲವನ್ನು ಯೋಜಿಸಿ',
+                calc_title: 'ಸಾಲ ಕ್ಯಾಲ್ಕುಲೇಟರ್',
+                calc_desc: 'ನಿಮ್ಮ ಮಾಸಿಕ EMI ಅನ್ನು ತಕ್ಷಣ ಅಂದಾಜು ಮಾಡಿ. ಸಾಲದ ಮೊತ್ತ, ಬಡ್ಡಿ ದರ ಮತ್ತು ಅವಧಿಯನ್ನು ನಿಮ್ಮ ಅಗತ್ಯಕ್ಕೆ ತಕ್ಕಂತೆ ಹೊಂದಿಸಿ.',
+                calc_loan_amount: 'ಸಾಲದ ಮೊತ್ತ',
+                calc_interest_rate: 'ಬಡ್ಡಿ ದರ',
+                calc_tenure: 'ಅವಧಿ',
+                calc_monthly_emi: 'ಮಾಸಿಕ EMI',
+                calc_total_principal: 'ಒಟ್ಟು ಅಸಲು',
+                calc_total_interest: 'ಒಟ್ಟು ಬಡ್ಡಿ',
+                calc_total_amount: 'ಒಟ್ಟು ಮೊತ್ತ',
+                calc_tenure_label: 'ಅವಧಿ',
+                calc_principal: 'ಅಸಲು',
+                calc_interest: 'ಬಡ್ಡಿ',
+                calc_months: 'ತಿಂಗಳುಗಳು',
+                calc_month: 'ತಿಂಗಳು',
+                calc_yrs: 'ವರ್ಷಗಳು',
+                calc_yr: 'ವರ್ಷ',
+                calc_mo: 'ತಿಂ.',
+                footer_calculator: 'ಸಾಲ ಕ್ಯಾಲ್ಕುಲೇಟರ್'
             },
             te: {
                 nav_about: "మా గురించి",
@@ -5829,6 +6280,27 @@
                 mgmt2_bio: 'సూక్ష్మ-ఆర్థిక కార్యకలాపాలను నిర్వహించడంలో విస్తృత అనుభవం కలిగిన, విధానాలను రూపొందించిన, క客户 సేవాను పర్యవేక్షించిన మరియు శీఘ్ర, బాధ్యతాయుక్త వృద్ధికోసం సాంకేతిక సమాధానాలను అమలు చేసిన విచక్షణ నిపుణుడు.',
                 mgmt3_role: 'మానవ వనరుల నిర్దేశకుడు',
                 mgmt3_bio: 'ICICI, CITI మరియు KOTAK లో చిన్న వ్యాపార బ్యాంకింగ్ మరియు క్లయింట్ పెట్టుబడి పోర్టफోలియో నిర్వహణలో 13 సంవత్సరాల అనుభవం. కర్మచారి సంযుక్తతను, శిక్షణ, విక్రయం మరియు కార్యకలాపాల విభాగాలలో బహుआయामी నైపుణ్యం.'
+            ,
+                nav_calculator: 'రుణ కాల్క్యులేటర్',
+                calc_label: 'మీ రుణాన్ని ప్లాన్ చేయండి',
+                calc_title: 'రుణ కాల్క్యులేటర్',
+                calc_desc: 'మీ నెలవారీ EMI ని వెంటనే అంచనా వేయండి. రుణ మొత్తం, వడ్డీ రేటు మరియు కాలాన్ని మీ అవసరాలకు అనుగుణంగా సర్దుబాటు చేయండి.',
+                calc_loan_amount: 'రుణ మొత్తం',
+                calc_interest_rate: 'వడ్డీ రేటు',
+                calc_tenure: 'కాలం',
+                calc_monthly_emi: 'నెలవారీ EMI',
+                calc_total_principal: 'మొత్తం అసలు',
+                calc_total_interest: 'మొత్తం వడ్డీ',
+                calc_total_amount: 'మొత్తం రకం',
+                calc_tenure_label: 'కాలం',
+                calc_principal: 'అసలు',
+                calc_interest: 'వడ్డీ',
+                calc_months: 'నెలలు',
+                calc_month: 'నెల',
+                calc_yrs: 'సంవత్సరాలు',
+                calc_yr: 'సంవత్సరం',
+                calc_mo: 'నె.',
+                footer_calculator: 'రుణ కాల్క్యులేటర్'
             },
             bn: {
                 nav_about: "আমাদের সম্পর্কে",
@@ -6004,6 +6476,27 @@
                 mgmt2_bio: 'একজন বুদ্ধিমান পেশাদার যার সূক্ষ্ম-অর্থায়ন ক্রিয়াকলাপ পরিচালনা, নীতি ডিজাইন, গ্রাহক সেবা তত্ত্বাবধান এবং দ্রুত, দায়বদ্ধ বৃদ্ধির জন্য প্রযুক্তি সমাধান বাস্তবায়নে বিস্তৃত অভিজ্ঞতা রয়েছে।',
                 mgmt3_role: 'মানব সম্পদ প্রধান',
                 mgmt3_bio: 'ICICI, CITI এবং KOTAK-এ খুচরা ব্যাংকিং এবং ক্লায়েন্ট বিনিয়োগ পোর্টফোলিও ব্যবস্থাপনায় 13 বছরের অভিজ্ঞতা। কর্মচারী সম্পৃক্ততা, প্রশিক্ষণ, বিক্রয় এবং ক্রিয়াকলাপ জুড়ে বহু-মাত্রিক দক্ষতা।'
+            ,
+                nav_calculator: 'ঋণ ক্যালকুলেটর',
+                calc_label: 'আপনার ঋণ পরিকল্পনা করুন',
+                calc_title: 'ঋণ ক্যালকুলেটর',
+                calc_desc: 'আপনার মাসিক EMI তাৎক্ষণিকভাবে অনুমান করুন। ঋণের পরিমাণ, সুদের হার এবং মেয়াদ আপনার প্রয়োজন অনুসারে সামঞ্জস্য করুন।',
+                calc_loan_amount: 'ঋণের পরিমাণ',
+                calc_interest_rate: 'সুদের হার',
+                calc_tenure: 'মেয়াদ',
+                calc_monthly_emi: 'মাসিক EMI',
+                calc_total_principal: 'মোট আসল',
+                calc_total_interest: 'মোট সুদ',
+                calc_total_amount: 'মোট পরিমাণ',
+                calc_tenure_label: 'মেয়াদ',
+                calc_principal: 'আসল',
+                calc_interest: 'সুদ',
+                calc_months: 'মাস',
+                calc_month: 'মাস',
+                calc_yrs: 'বছর',
+                calc_yr: 'বছর',
+                calc_mo: 'মা.',
+                footer_calculator: 'ঋণ ক্যালকুলেটর'
             },
             pa: {
                 nav_about: "ਸਾਡੇ ਬਾਰੇ",
@@ -6179,6 +6672,27 @@
                 mgmt2_bio: 'ਇੱਕ ਤੀਖੀ ਪੇਸ਼ੇਵਰ ਜਿਸ ਕੋਲ ਸੂਖਮ-ਵਿੱਤ ਸੰਚਾਲਨ ਦੀ ਆਗੂਈ, ਨੀਤੀਆਂ ਦੇ ਡਿਜ਼ਾਈਨ, ਗ੍ਰਾਹਕ ਸੇਵਾ ਦੀ ਨਿਗਰਾਨੀ, ਅਤੇ ਤੇਜ਼, ਜਵਾਬਦੇਹ ਵਿਕਾਸ ਲਈ ਤਕਨੀਕੀ ਹੱਲ ਲਾਗੂ ਕਰਨ ਵਿੱਚ ਵਿਸ਼ਾਲ ਅਨੁਭਵ ਹੈ।',
                 mgmt3_role: 'ਮਾਨਵ ਸਰੋਤ ਦਾ ਮੁਖ',
                 mgmt3_bio: 'ICICI, CITI, ਅਤੇ KOTAK ਵਿੱਚ ਖੁਦਰਾ ਬੈਂਕਿੰਗ ਅਤੇ ਗ੍ਰਾਹਕ ਨਿਵੇਸ਼ ਪੋਰਟਫੋਲੀਓ ਪ੍ਰਬੰਧਨ ਵਿੱਚ 13 ਸਾਲਾਂ ਦਾ ਅਨੁਭਵ। ਮੁਲਾਜ਼ਮ ਸੰਲਗਨ, ਸਿਖਲਾਈ, ਵਿਕ੍ਰਯ ਅਤੇ ਸੰਚਾਲਨ ਦਿਸ਼ਾਵਾਂ ਵਿੱਚ ਬਹੁ-ਅਯਾਮੀ ਮਾਹਿਰੀ।'
+            ,
+                nav_calculator: 'ਕਰਜ਼ਾ ਕੈਲਕੁਲੇਟਰ',
+                calc_label: 'ਆਪਣੇ ਕਰਜ਼ੇ ਦੀ ਯੋਜਨਾ ਬਣਾਓ',
+                calc_title: 'ਕਰਜ਼ਾ ਕੈਲਕੁਲੇਟਰ',
+                calc_desc: 'ਆਪਣੀ ਮਹੀਨਾਵਾਰ EMI ਤੁਰੰਤ ਜਾਣੋ। ਕਰਜ਼ੇ ਦੀ ਰਕਮ, ਵਿਆਜ ਦਰ ਅਤੇ ਮਿਆਦ ਨੂੰ ਆਪਣੀ ਲੋੜ ਅਨੁਸਾਰ ਐਡਜਸਟ ਕਰੋ।',
+                calc_loan_amount: 'ਕਰਜ਼ੇ ਦੀ ਰਕਮ',
+                calc_interest_rate: 'ਵਿਆਜ ਦਰ',
+                calc_tenure: 'ਮਿਆਦ',
+                calc_monthly_emi: 'ਮਹੀਨਾਵਾਰ EMI',
+                calc_total_principal: 'ਕੁੱਲ ਮੂਲਧਨ',
+                calc_total_interest: 'ਕੁੱਲ ਵਿਆਜ',
+                calc_total_amount: 'ਕੁੱਲ ਰਕਮ',
+                calc_tenure_label: 'ਮਿਆਦ',
+                calc_principal: 'ਮੂਲਧਨ',
+                calc_interest: 'ਵਿਆਜ',
+                calc_months: 'ਮਹੀਨੇ',
+                calc_month: 'ਮਹੀਨਾ',
+                calc_yrs: 'ਸਾਲ',
+                calc_yr: 'ਸਾਲ',
+                calc_mo: 'ਮ.',
+                footer_calculator: 'ਕਰਜ਼ਾ ਕੈਲਕੁਲੇਟਰ'
             },
             ml: {
                 nav_about: "ഞങ്ങളെ കുറിച്ച്",
@@ -6354,6 +6868,27 @@
                 mgmt2_bio: 'ഒരു പ്രതിഭാഷ പെരുമാൻ സാധാരണ-സാമ്പത്തികത കാര്യങ്ങൾ നിരീക്ഷണം, നൈറ്റിയ സ്ഥിരതകൾ, പഠര-സേവന ശാഖവാണിക, കയിനു് തീവ്രതര, ഉത്തരവാദിത്ത വികസനത്ത് സാങ്കേതിക പരിഹാരം വിതരണം സാധാരാത്ത അനുഭവങ്ങളുണ്ടെത്ത്സമീപിച്ച.',
                 mgmt3_role: 'മനുഷ്യ വനിതാ നേതൃത്വം',
                 mgmt3_bio: 'ICICI, CITI, കയിനു് KOTAK ൽ കൃത ബാങ്കിംഗ് കയിനു് അതിതി നിക്ഷേപത്ത പോർട്ടബിലിയോ ഓർഘാനൈജേഷനിൽ 13 വര്ഷ അനുഭവത്ത. കര്മ്മചാരിത്തം സൃജനകത്ത്തിനുള്ള, പരിശീലനം, വിറ്റു, കയിനു് പ്രവർത്തനങ്ങൾ അതിരുകീളിഡ് ബാഹുവ്യാപിയായ നിപുണത്ത്.'
+            ,
+                nav_calculator: 'ലോണ്‍ കാല്‍ക്കുലേറ്റര്‍',
+                calc_label: 'നിങ്ങളുടെ വായ്പ ആസൂത്രണം ചെയ്യുക',
+                calc_title: 'ലോണ്‍ കാല്‍ക്കുലേറ്റര്‍',
+                calc_desc: 'നിങ്ങളുടെ പ്രതിമാസ EMI തൽക്ഷണം കണക്കാക്കുക. വായ്പ തുക, പലിശ നിരക്ക്, കാലാവധി എന്നിവ നിങ്ങളുടെ ആവശ്യത്തിനനുസരിച്ച് ക്രമീകരിക്കുക.',
+                calc_loan_amount: 'വായ്പ തുക',
+                calc_interest_rate: 'പലിശ നിരക്ക്',
+                calc_tenure: 'കാലാവധി',
+                calc_monthly_emi: 'പ്രതിമാസ EMI',
+                calc_total_principal: 'ആകെ മുതല്‍',
+                calc_total_interest: 'ആകെ പലിശ',
+                calc_total_amount: 'ആകെ തുക',
+                calc_tenure_label: 'കാലാവധി',
+                calc_principal: 'മുതല്‍',
+                calc_interest: 'പലിശ',
+                calc_months: 'മാസങ്ങള്‍',
+                calc_month: 'മാസം',
+                calc_yrs: 'വര്‍ഷങ്ങള്‍',
+                calc_yr: 'വര്‍ഷം',
+                calc_mo: 'മാ.',
+                footer_calculator: 'ലോണ്‍ കാല്‍ക്കുലേറ്റര്‍'
             },
             or: {
                 nav_about: "ଆମ ବିଷୟରେ",
@@ -6529,6 +7064,27 @@
                 mgmt2_bio: 'ଏକ ବୁଦ୍ଧିସେବୀ ବୃତ୍ତିଜୀବୀ ଯାହାକୁ ସୂକ୍ଷ୍ମ-ଆର୍ଥିକତା ପ୍ରକିୟାକରଣ ନେତୃତ୍ୱ, ନୀତି ଡିଜାଇନ, ଗ୍ରାହକ ସେବା ଅଧୀକ୍ଷଣ, ଏବଂ ଦ୍ରୁତ, ଦାୟବଦ୍ଧତା ବୃଦ୍ଧିଧିଁ ଆଦ୍ଭୁକ୍ତ ସମାଧାନ କାର୍ଯ୍ୟନ୍ୱୟନରେ ବିସ୍ତୃତ ଅଭିଜ୍ଞତା ଅଛି।',
                 mgmt3_role: 'ମାନବ ସମ୍ବଳ ନେତୃତ୍ୱ',
                 mgmt3_bio: 'ICICI, CITI ଏବଂ KOTAK ରେ ଖୁଚୁରା ବ୍ୟାଙ୍କିଙ୍ଗ ଏବଂ ଗ୍ରାହକ ବିନିଯୋଗ ପୋର୍ଟଫୋଲିଓ ବ୍ୟବସ୍ଥାପନାରେ 13 ବର୍ଷ ଅଭିଜ୍ଞତା। କର୍ମଚାରୀ ସମ୍ୱଳନ, ତାଲିମ, ବିକ୍ରୟ ଏବଂ ପ୍ରକିୟାକରଣ ଦିଗ ଉପରେ ବহୁ-ମାତ୍ରିକ ଦକ୍ଷତା।'
+            ,
+                nav_calculator: 'ଋଣ କ୍ୟାଲକୁଲେଟର',
+                calc_label: 'ଆପଣଙ୍କ ଋଣ ଯୋଜନା କରନ୍ତୁ',
+                calc_title: 'ଋଣ କ୍ୟାଲକୁଲେଟର',
+                calc_desc: 'ଆପଣଙ୍କ ମାସିକ EMI ତୁରନ୍ତ ଅନୁମାନ କରନ୍ତୁ। ଋଣ ରାଶି, ସୁଧ ହାର ଏବଂ ଅବଧିକୁ ଆପଣଙ୍କ ଆବଶ୍ୟକତା ଅନୁସାରେ ସମାଯୋଜନ କରନ୍ତୁ।',
+                calc_loan_amount: 'ଋଣ ରାଶି',
+                calc_interest_rate: 'ସୁଧ ହାର',
+                calc_tenure: 'ଅବଧି',
+                calc_monthly_emi: 'ମାସିକ EMI',
+                calc_total_principal: 'ମୋଟ ମୂଳଧନ',
+                calc_total_interest: 'ମୋଟ ସୁଧ',
+                calc_total_amount: 'ମୋଟ ରାଶି',
+                calc_tenure_label: 'ଅବଧି',
+                calc_principal: 'ମୂଳଧନ',
+                calc_interest: 'ସୁଧ',
+                calc_months: 'ମାସ',
+                calc_month: 'ମାସ',
+                calc_yrs: 'ବର୍ଷ',
+                calc_yr: 'ବର୍ଷ',
+                calc_mo: 'ମା.',
+                footer_calculator: 'ଋଣ କ୍ୟାଲକୁଲେଟର'
             },
             as: {
                 nav_about: "আমাৰ বিষয়ে",
@@ -6704,6 +7260,27 @@
                 mgmt2_bio: 'একজন প্রবীণ পেশাদার যার সূক্ষ্ম-অর্থায়ন ক্রিয়াকলাপ পরিচালনা, নীতি ডিজাইন, গ্রাহক সেবা তত্ত্বাবধান এবং দ্রুত, দায়বদ্ধ বৃদ্ধির জন্য প্রযুক্তি সমাধান বাস্তবায়নে বিস্তৃত অভিজ্ঞতা রয়েছে।',
                 mgmt3_role: 'মানব সম্পদ প্রধান',
                 mgmt3_bio: 'ICICI, CITI এবং KOTAK এ খুচরা ব্যাংকিং এবং ক্লায়েন্ট বিনিয়োগ পোর্টফোলিও ব্যবস্থাপনায় 13 বছরের অভিজ্ঞতা। কর্মচারী সম্পৃক্ততা, প্রশিক্ষণ, বিক্রয় এবং ক্রিয়াকলাপ জুড়ে বহু-মাত্রিক দক্ষতা।'
+            ,
+                nav_calculator: 'ঋণ কেলকুলেটৰ',
+                calc_label: 'আপোনাৰ ঋণ পৰিকল্পনা কৰক',
+                calc_title: 'ঋণ কেলকুলেটৰ',
+                calc_desc: 'আপোনাৰ মাহেকীয়া EMI তৎক্ষণাত অনুমান কৰক। ঋণৰ পৰিমাণ, সুদৰ হাৰ আৰু মেয়াদ আপোনাৰ প্ৰয়োজন অনুসৰি সমন্বয় কৰক।',
+                calc_loan_amount: 'ঋণৰ পৰিমাণ',
+                calc_interest_rate: 'সুদৰ হাৰ',
+                calc_tenure: 'মেয়াদ',
+                calc_monthly_emi: 'মাহেকীয়া EMI',
+                calc_total_principal: 'মুঠ মূলধন',
+                calc_total_interest: 'মুঠ সুদ',
+                calc_total_amount: 'মুঠ পৰিমাণ',
+                calc_tenure_label: 'মেয়াদ',
+                calc_principal: 'মূলধন',
+                calc_interest: 'সুদ',
+                calc_months: 'মাহ',
+                calc_month: 'মাহ',
+                calc_yrs: 'বছৰ',
+                calc_yr: 'বছৰ',
+                calc_mo: 'মা.',
+                footer_calculator: 'ঋণ কেলকুলেটৰ'
             }
         };
 
@@ -6733,6 +7310,9 @@
 
             // Close dropdown
             document.getElementById('langSwitcher').classList.remove('open');
+
+            // Refresh calculator dynamic labels for current language
+            if (typeof updateCalc === 'function') updateCalc();
         }
 
         function toggleLangDropdown() {
@@ -6994,6 +7574,78 @@
                 }
             });
         });
+    </script>
+
+    <!-- ═══════════════════════ LOAN CALCULATOR JS ═══════════════════════ -->
+    <script>
+    function formatINR(n) {
+        var s = Math.round(n).toString();
+        var afterPoint = '';
+        if (s.indexOf('.') > 0) afterPoint = s.substring(s.indexOf('.'));
+        s = s.split('.')[0];
+        var lastThree = s.substring(s.length - 3);
+        var otherNumbers = s.substring(0, s.length - 3);
+        if (otherNumbers !== '') lastThree = ',' + lastThree;
+        return '\u20B9' + otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ',') + lastThree + afterPoint;
+    }
+    function getCalcTrans(key) {
+        var lang = document.documentElement.getAttribute('data-lang') || 'en';
+        if (typeof translations !== 'undefined' && translations[lang] && translations[lang][key]) {
+            return translations[lang][key];
+        }
+        // Fallback defaults
+        var fallback = {
+            calc_months: 'months', calc_month: 'month',
+            calc_yrs: 'yrs', calc_yr: 'yr', calc_mo: 'mo'
+        };
+        return fallback[key] || key;
+    }
+    function updateCalc() {
+        var P = parseFloat(document.getElementById('calcAmt').value);
+        var annualRate = parseFloat(document.getElementById('calcRate').value);
+        var N = parseInt(document.getElementById('calcTenure').value);
+        var r = annualRate / 12 / 100;
+
+        // Update display labels with i18n
+        document.getElementById('calcAmtVal').textContent = formatINR(P);
+        document.getElementById('calcRateVal').textContent = annualRate + '%';
+        document.getElementById('calcTenureVal').textContent = N + ' ' + (N === 1 ? getCalcTrans('calc_month') : getCalcTrans('calc_months'));
+
+        // EMI formula: EMI = P * r * (1+r)^N / ((1+r)^N - 1)
+        var emi, totalAmt, totalInterest;
+        if (r === 0) {
+            emi = P / N;
+            totalAmt = P;
+            totalInterest = 0;
+        } else {
+            var compoundFactor = Math.pow(1 + r, N);
+            emi = P * r * compoundFactor / (compoundFactor - 1);
+            totalAmt = emi * N;
+            totalInterest = totalAmt - P;
+        }
+
+        document.getElementById('calcEMI').textContent = formatINR(emi);
+        document.getElementById('calcPrincipal').textContent = formatINR(P);
+        document.getElementById('calcInterest').textContent = formatINR(totalInterest);
+        document.getElementById('calcTotal').textContent = formatINR(totalAmt);
+
+        var yrs = Math.floor(N / 12);
+        var mos = N % 12;
+        var tenureStr = '';
+        if (yrs > 0) tenureStr += yrs + ' ' + (yrs === 1 ? getCalcTrans('calc_yr') : getCalcTrans('calc_yrs'));
+        if (yrs > 0 && mos > 0) tenureStr += ' ';
+        if (mos > 0 || yrs === 0) tenureStr += mos + ' ' + getCalcTrans('calc_mo');
+        document.getElementById('calcTenureDisp').textContent = tenureStr;
+
+        // Update donut chart
+        var principalPct = totalAmt > 0 ? (P / totalAmt) * 100 : 100;
+        var interestPct = 100 - principalPct;
+        document.getElementById('donutPrincipal').setAttribute('stroke-dasharray', principalPct + ' ' + (100 - principalPct));
+        document.getElementById('donutInterest').setAttribute('stroke-dasharray', interestPct + ' ' + (100 - interestPct));
+        document.getElementById('donutInterest').setAttribute('stroke-dashoffset', 25 - principalPct);
+    }
+    // Initialize on load
+    document.addEventListener('DOMContentLoaded', function() { updateCalc(); });
     </script>
 
     <!-- Network map is a plain image, no JS needed -->
