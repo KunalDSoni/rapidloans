@@ -327,51 +327,27 @@
             font-size: 0.82rem !important;
         }
 
-        /* Indic scripts: smaller nav links on desktop (>900px) */
-        @media (min-width: 901px) {
-            [data-lang="hi"] .nav-links a,
-            [data-lang="gu"] .nav-links a,
-            [data-lang="mr"] .nav-links a,
-            [data-lang="bn"] .nav-links a,
-            [data-lang="pa"] .nav-links a,
-            [data-lang="as"] .nav-links a {
-                font-size: 0.72rem !important;
-            }
-            /* Extra-wide scripts get even smaller */
-            [data-lang="ta"] .nav-links a,
-            [data-lang="ml"] .nav-links a,
-            [data-lang="or"] .nav-links a,
-            [data-lang="te"] .nav-links a,
-            [data-lang="kn"] .nav-links a {
-                font-size: 0.68rem !important;
-            }
-            [data-lang="ta"] .nav-cta,
-            [data-lang="ml"] .nav-cta,
-            [data-lang="or"] .nav-cta,
-            [data-lang="te"] .nav-cta,
-            [data-lang="kn"] .nav-cta,
-            [data-lang="hi"] .nav-cta,
-            [data-lang="gu"] .nav-cta,
-            [data-lang="mr"] .nav-cta,
-            [data-lang="bn"] .nav-cta,
-            [data-lang="pa"] .nav-cta,
-            [data-lang="as"] .nav-cta {
-                font-size: 0.68rem !important;
-                padding: 5px 10px !important;
-            }
-            [data-lang="ta"] .nav-links,
-            [data-lang="ml"] .nav-links,
-            [data-lang="or"] .nav-links,
-            [data-lang="te"] .nav-links,
-            [data-lang="kn"] .nav-links,
-            [data-lang="hi"] .nav-links,
-            [data-lang="gu"] .nav-links,
-            [data-lang="mr"] .nav-links,
-            [data-lang="bn"] .nav-links,
-            [data-lang="pa"] .nav-links,
-            [data-lang="as"] .nav-links {
-                gap: 10px;
-            }
+        /* Indic nav links: match English's visual size (0.85rem).
+           Wide-script languages (ta/ml/kn/te/or/bn/as) collapse to hamburger
+           earlier via rules below, so they don't need downscaling here. */
+
+        /* ═══ LOGO NAME — per-language sizing ═══
+           Match English's visual size on desktop; only scale down
+           on mobile for the widest scripts so the navbar never overflows. */
+
+        /* Mobile: Tamil/Malayalam transliterations are very long words
+           that push the hamburger off-screen unless we shrink them. */
+        @media (max-width: 600px) {
+            [data-lang="ta"] .logo-name,
+            [data-lang="ml"] .logo-name { font-size: 1rem; }
+            [data-lang="ta"] .logo-icon,
+            [data-lang="ml"] .logo-icon { width: 38px; height: 38px; }
+            [data-lang="ta"] .logo,
+            [data-lang="ml"] .logo { gap: 8px; }
+        }
+        @media (max-width: 400px) {
+            [data-lang="ta"] .logo-name,
+            [data-lang="ml"] .logo-name { font-size: 0.88rem; }
         }
 
         [data-lang="ta"] .btn,
@@ -657,18 +633,18 @@
             top: calc(100% + 8px);
             left: 50%;
             transform: translateX(-50%) translateY(-8px);
-            background: rgba(255,255,255,0.97);
-            backdrop-filter: blur(28px);
-            -webkit-backdrop-filter: blur(28px);
-            border: 1px solid rgba(0,0,0,0.08);
+            background: var(--t-card-bg, rgba(255,255,255,0.97));
+            backdrop-filter: saturate(180%) blur(var(--t-nav-blur, 24px));
+            -webkit-backdrop-filter: saturate(180%) blur(var(--t-nav-blur, 24px));
+            border: 1px solid var(--t-card-border, rgba(0,0,0,0.08));
             border-radius: 12px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.18);
             overflow-y: auto;
             overflow-x: hidden;
             max-height: 500px;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.25s ease;
+            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
             display: flex;
             flex-direction: column;
             padding: 4px;
@@ -688,11 +664,12 @@
             width: 30px;
             height: 30px;
             border-radius: 8px;
-            background: linear-gradient(135deg, rgba(99,91,255,0.12), rgba(0,212,170,0.12));
+            background: var(--t-item-bg, rgba(99,91,255,0.1));
             font-size: 0.88rem;
             font-weight: 700;
-            color: var(--accent);
+            color: var(--t-text-dark);
             flex-shrink: 0;
+            transition: background 0.2s ease, color 0.2s ease;
         }
 
         .lang-option {
@@ -703,24 +680,25 @@
             width: 40px;
             height: 40px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: background 0.2s ease, border-color 0.2s ease;
             border: 2px solid transparent;
             background: none;
             border-radius: 10px;
             font-family: inherit;
         }
 
-        .lang-option:hover {
-            background: rgba(99,91,255,0.08);
+        .lang-option:hover .lang-icon {
+            background: rgba(99,91,255,0.18);
+            color: var(--accent);
         }
 
         .lang-option.active {
-            background: rgba(99,91,255,0.1);
             border-color: var(--accent);
         }
 
         .lang-option.active .lang-icon {
-            color: var(--accent);
+            background: var(--accent);
+            color: #fff;
         }
 
 
@@ -978,6 +956,16 @@
             .nav-links a { font-size: 0.72rem; }
             .nav-cta { padding: 5px 10px !important; font-size: 0.72rem !important; }
             .nav-right { gap: 8px; }
+        }
+
+        /* Tamil/Malayalam nav links are wider — scale font just enough
+           to fit the full menu on desktop without collapsing to hamburger.
+           JS checkNavOverflow() is the safety net for genuinely narrow widths. */
+        @media (min-width: 901px) {
+            [data-lang="ta"] .nav-links a,
+            [data-lang="ml"] .nav-links a { font-size: 0.78rem; }
+            [data-lang="ta"] .nav-links,
+            [data-lang="ml"] .nav-links { gap: 14px; }
         }
 
         .nav-right {
@@ -1360,10 +1348,24 @@
         }
 
         .hero h1 .highlight {
-            background: linear-gradient(135deg, #00D4AA, #7DD3FC, #635BFF);
+            background: linear-gradient(
+                90deg,
+                #FF8A3D 0%,
+                #FF3D8A 25%,
+                #B23DFF 50%,
+                #3D8AFF 75%,
+                #00D4AA 100%
+            );
+            background-size: 200% 100%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            animation: heroHighlightFlow 8s ease-in-out infinite;
+        }
+
+        @keyframes heroHighlightFlow {
+            0%, 100% { background-position: 0% 50%; }
+            50%      { background-position: 100% 50%; }
         }
 
         .hero-desc {
@@ -3422,6 +3424,55 @@
         /* ── Force collapse (JS overflow) ── */
         .navbar.nav-force-collapse .nav-links { display: none; }
         .navbar.nav-force-collapse .hamburger { display: flex; }
+
+        /* ── Mobile nav overlay when hamburger is toggled ── */
+        .nav-links.active {
+            display: flex !important;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
+            gap: 0;
+            position: fixed;
+            top: 72px; left: 0; right: 0;
+            max-height: calc(100vh - 72px);
+            padding: 12px 24px 32px;
+            background: var(--t-nav-bg, rgba(255,255,255,0.98));
+            backdrop-filter: saturate(180%) blur(var(--t-nav-blur, 20px));
+            -webkit-backdrop-filter: saturate(180%) blur(var(--t-nav-blur, 20px));
+            box-shadow: 0 8px 24px rgba(10,37,64,0.08);
+            border-top: 1px solid var(--t-card-border, rgba(0,0,0,0.06));
+            z-index: -1;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            animation: navSlideDown 0.25s ease-out;
+        }
+        .navbar.scrolled .nav-links.active { top: 60px; max-height: calc(100vh - 60px); }
+        .nav-links.active a {
+            display: block !important;
+            padding: 16px 8px !important;
+            font-size: 1.05rem !important;
+            font-weight: 500;
+            color: var(--t-text-dark) !important;
+            white-space: normal !important;
+            border-bottom: 1px solid var(--t-card-border, rgba(0,0,0,0.06));
+            letter-spacing: 0;
+        }
+        .nav-links.active a:last-child { border-bottom: none; }
+        .nav-links.active a::after { display: none !important; }
+        .nav-links.active .nav-cta {
+            margin-top: 16px;
+            padding: 14px 20px !important;
+            border-radius: 28px !important;
+            font-size: 1rem !important;
+            text-align: center;
+            background: var(--accent) !important;
+            color: #fff !important;
+            border: none;
+        }
+        @keyframes navSlideDown {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
         /* ═══════════════════════════════════════════
            RESPONSIVE - MOBILE (hamburger at 900px)
