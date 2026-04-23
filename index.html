@@ -327,20 +327,51 @@
             font-size: 0.82rem !important;
         }
 
-        [data-lang="ta"] .nav-links a,
-        [data-lang="ml"] .nav-links a,
-        [data-lang="or"] .nav-links a,
-        [data-lang="te"] .nav-links a,
-        [data-lang="kn"] .nav-links a {
-            font-size: 0.82rem !important;
-        }
-
-        [data-lang="ta"] .nav-cta,
-        [data-lang="ml"] .nav-cta,
-        [data-lang="or"] .nav-cta,
-        [data-lang="te"] .nav-cta,
-        [data-lang="kn"] .nav-cta {
-            font-size: 0.8rem !important;
+        /* Indic scripts: smaller nav links on desktop (>900px) */
+        @media (min-width: 901px) {
+            [data-lang="hi"] .nav-links a,
+            [data-lang="gu"] .nav-links a,
+            [data-lang="mr"] .nav-links a,
+            [data-lang="bn"] .nav-links a,
+            [data-lang="pa"] .nav-links a,
+            [data-lang="as"] .nav-links a {
+                font-size: 0.72rem !important;
+            }
+            /* Extra-wide scripts get even smaller */
+            [data-lang="ta"] .nav-links a,
+            [data-lang="ml"] .nav-links a,
+            [data-lang="or"] .nav-links a,
+            [data-lang="te"] .nav-links a,
+            [data-lang="kn"] .nav-links a {
+                font-size: 0.68rem !important;
+            }
+            [data-lang="ta"] .nav-cta,
+            [data-lang="ml"] .nav-cta,
+            [data-lang="or"] .nav-cta,
+            [data-lang="te"] .nav-cta,
+            [data-lang="kn"] .nav-cta,
+            [data-lang="hi"] .nav-cta,
+            [data-lang="gu"] .nav-cta,
+            [data-lang="mr"] .nav-cta,
+            [data-lang="bn"] .nav-cta,
+            [data-lang="pa"] .nav-cta,
+            [data-lang="as"] .nav-cta {
+                font-size: 0.68rem !important;
+                padding: 5px 10px !important;
+            }
+            [data-lang="ta"] .nav-links,
+            [data-lang="ml"] .nav-links,
+            [data-lang="or"] .nav-links,
+            [data-lang="te"] .nav-links,
+            [data-lang="kn"] .nav-links,
+            [data-lang="hi"] .nav-links,
+            [data-lang="gu"] .nav-links,
+            [data-lang="mr"] .nav-links,
+            [data-lang="bn"] .nav-links,
+            [data-lang="pa"] .nav-links,
+            [data-lang="as"] .nav-links {
+                gap: 10px;
+            }
         }
 
         [data-lang="ta"] .btn,
@@ -488,7 +519,8 @@
         .theme-menu {
             position: absolute;
             top: calc(100% + 8px);
-            right: 0;
+            left: 50%;
+            transform: translateX(-50%) translateY(-8px);
             background: rgba(255,255,255,0.97);
             backdrop-filter: blur(28px);
             -webkit-backdrop-filter: blur(28px);
@@ -496,50 +528,48 @@
             border-radius: 12px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.15);
             overflow: hidden;
-            width: max-content;
             opacity: 0;
             visibility: hidden;
-            transform: translateY(-8px);
             transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            padding: 4px;
+            width: auto;
         }
 
         .theme-switcher.open .theme-menu {
             opacity: 1;
             visibility: visible;
-            transform: translateY(0);
+            transform: translateX(-50%) translateY(0);
         }
 
         .theme-menu-option {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 10px 16px;
-            font-size: 0.82rem;
-            font-weight: 500;
-            color: #425466; /* Keep fixed for dropdown readability on white bg */
+            justify-content: center;
+            padding: 0;
+            width: 40px;
+            height: 40px;
             cursor: pointer;
-            border: none;
+            border: 2px solid transparent;
             background: none;
-            width: 100%;
-            text-align: left;
+            border-radius: 10px;
             font-family: inherit;
-            transition: background 0.2s;
+            transition: all 0.2s ease;
         }
 
         .theme-menu-option:hover {
-            background: rgba(99,91,255,0.06);
+            background: rgba(99,91,255,0.08);
         }
 
         .theme-menu-option.active {
-            background: rgba(99,91,255,0.08);
-            color: var(--accent);
-            font-weight: 600;
+            background: rgba(99,91,255,0.1);
+            border-color: var(--accent);
         }
 
         .theme-menu-icon {
-            font-size: 1rem;
-            width: 22px;
-            text-align: center;
+            font-size: 1.2rem;
+            line-height: 1;
         }
 
         /* ═══════════════════════════════════════════
@@ -625,7 +655,8 @@
         .lang-dropdown {
             position: absolute;
             top: calc(100% + 8px);
-            right: 0;
+            left: 50%;
+            transform: translateX(-50%) translateY(-8px);
             background: rgba(255,255,255,0.97);
             backdrop-filter: blur(28px);
             -webkit-backdrop-filter: blur(28px);
@@ -634,41 +665,31 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.15);
             overflow-y: auto;
             overflow-x: hidden;
-            max-height: 400px;
+            max-height: 500px;
             opacity: 0;
             visibility: hidden;
-            transform: translateY(-8px);
             transition: all 0.25s ease;
-            width: max-content;
-        }
-
-        /* Force dark text inside dropdowns regardless of theme */
-        .lang-dropdown .lang-option {
-            color: #425466;
-        }
-        .lang-dropdown .lang-option:hover {
-            background: rgba(99,91,255,0.06);
-            color: #0A2540;
-        }
-        .lang-dropdown .lang-option.active {
-            color: var(--accent);
+            display: flex;
+            flex-direction: column;
+            padding: 4px;
+            width: auto;
         }
 
         .lang-switcher.open .lang-dropdown {
             opacity: 1;
             visibility: visible;
-            transform: translateY(0);
+            transform: translateX(-50%) translateY(0);
         }
 
         .lang-icon {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 26px;
-            height: 26px;
-            border-radius: 6px;
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
             background: linear-gradient(135deg, rgba(99,91,255,0.12), rgba(0,212,170,0.12));
-            font-size: 0.82rem;
+            font-size: 0.88rem;
             font-weight: 700;
             color: var(--accent);
             flex-shrink: 0;
@@ -677,28 +698,29 @@
         .lang-option {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 12px 16px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--t-text-body);
+            justify-content: center;
+            padding: 0;
+            width: 40px;
+            height: 40px;
             cursor: pointer;
-            transition: background 0.2s;
-            border: none;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
             background: none;
-            width: 100%;
-            text-align: left;
+            border-radius: 10px;
             font-family: inherit;
         }
 
         .lang-option:hover {
-            background: var(--t-item-bg);
+            background: rgba(99,91,255,0.08);
         }
 
         .lang-option.active {
-            background: rgba(99,91,255,0.06);
+            background: rgba(99,91,255,0.1);
+            border-color: var(--accent);
+        }
+
+        .lang-option.active .lang-icon {
             color: var(--accent);
-            font-weight: 600;
         }
 
 
@@ -727,9 +749,10 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 16px;
         }
 
-        .logo {
+        .logo, a.logo, .logo:hover, .logo:focus, .logo:active, .logo:visited {
             display: flex;
             align-items: center;
             gap: 10px;
@@ -739,6 +762,11 @@
             color: var(--t-text-dark);
             transition: var(--transition);
             flex-shrink: 0;
+            text-decoration: none !important;
+            border-bottom: none !important;
+        }
+        .logo *, .logo *::after, .logo *::before {
+            text-decoration: none !important;
         }
 
         .navbar.scrolled .logo { color: var(--primary); }
@@ -880,7 +908,9 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 24px;
+            gap: 20px;
+            flex-shrink: 1;
+            min-width: 0;
         }
 
         .nav-links a {
@@ -929,24 +959,32 @@
 
         .nav-cta::after { display: none !important; }
 
-        /* Nav compact for medium screens */
-        @media (max-width: 1200px) and (min-width: 769px) {
+        /* Nav compact for medium-large screens */
+        @media (max-width: 1400px) and (min-width: 1201px) {
             .nav-links { gap: 16px; }
-            .nav-links a { font-size: 0.8rem; }
-            .nav-cta { padding: 7px 16px !important; font-size: 0.8rem !important; }
+            .nav-links a { font-size: 0.82rem; }
+            .nav-cta { padding: 7px 16px !important; font-size: 0.82rem !important; }
         }
-        @media (max-width: 960px) and (min-width: 769px) {
-            .nav-links { gap: 10px; }
-            .nav-links a { font-size: 0.75rem; }
-            .nav-cta { padding: 6px 14px !important; font-size: 0.75rem !important; }
+        /* Nav compact for medium screens */
+        @media (max-width: 1200px) and (min-width: 1001px) {
+            .nav-links { gap: 12px; }
+            .nav-links a { font-size: 0.76rem; }
+            .nav-cta { padding: 6px 12px !important; font-size: 0.76rem !important; }
+            .nav-right { gap: 10px; }
+        }
+        /* Nav very compact for smaller screens */
+        @media (max-width: 1000px) and (min-width: 901px) {
+            .nav-links { gap: 8px; }
+            .nav-links a { font-size: 0.72rem; }
+            .nav-cta { padding: 5px 10px !important; font-size: 0.72rem !important; }
             .nav-right { gap: 8px; }
-            .lang-btn { font-size: 0.75rem; padding: 6px 10px; }
         }
 
         .nav-right {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 12px;
+            flex-shrink: 0;
         }
 
         .hamburger {
@@ -1911,24 +1949,29 @@
         }
         /* ── Tablet ── */
         @media (max-width: 768px) {
-            .network-map-container { border-radius: 16px; }
+            .network-map-container { border-radius: 16px; overflow: visible; }
             .map-stats-overlay {
-                right: auto; left: 50%; bottom: 16px;
-                transform: translateX(-50%);
+                position: relative;
+                right: auto; left: auto; bottom: auto;
+                transform: none;
                 flex-direction: row;
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 8px;
+                gap: 10px;
+                margin-top: 16px;
             }
-            .map-stat-pill { padding: 7px 14px; font-size: 0.75rem; gap: 7px; }
+            .map-stat-pill {
+                padding: 8px 16px; font-size: 0.78rem; gap: 8px;
+                background: rgba(0,0,0,0.6);
+            }
             .map-stat-dot { width: 8px; height: 8px; }
         }
         /* ── Mobile ── */
         @media (max-width: 480px) {
-            .network-map-container { border-radius: 12px; margin: 0 -8px; width: calc(100% + 16px); }
-            .map-stats-overlay { bottom: 10px; gap: 6px; }
-            .map-stat-pill { padding: 5px 10px; font-size: 0.68rem; gap: 5px; }
-            .map-stat-dot { width: 6px; height: 6px; }
+            .network-map-container { border-radius: 12px; margin: 0 -8px; width: calc(100% + 16px); overflow: visible; }
+            .map-stats-overlay { margin-top: 12px; gap: 8px; }
+            .map-stat-pill { padding: 7px 14px; font-size: 0.72rem; gap: 6px; }
+            .map-stat-dot { width: 7px; height: 7px; }
         }
 
         /* ═══════════════════════════════════════════
@@ -3297,40 +3340,95 @@
         }
 
         /* ═══════════════════════════════════════════
-           RESPONSIVE - MOBILE
+           MOBILE MENU (shared between force-collapse & media query)
         ═══════════════════════════════════════════ */
-        @media (max-width: 768px) {
+        .mobile-menu-open {
+            display: flex !important;
+            flex-direction: column;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--t-card-bg, #fff);
+            z-index: 9999;
+            padding: 0;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .mobile-menu-open .mobile-menu-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--t-card-border);
+        }
+
+        .mobile-menu-open .mobile-menu-body {
+            flex: 1;
+            padding: 8px 0;
+        }
+
+        .mobile-menu-open .mobile-menu-body a {
+            display: flex !important;
+            align-items: center;
+            padding: 16px 28px !important;
+            color: var(--t-text-dark) !important;
+            font-size: 1.05rem !important;
+            font-weight: 500;
+            letter-spacing: 0;
+            white-space: normal !important;
+            line-height: 1.4;
+            border-bottom: none !important;
+            transition: background 0.15s ease;
+        }
+
+        .mobile-menu-open .mobile-menu-body a:hover {
+            background: var(--t-item-bg, rgba(0,0,0,0.03));
+        }
+
+        .mobile-menu-open .mobile-menu-body a::after { display: none !important; }
+
+        .mobile-menu-open .mobile-menu-body .nav-cta {
+            margin: 16px 24px 24px !important;
+            padding: 14px 28px !important;
+            border-radius: 28px !important;
+            font-size: 1rem !important;
+            font-weight: 600 !important;
+            text-align: center;
+            justify-content: center;
+            color: #fff !important;
+            background: var(--accent) !important;
+            box-shadow: 0 4px 16px rgba(99,91,255,0.3);
+        }
+
+        .mobile-menu-close {
+            display: none;
+            width: 40px; height: 40px;
+            border: none; background: none;
+            cursor: pointer;
+            position: relative;
+        }
+        .mobile-menu-close::before,
+        .mobile-menu-close::after {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 22px; height: 2px;
+            background: var(--t-text-dark);
+            border-radius: 2px;
+        }
+        .mobile-menu-close::before { transform: translate(-50%, -50%) rotate(45deg); }
+        .mobile-menu-close::after  { transform: translate(-50%, -50%) rotate(-45deg); }
+
+        /* ── Force collapse (JS overflow) ── */
+        .navbar.nav-force-collapse .nav-links { display: none; }
+        .navbar.nav-force-collapse .hamburger { display: flex; }
+
+        /* ═══════════════════════════════════════════
+           RESPONSIVE - MOBILE (hamburger at 900px)
+        ═══════════════════════════════════════════ */
+        @media (max-width: 900px) {
             .nav-links { display: none; }
             .hamburger { display: flex; }
-
-            .nav-links.active {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 100%; left: 0; right: 0;
-                background: var(--t-nav-bg);
-                backdrop-filter: blur(var(--t-nav-blur));
-                -webkit-backdrop-filter: blur(var(--t-nav-blur));
-                padding: 20px 24px;
-                box-shadow: var(--shadow-lg);
-                border-radius: 0 0 var(--radius) var(--radius);
-                gap: 0;
-            }
-
-            .nav-links.active a {
-                color: var(--t-text-body) !important;
-                padding: 12px 0;
-                border-bottom: 1px solid var(--t-card-border);
-            }
-
-            .nav-links.active a:last-child { border-bottom: none; }
-
-            .nav-links.active .nav-cta {
-                margin-top: 12px;
-                text-align: center;
-                justify-content: center;
-                color: #fff !important;
-            }
 
             .hero { min-height: auto; padding: 120px 0 64px; }
             .hero h1 { font-size: 2rem; }
@@ -3390,7 +3488,6 @@
             /* Theme switcher mobile */
             .theme-toggle-btn { width: 32px; height: 32px; }
             .theme-toggle-btn svg { width: 16px; height: 16px; }
-            .theme-menu { right: -40px; }
 
             /* Nav right spacing */
             .nav-right { gap: 8px; }
@@ -3468,8 +3565,8 @@
             /* Theme & lang switchers small mobile */
             .theme-toggle-btn { width: 30px; height: 30px; }
             .theme-toggle-btn svg { width: 14px; height: 14px; }
-            .theme-menu { right: -60px; }
-            .theme-menu-option { padding: 8px 12px; font-size: 0.78rem; }
+            .theme-menu-option { width: 36px; height: 36px; }
+            .theme-menu-icon { font-size: 1.1rem; }
             .nav-right { gap: 6px; }
             .lang-btn { padding: 4px 8px; font-size: 0.7rem; gap: 4px; }
             .lang-icon { width: 20px; height: 20px; font-size: 0.7rem; }
@@ -3887,11 +3984,6 @@
                 <img src="Images/Logo.png" alt="Rapid Loans Logo" class="logo-icon">
                 <div class="logo-text-wrap">
                     <span class="logo-name" data-i18n="logo_name" data-i18n-html="true">Rapid<span class="logo-name-loans">Loans</span></span>
-                    <span class="logo-sub-wrap">
-
-                        <span class="logo-sub" data-i18n="logo_rbi">Under RBI Regulated Banking Correspondent</span>
-
-                    </span>
                 </div>
             </a>
             <div class="nav-links" id="navLinks">
@@ -3911,42 +4003,18 @@
                         <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
                     </button>
                     <div class="lang-dropdown" id="langDropdown">
-                        <button class="lang-option active" onclick="setLanguage('en')">
-                            <span class="lang-icon">A</span> English
-                        </button>
-                        <button class="lang-option" onclick="setLanguage('hi')">
-                            <span class="lang-icon">अ</span> हिन्दी
-                        </button>
-                        <button class="lang-option" onclick="setLanguage('gu')">
-                            <span class="lang-icon">અ</span> ગુજરાતી
-                        </button>
-                        <button class="lang-option" onclick="setLanguage('mr')">
-                            <span class="lang-icon">अ</span> मराठी
-                        </button>
-                        <button class="lang-option" onclick="setLanguage('ta')">
-                            <span class="lang-icon">அ</span> தமிழ்
-                        </button>
-                        <button class="lang-option" onclick="setLanguage('kn')">
-                            <span class="lang-icon">ಅ</span> ಕನ್ನಡ
-                        </button>
-                        <button class="lang-option" onclick="setLanguage('te')">
-                            <span class="lang-icon">అ</span> తెలుగు
-                        </button>
-                        <button class="lang-option" onclick="setLanguage('bn')">
-                            <span class="lang-icon">অ</span> বাংলা
-                        </button>
-                        <button class="lang-option" onclick="setLanguage('pa')">
-                            <span class="lang-icon">ਅ</span> ਪੰਜਾਬੀ
-                        </button>
-                        <button class="lang-option" onclick="setLanguage('ml')">
-                            <span class="lang-icon">അ</span> മലയാളം
-                        </button>
-                        <button class="lang-option" onclick="setLanguage('or')">
-                            <span class="lang-icon">ଅ</span> ଓଡ଼ିଆ
-                        </button>
-                        <button class="lang-option" onclick="setLanguage('as')">
-                            <span class="lang-icon">অ</span> অসমীয়া
-                        </button>
+                        <button class="lang-option active" onclick="setLanguage('en')" title="English"><span class="lang-icon">A</span></button>
+                        <button class="lang-option" onclick="setLanguage('hi')" title="हिन्दी"><span class="lang-icon">अ</span></button>
+                        <button class="lang-option" onclick="setLanguage('gu')" title="ગુજરાતી"><span class="lang-icon">અ</span></button>
+                        <button class="lang-option" onclick="setLanguage('mr')" title="मराठी"><span class="lang-icon">अ</span></button>
+                        <button class="lang-option" onclick="setLanguage('ta')" title="தமிழ்"><span class="lang-icon">அ</span></button>
+                        <button class="lang-option" onclick="setLanguage('kn')" title="ಕನ್ನಡ"><span class="lang-icon">ಅ</span></button>
+                        <button class="lang-option" onclick="setLanguage('te')" title="తెలుగు"><span class="lang-icon">అ</span></button>
+                        <button class="lang-option" onclick="setLanguage('bn')" title="বাংলা"><span class="lang-icon">অ</span></button>
+                        <button class="lang-option" onclick="setLanguage('pa')" title="ਪੰਜਾਬੀ"><span class="lang-icon">ਅ</span></button>
+                        <button class="lang-option" onclick="setLanguage('ml')" title="മലയാളം"><span class="lang-icon">അ</span></button>
+                        <button class="lang-option" onclick="setLanguage('or')" title="ଓଡ଼ିଆ"><span class="lang-icon">ଅ</span></button>
+                        <button class="lang-option" onclick="setLanguage('as')" title="অসমীয়া"><span class="lang-icon">অ</span></button>
                     </div>
                 </div>
                 <!-- Theme Switcher -->
@@ -3955,27 +4023,13 @@
                         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
                     </button>
                     <div class="theme-menu" id="themeMenu">
-                        <button class="theme-menu-option active" data-theme="white" onclick="setSiteTheme('white')">
-                            <span class="theme-menu-icon">&#9711;</span> White
-                        </button>
-                        <button class="theme-menu-option" data-theme="pre-dawn" onclick="setSiteTheme('pre-dawn')">
-                            <span class="theme-menu-icon">&#9789;</span> Pre-dawn
-                        </button>
-                        <button class="theme-menu-option" data-theme="sunrise" onclick="setSiteTheme('sunrise')">
-                            <span class="theme-menu-icon">&#127749;</span> Sunrise
-                        </button>
-                        <button class="theme-menu-option" data-theme="daytime" onclick="setSiteTheme('daytime')">
-                            <span class="theme-menu-icon">&#9728;</span> Daytime
-                        </button>
-                        <button class="theme-menu-option" data-theme="dusk" onclick="setSiteTheme('dusk')">
-                            <span class="theme-menu-icon">&#127751;</span> Dusk
-                        </button>
-                        <button class="theme-menu-option" data-theme="sunset" onclick="setSiteTheme('sunset')">
-                            <span class="theme-menu-icon">&#127750;</span> Sunset
-                        </button>
-                        <button class="theme-menu-option" data-theme="night" onclick="setSiteTheme('night')">
-                            <span class="theme-menu-icon">&#127769;</span> Night
-                        </button>
+                        <button class="theme-menu-option active" data-theme="white" onclick="setSiteTheme('white')" title="White"><span class="theme-menu-icon">&#9711;</span></button>
+                        <button class="theme-menu-option" data-theme="pre-dawn" onclick="setSiteTheme('pre-dawn')" title="Pre-dawn"><span class="theme-menu-icon">&#9789;</span></button>
+                        <button class="theme-menu-option" data-theme="sunrise" onclick="setSiteTheme('sunrise')" title="Sunrise"><span class="theme-menu-icon">&#127749;</span></button>
+                        <button class="theme-menu-option" data-theme="daytime" onclick="setSiteTheme('daytime')" title="Daytime"><span class="theme-menu-icon">&#9728;</span></button>
+                        <button class="theme-menu-option" data-theme="dusk" onclick="setSiteTheme('dusk')" title="Dusk"><span class="theme-menu-icon">&#127751;</span></button>
+                        <button class="theme-menu-option" data-theme="sunset" onclick="setSiteTheme('sunset')" title="Sunset"><span class="theme-menu-icon">&#127750;</span></button>
+                        <button class="theme-menu-option" data-theme="night" onclick="setSiteTheme('night')" title="Night"><span class="theme-menu-icon">&#127769;</span></button>
                     </div>
                 </div>
                 <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Toggle menu">
@@ -4475,9 +4529,9 @@
                         <img src="Images/india-map.png" alt="India Network Map" class="india-map-img">
                     </div>
                     <div class="map-stats-overlay">
-                        <div class="map-stat-pill"><span class="map-stat-dot" style="background:#22C55E;"></span> 6 States</div>
-                        <div class="map-stat-pill"><span class="map-stat-dot" style="background:#0EA5E9;"></span> 121 Locations</div>
-                        <div class="map-stat-pill"><span class="map-stat-dot" style="background:#F59E0B;"></span> 700 Employees</div>
+                        <div class="map-stat-pill"><span class="map-stat-dot" style="background:#22C55E;"></span> <span data-i18n="map_stat_states">6 States</span></div>
+                        <div class="map-stat-pill"><span class="map-stat-dot" style="background:#0EA5E9;"></span> <span data-i18n="map_stat_locations">121 Locations</span></div>
+                        <div class="map-stat-pill"><span class="map-stat-dot" style="background:#F59E0B;"></span> <span data-i18n="map_stat_employees">700 Employees</span></div>
                     </div>
                 </div>
             </div>
@@ -4877,11 +4931,6 @@
                         <img src="Images/Logo.png" alt="Rapid Loans Logo" class="logo-icon">
                         <div class="logo-text-wrap">
                             <span class="logo-name" data-i18n="logo_name" data-i18n-html="true">Rapid<span class="logo-name-loans">Loans</span></span>
-                            <span class="logo-sub-wrap">
-
-                                <span class="logo-sub" data-i18n="logo_rbi">Under RBI Regulated Banking Correspondent</span>
-        
-                            </span>
                         </div>
                     </a>
                     <p data-i18n="footer_desc">A Modern Banking Correspondent providing comprehensive loan origination, collection, and servicing through advanced technology across India.</p>
@@ -5034,6 +5083,9 @@
                 network_label: 'Our Reach',
                 network_title: 'Our Network',
                 network_desc: 'Expanding financial inclusion across India\'s heartland through a growing network of service points.',
+                map_stat_states: '6 States',
+                map_stat_locations: '121 Locations',
+                map_stat_employees: '700 Employees',
                 disclosure_label: 'Transparency',
                 disclosure_title: 'Partner Disclosures',
                 disclosure_desc: 'Regulatory disclosures for our lending partnerships, ensuring full transparency.',
@@ -5230,6 +5282,9 @@
                 network_label: 'हमारी पहुँच',
                 network_title: 'हमारा नेटवर्क',
                 network_desc: 'सेवा केंद्रों के बढ़ते नेटवर्क के माध्यम से भारत के हृदय स्थल में वित्तीय समावेशन का विस्तार।',
+                map_stat_states: '6 राज्य',
+                map_stat_locations: '121 स्थान',
+                map_stat_employees: '700 कर्मचारी',
                 disclosure_label: 'पारदर्शिता',
                 disclosure_title: 'साझेदार प्रकटीकरण',
                 disclosure_desc: 'पूर्ण पारदर्शिता सुनिश्चित करते हुए हमारी ऋण साझेदारियों के लिए नियामक प्रकटीकरण।',
@@ -5426,6 +5481,9 @@
                 network_label: 'અમારી પહોંચ',
                 network_title: 'અમારું નેટવર્ક',
                 network_desc: 'સેવા કેન્દ્રોના વધતા નેટવર્ક દ્વારા ભારતના હૃદય પ્રદેશમાં નાણાકીય સમાવેશનનો વિસ્તાર।',
+                map_stat_states: '6 રાજ્યો',
+                map_stat_locations: '121 સ્થળો',
+                map_stat_employees: '700 કર્મચારીઓ',
                 disclosure_label: 'પારદર્શિતા',
                 disclosure_title: 'ભાગીદાર જાહેરાતો',
                 disclosure_desc: 'સંપૂર્ણ પારદર્શિતા સુનિશ્ચિત કરતા અમારી ધિરાણ ભાગીદારી માટે નિયમનકારી જાહેરાતો।',
@@ -5622,6 +5680,9 @@
                 network_label: 'आमची पोहोच',
                 network_title: 'आमचे नेटवर्क',
                 network_desc: 'सेवा केंद्रांच्या वाढत्या नेटवर्कद्वारे भारताच्या हृदयस्थानी आर्थिक समावेशनाचा विस्तार।',
+                map_stat_states: '6 राज्ये',
+                map_stat_locations: '121 ठिकाणे',
+                map_stat_employees: '700 कर्मचारी',
                 disclosure_label: 'पारदर्शकता',
                 disclosure_title: 'भागीदार प्रकटीकरणे',
                 disclosure_desc: 'पूर्ण पारदर्शकता सुनिश्चित करत आमच्या कर्ज भागीदारींसाठी नियामक प्रकटीकरणे।',
@@ -5818,6 +5879,9 @@
                 network_label: 'எங்கள் வரம்பு',
                 network_title: 'எங்கள் நெட்வொர்க்',
                 network_desc: 'வளர்ந்து வரும் சேவை மையங்கள் மூலம் இந்தியாவின் உள்நாட்டில் நிதி உள்ளடக்கத்தை விரிவாக்குதல்।',
+                map_stat_states: '6 மாநிலங்கள்',
+                map_stat_locations: '121 இடங்கள்',
+                map_stat_employees: '700 ஊழியர்கள்',
                 disclosure_label: 'வெளிப்படைத்தன்மை',
                 disclosure_title: 'கூட்டாளர் வெளிப்படுத்தல்கள்',
                 disclosure_desc: 'முழு வெளிப்படைத்தன்மையை உறுதிசெய்யும் எங்கள் கடன் கூட்டாண்மைகளுக்கான ஒழுங்குமுறை வெளிப்படுத்தல்கள்।',
@@ -6014,6 +6078,9 @@
                 network_label: 'ನಮ್ಮ ತಲುಪು',
                 network_title: 'ನಮ್ಮ ನೆಟ್‌ವರ್ಕ್',
                 network_desc: 'ಬೆಳೆಯುತ್ತಿರುವ ಸೇವಾ ಕೇಂದ್ರಗಳ ಜಾಲದ ಮೂಲಕ ಭಾರತದ ಹೃದಯಭಾಗದಲ್ಲಿ ಹಣಕಾಸು ಸೇರ್ಪಡೆಯ ವಿಸ್ತರಣೆ।',
+                map_stat_states: '6 ರಾಜ್ಯಗಳು',
+                map_stat_locations: '121 ಸ್ಥಳಗಳು',
+                map_stat_employees: '700 ಉದ್ಯೋಗಿಗಳು',
                 disclosure_label: 'ಪಾರದರ್ಶಕತೆ',
                 disclosure_title: 'ಪಾಲುದಾರ ಬಹಿರಂಗಪಡಿಸುವಿಕೆಗಳು',
                 disclosure_desc: 'ಸಂಪೂರ್ಣ ಪಾರದರ್ಶಕತೆಯನ್ನು ಖಚಿತಪಡಿಸುವ ನಮ್ಮ ಸಾಲ ಪಾಲುದಾರಿಕೆಗಳಿಗೆ ನಿಯಂತ್ರಕ ಬಹಿರಂಗಪಡಿಸುವಿಕೆಗಳು।',
@@ -6210,6 +6277,9 @@
                 network_label: 'మా వ్యాప్తి',
                 network_title: 'మా నెట్‌వర్క్',
                 network_desc: 'పెరుగుతున్న సేవా కేంద్రాల నెట్‌వర్క్ ద్వారా భారతదేశ హృదయభాగంలో ఆర్థిక చేరిక విస్తరణ।',
+                map_stat_states: '6 రాష్ట్రాలు',
+                map_stat_locations: '121 స్థానాలు',
+                map_stat_employees: '700 ఉద్యోగులు',
                 disclosure_label: 'పారదర్శకత',
                 disclosure_title: 'భాగస్వామ్య వెల్లడింపులు',
                 disclosure_desc: 'పూర్తి పారదర్శకతను నిర్ధారిస్తూ మా రుణ భాగస్వామ్యాలకు నియంత్రణ వెల్లడింపులు।',
@@ -6406,6 +6476,9 @@
                 network_label: 'আমাদের ব্যাপ্তি',
                 network_title: 'আমাদের নেটওয়ার্ক',
                 network_desc: 'ক্রমবর্ধমান সেবা কেন্দ্রগুলির নেটওয়ার্কের মাধ্যমে ভারতের হৃদয়ভূমিতে আর্থিক অন্তর্ভুক্তির বিস্তার।',
+                map_stat_states: '6টি রাজ্য',
+                map_stat_locations: '121টি অবস্থান',
+                map_stat_employees: '700 কর্মচারী',
                 disclosure_label: 'স্বচ্ছতা',
                 disclosure_title: 'অংশীদার প্রকাশ',
                 disclosure_desc: 'সম্পূর্ণ স্বচ্ছতা নিশ্চিত করে আমাদের ঋণ অংশীদারিত্বের জন্য নিয়ন্ত্রক প্রকাশ।',
@@ -6602,6 +6675,9 @@
                 network_label: 'ਸਾਡੀ ਪਹੁੰਚ',
                 network_title: 'ਸਾਡਾ ਨੈੱਟਵਰਕ',
                 network_desc: 'ਵਧ ਰਹੇ ਸੇਵਾ ਕੇਂਦਰਾਂ ਦੇ ਨੈੱਟਵਰਕ ਰਾਹੀਂ ਭਾਰਤ ਦੇ ਦਿਲ ਵਿੱਚ ਵਿੱਤੀ ਸ਼ਾਮਲੀਅਤ ਦਾ ਵਿਸਤਾਰ।',
+                map_stat_states: '6 ਰਾਜ',
+                map_stat_locations: '121 ਟਿਕਾਣੇ',
+                map_stat_employees: '700 ਕਰਮਚਾਰੀ',
                 disclosure_label: 'ਪਾਰਦਰਸ਼ਿਤਾ',
                 disclosure_title: 'ਭਾਈਵਾਲ ਖੁਲਾਸੇ',
                 disclosure_desc: 'ਪੂਰੀ ਪਾਰਦਰਸ਼ਿਤਾ ਯਕੀਨੀ ਬਣਾਉਂਦੇ ਹੋਏ ਸਾਡੀਆਂ ਕਰਜ਼ ਭਾਈਵਾਲੀਆਂ ਲਈ ਨਿਯਮਕ ਖੁਲਾਸੇ।',
@@ -6798,6 +6874,9 @@
                 network_label: 'ഞങ്ങളുടെ വ്യാപ്തി',
                 network_title: 'ഞങ്ങളുടെ നെറ്റ്‌വർക്ക്',
                 network_desc: 'വളരുന്ന സേവന കേന്ദ്രങ്ങളുടെ ശൃംഖലയിലൂടെ ഇന്ത്യയുടെ ഹൃദയഭാഗത്ത് സാമ്പത്തിക ഉൾപ്പെടുത്തൽ വിപുലീകരിക്കൽ.',
+                map_stat_states: '6 സംസ്ഥാനങ്ങൾ',
+                map_stat_locations: '121 ലൊക്കേഷനുകൾ',
+                map_stat_employees: '700 ജീവനക്കാർ',
                 disclosure_label: 'സുതാര്യത',
                 disclosure_title: 'പങ്കാളി വെളിപ്പെടുത്തലുകൾ',
                 disclosure_desc: 'പൂർണ്ണ സുതാര്യത ഉറപ്പാക്കുന്ന ഞങ്ങളുടെ വായ്പ പങ്കാളിത്തങ്ങൾക്കുള്ള നിയന്ത്രണ വെളിപ്പെടുത്തലുകൾ.',
@@ -6994,6 +7073,9 @@
                 network_label: 'ଆମ ବ୍ୟାପ୍ତି',
                 network_title: 'ଆମ ନେଟୱର୍କ',
                 network_desc: 'ବଢ଼ୁଥିବା ସେବା କେନ୍ଦ୍ରଗୁଡ଼ିକର ନେଟୱର୍କ ମାଧ୍ୟମରେ ଭାରତର ହୃଦୟଭୂମିରେ ଆର୍ଥିକ ସାମିଲକରଣର ବିସ୍ତାର।',
+                map_stat_states: '6 ରାଜ୍ୟ',
+                map_stat_locations: '121 ସ୍ଥାନ',
+                map_stat_employees: '700 କର୍ମଚାରୀ',
                 disclosure_label: 'ସ୍ୱଚ୍ଛତା',
                 disclosure_title: 'ଭାଗୀଦାର ପ୍ରକାଶ',
                 disclosure_desc: 'ସମ୍ପୂର୍ଣ୍ଣ ସ୍ୱଚ୍ଛତା ସୁନିଶ୍ଚିତ କରୁଥିବା ଆମ ଋଣ ଭାଗୀଦାରିତ୍ୱ ପାଇଁ ନିୟନ୍ତ୍ରଣମୂଳକ ପ୍ରକାଶ।',
@@ -7190,6 +7272,9 @@
                 network_label: 'আমাৰ ব্যাপ্তি',
                 network_title: 'আমাৰ নেটৱৰ্ক',
                 network_desc: 'বৰ্ধিত সেৱা কেন্দ্ৰৰ নেটৱৰ্কৰ জৰিয়তে ভাৰতৰ হৃদয়ভূমিত বিত্তীয় অন্তৰ্ভুক্তিৰ সম্প্ৰসাৰণ।',
+                map_stat_states: '6 ৰাজ্য',
+                map_stat_locations: '121 স্থান',
+                map_stat_employees: '700 কৰ্মচাৰী',
                 disclosure_label: 'স্বচ্ছতা',
                 disclosure_title: 'অংশীদাৰ প্ৰকাশ',
                 disclosure_desc: 'সম্পূৰ্ণ স্বচ্ছতা নিশ্চিত কৰি আমাৰ ঋণ অংশীদাৰিত্বৰ বাবে নিয়ন্ত্ৰণমূলক প্ৰকাশ।',
@@ -7313,6 +7398,9 @@
 
             // Refresh calculator dynamic labels for current language
             if (typeof updateCalc === 'function') updateCalc();
+
+            // Check if nav overflows and collapse to hamburger if needed
+            if (typeof checkNavOverflow === 'function') setTimeout(checkNavOverflow, 50);
         }
 
         function toggleLangDropdown() {
@@ -7357,6 +7445,69 @@
                 nav.classList.remove('active');
                 hamburger.classList.remove('active');
             }
+        });
+
+        // ═══════════════════════════════════════════
+        // NAV OVERFLOW DETECTION
+        // ═══════════════════════════════════════════
+        function checkNavOverflow() {
+            var nb = document.getElementById('navbar');
+            var container = nb.querySelector('.container');
+            var navLinks = document.getElementById('navLinks');
+
+            // Skip if below 900px — CSS media query handles hamburger there
+            if (window.innerWidth <= 900) {
+                nb.classList.remove('nav-force-collapse');
+                return;
+            }
+
+            // Temporarily remove force-collapse and make navLinks visible to measure
+            var wasCollapsed = nb.classList.contains('nav-force-collapse');
+            var wasActive = navLinks.classList.contains('active');
+            nb.classList.remove('nav-force-collapse');
+            navLinks.classList.remove('active');
+
+            // Temporarily force nav-links to be visible and not shrink so we get true natural width
+            navLinks.style.display = 'flex';
+            navLinks.style.flexShrink = '0';
+            void container.offsetWidth; // force reflow
+
+            // Measure the actual width each link needs
+            var links = navLinks.querySelectorAll('a');
+            var totalLinksWidth = 0;
+            var navGap = parseFloat(getComputedStyle(navLinks).gap) || 20;
+            links.forEach(function(link) {
+                totalLinksWidth += link.scrollWidth;
+            });
+            totalLinksWidth += navGap * Math.max(0, links.length - 1);
+
+            var logo = container.querySelector('.logo');
+            var navRight = container.querySelector('.nav-right');
+            var containerWidth = container.clientWidth;
+            var logoWidth = logo ? logo.scrollWidth : 0;
+            var navRightWidth = navRight ? navRight.scrollWidth : 0;
+            var containerGap = 16;
+            var totalNeeded = logoWidth + totalLinksWidth + navRightWidth + (containerGap * 2) + 20; // 20px safety buffer
+
+            // Restore inline styles
+            navLinks.style.flexShrink = '';
+            navLinks.style.display = '';
+
+            if (totalNeeded > containerWidth) {
+                nb.classList.add('nav-force-collapse');
+            } else {
+                nb.classList.remove('nav-force-collapse');
+            }
+
+            // Restore active state if it was open
+            if (wasActive) navLinks.classList.add('active');
+        }
+
+        // Run on load and resize
+        checkNavOverflow();
+        window.addEventListener('resize', function() {
+            clearTimeout(window._navResizeTimer);
+            window._navResizeTimer = setTimeout(checkNavOverflow, 100);
         });
 
         // ═══════════════════════════════════════════
