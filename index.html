@@ -56,6 +56,9 @@
             --t-item-bg: #F6F9FC;
             --t-item-border: #E3E8EE;
             --t-canvas-opacity: 0;
+            /* Team-photo backdrop — shows through the photos' transparent area
+               (white background was stripped via Vision API). Set per-theme. */
+            --t-photo-bg: linear-gradient(145deg, #f5f0ff 0%, #e6deff 35%, #c8b8ff 70%, #a99cff 100%);
         }
 
         /* ═══ COLORED THEME OVERRIDES ═══ */
@@ -96,6 +99,7 @@
             --t-item-border: rgba(255,255,255,0.1);
             --t-badge-bg: rgba(255,255,255,0.12);
             --t-footer-bg: rgba(0,0,0,0.2);
+            --t-photo-bg: linear-gradient(145deg, #1e2745 0%, #2c3a5c 50%, #4a5378 100%);
         }
 
         /* ═══ WARM DARK THEMES — warm white text ═══ */
@@ -113,6 +117,7 @@
             --t-item-border: rgba(255,255,255,0.12);
             --t-badge-bg: rgba(255,255,255,0.15);
             --t-footer-bg: rgba(0,0,0,0.15);
+            --t-photo-bg: linear-gradient(145deg, #ffd4b8 0%, #ff9d7e 50%, #d05848 100%);
         }
 
         /* ═══ SUNRISE — deep purplish bg, needs light text ═══ */
@@ -129,6 +134,7 @@
             --t-item-border: rgba(255,255,255,0.12);
             --t-badge-bg: rgba(255,255,255,0.15);
             --t-footer-bg: rgba(0,0,0,0.15);
+            --t-photo-bg: linear-gradient(145deg, #ffc8e0 0%, #e890c0 50%, #8c4a8c 100%);
         }
 
         /* ═══ DAYTIME — vivid blue bg, white text for contrast ═══ */
@@ -145,6 +151,7 @@
             --t-item-border: rgba(255,255,255,0.18);
             --t-badge-bg: rgba(255,255,255,0.2);
             --t-footer-bg: rgba(0,0,0,0.1);
+            --t-photo-bg: linear-gradient(145deg, #c8e0ff 0%, #6098e8 50%, #2858b0 100%);
         }
 
         html { scroll-behavior: smooth; font-size: 16px; }
@@ -1829,7 +1836,8 @@
             width: 100%;
             aspect-ratio: 1;
             overflow: hidden;
-            background: linear-gradient(145deg, #e8eaf6 0%, #c5cae9 30%, #9fa8da 70%, #7986cb 100%);
+            background: var(--t-photo-bg);
+            transition: background 0.6s ease;
         }
 
         .team-card-photo {
@@ -4779,7 +4787,7 @@
             <div class="team-grid" style="max-width:800px; margin:0 auto;">
                 <div class="team-card reveal">
                     <div class="team-card-photo-wrap">
-                        <img class="team-card-photo" src="https://rapidloans.ai/wp-content/uploads/elementor/thumbs/Hemendrasinh-Solanki-r7dspy2g81fddo0f98ko2voxyc3wvq0555lkc1hxho.jpeg" alt="Hemendrasinh Solanki">
+                        <img class="team-card-photo" src="Department/transparent/Hemendrasinh Solanki Founder, Modern Group.png" alt="Hemendrasinh Solanki">
                     </div>
                     <div class="team-card-info">
                         <h3 data-i18n="dir1_name">Hemendrasinh Solanki</h3>
@@ -4793,7 +4801,7 @@
                 </div>
                 <div class="team-card reveal reveal-delay-1">
                     <div class="team-card-photo-wrap">
-                        <img class="team-card-photo" src="https://rapidloans.ai/wp-content/uploads/elementor/thumbs/Mahesh-Ahuja-r7dsqt34hklu0srd83zcv5v5k1v0xqfa9f4l667xsc.jpeg" alt="Mahesh Ahuja">
+                        <img class="team-card-photo" src="Department/transparent/Mahesh Ahuja Investor Management, Compliance & Strategy.png" alt="Mahesh Ahuja">
                     </div>
                     <div class="team-card-info">
                         <h3 data-i18n="dir2_name">Mahesh Ahuja</h3>
@@ -4820,17 +4828,7 @@
             <div class="team-grid">
                 <div class="team-card reveal">
                     <div class="team-card-photo-wrap">
-                        <img class="team-card-photo" src="https://rapidloans.ai/wp-content/uploads/elementor/thumbs/prasantmande-r3r9u1o0j2d0bwrxkh24ikfglephma57j6sj2hyrc0.jpeg" alt="Prashant Mane">
-                    </div>
-                    <div class="team-card-info">
-                        <h3 data-i18n="mgmt1_name">Prashant Mane</h3>
-                        <p class="team-card-role" data-i18n="mgmt1_role">Chief Financial Officer</p>
-                        <p data-i18n="mgmt1_bio">A Chartered Accountant heading finance, with stints at ICICI Bank, HDFC Bank, and SVC Bank. His hands-on audit and accounts experience ensures seamless financial operations from Day 1.</p>
-                    </div>
-                </div>
-                <div class="team-card reveal reveal-delay-1">
-                    <div class="team-card-photo-wrap">
-                        <img class="team-card-photo" src="https://rapidloans.ai/wp-content/uploads/elementor/thumbs/rakhisarma-r3r9s51so5r2sdjlp5ecyjqt8a3p0dksxr631ashy8.jpeg" alt="Rakhi Sharma">
+                        <img class="team-card-photo" src="Department/transparent/Rakhi Sharma Head of Operations.png" alt="Rakhi Sharma">
                     </div>
                     <div class="team-card-info">
                         <h3 data-i18n="mgmt2_name">Rakhi Sharma</h3>
@@ -4840,12 +4838,52 @@
                 </div>
                 <div class="team-card reveal reveal-delay-2">
                     <div class="team-card-photo-wrap">
-                        <img class="team-card-photo" src="https://rapidloans.ai/wp-content/uploads/elementor/thumbs/mitalichristian-1-r4fuxgdkvuyrhbean3vd9g3pmu0tf0o20f2mrjrsgw.jpeg" alt="Mitali Christian">
+                        <img class="team-card-photo" src="Department/transparent/Mitali Christian​ Head HR.png" alt="Mitali Christian">
                     </div>
                     <div class="team-card-info">
                         <h3 data-i18n="mgmt3_name">Mitali Christian</h3>
                         <p class="team-card-role" data-i18n="mgmt3_role">Head of Human Resources</p>
                         <p data-i18n="mgmt3_bio">13 years in retail banking and client investment portfolio management at ICICI, CITI, and KOTAK. Multi-dimensional expertise spanning employee engagement, training, sales, and operations.</p>
+                    </div>
+                </div>
+                <div class="team-card reveal">
+                    <div class="team-card-photo-wrap">
+                        <img class="team-card-photo" src="Department/transparent/Ravi Kumar - State Head - Tamil Nadu.png" alt="Ravi Kumar">
+                    </div>
+                    <div class="team-card-info">
+                        <h3>Ravi Kumar</h3>
+                        <p class="team-card-role">State Head — Tamil Nadu</p>
+                        <p>Drives on-ground operations across Tamil Nadu — overseeing branch performance, customer outreach, and field-team execution.</p>
+                    </div>
+                </div>
+                <div class="team-card reveal reveal-delay-1">
+                    <div class="team-card-photo-wrap">
+                        <img class="team-card-photo" src="Department/transparent/Dariya Shaikh - State Head - Karnataka.png" alt="Dariya Shaikh">
+                    </div>
+                    <div class="team-card-info">
+                        <h3>Dariya Shaikh</h3>
+                        <p class="team-card-role">State Head — Karnataka</p>
+                        <p>Leads Karnataka operations end-to-end — branch development, team building, and customer acquisition across the state.</p>
+                    </div>
+                </div>
+                <div class="team-card reveal reveal-delay-2">
+                    <div class="team-card-photo-wrap">
+                        <img class="team-card-photo" src="Department/transparent/Reji Ravindran - State Head - Kerala.png" alt="Reji Ravindran">
+                    </div>
+                    <div class="team-card-info">
+                        <h3>Reji Ravindran</h3>
+                        <p class="team-card-role">State Head — Kerala</p>
+                        <p>Heads Kerala's state-level operations — scaling branch networks and ensuring consistent service delivery on the ground.</p>
+                    </div>
+                </div>
+                <div class="team-card reveal">
+                    <div class="team-card-photo-wrap">
+                        <img class="team-card-photo" src="Department/transparent/Abhilash, Zonal Head - Kerala and Tamilnadu.png" alt="Abhilash">
+                    </div>
+                    <div class="team-card-info">
+                        <h3>Abhilash</h3>
+                        <p class="team-card-role">Zonal Head — Kerala &amp; Tamil Nadu</p>
+                        <p>Zonal lead for Kerala and Tamil Nadu, coordinating multi-state strategy, performance, and field operations across the south.</p>
                     </div>
                 </div>
             </div>
