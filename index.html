@@ -1045,42 +1045,8 @@
             pointer-events: none;
         }
 
-        /* ═══ Stripe.com hero wave — exact silk-fabric image, occupies right 45% of hero ═══ */
-        .hero-stripe-wave {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 45%;
-            height: 100%;
-            z-index: 3;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 1s ease;
-            overflow: hidden;
-            background-image: url('Images/stripe-wave.jpg');
-            background-size: cover;
-            background-position: center right;
-            background-repeat: no-repeat;
-            /* Strong left-edge fade — covers ~38% from the left so the source-image's
-               text overlay area (the only artifact in the wider crop) is fully hidden,
-               while the right side shows the silk curve cleanly. */
-            -webkit-mask-image: linear-gradient(to right,
-                transparent 0%, transparent 18%, rgba(0,0,0,0.5) 32%, #000 50%, #000 100%);
-                    mask-image: linear-gradient(to right,
-                transparent 0%, transparent 18%, rgba(0,0,0,0.5) 32%, #000 50%, #000 100%);
-        }
-        [data-site-theme="white"] .hero-stripe-wave { opacity: 1; }
-        /* Hero text/card sits above the wave */
+        /* Hero text/card sits above other hero layers */
         .hero .container { position: relative; z-index: 5; }
-
-        @media (max-width: 1100px) {
-            .hero-stripe-wave { width: 50%; }
-            [data-site-theme="white"] .hero-stripe-wave { opacity: 0.95; }
-        }
-        @media (max-width: 768px) {
-            /* Hide on mobile — desktop only */
-            .hero-stripe-wave { display: none; }
-        }
 
         .hero::before, .hero::after { display: none; }
 
@@ -4170,9 +4136,6 @@
     <section class="hero" id="hero">
         <!-- Stripe-like animated gradient canvas -->
         <canvas class="hero-gradient-canvas" id="heroGradientCanvas"></canvas>
-
-        <!-- Stripe.com silk-fabric wave -->
-        <div class="hero-stripe-wave" aria-hidden="true"></div>
 
         <div class="container">
             <div class="hero-grid">
