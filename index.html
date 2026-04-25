@@ -57,8 +57,9 @@
             --t-item-border: #E3E8EE;
             --t-canvas-opacity: 0;
             /* Team-photo backdrop — shows through the photos' transparent area
-               (white background was stripped via Vision API). Set per-theme. */
-            --t-photo-bg: linear-gradient(145deg, #f5f0ff 0%, #e6deff 35%, #c8b8ff 70%, #a99cff 100%);
+               (white background was stripped via Vision API). Each theme gets a
+               soft, light shade from its own color family. White theme → cream. */
+            --t-photo-bg: linear-gradient(145deg, #fdfaf2 0%, #f5ecd8 50%, #e8d8b0 100%);
         }
 
         /* ═══ COLORED THEME OVERRIDES ═══ */
@@ -99,7 +100,8 @@
             --t-item-border: rgba(255,255,255,0.1);
             --t-badge-bg: rgba(255,255,255,0.12);
             --t-footer-bg: rgba(0,0,0,0.2);
-            --t-photo-bg: linear-gradient(145deg, #1e2745 0%, #2c3a5c 50%, #4a5378 100%);
+            /* Night/Pre-dawn (deep violet/purple theme) → light lavender */
+            --t-photo-bg: linear-gradient(145deg, #f5f0ff 0%, #e0d4ff 50%, #c0a8ec 100%);
         }
 
         /* ═══ WARM DARK THEMES — warm white text ═══ */
@@ -117,7 +119,8 @@
             --t-item-border: rgba(255,255,255,0.12);
             --t-badge-bg: rgba(255,255,255,0.15);
             --t-footer-bg: rgba(0,0,0,0.15);
-            --t-photo-bg: linear-gradient(145deg, #ffd4b8 0%, #ff9d7e 50%, #d05848 100%);
+            /* Dusk + Sunset share warm pink/coral palette → light pink */
+            --t-photo-bg: linear-gradient(145deg, #ffeaee 0%, #ffd0d8 50%, #f0a0b0 100%);
         }
 
         /* ═══ SUNRISE — deep purplish bg, needs light text ═══ */
@@ -134,7 +137,8 @@
             --t-item-border: rgba(255,255,255,0.12);
             --t-badge-bg: rgba(255,255,255,0.15);
             --t-footer-bg: rgba(0,0,0,0.15);
-            --t-photo-bg: linear-gradient(145deg, #ffc8e0 0%, #e890c0 50%, #8c4a8c 100%);
+            /* Sunrise (warm orange/peach palette) → light peach */
+            --t-photo-bg: linear-gradient(145deg, #fff2e6 0%, #ffd8c0 50%, #f0b090 100%);
         }
 
         /* ═══ DAYTIME — vivid blue bg, white text for contrast ═══ */
@@ -151,7 +155,18 @@
             --t-item-border: rgba(255,255,255,0.18);
             --t-badge-bg: rgba(255,255,255,0.2);
             --t-footer-bg: rgba(0,0,0,0.1);
-            --t-photo-bg: linear-gradient(145deg, #c8e0ff 0%, #6098e8 50%, #2858b0 100%);
+            /* Daytime (vivid blue palette) → light sky blue */
+            --t-photo-bg: linear-gradient(145deg, #f0f8ff 0%, #c8e0fa 50%, #88b4e8 100%);
+        }
+
+        /* ═══ SUNSET-specific photo backdrop (red/coral palette) → light coral ═══ */
+        [data-site-theme="sunset"] {
+            --t-photo-bg: linear-gradient(145deg, #ffeae0 0%, #ffc8b0 50%, #f08878 100%);
+        }
+
+        /* ═══ Pre-dawn-specific photo backdrop (slightly cooler than night) ═══ */
+        [data-site-theme="pre-dawn"] {
+            --t-photo-bg: linear-gradient(145deg, #f0eaff 0%, #d8c8f8 50%, #a888d8 100%);
         }
 
         html { scroll-behavior: smooth; font-size: 16px; }
@@ -1836,7 +1851,13 @@
             width: 100%;
             aspect-ratio: 1;
             overflow: hidden;
-            background: var(--t-photo-bg);
+            /* Layered background: soft radial highlight at top-center (fakes a
+               studio key-light above the head) on top of the theme gradient.
+               Inset box-shadow gives a subtle 1px frame that adapts to dark/light. */
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0) 55%),
+                var(--t-photo-bg);
+            box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06), inset 0 -40px 60px -20px rgba(0,0,0,0.04);
             transition: background 0.6s ease;
         }
 
@@ -1846,6 +1867,16 @@
             object-fit: cover;
             object-position: top center;
             display: block;
+            /* Idle slightly desaturated; full color + zoom on card hover. */
+            filter: saturate(0.88);
+            transform: scale(1);
+            transition: transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1),
+                        filter 0.4s ease;
+        }
+
+        .team-card:hover .team-card-photo {
+            transform: scale(1.045);
+            filter: saturate(1);
         }
 
         .team-card-info {
