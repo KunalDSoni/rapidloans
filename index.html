@@ -1023,12 +1023,12 @@
             pointer-events: none;
         }
 
-        /* ═══ Stripe.com hero wave — exact silk-fabric image, prominent on the right side ═══ */
+        /* ═══ Stripe.com hero wave — exact silk-fabric image, occupies right 45% of hero ═══ */
         .hero-stripe-wave {
             position: absolute;
             top: 0;
             right: 0;
-            width: 60%;
+            width: 45%;
             height: 100%;
             z-index: 3;
             pointer-events: none;
@@ -1039,28 +1039,25 @@
             background-size: cover;
             background-position: center right;
             background-repeat: no-repeat;
-            /* Soft left-edge fade — keeps orange visible while letting the wave
-               melt into the white hero. */
+            /* Strong left-edge fade — covers ~38% from the left so the source-image's
+               text overlay area (the only artifact in the wider crop) is fully hidden,
+               while the right side shows the silk curve cleanly. */
             -webkit-mask-image: linear-gradient(to right,
-                transparent 0%, rgba(0,0,0,0.4) 10%, #000 25%, #000 100%);
+                transparent 0%, transparent 18%, rgba(0,0,0,0.5) 32%, #000 50%, #000 100%);
                     mask-image: linear-gradient(to right,
-                transparent 0%, rgba(0,0,0,0.4) 10%, #000 25%, #000 100%);
+                transparent 0%, transparent 18%, rgba(0,0,0,0.5) 32%, #000 50%, #000 100%);
         }
         [data-site-theme="white"] .hero-stripe-wave { opacity: 1; }
         /* Hero text/card sits above the wave */
         .hero .container { position: relative; z-index: 5; }
 
         @media (max-width: 1100px) {
-            .hero-stripe-wave { width: 65%; }
+            .hero-stripe-wave { width: 50%; }
             [data-site-theme="white"] .hero-stripe-wave { opacity: 0.95; }
         }
         @media (max-width: 768px) {
-            .hero-stripe-wave {
-                width: 100%;
-                height: 50%;
-                top: 0;
-            }
-            [data-site-theme="white"] .hero-stripe-wave { opacity: 0.7; }
+            /* Hide on mobile — desktop only */
+            .hero-stripe-wave { display: none; }
         }
 
         .hero::before, .hero::after { display: none; }
