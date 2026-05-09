@@ -2044,27 +2044,27 @@
             justify-content: center;
             gap: 0;
             position: relative;
-            height: 340px;
-            perspective: 1200px;
-            overflow: hidden;
+            height: 400px;
+            perspective: 1400px;
+            overflow: visible;
         }
 
         .service-card {
             position: absolute;
-            width: 340px;
+            width: 280px;
             background: var(--t-card-bg);
             backdrop-filter: blur(var(--t-card-blur));
             -webkit-backdrop-filter: blur(var(--t-card-blur));
-            border-radius: var(--radius);
-            padding: 36px;
+            border-radius: 20px;
+            padding: 26px;
             border: 1px solid var(--t-card-border);
             overflow: hidden;
             cursor: pointer;
             user-select: none;
-            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1),
-                        opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
-                        box-shadow 0.7s cubic-bezier(0.4, 0, 0.2, 1),
-                        filter 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.65s cubic-bezier(0.34, 1.2, 0.64, 1),
+                        opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+                        box-shadow 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+                        filter 0.65s cubic-bezier(0.4, 0, 0.2, 1);
             will-change: transform, opacity;
         }
 
@@ -2079,35 +2079,42 @@
             transition: transform 0.4s ease;
         }
 
-        /* Position states */
+        /* Position states — Novo-style tilted/fanned polaroid cards */
         .service-card[data-pos="center"] {
             z-index: 5;
-            transform: translateX(-50%) scale(1);
+            transform: translateX(-50%) rotate(0deg) scale(1.06);
             left: 50%;
             opacity: 1;
-            box-shadow: var(--shadow-xl);
+            box-shadow:
+                0 40px 80px -20px rgba(91,181,220,0.28),
+                0 25px 50px -15px rgba(0,0,0,0.22),
+                0 8px 20px -6px rgba(0,0,0,0.12);
         }
-        .service-card[data-pos="center"]::before { transform: scaleX(1); }
+        .service-card[data-pos="center"]::before { transform: scaleX(1); height: 4px; }
 
         .service-card[data-pos="left"] {
             z-index: 3;
-            transform: translateX(-110%) scale(0.88);
+            transform: translateX(-92%) rotate(-9deg) scale(0.86);
             left: 50%;
-            opacity: 0.7;
-            filter: brightness(0.92);
+            opacity: 0.95;
+            box-shadow:
+                0 25px 55px -15px rgba(0,0,0,0.18),
+                0 12px 25px -8px rgba(0,0,0,0.10);
         }
 
         .service-card[data-pos="right"] {
             z-index: 3;
-            transform: translateX(10%) scale(0.88);
+            transform: translateX(-8%) rotate(9deg) scale(0.86);
             left: 50%;
-            opacity: 0.7;
-            filter: brightness(0.92);
+            opacity: 0.95;
+            box-shadow:
+                0 25px 55px -15px rgba(0,0,0,0.18),
+                0 12px 25px -8px rgba(0,0,0,0.10);
         }
 
         .service-card[data-pos="far-left"] {
             z-index: 1;
-            transform: translateX(-170%) scale(0.75);
+            transform: translateX(-145%) rotate(-15deg) scale(0.7);
             left: 50%;
             opacity: 0;
             pointer-events: none;
@@ -2115,7 +2122,7 @@
 
         .service-card[data-pos="far-right"] {
             z-index: 1;
-            transform: translateX(70%) scale(0.75);
+            transform: translateX(45%) rotate(15deg) scale(0.7);
             left: 50%;
             opacity: 0;
             pointer-events: none;
@@ -2123,10 +2130,22 @@
 
         .service-card[data-pos="hidden"] {
             z-index: 0;
-            transform: translateX(-50%) scale(0.6);
+            transform: translateX(-50%) rotate(0deg) scale(0.5);
             left: 50%;
             opacity: 0;
             pointer-events: none;
+        }
+
+        .service-card:hover[data-pos="left"] {
+            transform: translateX(-92%) rotate(-5deg) scale(0.92);
+            opacity: 1;
+        }
+        .service-card:hover[data-pos="right"] {
+            transform: translateX(-8%) rotate(5deg) scale(0.92);
+            opacity: 1;
+        }
+        .service-card:hover[data-pos="center"] {
+            transform: translateX(-50%) rotate(0deg) scale(1.08) translateY(-4px);
         }
 
         /* Carousel navigation dots */
@@ -3215,10 +3234,11 @@
             .section { padding: 64px 0; }
             .section-title { font-size: 1.7rem; }
 
-            .services-carousel-track { height: 300px; }
-            .service-card { width: 260px; padding: 24px; }
-            .service-card[data-pos="left"] { transform: translateX(-105%) scale(0.82); opacity: 0.5; }
-            .service-card[data-pos="right"] { transform: translateX(5%) scale(0.82); opacity: 0.5; }
+            .services-carousel-track { height: 360px; }
+            .service-card { width: 240px; padding: 22px; }
+            .service-card[data-pos="center"] { transform: translateX(-50%) rotate(0deg) scale(1.04); }
+            .service-card[data-pos="left"] { transform: translateX(-92%) rotate(-8deg) scale(0.82); opacity: 0.85; }
+            .service-card[data-pos="right"] { transform: translateX(-8%) rotate(8deg) scale(0.82); opacity: 0.85; }
             .service-card[data-pos="far-left"],
             .service-card[data-pos="far-right"] { opacity: 0; pointer-events: none; }
             .services-carousel-nav { width: 40px; height: 40px; }
@@ -3315,10 +3335,11 @@
 
             .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
 
-            .services-carousel-track { height: 280px; }
-            .service-card { width: 240px; padding: 20px; }
-            .service-card[data-pos="left"] { transform: translateX(-100%) scale(0.78); opacity: 0.3; }
-            .service-card[data-pos="right"] { transform: translateX(0%) scale(0.78); opacity: 0.3; }
+            .services-carousel-track { height: 320px; }
+            .service-card { width: 220px; padding: 18px; }
+            .service-card[data-pos="center"] { transform: translateX(-50%) rotate(0deg) scale(1.03); }
+            .service-card[data-pos="left"] { transform: translateX(-90%) rotate(-7deg) scale(0.78); opacity: 0.7; }
+            .service-card[data-pos="right"] { transform: translateX(-10%) rotate(7deg) scale(0.78); opacity: 0.7; }
 
             .cta-card { padding: 36px 16px; overflow: hidden; }
             .cta-actions { flex-direction: column; }
@@ -4226,10 +4247,10 @@
                     <span class="partner-badge">&#10003; Verified</span>
                     <div class="partner-card-top">
                         <div class="partner-logo" style="background: #FFFFFF; padding: 8px;">
-                            <img src="Images/avanti-logo.webp" alt="Avanti Finance Private Limited" style="width:100%; height:100%; object-fit:contain;">
+                            <img src="Images/avanti-logo.webp" alt="Avanti Finance Pvt. Ltd." style="width:100%; height:100%; object-fit:contain;">
                         </div>
                         <div class="partner-info">
-                            <h3 data-i18n="avanti_name">Avanti Finance Private Limited</h3>
+                            <h3 data-i18n="avanti_name">Avanti Finance Pvt. Ltd.</h3>
                             <span class="partner-type">NBFC Partner</span>
                         </div>
                     </div>
@@ -4359,7 +4380,7 @@
             </div>
             <div class="disclosure-grid">
                 <div class="disclosure-card reveal">
-                    <h3 data-i18n="avanti_name">Avanti Finance Private Limited</h3>
+                    <h3 data-i18n="avanti_name">Avanti Finance Pvt. Ltd.</h3>
                     <h4 data-i18n="avanti_svc_title">Services Offered</h4>
                     <p class="disclosure-detail" data-i18n="avanti_svc_desc">Sourcing of loan applicants, collection services, borrower servicing during loan tenure, and first-level grievance redressal.</p>
 
@@ -4906,7 +4927,7 @@
                 disclosure_label: 'Transparency',
                 disclosure_title: 'Partner Disclosures',
                 disclosure_desc: 'Regulatory disclosures for our lending partnerships, ensuring full transparency.',
-                avanti_name: 'Avanti Finance Private Limited',
+                avanti_name: 'Avanti Finance Pvt. Ltd.',
                 avanti_svc_title: 'Services Offered',
                 avanti_svc_desc: 'Sourcing of loan applicants, collection services, borrower servicing during loan tenure, and first-level grievance redressal.',
                 avanti_grv_title: 'Grievance Officer Details',
@@ -5164,7 +5185,7 @@
                 disclosure_label: 'पारदर्शिता',
                 disclosure_title: 'साझेदार प्रकटीकरण',
                 disclosure_desc: 'पूर्ण पारदर्शिता सुनिश्चित करते हुए हमारी ऋण साझेदारियों के लिए नियामक प्रकटीकरण।',
-                avanti_name: 'अवंती फाइनेंस प्राइवेट लिमिटेड',
+                avanti_name: 'अवंती फाइनेंस प्रा. लि.',
                 avanti_svc_title: 'प्रदान की जाने वाली सेवाएं',
                 avanti_svc_desc: 'ऋण आवेदकों की सोर्सिंग, संग्रहण सेवाएं, ऋण अवधि के दौरान उधारकर्ता सेवा, और प्रथम-स्तरीय शिकायत निवारण।',
                 avanti_grv_title: 'शिकायत अधिकारी विवरण',
@@ -5422,7 +5443,7 @@
                 disclosure_label: 'પારદર્શિતા',
                 disclosure_title: 'ભાગીદાર જાહેરાતો',
                 disclosure_desc: 'સંપૂર્ણ પારદર્શિતા સુનિશ્ચિત કરતા અમારી ધિરાણ ભાગીદારી માટે નિયમનકારી જાહેરાતો।',
-                avanti_name: 'અવંતી ફાઇનાન્સ પ્રાઇવેટ લિમિટેડ',
+                avanti_name: 'અવંતી ફાઇનાન્સ પ્રા. લિ.',
                 avanti_svc_title: 'આપવામાં આવતી સેવાઓ',
                 avanti_svc_desc: 'લોન અરજદારોની સોર્સિંગ, વસૂલાત સેવાઓ, લોન અવધિ દરમિયાન ઉધારકર્તા સેવા, અને પ્રથમ-સ્તરીય ફરિયાદ નિવારણ।',
                 avanti_grv_title: 'ફરિયાદ અધિકારી વિગતો',
@@ -5680,7 +5701,7 @@
                 disclosure_label: 'पारदर्शकता',
                 disclosure_title: 'भागीदार प्रकटीकरणे',
                 disclosure_desc: 'पूर्ण पारदर्शकता सुनिश्चित करत आमच्या कर्ज भागीदारींसाठी नियामक प्रकटीकरणे।',
-                avanti_name: 'अवंती फायनान्स प्रायव्हेट लिमिटेड',
+                avanti_name: 'अवंती फायनान्स प्रा. लि.',
                 avanti_svc_title: 'प्रदान केलेल्या सेवा',
                 avanti_svc_desc: 'कर्ज अर्जदारांची सोर्सिंग, वसुली सेवा, कर्ज कालावधीत कर्जदार सेवा, आणि प्रथम-स्तरीय तक्रार निवारण.',
                 avanti_grv_title: 'तक्रार अधिकारी तपशील',
@@ -5938,7 +5959,7 @@
                 disclosure_label: 'வெளிப்படைத்தன்மை',
                 disclosure_title: 'கூட்டாளர் வெளிப்படுத்தல்கள்',
                 disclosure_desc: 'முழு வெளிப்படைத்தன்மையை உறுதிசெய்யும் எங்கள் கடன் கூட்டாண்மைகளுக்கான ஒழுங்குமுறை வெளிப்படுத்தல்கள்।',
-                avanti_name: 'அவந்தி ஃபைனான்ஸ் பிரைவேட் லிமிடெட்',
+                avanti_name: 'அவந்தி ஃபைனான்ஸ் பிரை. லிட்.',
                 avanti_svc_title: 'வழங்கப்படும் சேவைகள்',
                 avanti_svc_desc: 'கடன் விண்ணப்பதாரர்களின் சோர்சிங், வசூல் சேவைகள், கடன் காலத்தின் போது கடன் வாங்குபவர் சேவை, மற்றும் முதல்-நிலை குறைதீர்ப்பு.',
                 avanti_grv_title: 'குறைதீர்ப்பு அதிகாரி விவரங்கள்',
@@ -6395,7 +6416,7 @@
                 disclosure_label: 'పారదర్శకత',
                 disclosure_title: 'భాగస్వామ్య వెల్లడింపులు',
                 disclosure_desc: 'పూర్తి పారదర్శకతను నిర్ధారిస్తూ మా రుణ భాగస్వామ్యాలకు నియంత్రణ వెల్లడింపులు।',
-                avanti_name: 'అవంతి ఫైనాన్స్ ప్రైవేట్ లిమిటెడ్',
+                avanti_name: 'అవంతి ఫైనాన్స్ ప్రై. లి.',
                 avanti_svc_title: 'అందించే సేవలు',
                 avanti_svc_desc: 'రుణ దరఖాస్తుదారుల సోర్సింగ్, వసూలు సేవలు, రుణ కాలంలో రుణగ్రహీత సేవ, మరియు ప్రథమ-స్థాయి ఫిర్యాదు పరిష్కారం.',
                 avanti_grv_title: 'ఫిర్యాదు అధికారి వివరాలు',
@@ -7051,7 +7072,7 @@
                 disclosure_label: 'സുതാര്യത',
                 disclosure_title: 'പങ്കാളി വെളിപ്പെടുത്തലുകൾ',
                 disclosure_desc: 'പൂർണ്ണ സുതാര്യത ഉറപ്പാക്കുന്ന ഞങ്ങളുടെ വായ്പ പങ്കാളിത്തങ്ങൾക്കുള്ള നിയന്ത്രണ വെളിപ്പെടുത്തലുകൾ.',
-                avanti_name: 'അവന്തി ഫൈനാന്‍സ് പ്രൈവറ്റ് ലിമിറ്റഡ്',
+                avanti_name: 'അവന്തി ഫൈനാന്‍സ് പ്രൈ. ലിമിറ്റഡ്',
                 avanti_svc_title: 'നല്‍കുന്ന സേവനങ്ങള്‍',
                 avanti_svc_desc: 'വായ്പ അപേക്ഷകരുടെ സോഴ്സിംഗ്, ശേഖരണ സേവനങ്ങള്‍, വായ്പ കാലാവധിയില്‍ കടം വാങ്ങുന്നയാളുടെ സേവനം, ആദ്യ-ഘട്ട പരാതി പരിഹാരം.',
                 avanti_grv_title: 'പരാതി ഓഫീസര്‍ വിശദാംശങ്ങള്‍',
