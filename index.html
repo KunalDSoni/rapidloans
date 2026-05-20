@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-lang="en" data-site-theme="white">
+<html lang="en" data-lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,158 +15,55 @@
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --primary: #0A2540;
-            --primary-light: #425466;
-            --accent: #635BFF;
-            --accent-light: #7A73FF;
-            --teal: #00D4AA;
-            --teal-dark: #00B894;
-            --gold: #F59E0B;
-            --green: #00D4AA;
-            --green-dark: #00B894;
-            --bg-light: #F6F9FC;
+            /* ═══ RAPIDLOANS BRAND PALETTE ═══
+               Black & white base with logo accents:
+               - brand blue   #5BB5DC  (the "RL" + "Rapid")
+               - brand red    #E63946  (the swoosh + "Loans") */
+            --primary: #1A1A1A;
+            --primary-light: #4A4A4A;
+            --accent: #5BB5DC;
+            --accent-light: #7DC9E5;
+            --accent-dark: #3A9BC4;
+            --teal: #E63946;
+            --teal-dark: #C92A37;
+            --gold: #E63946;
+            --green: #5BB5DC;
+            --green-dark: #3A9BC4;
+            --brand-blue: #5BB5DC;
+            --brand-red: #E63946;
+            --bg-light: #F8F9FA;
             --bg-white: #FFFFFF;
-            --text-dark: #0A2540;
-            --text-body: #425466;
-            --text-muted: #8898AA;
-            --border: #E3E8EE;
+            --text-dark: #1A1A1A;
+            --text-body: #4A4A4A;
+            --text-muted: #888888;
+            --border: #E5E5E5;
             --shadow-sm: 0 2px 5px rgba(0,0,0,0.04);
             --shadow-md: 0 6px 16px -4px rgba(0,0,0,0.06);
-            --shadow-lg: 0 15px 35px -5px rgba(10,37,64,0.08), 0 5px 15px -3px rgba(10,37,64,0.04);
-            --shadow-xl: 0 30px 60px -12px rgba(10,37,64,0.12), 0 18px 36px -18px rgba(10,37,64,0.08);
+            --shadow-lg: 0 15px 35px -5px rgba(0,0,0,0.08), 0 5px 15px -3px rgba(0,0,0,0.04);
+            --shadow-xl: 0 30px 60px -12px rgba(0,0,0,0.12), 0 18px 36px -18px rgba(0,0,0,0.08);
             --radius: 16px;
             --radius-sm: 12px;
             --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-            /* ═══ THEME SYSTEM VARIABLES ═══ */
+            /* Single B&W surface — no theme switching */
             --t-card-bg: #FFFFFF;
-            --t-card-border: #E3E8EE;
+            --t-card-border: #E5E5E5;
             --t-card-blur: 0px;
             --t-section-bg: #FFFFFF;
-            --t-section-alt-bg: #F6F9FC;
+            --t-section-alt-bg: #F8F9FA;
             --t-nav-bg: rgba(255,255,255,0.98);
             --t-nav-blur: 20px;
             --t-nav-shadow: 0 1px 0 rgba(0,0,0,0.06);
             --t-hero-bg: #FFFFFF;
-            --t-text-dark: #0A2540;
-            --t-text-body: #425466;
-            --t-text-muted: #8898AA;
-            --t-footer-bg: #F8FAFC;
+            --t-text-dark: #1A1A1A;
+            --t-text-body: #4A4A4A;
+            --t-text-muted: #888888;
+            --t-footer-bg: #F8F9FA;
             --t-badge-bg: #FFFFFF;
-            --t-item-bg: #F6F9FC;
-            --t-item-border: #E3E8EE;
+            --t-item-bg: #F8F9FA;
+            --t-item-border: #E5E5E5;
             --t-canvas-opacity: 0;
-            /* Team-photo backdrop — shows through the photos' transparent area
-               (white background was stripped via Vision API). Each theme gets a
-               soft, light shade from its own color family. White theme → cream. */
-            --t-photo-bg: linear-gradient(145deg, #fdfaf2 0%, #f5ecd8 50%, #e8d8b0 100%);
-        }
-
-        /* ═══ COLORED THEME OVERRIDES ═══ */
-        [data-site-theme="pre-dawn"],
-        [data-site-theme="sunrise"],
-        [data-site-theme="daytime"],
-        [data-site-theme="dusk"],
-        [data-site-theme="sunset"],
-        [data-site-theme="night"] {
-            --t-card-bg: rgba(255,255,255,0.65);
-            --t-card-border: rgba(255,255,255,0.45);
-            --t-card-blur: 16px;
-            --t-section-bg: transparent;
-            --t-section-alt-bg: transparent;
-            --t-nav-bg: rgba(255,255,255,0.5);
-            --t-nav-blur: 24px;
-            --t-nav-shadow: 0 1px 0 rgba(255,255,255,0.3);
-            --t-hero-bg: transparent;
-            --t-footer-bg: transparent;
-            --t-badge-bg: rgba(255,255,255,0.7);
-            --t-item-bg: rgba(255,255,255,0.4);
-            --t-item-border: rgba(255,255,255,0.4);
-            --t-canvas-opacity: 1;
-        }
-
-        /* ═══ DARK THEMES — white text, frosted glass ═══ */
-        [data-site-theme="night"],
-        [data-site-theme="pre-dawn"] {
-            --t-text-dark: #FFFFFF;
-            --t-text-body: rgba(255,255,255,0.88);
-            --t-text-muted: rgba(255,255,255,0.6);
-            --t-card-bg: rgba(255,255,255,0.08);
-            --t-card-border: rgba(255,255,255,0.15);
-            --t-card-blur: 20px;
-            --t-nav-bg: rgba(10,10,30,0.65);
-            --t-nav-blur: 28px;
-            --t-item-bg: rgba(255,255,255,0.06);
-            --t-item-border: rgba(255,255,255,0.1);
-            --t-badge-bg: rgba(255,255,255,0.12);
-            --t-footer-bg: rgba(0,0,0,0.2);
-            /* Night/Pre-dawn (deep violet/purple theme) → light lavender */
-            --t-photo-bg: linear-gradient(145deg, #f5f0ff 0%, #e0d4ff 50%, #c0a8ec 100%);
-        }
-
-        /* ═══ WARM DARK THEMES — warm white text ═══ */
-        [data-site-theme="dusk"],
-        [data-site-theme="sunset"] {
-            --t-text-dark: #FFFFFF;
-            --t-text-body: rgba(255,255,255,0.88);
-            --t-text-muted: rgba(255,255,255,0.6);
-            --t-card-bg: rgba(255,255,255,0.1);
-            --t-card-border: rgba(255,255,255,0.18);
-            --t-card-blur: 20px;
-            --t-nav-bg: rgba(40,15,40,0.6);
-            --t-nav-blur: 28px;
-            --t-item-bg: rgba(255,255,255,0.08);
-            --t-item-border: rgba(255,255,255,0.12);
-            --t-badge-bg: rgba(255,255,255,0.15);
-            --t-footer-bg: rgba(0,0,0,0.15);
-            /* Dusk + Sunset share warm pink/coral palette → light pink */
-            --t-photo-bg: linear-gradient(145deg, #ffeaee 0%, #ffd0d8 50%, #f0a0b0 100%);
-        }
-
-        /* ═══ SUNRISE — deep purplish bg, needs light text ═══ */
-        [data-site-theme="sunrise"] {
-            --t-text-dark: #FFFFFF;
-            --t-text-body: rgba(255,255,255,0.88);
-            --t-text-muted: rgba(255,255,255,0.6);
-            --t-card-bg: rgba(255,255,255,0.12);
-            --t-card-border: rgba(255,255,255,0.2);
-            --t-card-blur: 20px;
-            --t-nav-bg: rgba(30,15,50,0.55);
-            --t-nav-blur: 28px;
-            --t-item-bg: rgba(255,255,255,0.08);
-            --t-item-border: rgba(255,255,255,0.12);
-            --t-badge-bg: rgba(255,255,255,0.15);
-            --t-footer-bg: rgba(0,0,0,0.15);
-            /* Sunrise (warm orange/peach palette) → light peach */
-            --t-photo-bg: linear-gradient(145deg, #fff2e6 0%, #ffd8c0 50%, #f0b090 100%);
-        }
-
-        /* ═══ DAYTIME — vivid blue bg, white text for contrast ═══ */
-        [data-site-theme="daytime"] {
-            --t-text-dark: #FFFFFF;
-            --t-text-body: rgba(255,255,255,0.9);
-            --t-text-muted: rgba(255,255,255,0.65);
-            --t-card-bg: rgba(255,255,255,0.15);
-            --t-card-border: rgba(255,255,255,0.25);
-            --t-card-blur: 20px;
-            --t-nav-bg: rgba(40,100,200,0.45);
-            --t-nav-blur: 28px;
-            --t-item-bg: rgba(255,255,255,0.1);
-            --t-item-border: rgba(255,255,255,0.18);
-            --t-badge-bg: rgba(255,255,255,0.2);
-            --t-footer-bg: rgba(0,0,0,0.1);
-            /* Daytime (vivid blue palette) → light sky blue */
-            --t-photo-bg: linear-gradient(145deg, #f0f8ff 0%, #c8e0fa 50%, #88b4e8 100%);
-        }
-
-        /* ═══ SUNSET-specific photo backdrop (red/coral palette) → light coral ═══ */
-        [data-site-theme="sunset"] {
-            --t-photo-bg: linear-gradient(145deg, #ffeae0 0%, #ffc8b0 50%, #f08878 100%);
-        }
-
-        /* ═══ Pre-dawn-specific photo backdrop (slightly cooler than night) ═══ */
-        [data-site-theme="pre-dawn"] {
-            --t-photo-bg: linear-gradient(145deg, #f0eaff 0%, #d8c8f8 50%, #a888d8 100%);
+            --t-photo-bg: linear-gradient(145deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
         }
 
         html { scroll-behavior: smooth; font-size: 16px; }
@@ -190,7 +87,6 @@
         .hero-badge, .floating-badge, .lang-dropdown, .about-feature {
             transition: background 0.6s ease, border-color 0.6s ease, color 0.6s ease, backdrop-filter 0.3s ease;
         }
-        #globalGradientCanvas { opacity: var(--t-canvas-opacity); transition: opacity 0.8s ease; }
 
         /* SVG icons adapt to theme text color */
         .trust-item svg,
@@ -483,94 +379,6 @@
         }
 
         /* ═══════════════════════════════════════════
-           THEME SWITCHER (next to language)
-        ═══════════════════════════════════════════ */
-        .theme-switcher {
-            position: relative;
-            z-index: 1001;
-        }
-
-        .theme-toggle-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
-            background: rgba(99,91,255,0.08);
-            border: 1px solid rgba(99,91,255,0.12);
-            color: var(--accent);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .theme-toggle-btn:hover {
-            background: rgba(99,91,255,0.14);
-            border-color: rgba(99,91,255,0.25);
-        }
-
-        .navbar.scrolled .theme-toggle-btn {
-            background: rgba(99,91,255,0.06);
-            border-color: var(--t-card-border);
-        }
-
-        .theme-menu {
-            position: absolute;
-            top: calc(100% + 8px);
-            left: 50%;
-            transform: translateX(-50%) translateY(-8px);
-            background: rgba(255,255,255,0.97);
-            backdrop-filter: blur(28px);
-            -webkit-backdrop-filter: blur(28px);
-            border: 1px solid rgba(0,0,0,0.08);
-            border-radius: 12px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-            overflow: hidden;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.25s ease;
-            display: flex;
-            flex-direction: column;
-            padding: 4px;
-            width: auto;
-        }
-
-        .theme-switcher.open .theme-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .theme-menu-option {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            border: 2px solid transparent;
-            background: none;
-            border-radius: 10px;
-            font-family: inherit;
-            transition: all 0.2s ease;
-        }
-
-        .theme-menu-option:hover {
-            background: rgba(99,91,255,0.08);
-        }
-
-        .theme-menu-option.active {
-            background: rgba(99,91,255,0.1);
-            border-color: var(--accent);
-        }
-
-        .theme-menu-icon {
-            font-size: 1.2rem;
-            line-height: 1;
-        }
-
-        /* ═══════════════════════════════════════════
            LANGUAGE SWITCHER
         ═══════════════════════════════════════════ */
         .lang-switcher {
@@ -583,8 +391,8 @@
             align-items: center;
             gap: 6px;
             padding: 6px 14px;
-            background: rgba(10,37,64,0.08);
-            border: 1px solid rgba(10,37,64,0.15);
+            background: rgba(26,26,26,0.08);
+            border: 1px solid rgba(26,26,26,0.15);
             border-radius: 8px;
             color: var(--t-text-body);
             font-size: 0.8rem;
@@ -594,60 +402,18 @@
             font-family: inherit;
         }
 
-        /* Dark theme lang-btn — use light glass */
-        [data-site-theme="night"] .lang-btn,
-        [data-site-theme="pre-dawn"] .lang-btn,
-        [data-site-theme="dusk"] .lang-btn,
-        [data-site-theme="sunset"] .lang-btn,
-        [data-site-theme="sunrise"] .lang-btn,
-        [data-site-theme="daytime"] .lang-btn {
-            background: rgba(255,255,255,0.12);
-            border-color: rgba(255,255,255,0.2);
-            color: rgba(255,255,255,0.9);
-        }
-
-        [data-site-theme="night"] .lang-btn:hover,
-        [data-site-theme="pre-dawn"] .lang-btn:hover,
-        [data-site-theme="dusk"] .lang-btn:hover,
-        [data-site-theme="sunset"] .lang-btn:hover,
-        [data-site-theme="sunrise"] .lang-btn:hover,
-        [data-site-theme="daytime"] .lang-btn:hover {
-            background: rgba(255,255,255,0.2);
-        }
-
-        /* Dark theme theme-toggle-btn */
-        [data-site-theme="night"] .theme-toggle-btn,
-        [data-site-theme="pre-dawn"] .theme-toggle-btn,
-        [data-site-theme="dusk"] .theme-toggle-btn,
-        [data-site-theme="sunset"] .theme-toggle-btn,
-        [data-site-theme="sunrise"] .theme-toggle-btn,
-        [data-site-theme="daytime"] .theme-toggle-btn {
-            background: rgba(255,255,255,0.12);
-            border-color: rgba(255,255,255,0.2);
-            color: rgba(255,255,255,0.9);
-        }
-
-        [data-site-theme="night"] .theme-toggle-btn:hover,
-        [data-site-theme="pre-dawn"] .theme-toggle-btn:hover,
-        [data-site-theme="dusk"] .theme-toggle-btn:hover,
-        [data-site-theme="sunset"] .theme-toggle-btn:hover,
-        [data-site-theme="sunrise"] .theme-toggle-btn:hover,
-        [data-site-theme="daytime"] .theme-toggle-btn:hover {
-            background: rgba(255,255,255,0.2);
-        }
-
         .navbar.scrolled .lang-btn {
-            background: rgba(10,37,64,0.06);
+            background: rgba(26,26,26,0.06);
             border-color: var(--t-card-border);
             color: var(--t-text-dark);
         }
 
         .lang-btn:hover {
-            background: rgba(10,37,64,0.12);
+            background: rgba(26,26,26,0.12);
         }
 
         .navbar.scrolled .lang-btn:hover {
-            background: rgba(10,37,64,0.1);
+            background: rgba(26,26,26,0.1);
         }
 
         .lang-dropdown {
@@ -686,7 +452,7 @@
             width: 30px;
             height: 30px;
             border-radius: 8px;
-            background: var(--t-item-bg, rgba(99,91,255,0.1));
+            background: var(--t-item-bg, rgba(91,181,220,0.1));
             font-size: 0.88rem;
             font-weight: 700;
             color: var(--t-text-dark);
@@ -710,7 +476,7 @@
         }
 
         .lang-option:hover .lang-icon {
-            background: rgba(99,91,255,0.18);
+            background: rgba(91,181,220,0.18);
             color: var(--accent);
         }
 
@@ -793,42 +559,27 @@
             font-size: 1.4rem;
             font-weight: 800;
             letter-spacing: -0.02em;
-            color: var(--t-text-dark);
+            color: var(--brand-blue);
         }
 
         .logo-name-loans {
-            color: var(--t-text-dark);
-        }
-
-        .logo-name-ai {
-            font-weight: 800;
-            color: #6B8E23;
-            transition: color 0.6s ease;
+            color: var(--brand-red);
         }
 
         .navbar.scrolled .logo-name {
-            color: var(--t-text-dark);
+            color: var(--brand-blue);
         }
 
         .navbar.scrolled .logo-name-loans {
-            color: var(--t-text-dark);
+            color: var(--brand-red);
         }
-
-        /* Theme-adaptive .ai colors */
-        [data-site-theme="white"] .logo-name-ai { color: #6B8E23; }
-        [data-site-theme="pre-dawn"] .logo-name-ai { color: #7EB8FF; }
-        [data-site-theme="sunrise"] .logo-name-ai { color: #FF9F43; }
-        [data-site-theme="daytime"] .logo-name-ai { color: #FACC15; }
-        [data-site-theme="dusk"] .logo-name-ai { color: #E87040; }
-        [data-site-theme="sunset"] .logo-name-ai { color: #FF6B3A; }
-        [data-site-theme="night"] .logo-name-ai { color: #38BDF8; }
 
         .footer .logo-name {
-            color: var(--t-text-dark);
+            color: var(--brand-blue);
         }
 
-        .footer .logo-name-ai {
-            color: var(--accent, #6B8E23);
+        .footer .logo-name-loans {
+            color: var(--brand-red);
         }
 
         .logo-sub {
@@ -897,12 +648,12 @@
         /* Logo hover shimmer */
 
         .logo:hover .logo-name-ai {
-            color: #7BA428;
+            color: #3A9BC4;
         }
 
         @keyframes logoBreath {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(14,165,233,0), 0 2px 8px rgba(0,0,0,0.1); }
-            50% { box-shadow: 0 0 20px 4px rgba(14,165,233,0.3), 0 2px 12px rgba(0,0,0,0.15); }
+            0%, 100% { box-shadow: 0 0 0 0 rgba(91,181,220,0), 0 2px 8px rgba(0,0,0,0.1); }
+            50% { box-shadow: 0 0 20px 4px rgba(91,181,220,0.3), 0 2px 12px rgba(0,0,0,0.15); }
         }
 
         .nav-links {
@@ -948,13 +699,13 @@
             font-weight: 600 !important;
             font-size: 0.88rem !important;
             transition: all 0.2s ease !important;
-            box-shadow: 0 2px 8px rgba(99,91,255,0.25);
+            box-shadow: 0 2px 8px rgba(91,181,220,0.25);
         }
 
         .nav-cta:hover {
             background: var(--accent-light) !important;
             transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(99,91,255,0.35) !important;
+            box-shadow: 0 4px 12px rgba(91,181,220,0.35) !important;
         }
 
         .nav-cta::after { display: none !important; }
@@ -1035,16 +786,6 @@
             transition: background 0.6s ease;
         }
 
-        /* Stripe-style animated gradient canvas */
-        .hero-gradient-canvas {
-            position: absolute;
-            inset: 0;
-            z-index: 2;
-            opacity: var(--t-canvas-opacity);
-            transition: opacity 0.8s ease;
-            pointer-events: none;
-        }
-
         /* Hero text/card sits above other hero layers */
         .hero .container { position: relative; z-index: 5; }
 
@@ -1103,8 +844,8 @@
             align-items: center;
             gap: 8px;
             padding: 8px 18px;
-            background: rgba(99,91,255,0.08);
-            border: 1px solid rgba(99,91,255,0.12);
+            background: rgba(91,181,220,0.08);
+            border: 1px solid rgba(91,181,220,0.12);
             border-radius: 50px;
             color: var(--teal);
             font-size: 0.82rem;
@@ -1375,11 +1116,11 @@
         .hero h1 .highlight {
             background: linear-gradient(
                 90deg,
-                #FF8A3D 0%,
-                #FF3D8A 25%,
-                #B23DFF 50%,
-                #3D8AFF 75%,
-                #00D4AA 100%
+                #5BB5DC 0%,
+                #7DC9E5 25%,
+                #E63946 50%,
+                #C92A37 75%,
+                #5BB5DC 100%
             );
             background-size: 200% 100%;
             -webkit-background-clip: text;
@@ -1427,13 +1168,13 @@
         .btn-primary {
             background: var(--accent);
             color: #fff;
-            box-shadow: 0 4px 14px rgba(99,91,255,0.3);
+            box-shadow: 0 4px 14px rgba(91,181,220,0.3);
         }
 
         .btn-primary:hover {
             background: var(--accent-light);
             transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(99,91,255,0.4);
+            box-shadow: 0 6px 20px rgba(91,181,220,0.4);
         }
 
         .btn-outline {
@@ -1504,7 +1245,7 @@
 
         .hero-card-icon {
             width: 52px; height: 52px;
-            background: linear-gradient(135deg, #635BFF, #00D4AA);
+            background: linear-gradient(135deg, #5BB5DC, #E63946);
             border-radius: 14px;
             display: flex; align-items: center; justify-content: center;
             font-size: 1.4rem;
@@ -1663,7 +1404,7 @@
 
         .hero-card-item:hover {
             background: var(--t-card-bg);
-            border-color: rgba(99,91,255,0.3);
+            border-color: rgba(91,181,220,0.3);
             transform: translateX(4px);
         }
 
@@ -1750,8 +1491,8 @@
             align-items: center;
             gap: 8px;
             padding: 7px 18px;
-            background: var(--sl-bg, rgba(99,91,255,0.06));
-            border: 1px solid var(--sl-border, rgba(99,91,255,0.12));
+            background: var(--sl-bg, rgba(91,181,220,0.06));
+            border: 1px solid var(--sl-border, rgba(91,181,220,0.12));
             border-radius: 50px;
             color: var(--sl-color, var(--accent));
             font-family: 'Inter', sans-serif;
@@ -1763,14 +1504,8 @@
             transition: background 0.6s ease, border-color 0.6s ease, color 0.6s ease;
         }
 
-        /* Section label theme colors */
-        [data-site-theme="white"] { --sl-bg: rgba(99,91,255,0.06); --sl-border: rgba(99,91,255,0.12); --sl-color: #635BFF; }
-        [data-site-theme="pre-dawn"] { --sl-bg: rgba(255,200,150,0.12); --sl-border: rgba(255,180,120,0.25); --sl-color: #FFB87A; }
-        [data-site-theme="sunrise"] { --sl-bg: rgba(255,160,80,0.12); --sl-border: rgba(255,140,60,0.25); --sl-color: #FF9A4C; }
-        [data-site-theme="daytime"] { --sl-bg: rgba(60,180,255,0.12); --sl-border: rgba(60,160,240,0.25); --sl-color: #4CB4FF; }
-        [data-site-theme="dusk"] { --sl-bg: rgba(200,160,255,0.12); --sl-border: rgba(180,140,240,0.25); --sl-color: #C8A0FF; }
-        [data-site-theme="sunset"] { --sl-bg: rgba(255,130,80,0.12); --sl-border: rgba(255,110,60,0.25); --sl-color: #FF8250; }
-        [data-site-theme="night"] { --sl-bg: rgba(140,180,255,0.12); --sl-border: rgba(120,160,240,0.25); --sl-color: #8CB4FF; }
+        /* Section label brand colors */
+        :root { --sl-bg: rgba(91,181,220,0.08); --sl-border: rgba(91,181,220,0.18); --sl-color: #3A9BC4; }
 
         .section-title {
             font-size: clamp(1.8rem, 3.5vw, 2.8rem);
@@ -1929,14 +1664,7 @@
             z-index: 2;
             animation: mapFloat 5s ease-in-out infinite;
         }
-        /* Theme-adaptive map: adjust outline visibility per theme */
-        [data-site-theme="white"] .india-map-img { opacity: 0.9; filter: none; }
-        [data-site-theme="pre-dawn"] .india-map-img { opacity: 0.85; filter: brightness(1.3) drop-shadow(0 0 1px rgba(255,255,255,0.15)); }
-        [data-site-theme="sunrise"] .india-map-img { opacity: 0.85; filter: brightness(1.15); }
-        [data-site-theme="daytime"] .india-map-img { opacity: 0.85; filter: brightness(1.1); }
-        [data-site-theme="dusk"] .india-map-img { opacity: 0.85; filter: brightness(1.35) drop-shadow(0 0 1px rgba(255,255,255,0.2)); }
-        [data-site-theme="sunset"] .india-map-img { opacity: 0.85; filter: brightness(1.25) drop-shadow(0 0 1px rgba(255,200,150,0.15)); }
-        [data-site-theme="night"] .india-map-img { opacity: 0.8; filter: brightness(1.5) drop-shadow(0 0 2px rgba(255,255,255,0.2)); }
+        .india-map-img { opacity: 0.9; filter: none; }
         .map-state-label {
             position: absolute;
             transform: translate(-50%, -50%);
@@ -2023,7 +1751,7 @@
         ═══════════════════════════════════════════ */
         .disclosure-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 32px;
         }
 
@@ -2267,7 +1995,7 @@
             position: absolute;
             bottom: -16px;
             right: -16px;
-            background: linear-gradient(135deg, #635BFF, #00D4AA);
+            background: linear-gradient(135deg, #5BB5DC, #E63946);
             color: #fff;
             padding: 20px 28px;
             border-radius: var(--radius);
@@ -2316,27 +2044,27 @@
             justify-content: center;
             gap: 0;
             position: relative;
-            height: 340px;
-            perspective: 1200px;
-            overflow: hidden;
+            height: 400px;
+            perspective: 1400px;
+            overflow: visible;
         }
 
         .service-card {
             position: absolute;
-            width: 340px;
+            width: 280px;
             background: var(--t-card-bg);
             backdrop-filter: blur(var(--t-card-blur));
             -webkit-backdrop-filter: blur(var(--t-card-blur));
-            border-radius: var(--radius);
-            padding: 36px;
+            border-radius: 20px;
+            padding: 26px;
             border: 1px solid var(--t-card-border);
             overflow: hidden;
             cursor: pointer;
             user-select: none;
-            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1),
-                        opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
-                        box-shadow 0.7s cubic-bezier(0.4, 0, 0.2, 1),
-                        filter 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.65s cubic-bezier(0.34, 1.2, 0.64, 1),
+                        opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+                        box-shadow 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+                        filter 0.65s cubic-bezier(0.4, 0, 0.2, 1);
             will-change: transform, opacity;
         }
 
@@ -2351,35 +2079,42 @@
             transition: transform 0.4s ease;
         }
 
-        /* Position states */
+        /* Position states — Novo-style tilted/fanned polaroid cards */
         .service-card[data-pos="center"] {
             z-index: 5;
-            transform: translateX(-50%) scale(1);
+            transform: translateX(-50%) rotate(0deg) scale(1.06);
             left: 50%;
             opacity: 1;
-            box-shadow: var(--shadow-xl);
+            box-shadow:
+                0 40px 80px -20px rgba(91,181,220,0.28),
+                0 25px 50px -15px rgba(0,0,0,0.22),
+                0 8px 20px -6px rgba(0,0,0,0.12);
         }
-        .service-card[data-pos="center"]::before { transform: scaleX(1); }
+        .service-card[data-pos="center"]::before { transform: scaleX(1); height: 4px; }
 
         .service-card[data-pos="left"] {
             z-index: 3;
-            transform: translateX(-110%) scale(0.88);
+            transform: translateX(-92%) rotate(-9deg) scale(0.86);
             left: 50%;
-            opacity: 0.7;
-            filter: brightness(0.92);
+            opacity: 0.95;
+            box-shadow:
+                0 25px 55px -15px rgba(0,0,0,0.18),
+                0 12px 25px -8px rgba(0,0,0,0.10);
         }
 
         .service-card[data-pos="right"] {
             z-index: 3;
-            transform: translateX(10%) scale(0.88);
+            transform: translateX(-8%) rotate(9deg) scale(0.86);
             left: 50%;
-            opacity: 0.7;
-            filter: brightness(0.92);
+            opacity: 0.95;
+            box-shadow:
+                0 25px 55px -15px rgba(0,0,0,0.18),
+                0 12px 25px -8px rgba(0,0,0,0.10);
         }
 
         .service-card[data-pos="far-left"] {
             z-index: 1;
-            transform: translateX(-170%) scale(0.75);
+            transform: translateX(-145%) rotate(-15deg) scale(0.7);
             left: 50%;
             opacity: 0;
             pointer-events: none;
@@ -2387,7 +2122,7 @@
 
         .service-card[data-pos="far-right"] {
             z-index: 1;
-            transform: translateX(70%) scale(0.75);
+            transform: translateX(45%) rotate(15deg) scale(0.7);
             left: 50%;
             opacity: 0;
             pointer-events: none;
@@ -2395,10 +2130,22 @@
 
         .service-card[data-pos="hidden"] {
             z-index: 0;
-            transform: translateX(-50%) scale(0.6);
+            transform: translateX(-50%) rotate(0deg) scale(0.5);
             left: 50%;
             opacity: 0;
             pointer-events: none;
+        }
+
+        .service-card:hover[data-pos="left"] {
+            transform: translateX(-92%) rotate(-5deg) scale(0.92);
+            opacity: 1;
+        }
+        .service-card:hover[data-pos="right"] {
+            transform: translateX(-8%) rotate(5deg) scale(0.92);
+            opacity: 1;
+        }
+        .service-card:hover[data-pos="center"] {
+            transform: translateX(-50%) rotate(0deg) scale(1.08) translateY(-4px);
         }
 
         /* Carousel navigation dots */
@@ -2447,14 +2194,14 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 16px rgba(99,91,255,0.35);
+            box-shadow: 0 4px 16px rgba(91,181,220,0.35);
         }
 
         .services-carousel-nav:hover {
             background: var(--accent-light);
             color: #fff;
             transform: translateY(-50%) scale(1.1);
-            box-shadow: 0 6px 20px rgba(99,91,255,0.45);
+            box-shadow: 0 6px 20px rgba(91,181,220,0.45);
         }
 
         .services-carousel-nav.prev { left: -8px; }
@@ -2790,7 +2537,7 @@
             font-weight: 800;
             color: #fff;
             position: relative;
-            background: linear-gradient(135deg, #635BFF, #7A73FF);
+            background: linear-gradient(135deg, #5BB5DC, #7DC9E5);
         }
 
         .step-number::before {
@@ -2861,16 +2608,15 @@
             transition: color 0.4s ease, text-shadow 0.4s ease;
         }
 
-        .partners-header .section-desc { margin: 0 auto; color: rgba(255,255,255,0.85); }
+        .partners-header .section-desc { margin: 0 auto; color: var(--text-body); }
 
-        /* White theme: dark text since starburst bg is light */
-        [data-site-theme="white"] .partners-header .section-label,
-        [data-site-theme="white"] .partners-header .section-title {
-            color: #0A2540;
+        .partners-header .section-label,
+        .partners-header .section-title {
+            color: var(--text-dark);
             text-shadow: none;
         }
-        [data-site-theme="white"] .partners-header .section-desc {
-            color: #425466;
+        .partners-header .section-desc {
+            color: var(--text-body);
             text-shadow: none;
         }
 
@@ -2896,7 +2642,7 @@
         }
 
         .partner-card:hover {
-            box-shadow: 0 20px 60px -12px rgba(15,27,76,0.15), 0 8px 24px -8px rgba(0,0,0,0.08);
+            box-shadow: 0 20px 60px -12px rgba(0,0,0,0.1), 0 8px 24px -8px rgba(0,0,0,0.08);
             transform: translateY(-6px);
             border-color: transparent;
         }
@@ -3043,7 +2789,7 @@
         }
 
         .cta-card {
-            background: linear-gradient(135deg, #635BFF 0%, #7A73FF 30%, #00D4AA 70%, #00B894 100%);
+            background: linear-gradient(135deg, #5BB5DC 0%, #7DC9E5 30%, #E63946 70%, #C92A37 100%);
             border-radius: 24px;
             padding: 80px 48px;
             position: relative;
@@ -3112,14 +2858,14 @@
 
         .cta-orb--2 {
             width: 200px; height: 200px;
-            background: rgba(0,212,170,0.3);
+            background: rgba(230,57,70,0.3);
             bottom: -40px; left: -40px;
             animation: ctaOrbFloat 13s ease-in-out infinite alternate-reverse;
         }
 
         .cta-orb--3 {
             width: 150px; height: 150px;
-            background: rgba(99,91,255,0.3);
+            background: rgba(91,181,220,0.3);
             top: 30%; left: 50%;
             animation: ctaOrbFloat 16s ease-in-out infinite alternate;
         }
@@ -3161,16 +2907,16 @@
 
         .btn-white {
             background: #FFFFFF;
-            color: #635BFF;
+            color: #5BB5DC;
             box-shadow: 0 4px 14px rgba(0,0,0,0.15);
             font-weight: 600;
         }
 
         .btn-white:hover {
-            background: #F0EFFF;
+            background: #F8F9FA;
             transform: translateY(-1px);
             box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-            color: #635BFF;
+            color: #5BB5DC;
         }
 
         .cta-card .btn-outline {
@@ -3190,60 +2936,6 @@
             color: rgba(255,255,255,0.7) !important;
         }
 
-        /* ── CTA theme-aware overrides ── */
-        [data-site-theme="pre-dawn"] .cta-card {
-            background: linear-gradient(135deg, #1a1040 0%, #2d1b69 35%, #4a2c8a 70%, #6b3fa0 100%);
-        }
-        [data-site-theme="pre-dawn"] .cta-orb--1 { background: rgba(160,140,240,0.25); }
-        [data-site-theme="pre-dawn"] .cta-orb--2 { background: rgba(120,100,200,0.3); }
-        [data-site-theme="pre-dawn"] .cta-orb--3 { background: rgba(80,60,160,0.3); }
-        [data-site-theme="pre-dawn"] .btn-white { color: #4a2c8a; }
-        [data-site-theme="pre-dawn"] .btn-white:hover { background: #ede7f6; color: #4a2c8a; }
-
-        [data-site-theme="sunrise"] .cta-card {
-            background: linear-gradient(135deg, #2d1546 0%, #6b2048 35%, #c44e3b 70%, #f5a623 100%);
-        }
-        [data-site-theme="sunrise"] .cta-orb--1 { background: rgba(255,180,80,0.25); }
-        [data-site-theme="sunrise"] .cta-orb--2 { background: rgba(255,100,80,0.3); }
-        [data-site-theme="sunrise"] .cta-orb--3 { background: rgba(200,60,150,0.3); }
-        [data-site-theme="sunrise"] .btn-white { color: #6b2048; }
-        [data-site-theme="sunrise"] .btn-white:hover { background: #fce4ec; color: #6b2048; }
-
-        [data-site-theme="daytime"] .cta-card {
-            background: linear-gradient(135deg, #1565c0 0%, #42a5f5 35%, #4fc3f7 70%, #81d4fa 100%);
-        }
-        [data-site-theme="daytime"] .cta-orb--1 { background: rgba(255,255,255,0.25); }
-        [data-site-theme="daytime"] .cta-orb--2 { background: rgba(100,200,255,0.3); }
-        [data-site-theme="daytime"] .cta-orb--3 { background: rgba(30,136,229,0.3); }
-        [data-site-theme="daytime"] .btn-white { color: #1565c0; }
-        [data-site-theme="daytime"] .btn-white:hover { background: #e3f2fd; color: #1565c0; }
-
-        [data-site-theme="dusk"] .cta-card {
-            background: linear-gradient(135deg, #311b4e 0%, #6a3070 35%, #b8508a 70%, #e88a9a 100%);
-        }
-        [data-site-theme="dusk"] .cta-orb--1 { background: rgba(255,180,140,0.25); }
-        [data-site-theme="dusk"] .cta-orb--2 { background: rgba(220,100,140,0.3); }
-        [data-site-theme="dusk"] .cta-orb--3 { background: rgba(140,60,160,0.3); }
-        [data-site-theme="dusk"] .btn-white { color: #6a3070; }
-        [data-site-theme="dusk"] .btn-white:hover { background: #f3e5f5; color: #6a3070; }
-
-        [data-site-theme="sunset"] .cta-card {
-            background: linear-gradient(135deg, #2a0f30 0%, #7b2040 35%, #d45030 70%, #f5a020 100%);
-        }
-        [data-site-theme="sunset"] .cta-orb--1 { background: rgba(255,160,60,0.25); }
-        [data-site-theme="sunset"] .cta-orb--2 { background: rgba(255,80,80,0.3); }
-        [data-site-theme="sunset"] .cta-orb--3 { background: rgba(180,40,140,0.3); }
-        [data-site-theme="sunset"] .btn-white { color: #7b2040; }
-        [data-site-theme="sunset"] .btn-white:hover { background: #fbe9e7; color: #7b2040; }
-
-        [data-site-theme="night"] .cta-card {
-            background: linear-gradient(135deg, #0a0a24 0%, #151540 35%, #1e2760 70%, #2a3a80 100%);
-        }
-        [data-site-theme="night"] .cta-orb--1 { background: rgba(180,170,255,0.2); }
-        [data-site-theme="night"] .cta-orb--2 { background: rgba(100,90,200,0.3); }
-        [data-site-theme="night"] .cta-orb--3 { background: rgba(60,50,140,0.3); }
-        [data-site-theme="night"] .btn-white { color: #1e2760; }
-        [data-site-theme="night"] .btn-white:hover { background: #e8eaf6; color: #1e2760; }
 
         /* ═══════════════════════════════════════════
            FOOTER
@@ -3441,7 +3133,7 @@
             justify-content: center;
             color: #fff !important;
             background: var(--accent) !important;
-            box-shadow: 0 4px 16px rgba(99,91,255,0.3);
+            box-shadow: 0 4px 16px rgba(91,181,220,0.3);
         }
 
         .mobile-menu-close {
@@ -3481,7 +3173,7 @@
             background: var(--t-nav-bg, rgba(255,255,255,0.98));
             backdrop-filter: saturate(180%) blur(var(--t-nav-blur, 20px));
             -webkit-backdrop-filter: saturate(180%) blur(var(--t-nav-blur, 20px));
-            box-shadow: 0 8px 24px rgba(10,37,64,0.08);
+            box-shadow: 0 8px 24px rgba(26,26,26,0.08);
             border-top: 1px solid var(--t-card-border, rgba(0,0,0,0.06));
             z-index: -1;
             overflow-y: auto;
@@ -3542,10 +3234,11 @@
             .section { padding: 64px 0; }
             .section-title { font-size: 1.7rem; }
 
-            .services-carousel-track { height: 300px; }
-            .service-card { width: 260px; padding: 24px; }
-            .service-card[data-pos="left"] { transform: translateX(-105%) scale(0.82); opacity: 0.5; }
-            .service-card[data-pos="right"] { transform: translateX(5%) scale(0.82); opacity: 0.5; }
+            .services-carousel-track { height: 360px; }
+            .service-card { width: 240px; padding: 22px; }
+            .service-card[data-pos="center"] { transform: translateX(-50%) rotate(0deg) scale(1.04); }
+            .service-card[data-pos="left"] { transform: translateX(-92%) rotate(-8deg) scale(0.82); opacity: 0.85; }
+            .service-card[data-pos="right"] { transform: translateX(-8%) rotate(8deg) scale(0.82); opacity: 0.85; }
             .service-card[data-pos="far-left"],
             .service-card[data-pos="far-right"] { opacity: 0; pointer-events: none; }
             .services-carousel-nav { width: 40px; height: 40px; }
@@ -3577,10 +3270,6 @@
             .cta-orb { transform: scale(0.6); }
 
             .lang-btn { padding: 5px 10px; font-size: 0.75rem; }
-
-            /* Theme switcher mobile */
-            .theme-toggle-btn { width: 32px; height: 32px; }
-            .theme-toggle-btn svg { width: 16px; height: 16px; }
 
             /* Nav right spacing */
             .nav-right { gap: 8px; }
@@ -3646,20 +3335,17 @@
 
             .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
 
-            .services-carousel-track { height: 280px; }
-            .service-card { width: 240px; padding: 20px; }
-            .service-card[data-pos="left"] { transform: translateX(-100%) scale(0.78); opacity: 0.3; }
-            .service-card[data-pos="right"] { transform: translateX(0%) scale(0.78); opacity: 0.3; }
+            .services-carousel-track { height: 320px; }
+            .service-card { width: 220px; padding: 18px; }
+            .service-card[data-pos="center"] { transform: translateX(-50%) rotate(0deg) scale(1.03); }
+            .service-card[data-pos="left"] { transform: translateX(-90%) rotate(-7deg) scale(0.78); opacity: 0.7; }
+            .service-card[data-pos="right"] { transform: translateX(-10%) rotate(7deg) scale(0.78); opacity: 0.7; }
 
             .cta-card { padding: 36px 16px; overflow: hidden; }
             .cta-actions { flex-direction: column; }
             .cta-orb { display: none; }
 
-            /* Theme & lang switchers small mobile */
-            .theme-toggle-btn { width: 30px; height: 30px; }
-            .theme-toggle-btn svg { width: 14px; height: 14px; }
-            .theme-menu-option { width: 36px; height: 36px; }
-            .theme-menu-icon { font-size: 1.1rem; }
+            /* Lang switcher small mobile */
             .nav-right { gap: 6px; }
             .lang-btn { padding: 4px 8px; font-size: 0.7rem; gap: 4px; }
             .lang-icon { width: 20px; height: 20px; font-size: 0.7rem; }
@@ -3889,7 +3575,7 @@
             border-radius: 50%;
             background: var(--accent);
             border: 3px solid #fff;
-            box-shadow: 0 2px 8px rgba(99,91,255,0.35);
+            box-shadow: 0 2px 8px rgba(91,181,220,0.35);
             cursor: pointer;
             transition: transform 0.15s ease;
         }
@@ -3902,7 +3588,7 @@
             border-radius: 50%;
             background: var(--accent);
             border: 3px solid #fff;
-            box-shadow: 0 2px 8px rgba(99,91,255,0.35);
+            box-shadow: 0 2px 8px rgba(91,181,220,0.35);
             cursor: pointer;
         }
         .calc-result {
@@ -4001,71 +3687,6 @@
             .calc-breakdown { grid-template-columns: 1fr; }
         }
 
-        /* ═══ Loan Calculator — Dark/Colored Theme Overrides ═══ */
-        [data-site-theme="night"] .calc-emi-value,
-        [data-site-theme="pre-dawn"] .calc-emi-value,
-        [data-site-theme="dusk"] .calc-emi-value,
-        [data-site-theme="sunset"] .calc-emi-value {
-            color: #FFFFFF;
-        }
-        [data-site-theme="night"] .calc-field label span.calc-val,
-        [data-site-theme="pre-dawn"] .calc-field label span.calc-val,
-        [data-site-theme="dusk"] .calc-field label span.calc-val,
-        [data-site-theme="sunset"] .calc-field label span.calc-val {
-            color: #FFFFFF;
-        }
-        [data-site-theme="night"] .calc-slider::-webkit-slider-thumb,
-        [data-site-theme="pre-dawn"] .calc-slider::-webkit-slider-thumb,
-        [data-site-theme="dusk"] .calc-slider::-webkit-slider-thumb,
-        [data-site-theme="sunset"] .calc-slider::-webkit-slider-thumb {
-            background: #FFFFFF;
-            border-color: rgba(255,255,255,0.3);
-            box-shadow: 0 2px 8px rgba(255,255,255,0.25);
-        }
-        [data-site-theme="night"] .calc-slider::-moz-range-thumb,
-        [data-site-theme="pre-dawn"] .calc-slider::-moz-range-thumb,
-        [data-site-theme="dusk"] .calc-slider::-moz-range-thumb,
-        [data-site-theme="sunset"] .calc-slider::-moz-range-thumb {
-            background: #FFFFFF;
-            border-color: rgba(255,255,255,0.3);
-            box-shadow: 0 2px 8px rgba(255,255,255,0.25);
-        }
-        [data-site-theme="night"] .calc-slider,
-        [data-site-theme="pre-dawn"] .calc-slider,
-        [data-site-theme="dusk"] .calc-slider,
-        [data-site-theme="sunset"] .calc-slider {
-            background: rgba(255,255,255,0.2);
-        }
-        [data-site-theme="night"] .calc-legend .leg-principal::before,
-        [data-site-theme="pre-dawn"] .calc-legend .leg-principal::before,
-        [data-site-theme="dusk"] .calc-legend .leg-principal::before,
-        [data-site-theme="sunset"] .calc-legend .leg-principal::before {
-            background: #FFFFFF;
-        }
-        [data-site-theme="night"] .calc-legend .leg-interest::before,
-        [data-site-theme="pre-dawn"] .calc-legend .leg-interest::before,
-        [data-site-theme="dusk"] .calc-legend .leg-interest::before,
-        [data-site-theme="sunset"] .calc-legend .leg-interest::before {
-            background: var(--teal);
-        }
-        /* Donut chart colors for dark themes */
-        [data-site-theme="night"] #donutPrincipal,
-        [data-site-theme="pre-dawn"] #donutPrincipal,
-        [data-site-theme="dusk"] #donutPrincipal,
-        [data-site-theme="sunset"] #donutPrincipal {
-            stroke: #FFFFFF;
-        }
-
-        /* Colored (non-dark) themes — softer accent for readability */
-        [data-site-theme="sunrise"] .calc-emi-value,
-        [data-site-theme="daytime"] .calc-emi-value {
-            color: var(--t-text-dark);
-        }
-        [data-site-theme="sunrise"] .calc-field label span.calc-val,
-        [data-site-theme="daytime"] .calc-field label span.calc-val {
-            color: var(--t-text-dark);
-        }
-
     </style>
 </head>
 <body>
@@ -4074,7 +3695,11 @@
     <nav class="navbar" id="navbar">
         <div class="container">
             <a href="#" class="logo">
-                <img src="Images/Logo.png" alt="Rapid Loans Logo" class="logo-icon">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="logo-icon" aria-label="Rapid Loans">
+                    <ellipse cx="50" cy="50" rx="44" ry="32" fill="none" stroke="#E63946" stroke-width="6" stroke-linecap="round" stroke-dasharray="175 55" stroke-dashoffset="-28" transform="rotate(-12 50 50)"/>
+                    <path d="M 4 75 Q 50 100, 96 73" fill="none" stroke="#5BB5DC" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
+                    <text x="50" y="70" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="900" font-size="50" fill="#5BB5DC" letter-spacing="-2">RL</text>
+                </svg>
                 <div class="logo-text-wrap">
                     <span class="logo-name" data-i18n="logo_name" data-i18n-html="true">Rapid<span class="logo-name-loans">Loans</span></span>
                 </div>
@@ -4098,31 +3723,11 @@
                     <div class="lang-dropdown" id="langDropdown">
                         <button class="lang-option active" onclick="setLanguage('en')" title="English"><span class="lang-icon">A</span></button>
                         <button class="lang-option" onclick="setLanguage('hi')" title="हिन्दी"><span class="lang-icon">अ</span></button>
-                        <button class="lang-option" onclick="setLanguage('gu')" title="ગુજરાતી"><span class="lang-icon">અ</span></button>
                         <button class="lang-option" onclick="setLanguage('mr')" title="मराठी"><span class="lang-icon">अ</span></button>
-                        <button class="lang-option" onclick="setLanguage('ta')" title="தமிழ்"><span class="lang-icon">அ</span></button>
-                        <button class="lang-option" onclick="setLanguage('kn')" title="ಕನ್ನಡ"><span class="lang-icon">ಅ</span></button>
+                        <button class="lang-option" onclick="setLanguage('gu')" title="ગુજરાતી"><span class="lang-icon">અ</span></button>
                         <button class="lang-option" onclick="setLanguage('te')" title="తెలుగు"><span class="lang-icon">అ</span></button>
-                        <button class="lang-option" onclick="setLanguage('bn')" title="বাংলা"><span class="lang-icon">অ</span></button>
-                        <button class="lang-option" onclick="setLanguage('pa')" title="ਪੰਜਾਬੀ"><span class="lang-icon">ਅ</span></button>
+                        <button class="lang-option" onclick="setLanguage('ta')" title="தமிழ்"><span class="lang-icon">அ</span></button>
                         <button class="lang-option" onclick="setLanguage('ml')" title="മലയാളം"><span class="lang-icon">അ</span></button>
-                        <button class="lang-option" onclick="setLanguage('or')" title="ଓଡ଼ିଆ"><span class="lang-icon">ଅ</span></button>
-                        <button class="lang-option" onclick="setLanguage('as')" title="অসমীয়া"><span class="lang-icon">অ</span></button>
-                    </div>
-                </div>
-                <!-- Theme Switcher -->
-                <div class="theme-switcher" id="themeSwitcher">
-                    <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleThemeMenu()" title="Change visual theme">
-                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                    </button>
-                    <div class="theme-menu" id="themeMenu">
-                        <button class="theme-menu-option active" data-theme="white" onclick="setSiteTheme('white')" title="White"><span class="theme-menu-icon">&#9711;</span></button>
-                        <button class="theme-menu-option" data-theme="pre-dawn" onclick="setSiteTheme('pre-dawn')" title="Pre-dawn"><span class="theme-menu-icon">&#9789;</span></button>
-                        <button class="theme-menu-option" data-theme="sunrise" onclick="setSiteTheme('sunrise')" title="Sunrise"><span class="theme-menu-icon">&#127749;</span></button>
-                        <button class="theme-menu-option" data-theme="daytime" onclick="setSiteTheme('daytime')" title="Daytime"><span class="theme-menu-icon">&#9728;</span></button>
-                        <button class="theme-menu-option" data-theme="dusk" onclick="setSiteTheme('dusk')" title="Dusk"><span class="theme-menu-icon">&#127751;</span></button>
-                        <button class="theme-menu-option" data-theme="sunset" onclick="setSiteTheme('sunset')" title="Sunset"><span class="theme-menu-icon">&#127750;</span></button>
-                        <button class="theme-menu-option" data-theme="night" onclick="setSiteTheme('night')" title="Night"><span class="theme-menu-icon">&#127769;</span></button>
                     </div>
                 </div>
                 <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Toggle menu">
@@ -4134,9 +3739,6 @@
 
     <!-- ═══════════════════════ HERO ═══════════════════════ -->
     <section class="hero" id="hero">
-        <!-- Stripe-like animated gradient canvas -->
-        <canvas class="hero-gradient-canvas" id="heroGradientCanvas"></canvas>
-
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-content">
@@ -4181,7 +3783,7 @@
                         </div>
                         <div class="hero-card-items">
                             <div class="hero-card-item">
-                                <div class="icon-circle hero-icon-check" style="background:rgba(99,91,255,0.12); color:#635BFF;">
+                                <div class="icon-circle hero-icon-check" style="background:rgba(91,181,220,0.12); color:#5BB5DC;">
                                     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8">
                                         <circle class="check-circle" cx="10" cy="10" r="7"/>
                                         <polyline class="check-mark" points="6.5,10 9,12.5 13.5,7.5" stroke-width="2"/>
@@ -4193,7 +3795,7 @@
                                 </div>
                             </div>
                             <div class="hero-card-item">
-                                <div class="icon-circle hero-icon-clock" style="background:rgba(0,212,170,0.12); color:#00D4AA;">
+                                <div class="icon-circle hero-icon-clock" style="background:rgba(230,57,70,0.12); color:#E63946;">
                                     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6">
                                         <circle class="clock-face" cx="10" cy="11" r="7"/>
                                         <line class="clock-face" x1="10" y1="11" x2="10" y2="7.5" stroke-width="1.8" style="animation-delay:0.3s"/>
@@ -4208,7 +3810,7 @@
                                 </div>
                             </div>
                             <div class="hero-card-item">
-                                <div class="icon-circle hero-icon-ai" style="background:rgba(99,91,255,0.08); color:#7A73FF;">
+                                <div class="icon-circle hero-icon-ai" style="background:rgba(91,181,220,0.08); color:#7DC9E5;">
                                     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.2">
                                         <circle class="ai-node" cx="10" cy="4" r="1.8" fill="currentColor" stroke="none"/>
                                         <circle class="ai-node" cx="4" cy="12" r="1.8" fill="currentColor" stroke="none"/>
@@ -4227,7 +3829,7 @@
                                 </div>
                             </div>
                             <div class="hero-card-item">
-                                <div class="icon-circle hero-icon-shield" style="background:rgba(0,212,170,0.08); color:#00D4AA;">
+                                <div class="icon-circle hero-icon-shield" style="background:rgba(230,57,70,0.08); color:#E63946;">
                                     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6">
                                         <path class="shield-body" d="M10 2L3 5.5v4.5c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5V5.5L10 2z"/>
                                         <rect class="shield-lock" x="7.5" y="9" width="5" height="4" rx="1" stroke-width="1.4"/>
@@ -4243,7 +3845,7 @@
                         </div>
                     </div>
                     <div class="floating-badge top-right">
-                        <div class="badge-icon hero-icon-approved" style="background:rgba(16,185,129,0.12); color:#10B981;">
+                        <div class="badge-icon hero-icon-approved" style="background:rgba(91,181,220,0.12); color:#5BB5DC;">
                             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8">
                                 <circle class="approved-ring" cx="10" cy="10" r="7"/>
                                 <polyline class="approved-check" points="6.5,10 9,12.5 13.5,7.5" stroke-width="2.2"/>
@@ -4255,7 +3857,7 @@
                         </div>
                     </div>
                     <div class="floating-badge bottom-left">
-                        <div class="badge-icon hero-icon-disburse" style="background:rgba(14,165,233,0.12); color:#0EA5E9;">
+                        <div class="badge-icon hero-icon-disburse" style="background:rgba(91,181,220,0.12); color:#5BB5DC;">
                             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
                                 <rect class="disburse-card" x="2" y="5" width="16" height="10" rx="2"/>
                                 <rect class="disburse-stripe" x="2" y="8" width="16" height="2.5" fill="currentColor" stroke="none" opacity="0.3"/>
@@ -4278,11 +3880,11 @@
         <div class="container">
             <div class="trust-grid">
                 <div class="trust-card reveal">
-                    <div class="trust-card-icon trust-icon-rbi" style="background: linear-gradient(135deg, rgba(99,91,255,0.15), rgba(99,91,255,0.05)); color: #635BFF; border: 1px solid rgba(99,91,255,0.15);">
+                    <div class="trust-card-icon trust-icon-rbi" style="background: linear-gradient(135deg, rgba(91,181,220,0.15), rgba(91,181,220,0.05)); color: #5BB5DC; border: 1px solid rgba(91,181,220,0.15);">
                         <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                             <circle class="trust-rbi-glow" cx="12" cy="12" r="10" fill="currentColor" stroke="none" opacity="0"/>
                             <path class="trust-rbi-shield" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                            <polyline class="trust-rbi-check" points="9 12 11 14 15 10" stroke-width="2.2" stroke="#00D4AA"/>
+                            <polyline class="trust-rbi-check" points="9 12 11 14 15 10" stroke-width="2.2" stroke="#E63946"/>
                         </svg>
                     </div>
                     <div class="trust-card-line"></div>
@@ -4290,7 +3892,7 @@
                     <p data-i18n="trust_rbi_desc">Registered Banking Correspondent under Reserve Bank of India guidelines</p>
                 </div>
                 <div class="trust-card reveal reveal-delay-1">
-                    <div class="trust-card-icon trust-icon-lock" style="background: linear-gradient(135deg, rgba(0,212,170,0.15), rgba(0,212,170,0.05)); color: #00D4AA; border: 1px solid rgba(0,212,170,0.15);">
+                    <div class="trust-card-icon trust-icon-lock" style="background: linear-gradient(135deg, rgba(230,57,70,0.15), rgba(230,57,70,0.05)); color: #E63946; border: 1px solid rgba(230,57,70,0.15);">
                         <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                             <circle class="trust-lock-rays" cx="12" cy="14" r="8" fill="currentColor" stroke="none" opacity="0"/>
                             <rect class="trust-lock-body" x="4" y="11" width="16" height="10" rx="2.5"/>
@@ -4304,7 +3906,7 @@
                     <p data-i18n="trust_secure_desc">256-bit SSL encryption, ISO 27001 compliant data protection</p>
                 </div>
                 <div class="trust-card reveal reveal-delay-2">
-                    <div class="trust-card-icon trust-icon-people" style="background: linear-gradient(135deg, rgba(99,91,255,0.1), rgba(0,212,170,0.05)); color: #7A73FF; border: 1px solid rgba(99,91,255,0.1);">
+                    <div class="trust-card-icon trust-icon-people" style="background: linear-gradient(135deg, rgba(91,181,220,0.1), rgba(230,57,70,0.05)); color: #7DC9E5; border: 1px solid rgba(91,181,220,0.1);">
                         <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                             <circle class="trust-people-wave" cx="12" cy="13" r="9" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0"/>
                             <g class="trust-people-p">
@@ -4326,7 +3928,7 @@
                     <p data-i18n="trust_customers_desc">Trusted by thousands of families across 10+ states in India</p>
                 </div>
                 <div class="trust-card reveal reveal-delay-3">
-                    <div class="trust-card-icon trust-icon-comply" style="background: linear-gradient(135deg, rgba(0,212,170,0.1), rgba(99,91,255,0.05)); color: #00D4AA; border: 1px solid rgba(0,212,170,0.1);">
+                    <div class="trust-card-icon trust-icon-comply" style="background: linear-gradient(135deg, rgba(230,57,70,0.1), rgba(91,181,220,0.05)); color: #E63946; border: 1px solid rgba(230,57,70,0.1);">
                         <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                             <circle class="trust-comply-spark" cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0"/>
                             <circle class="trust-comply-spark" cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="0.4" opacity="0"/>
@@ -4352,42 +3954,42 @@
                     <p class="section-desc" data-i18n="about_desc">Rapid Loans Private Limited is a Modern Banking Correspondent headquartered in Mumbai with a registered office in Ahmedabad. We partner with Banks and NBFCs to deliver comprehensive loan origination, collection, and servicing through advanced technology — creating an inclusive finance platform for all of India.</p>
                     <div class="about-features">
                         <div class="about-feature reveal reveal-delay-1">
-                            <div class="feat-icon feat-icon-loan" style="background: rgba(99,91,255,0.06); color: var(--accent);">
+                            <div class="feat-icon feat-icon-loan" style="background: rgba(91,181,220,0.06); color: var(--accent);">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
                                     <rect class="feat-loan-doc" x="4" y="1" width="13" height="18" rx="2"/>
                                     <line class="feat-loan-doc" x1="7" y1="6" x2="14" y2="6" stroke-width="1.3" opacity="0.5" style="animation-delay:0.3s"/>
                                     <line class="feat-loan-doc" x1="7" y1="9" x2="12" y2="9" stroke-width="1.3" opacity="0.5" style="animation-delay:0.5s"/>
-                                    <line class="feat-loan-scan" x1="4" y1="5" x2="17" y2="5" stroke="#00D4AA" stroke-width="1.5" opacity="0.6"/>
-                                    <polyline class="feat-loan-check" points="8,14 10.5,16.5 15,11" stroke-width="2" stroke="#00D4AA"/>
+                                    <line class="feat-loan-scan" x1="4" y1="5" x2="17" y2="5" stroke="#E63946" stroke-width="1.5" opacity="0.6"/>
+                                    <polyline class="feat-loan-check" points="8,14 10.5,16.5 15,11" stroke-width="2" stroke="#E63946"/>
                                 </svg>
                             </div>
                             <h4 data-i18n="feat_origination">Loan Origination</h4>
                             <p data-i18n="feat_origination_desc">End-to-end digital onboarding with AI verification</p>
                         </div>
                         <div class="about-feature reveal reveal-delay-2">
-                            <div class="feat-icon feat-icon-collect" style="background: rgba(0,212,170,0.06); color: var(--teal);">
+                            <div class="feat-icon feat-icon-collect" style="background: rgba(230,57,70,0.06); color: var(--teal);">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
                                     <rect class="feat-collect-bar" x="3" y="16" width="3" height="5" rx="0.5" fill="currentColor" opacity="0.4" stroke="none"/>
                                     <rect class="feat-collect-bar" x="8" y="12" width="3" height="9" rx="0.5" fill="currentColor" opacity="0.6" stroke="none"/>
                                     <rect class="feat-collect-bar" x="13" y="8" width="3" height="13" rx="0.5" fill="currentColor" opacity="0.8" stroke="none"/>
                                     <rect class="feat-collect-bar" x="18" y="4" width="3" height="17" rx="0.5" fill="currentColor" opacity="1" stroke="none"/>
-                                    <polyline class="feat-collect-arrow" points="4,14 10,8 15,11 21,3" stroke-width="2" stroke="#00D4AA" fill="none"/>
-                                    <polyline class="feat-collect-arrow" points="17,3 21,3 21,7" stroke-width="2" stroke="#00D4AA" fill="none" style="animation-delay:0.9s"/>
+                                    <polyline class="feat-collect-arrow" points="4,14 10,8 15,11 21,3" stroke-width="2" stroke="#E63946" fill="none"/>
+                                    <polyline class="feat-collect-arrow" points="17,3 21,3 21,7" stroke-width="2" stroke="#E63946" fill="none" style="animation-delay:0.9s"/>
                                 </svg>
                             </div>
                             <h4 data-i18n="feat_collection">Collection Services</h4>
                             <p data-i18n="feat_collection_desc">Automated reminders and seamless payment tracking</p>
                         </div>
                         <div class="about-feature reveal reveal-delay-3">
-                            <div class="feat-icon feat-icon-inclusive" style="background: rgba(245,158,11,0.1); color: var(--gold);">
+                            <div class="feat-icon feat-icon-inclusive" style="background: rgba(230,57,70,0.1); color: var(--gold);">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
                                     <path class="feat-incl-hand" d="M2 14c1-2 3-3 5-2l2 1c1 .5 1.5 0 2-.5"/>
                                     <path class="feat-incl-hand" d="M22 14c-1-2-3-3-5-2l-2 1c-1 .5-1.5 0-2-.5"/>
                                     <path class="feat-incl-hand" d="M8 17c1 1 2.5 2 4 2s3-1 4-2" opacity="0.5" style="animation-delay:0.5s"/>
-                                    <circle class="feat-incl-heart" cx="12" cy="7" r="0" fill="#EC4899" stroke="none">
+                                    <circle class="feat-incl-heart" cx="12" cy="7" r="0" fill="#E63946" stroke="none">
                                         <animate attributeName="r" values="0;3;3;3" dur="1.2s" fill="freeze"/>
                                     </circle>
-                                    <path class="feat-incl-heart" d="M12 5.5c-.5-1.5-2.5-2-3.5-1s-.8 3 3.5 5.5c4.3-2.5 4.5-4.5 3.5-5.5s-3-.5-3.5 1z" fill="#EC4899" stroke="none" opacity="0">
+                                    <path class="feat-incl-heart" d="M12 5.5c-.5-1.5-2.5-2-3.5-1s-.8 3 3.5 5.5c4.3-2.5 4.5-4.5 3.5-5.5s-3-.5-3.5 1z" fill="#E63946" stroke="none" opacity="0">
                                         <animate attributeName="opacity" values="0;0;1;1" dur="1.2s" fill="freeze"/>
                                     </path>
                                 </svg>
@@ -4396,7 +3998,7 @@
                             <p data-i18n="feat_inclusive_desc">Tailored products based on socio-economic status</p>
                         </div>
                         <div class="about-feature reveal reveal-delay-4">
-                            <div class="feat-icon feat-icon-tech" style="background: rgba(99,91,255,0.08); color: var(--accent);">
+                            <div class="feat-icon feat-icon-tech" style="background: rgba(91,181,220,0.08); color: var(--accent);">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
                                     <rect class="feat-tech-circuit" x="3" y="3" width="18" height="18" rx="3" stroke-width="1.2" opacity="0.3"/>
                                     <line class="feat-tech-circuit" x1="12" y1="3" x2="12" y2="8" style="animation-delay:0.2s"/>
@@ -4408,7 +4010,7 @@
                                     <circle class="feat-tech-node" cx="12" cy="21" r="1.5" fill="currentColor" stroke="none"/>
                                     <circle class="feat-tech-node" cx="3" cy="12" r="1.5" fill="currentColor" stroke="none"/>
                                     <circle class="feat-tech-node" cx="21" cy="12" r="1.5" fill="currentColor" stroke="none"/>
-                                    <circle cx="12" cy="12" r="2.5" fill="#00D4AA" stroke="none" opacity="0.8">
+                                    <circle cx="12" cy="12" r="2.5" fill="#E63946" stroke="none" opacity="0.8">
                                         <animate attributeName="r" values="2;3;2" dur="2s" repeatCount="indefinite"/>
                                         <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
                                     </circle>
@@ -4442,20 +4044,20 @@
                 <button class="services-carousel-nav prev" aria-label="Previous service"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
                 <div class="services-carousel-track">
                     <div class="service-card" data-pos="hidden">
-                        <div class="service-icon svc-icon-origination" style="background: rgba(99,91,255,0.08); color: var(--accent);">
+                        <div class="service-icon svc-icon-origination" style="background: rgba(91,181,220,0.08); color: var(--accent);">
                             <svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.8">
                                 <rect class="icon-doc-body" x="5" y="2" width="16" height="22" rx="2"/>
                                 <path class="icon-doc-fold" d="M17 2v5h5" stroke-width="1.5" opacity="0.5"/>
                                 <line class="icon-doc-lines" x1="9" y1="10" x2="17" y2="10"/>
                                 <line class="icon-doc-lines" x1="9" y1="14" x2="15" y2="14" style="animation-delay:0.65s"/>
-                                <polyline class="icon-doc-check" points="10,19 13,22 20,15" stroke-width="2.2" stroke="#00D4AA"/>
+                                <polyline class="icon-doc-check" points="10,19 13,22 20,15" stroke-width="2.2" stroke="#E63946"/>
                             </svg>
                         </div>
                         <h3 data-i18n="svc1_title">Microloan Origination</h3>
                         <p data-i18n="svc1_desc">End-to-end digital loan origination for micro and small loans, powered by AI-driven credit assessment and instant KYC verification.</p>
                     </div>
                     <div class="service-card" data-pos="hidden">
-                        <div class="service-icon svc-icon-banking" style="background: rgba(0,212,170,0.08); color: var(--teal);">
+                        <div class="service-icon svc-icon-banking" style="background: rgba(230,57,70,0.08); color: var(--teal);">
                             <svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.8">
                                 <path class="icon-bank-body" d="M15 3L3 10h24L15 3z"/>
                                 <rect class="icon-bank-body" x="5" y="11" width="3" height="10" rx="0.5" style="animation-delay:0.2s"/>
@@ -4471,7 +4073,7 @@
                         <p data-i18n="svc2_desc">Acting as a technology-enabled extension of banks and NBFCs, bringing formal financial services directly to rural and semi-urban doorsteps.</p>
                     </div>
                     <div class="service-card" data-pos="hidden">
-                        <div class="service-icon svc-icon-collection" style="background: rgba(245,158,11,0.1); color: var(--gold);">
+                        <div class="service-icon svc-icon-collection" style="background: rgba(230,57,70,0.1); color: var(--gold);">
                             <svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.8">
                                 <path class="icon-collect-hand" d="M5 22c0-3 2-5 5-5h4c2 0 3 1 4 2l4-3c1.5-1 3 0.5 2 2l-6 6c-1 1-2 1.5-4 1.5H5v-3.5z"/>
                                 <circle class="icon-collect-coin" cx="12" cy="6" r="3" fill="currentColor" stroke="none" opacity="0.8"/>
@@ -4483,7 +4085,7 @@
                         <p data-i18n="svc3_desc">Automated collection management with real-time tracking, digital payment options, and intelligent follow-up workflows for borrowers.</p>
                     </div>
                     <div class="service-card" data-pos="hidden">
-                        <div class="service-icon svc-icon-group" style="background: rgba(99,91,255,0.08); color: var(--accent);">
+                        <div class="service-icon svc-icon-group" style="background: rgba(91,181,220,0.08); color: var(--accent);">
                             <svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.8">
                                 <circle class="icon-group-ring" cx="15" cy="15" r="11" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.3"/>
                                 <g class="icon-group-person">
@@ -4504,7 +4106,7 @@
                         <p data-i18n="svc4_desc">Community-based lending programs designed for self-help groups and joint liability groups, fostering financial inclusion at grassroot levels.</p>
                     </div>
                     <div class="service-card" data-pos="hidden">
-                        <div class="service-icon svc-icon-credit" style="background: rgba(124,58,237,0.1); color: #7C3AED;">
+                        <div class="service-icon svc-icon-credit" style="background: rgba(91,181,220,0.1); color: #5BB5DC;">
                             <svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.8">
                                 <path class="icon-credit-arc" d="M5 22a13 13 0 0 1 20 0" fill="none" stroke-width="3" opacity="0.2"/>
                                 <path class="icon-credit-arc" d="M7 20a10 10 0 0 1 16 0" fill="none" stroke-width="2"/>
@@ -4513,7 +4115,7 @@
                                 <line class="icon-credit-tick" x1="15" y1="12" x2="15" y2="10" stroke-width="1.5" opacity="0.5"/>
                                 <line class="icon-credit-tick" x1="19" y1="14" x2="18.5" y2="12" stroke-width="1.5" opacity="0.5"/>
                                 <line class="icon-credit-tick" x1="22" y1="19" x2="22" y2="17" stroke-width="1.5" opacity="0.5"/>
-                                <line class="icon-credit-needle" x1="15" y1="20" x2="15" y2="12" stroke-width="2" stroke="#00D4AA"/>
+                                <line class="icon-credit-needle" x1="15" y1="20" x2="15" y2="12" stroke-width="2" stroke="#E63946"/>
                                 <circle cx="15" cy="20" r="2" fill="currentColor" stroke="none"/>
                             </svg>
                         </div>
@@ -4521,11 +4123,11 @@
                         <p data-i18n="svc5_desc">Proprietary scoring models that go beyond traditional credit bureaus — leveraging alternative data to assess creditworthiness of first-time borrowers.</p>
                     </div>
                     <div class="service-card" data-pos="hidden">
-                        <div class="service-icon svc-icon-payments" style="background: rgba(236,72,153,0.1); color: #EC4899;">
+                        <div class="service-icon svc-icon-payments" style="background: rgba(230,57,70,0.1); color: #E63946;">
                             <svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.8">
                                 <rect class="icon-pay-phone" x="8" y="2" width="14" height="24" rx="3"/>
                                 <line class="icon-pay-phone" x1="12" y1="22" x2="18" y2="22" stroke-width="1.5" opacity="0.4"/>
-                                <polyline class="icon-pay-check" points="12,12 14.5,15 19,9" stroke-width="2.2" stroke="#00D4AA"/>
+                                <polyline class="icon-pay-check" points="12,12 14.5,15 19,9" stroke-width="2.2" stroke="#E63946"/>
                                 <circle class="icon-pay-ripple" cx="6" cy="14" r="3" stroke="currentColor" fill="none" stroke-width="1"/>
                                 <circle class="icon-pay-ripple" cx="6" cy="14" r="5" stroke="currentColor" fill="none" stroke-width="0.7"/>
                                 <circle class="icon-pay-ripple" cx="6" cy="14" r="7" stroke="currentColor" fill="none" stroke-width="0.5"/>
@@ -4551,7 +4153,7 @@
                     <h2 data-i18n="bharat_title" style="font-family:'Inter',-apple-system,sans-serif; font-size:clamp(1.8rem,3vw,2.6rem); color:var(--t-text-dark); margin-bottom:16px;">Connecting Bharat, Fulfilling Dreams</h2>
                     <p data-i18n="bharat_desc1" style="color:var(--t-text-body); font-size:1.05rem; line-height:1.8; margin-bottom:20px;">Serving the heroes of Bharat — from dairy farmers and sugarcane growers to chili sorters and vegetable vendors. We reach underserved communities across India's heartland, bringing formal financial services to those who need them most.</p>
                     <p data-i18n="bharat_desc2" style="color:var(--t-text-body); font-size:1.05rem; line-height:1.8; margin-bottom:20px;">Every tractor on the field, every milk can on the bicycle, every basket of fresh produce represents a dream waiting to grow. Our microloans empower these rural entrepreneurs to expand their livelihoods and secure better futures for their families.</p>
-                    <p data-i18n="bharat_desc3" style="color:var(--t-text-muted); font-size:0.95rem; line-height:1.7;">Together, we're building a financially inclusive India — one village, one entrepreneur, one dream at a time.</p>
+                    <p data-i18n="bharat_desc3" style="color:var(--t-text-body); font-size:1.05rem; line-height:1.8;">Together, we're building a financially inclusive India — one village, one entrepreneur, one dream at a time.</p>
                 </div>
                 <div class="bharat-shuffle-stack reveal" id="bharatCardStack">
                     <div class="shuffle-card" data-index="0">
@@ -4585,22 +4187,22 @@
             </div>
             <div class="steps-grid">
                 <div class="step-card reveal">
-                    <div class="step-number" style="background: linear-gradient(135deg, #635BFF, #7A73FF);">1</div>
+                    <div class="step-number" style="background: linear-gradient(135deg, #5BB5DC, #7DC9E5);">1</div>
                     <h4 data-i18n="step1_title">Apply Online</h4>
                     <p data-i18n="step1_desc">Submit your application digitally through our mobile-first platform with minimal documentation.</p>
                 </div>
                 <div class="step-card reveal reveal-delay-1">
-                    <div class="step-number" style="background: linear-gradient(135deg, #00D4AA, #00E4BB);">2</div>
+                    <div class="step-number" style="background: linear-gradient(135deg, #E63946, #C92A37);">2</div>
                     <h4 data-i18n="step2_title">Instant Verification</h4>
                     <p data-i18n="step2_desc">AI-powered KYC and credit assessment processes your application in minutes, not days.</p>
                 </div>
                 <div class="step-card reveal reveal-delay-2">
-                    <div class="step-number" style="background: linear-gradient(135deg, #7C3AED, #A78BFA);">3</div>
+                    <div class="step-number" style="background: linear-gradient(135deg, #5BB5DC, #7DC9E5);">3</div>
                     <h4 data-i18n="step3_title">Quick Approval</h4>
                     <p data-i18n="step3_desc">Receive approval within 48 hours with transparent terms and competitive interest rates.</p>
                 </div>
                 <div class="step-card reveal reveal-delay-3">
-                    <div class="step-number" style="background: linear-gradient(135deg, #635BFF, #00D4AA);">4</div>
+                    <div class="step-number" style="background: linear-gradient(135deg, #5BB5DC, #E63946);">4</div>
                     <h4 data-i18n="step4_title">Direct Disbursement</h4>
                     <p data-i18n="step4_desc">Funds transferred directly to your bank account — no intermediaries, no delays.</p>
                 </div>
@@ -4622,9 +4224,9 @@
                         <img src="Images/india-map.png" alt="India Network Map" class="india-map-img">
                     </div>
                     <div class="map-stats-overlay">
-                        <div class="map-stat-pill"><span class="map-stat-dot" style="background:#22C55E;"></span> <span data-i18n="map_stat_states">6 States</span></div>
-                        <div class="map-stat-pill"><span class="map-stat-dot" style="background:#0EA5E9;"></span> <span data-i18n="map_stat_locations">121 Locations</span></div>
-                        <div class="map-stat-pill"><span class="map-stat-dot" style="background:#F59E0B;"></span> <span data-i18n="map_stat_employees">700 Employees</span></div>
+                        <div class="map-stat-pill"><span class="map-stat-dot" style="background:#5BB5DC;"></span> <span data-i18n="map_stat_states">6 States</span></div>
+                        <div class="map-stat-pill"><span class="map-stat-dot" style="background:#5BB5DC;"></span> <span data-i18n="map_stat_locations">121 Locations</span></div>
+                        <div class="map-stat-pill"><span class="map-stat-dot" style="background:#E63946;"></span> <span data-i18n="map_stat_employees">700 Employees</span></div>
                     </div>
                 </div>
             </div>
@@ -4644,16 +4246,11 @@
                 <div class="partner-card reveal">
                     <span class="partner-badge">&#10003; Verified</span>
                     <div class="partner-card-top">
-                        <div class="partner-logo" style="background: #FFF9E6; padding: 4px;">
-                            <svg viewBox="0 0 60 60" width="52" height="52" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="30" cy="30" r="22" fill="none" stroke="#E8A317" stroke-width="4" stroke-dasharray="20 8" transform="rotate(-30 30 30)" opacity="0.6"/>
-                                <circle cx="30" cy="30" r="15" fill="none" stroke="#D4941A" stroke-width="3.5" stroke-dasharray="14 6" transform="rotate(60 30 30)" opacity="0.8"/>
-                                <circle cx="30" cy="30" r="8" fill="#E8A317" opacity="0.3"/>
-                                <text x="30" y="35" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" font-weight="800" fill="#2D3748">AF</text>
-                            </svg>
+                        <div class="partner-logo" style="background: #FFFFFF; padding: 8px;">
+                            <img src="Images/avanti-logo.webp" alt="Avanti Finance Pvt. Ltd." style="width:100%; height:100%; object-fit:contain;">
                         </div>
                         <div class="partner-info">
-                            <h3>Avanti Finance Pvt. Ltd.</h3>
+                            <h3 data-i18n="avanti_name">Avanti Finance Pvt. Ltd.</h3>
                             <span class="partner-type">NBFC Partner</span>
                         </div>
                     </div>
@@ -4689,7 +4286,7 @@
                             </svg>
                         </div>
                         <div class="partner-info">
-                            <h3>Unity Small Finance Bank</h3>
+                            <h3 data-i18n="unity_name">Unity Small Finance Bank</h3>
                             <span class="partner-type">Banking Partner</span>
                         </div>
                     </div>
@@ -4711,6 +4308,64 @@
                         </div>
                     </div>
                 </div>
+                <div class="partner-card reveal reveal-delay-2">
+                    <span class="partner-badge">&#10003; Verified</span>
+                    <div class="partner-card-top">
+                        <div class="partner-logo" style="background: #FFFFFF; padding: 8px;">
+                            <img src="Images/filending-logo.svg" alt="FI Lending Solutions Pvt. Ltd." style="width:100%; height:100%; object-fit:contain;">
+                        </div>
+                        <div class="partner-info">
+                            <h3><a href="https://filending.in/" target="_blank" rel="noopener" style="color:inherit; text-decoration:none;" data-i18n="fi_name">FI Lending Solutions Pvt. Ltd.</a></h3>
+                            <span class="partner-type">Lending Partner</span>
+                        </div>
+                    </div>
+                    <div class="partner-card-body">
+                        <p data-i18n="partner3_desc">Digital lending partner enabling fast, paperless loan origination and disbursement.</p>
+                        <div class="partner-stats">
+                            <div class="partner-stat">
+                                <span class="partner-stat-value">8+</span>
+                                <span class="partner-stat-label">States</span>
+                            </div>
+                            <div class="partner-stat">
+                                <span class="partner-stat-value">15K+</span>
+                                <span class="partner-stat-label">Loans</span>
+                            </div>
+                            <div class="partner-stat">
+                                <span class="partner-stat-value">48hr</span>
+                                <span class="partner-stat-label">Turnaround</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="partner-card reveal reveal-delay-3">
+                    <span class="partner-badge">&#10003; Verified</span>
+                    <div class="partner-card-top">
+                        <div class="partner-logo" style="background: #FFFFFF; padding: 8px;">
+                            <img src="Images/smfg-logo.svg" alt="SMFG India Credit Co. Ltd." style="width:100%; height:100%; object-fit:contain;">
+                        </div>
+                        <div class="partner-info">
+                            <h3><a href="https://www.smfgindiacredit.com/" target="_blank" rel="noopener" style="color:inherit; text-decoration:none;" data-i18n="smfg_name">SMFG India Credit Co. Ltd.</a></h3>
+                            <span class="partner-type">NBFC Partner</span>
+                        </div>
+                    </div>
+                    <div class="partner-card-body">
+                        <p data-i18n="partner4_desc">Pan-India NBFC partner offering diversified consumer and small-business credit products.</p>
+                        <div class="partner-stats">
+                            <div class="partner-stat">
+                                <span class="partner-stat-value">25+</span>
+                                <span class="partner-stat-label">States</span>
+                            </div>
+                            <div class="partner-stat">
+                                <span class="partner-stat-value">50K+</span>
+                                <span class="partner-stat-label">Customers</span>
+                            </div>
+                            <div class="partner-stat">
+                                <span class="partner-stat-value">RBI</span>
+                                <span class="partner-stat-label">Regulated</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -4725,7 +4380,7 @@
             </div>
             <div class="disclosure-grid">
                 <div class="disclosure-card reveal">
-                    <h3 data-i18n="avanti_name">Avanti Finance Private Limited</h3>
+                    <h3 data-i18n="avanti_name">Avanti Finance Pvt. Ltd.</h3>
                     <h4 data-i18n="avanti_svc_title">Services Offered</h4>
                     <p class="disclosure-detail" data-i18n="avanti_svc_desc">Sourcing of loan applicants, collection services, borrower servicing during loan tenure, and first-level grievance redressal.</p>
 
@@ -4762,9 +4417,41 @@
                     <p class="disclosure-detail" data-i18n="unity_prod_desc">Savings &amp; Current Accounts, Fixed Deposits, Recurring Deposits, Personal Loans, MSME &amp; Business Loans, Gold Loans, Microfinance, and Digital Banking services.</p>
 
                     <h4 data-i18n="unity_grv_title">Grievance Redressal</h4>
-                    <p class="disclosure-detail"><strong data-i18n="unity_care_lbl">Customer Care:</strong> <span data-i18n="unity_care_val">1800-2100-200 (Toll Free)</span></p>
-                    <p class="disclosure-detail"><strong data-i18n="unity_email_lbl">Email:</strong> customercare@unitybank.in</p>
-                    <p class="disclosure-detail" style="margin-top:8px;"><a class="disclosure-link" href="https://www.unitybank.in/" target="_blank" rel="noopener"><span data-i18n="unity_visit">Visit Unity Small Finance Bank website</span> &#8599;</a></p>
+                    <p class="disclosure-detail"><strong data-i18n="unity_care_lbl">Customer Care:</strong> <span data-i18n="unity_care_val">1800-209-1122 (Toll Free)</span></p>
+                    <p class="disclosure-detail"><strong data-i18n="unity_email_lbl">Email:</strong> care@unitybank.co.in</p>
+                    <p class="disclosure-detail" style="margin-top:8px;"><a class="disclosure-link" href="https://unity.bank.in/" target="_blank" rel="noopener"><span data-i18n="unity_visit">Visit Unity Small Finance Bank website</span> &#8599;</a></p>
+                </div>
+                <div class="disclosure-card reveal reveal-delay-2">
+                    <h3 data-i18n="fi_name">FI Lending Solutions Pvt. Ltd.</h3>
+                    <h4 data-i18n="unity_about_title">About</h4>
+                    <p class="disclosure-detail" data-i18n="fi_about_desc">FI Lending Solutions is a digital lending fintech focused on credit and savings solutions for underserved communities across India.</p>
+                    <p class="disclosure-detail"><strong data-i18n="unity_office_lbl">Registered Office:</strong> <span data-i18n="fi_office_val">1017, 10th Floor, JMD Megapolis, Tower &ndash; A, Sohna Road, Gurugram, Haryana &ndash; 122018</span></p>
+
+                    <h4 data-i18n="unity_svc_title">Services Offered</h4>
+                    <p class="disclosure-detail" data-i18n="fi_svc_desc">Sourcing of loan applicants, digital onboarding and KYC, collection services, and borrower servicing during loan tenure.</p>
+
+                    <h4 data-i18n="unity_grv_title">Grievance Redressal</h4>
+                    <p class="disclosure-detail"><strong data-i18n="unity_care_lbl">Customer Care:</strong> +91 88822 12947</p>
+                    <p class="disclosure-detail"><strong data-i18n="unity_email_lbl">Email:</strong> hello@filending.in</p>
+                    <p class="disclosure-detail" style="margin-top:8px;"><a class="disclosure-link" href="https://filending.in/" target="_blank" rel="noopener"><span data-i18n="fi_visit">Visit FI Lending website</span> &#8599;</a></p>
+                </div>
+                <div class="disclosure-card reveal reveal-delay-3">
+                    <h3 data-i18n="smfg_name">SMFG India Credit Co. Ltd.</h3>
+                    <h4 data-i18n="unity_about_title">About</h4>
+                    <p class="disclosure-detail" data-i18n="smfg_about_desc">SMFG India Credit Co. Ltd. is a pan-India NBFC offering a comprehensive range of personal, business, and secured credit products. Part of Sumitomo Mitsui Financial Group (SMFG), Japan.</p>
+                    <p class="disclosure-detail"><strong data-i18n="unity_cin_lbl">CIN:</strong> U65191TN1994PLC079235</p>
+                    <p class="disclosure-detail"><strong data-i18n="unity_office_lbl">Registered Office:</strong> <span data-i18n="smfg_office_val">Commerzone IT Park, Tower B, 1st Floor No. 111, Mount Poonamallee Road, Porur, Chennai, Tamil Nadu &ndash; 600 116</span></p>
+
+                    <h4 data-i18n="unity_svc_title">Services Offered</h4>
+                    <p class="disclosure-detail" data-i18n="smfg_svc_desc">Sourcing of loan applicants, collection services, and borrower servicing during loan tenure under the Direct Selling Agent (DSA) / Banking Correspondent model.</p>
+
+                    <h4 data-i18n="unity_prod_title">Key Products</h4>
+                    <p class="disclosure-detail" data-i18n="smfg_prod_desc">Personal Loans, Business Loans, Loan Against Property, Loan Against Securities, Two-Wheeler Loans, Commercial Vehicle Loans, Solidarity Group Loans, and Growing Enterprise Loans (GEL).</p>
+
+                    <h4 data-i18n="unity_grv_title">Grievance Redressal</h4>
+                    <p class="disclosure-detail"><strong data-i18n="unity_care_lbl">Customer Care:</strong> <span data-i18n="smfg_care_val">1800 103 6001 (Mon&ndash;Sat, 9 AM &ndash; 7 PM)</span></p>
+                    <p class="disclosure-detail"><strong data-i18n="unity_email_lbl">Email:</strong> namaste@smfgindia.com</p>
+                    <p class="disclosure-detail" style="margin-top:8px;"><a class="disclosure-link" href="https://www.smfgindiacredit.com/" target="_blank" rel="noopener"><span data-i18n="smfg_visit">Visit SMFG India Credit website</span> &#8599;</a></p>
                 </div>
             </div>
         </div>
@@ -4855,9 +4542,9 @@
                         <img class="team-card-photo" src="Photos/Ravi Kumar - State Head - Tamil Nadu.png" alt="Ravi Kumar">
                     </div>
                     <div class="team-card-info">
-                        <h3>Ravi Kumar</h3>
-                        <p class="team-card-role">State Head — Tamil Nadu</p>
-                        <p>Drives on-ground operations across Tamil Nadu — overseeing branch performance, customer outreach, and field-team execution.</p>
+                        <h3 data-i18n="state_name_ravi">Ravi Kumar</h3>
+                        <p class="team-card-role" data-i18n="state_role_tn">State Head — Tamil Nadu</p>
+                        <p data-i18n="state_bio_ravi">Drives on-ground operations across Tamil Nadu — overseeing branch performance, customer outreach, and field-team execution.</p>
                     </div>
                 </div>
                 <div class="team-card reveal reveal-delay-1">
@@ -4865,9 +4552,9 @@
                         <img class="team-card-photo" src="Photos/Dariya Shaikh - State Head - Karnataka.png" alt="Dariya Shaikh">
                     </div>
                     <div class="team-card-info">
-                        <h3>Dariya Shaikh</h3>
-                        <p class="team-card-role">State Head — Karnataka</p>
-                        <p>Leads Karnataka operations end-to-end — branch development, team building, and customer acquisition across the state.</p>
+                        <h3 data-i18n="state_name_dariya">Dariya Shaikh</h3>
+                        <p class="team-card-role" data-i18n="state_role_ka">State Head — Karnataka</p>
+                        <p data-i18n="state_bio_dariya">Leads Karnataka operations end-to-end — branch development, team building, and customer acquisition across the state.</p>
                     </div>
                 </div>
                 <div class="team-card reveal reveal-delay-2">
@@ -4875,9 +4562,9 @@
                         <img class="team-card-photo" src="Photos/Reji Ravindran - State Head - Kerala.png" alt="Reji Ravindran">
                     </div>
                     <div class="team-card-info">
-                        <h3>Reji Ravindran</h3>
-                        <p class="team-card-role">State Head — Kerala</p>
-                        <p>Heads Kerala's state-level operations — scaling branch networks and ensuring consistent service delivery on the ground.</p>
+                        <h3 data-i18n="state_name_reji">Reji Ravindran</h3>
+                        <p class="team-card-role" data-i18n="state_role_kl">State Head — Kerala</p>
+                        <p data-i18n="state_bio_reji">Heads Kerala's state-level operations — scaling branch networks and ensuring consistent service delivery on the ground.</p>
                     </div>
                 </div>
                 <div class="team-card reveal">
@@ -4885,9 +4572,9 @@
                         <img class="team-card-photo" src="Photos/Abhilash, Zonal Head - Kerala and Tamilnadu.png" alt="Abhilash">
                     </div>
                     <div class="team-card-info">
-                        <h3>Abhilash</h3>
-                        <p class="team-card-role">Zonal Head — Kerala &amp; Tamil Nadu</p>
-                        <p>Zonal lead for Kerala and Tamil Nadu, coordinating multi-state strategy, performance, and field operations across the south.</p>
+                        <h3 data-i18n="state_name_abhilash">Abhilash</h3>
+                        <p class="team-card-role" data-i18n="state_role_zonal">Zonal Head — Kerala &amp; Tamil Nadu</p>
+                        <p data-i18n="state_bio_abhilash">Zonal lead for Kerala and Tamil Nadu, coordinating multi-state strategy, performance, and field operations across the south.</p>
                     </div>
                 </div>
             </div>
@@ -5004,24 +4691,24 @@
     <!-- ═══════════════════════ TERMS & CONDITIONS ═══════════════════════ -->
     <section class="section legal-section" id="terms" style="display:none; background:#fff;">
         <div class="container" style="max-width:800px;">
-            <h2 class="section-title" style="text-align:center;">Terms and Conditions</h2>
+            <h2 class="section-title" style="text-align:center;" data-i18n="tc_title">Terms and Conditions</h2>
             <div class="legal-content">
-                <p>Please read these terms and conditions carefully before using our website and services.</p>
-                <h3>1. Acceptance of Terms</h3>
-                <p>By accessing and using this website, you accept and agree to be bound by the terms and provision of this agreement.</p>
-                <h3>2. Use License</h3>
-                <p>Permission is granted to temporarily download one copy of the materials on this website for personal, non-commercial transitory viewing only.</p>
-                <h3>3. Disclaimer</h3>
-                <p>The materials on this website are provided on an "as is" basis. We make no warranties, expressed or implied, and hereby disclaim and negate all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
-                <h3>4. Limitations</h3>
-                <p>In no event shall we or our suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on this website.</p>
-                <h3>5. Revisions</h3>
-                <p>We may revise these terms of service at any time without notice. By using this website you are agreeing to be bound by the then current version of these terms of service.</p>
-                <h3>6. Contact Information</h3>
-                <p>If you have any questions about these Terms and Conditions, please contact us at <a href="mailto:info@rapidloans.ai" style="color:var(--teal);">info@rapidloans.ai</a>.</p>
+                <p data-i18n="tc_intro">Please read these terms and conditions carefully before using our website and services.</p>
+                <h3 data-i18n="tc_h1">1. Acceptance of Terms</h3>
+                <p data-i18n="tc_p1">By accessing and using this website, you accept and agree to be bound by the terms and provision of this agreement.</p>
+                <h3 data-i18n="tc_h2">2. Use License</h3>
+                <p data-i18n="tc_p2">Permission is granted to temporarily download one copy of the materials on this website for personal, non-commercial transitory viewing only.</p>
+                <h3 data-i18n="tc_h3">3. Disclaimer</h3>
+                <p data-i18n="tc_p3">The materials on this website are provided on an "as is" basis. We make no warranties, expressed or implied, and hereby disclaim and negate all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
+                <h3 data-i18n="tc_h4">4. Limitations</h3>
+                <p data-i18n="tc_p4">In no event shall we or our suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on this website.</p>
+                <h3 data-i18n="tc_h5">5. Revisions</h3>
+                <p data-i18n="tc_p5">We may revise these terms of service at any time without notice. By using this website you are agreeing to be bound by the then current version of these terms of service.</p>
+                <h3 data-i18n="tc_h6">6. Contact Information</h3>
+                <p data-i18n="tc_p6" data-i18n-html="true">If you have any questions about these Terms and Conditions, please contact us at <a href="mailto:info@rapidloans.ai" style="color:var(--teal);">info@rapidloans.ai</a>.</p>
             </div>
             <div style="text-align:center; margin-top:32px;">
-                <button onclick="document.getElementById('terms').style.display='none'; window.history.pushState({}, '', '#');" class="btn btn-outline" style="font-size:0.85rem;">Close</button>
+                <button onclick="document.getElementById('terms').style.display='none'; window.history.pushState({}, '', '#');" class="btn btn-outline" style="font-size:0.85rem;" data-i18n="legal_close">Close</button>
             </div>
         </div>
     </section>
@@ -5029,28 +4716,28 @@
     <!-- ═══════════════════════ PRIVACY POLICY ═══════════════════════ -->
     <section class="section legal-section" id="privacy" style="display:none; background:#fff;">
         <div class="container" style="max-width:800px;">
-            <h2 class="section-title" style="text-align:center;">Privacy Policy</h2>
+            <h2 class="section-title" style="text-align:center;" data-i18n="pp_title">Privacy Policy</h2>
             <div class="legal-content">
-                <p>This privacy policy describes how we collect, use, and protect your personal information when you use our website and services.</p>
-                <h3>1. Information We Collect</h3>
-                <p>We collect information that you provide directly to us, such as when you create an account, make a purchase, or contact us for support. This may include your name, email address, mailing address, phone number, and payment information.</p>
-                <h3>2. How We Use Your Information</h3>
-                <p>We use the information we collect to process and fulfill your orders, send you order confirmations and updates, respond to your comments and questions, improve our website and services, and send you marketing communications (with your consent).</p>
-                <h3>3. Information Sharing</h3>
-                <p>We do not sell, trade, or rent your personal information to third parties. We may share your information with service providers who assist us in operating our website and conducting our business, as long as those parties agree to keep this information confidential.</p>
-                <h3>4. Data Security</h3>
-                <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
-                <h3>5. Your Rights</h3>
-                <p>You have the right to access, update, or delete your personal information at any time. You may also opt out of receiving marketing communications from us.</p>
-                <h3>6. Cookies</h3>
-                <p>We use cookies to enhance your experience on our website. You can choose to disable cookies through your browser settings, though this may affect the functionality of the site.</p>
-                <h3>7. Changes to This Policy</h3>
-                <p>We may update this privacy policy from time to time. We will notify you of any changes by posting the new policy on this page.</p>
-                <h3>8. Contact Us</h3>
-                <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:info@rapidloans.ai" style="color:var(--teal);">info@rapidloans.ai</a>.</p>
+                <p data-i18n="pp_intro">This privacy policy describes how we collect, use, and protect your personal information when you use our website and services.</p>
+                <h3 data-i18n="pp_h1">1. Information We Collect</h3>
+                <p data-i18n="pp_p1">We collect information that you provide directly to us, such as when you create an account, make a purchase, or contact us for support. This may include your name, email address, mailing address, phone number, and payment information.</p>
+                <h3 data-i18n="pp_h2">2. How We Use Your Information</h3>
+                <p data-i18n="pp_p2">We use the information we collect to process and fulfill your orders, send you order confirmations and updates, respond to your comments and questions, improve our website and services, and send you marketing communications (with your consent).</p>
+                <h3 data-i18n="pp_h3">3. Information Sharing</h3>
+                <p data-i18n="pp_p3">We do not sell, trade, or rent your personal information to third parties. We may share your information with service providers who assist us in operating our website and conducting our business, as long as those parties agree to keep this information confidential.</p>
+                <h3 data-i18n="pp_h4">4. Data Security</h3>
+                <p data-i18n="pp_p4">We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
+                <h3 data-i18n="pp_h5">5. Your Rights</h3>
+                <p data-i18n="pp_p5">You have the right to access, update, or delete your personal information at any time. You may also opt out of receiving marketing communications from us.</p>
+                <h3 data-i18n="pp_h6">6. Cookies</h3>
+                <p data-i18n="pp_p6">We use cookies to enhance your experience on our website. You can choose to disable cookies through your browser settings, though this may affect the functionality of the site.</p>
+                <h3 data-i18n="pp_h7">7. Changes to This Policy</h3>
+                <p data-i18n="pp_p7">We may update this privacy policy from time to time. We will notify you of any changes by posting the new policy on this page.</p>
+                <h3 data-i18n="pp_h8">8. Contact Us</h3>
+                <p data-i18n="pp_p8" data-i18n-html="true">If you have any questions about this Privacy Policy, please contact us at <a href="mailto:info@rapidloans.ai" style="color:var(--teal);">info@rapidloans.ai</a>.</p>
             </div>
             <div style="text-align:center; margin-top:32px;">
-                <button onclick="document.getElementById('privacy').style.display='none'; window.history.pushState({}, '', '#');" class="btn btn-outline" style="font-size:0.85rem;">Close</button>
+                <button onclick="document.getElementById('privacy').style.display='none'; window.history.pushState({}, '', '#');" class="btn btn-outline" style="font-size:0.85rem;" data-i18n="legal_close">Close</button>
             </div>
         </div>
     </section>
@@ -5061,7 +4748,11 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a href="#" class="logo">
-                        <img src="Images/Logo.png" alt="Rapid Loans Logo" class="logo-icon">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="logo-icon" aria-label="Rapid Loans">
+                            <ellipse cx="50" cy="50" rx="44" ry="32" fill="none" stroke="#E63946" stroke-width="6" stroke-linecap="round" stroke-dasharray="175 55" stroke-dashoffset="-28" transform="rotate(-12 50 50)"/>
+                            <path d="M 4 75 Q 50 100, 96 73" fill="none" stroke="#5BB5DC" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
+                            <text x="50" y="70" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="900" font-size="50" fill="#5BB5DC" letter-spacing="-2">RL</text>
+                        </svg>
                         <div class="logo-text-wrap">
                             <span class="logo-name" data-i18n="logo_name" data-i18n-html="true">Rapid<span class="logo-name-loans">Loans</span></span>
                         </div>
@@ -5184,6 +4875,20 @@
                 partners_desc: "We collaborate with leading banks and NBFCs to deliver reliable financial services across India.",
                 partner1_desc: "NBFC partner for inclusive microfinance lending across rural India",
                 partner2_desc: "Banking partner enabling last-mile financial service delivery",
+                partner3_desc: "Digital lending partner enabling fast, paperless loan origination and disbursement.",
+                partner4_desc: "Pan-India NBFC partner offering diversified consumer and small-business credit products.",
+                fi_name: "FI Lending Solutions Pvt. Ltd.",
+                fi_about_desc: "FI Lending Solutions is a digital lending fintech focused on credit and savings solutions for underserved communities across India.",
+                fi_office_val: "1017, 10th Floor, JMD Megapolis, Tower – A, Sohna Road, Gurugram, Haryana – 122018",
+                fi_svc_desc: "Sourcing of loan applicants, digital onboarding and KYC, collection services, and borrower servicing during loan tenure.",
+                fi_visit: "Visit FI Lending website",
+                smfg_name: "SMFG India Credit Co. Ltd.",
+                smfg_about_desc: "SMFG India Credit Co. Ltd. is a pan-India NBFC offering a comprehensive range of personal, business, and secured credit products. Part of Sumitomo Mitsui Financial Group (SMFG), Japan.",
+                smfg_office_val: "Commerzone IT Park, Tower B, 1st Floor No. 111, Mount Poonamallee Road, Porur, Chennai, Tamil Nadu – 600 116",
+                smfg_svc_desc: "Sourcing of loan applicants, collection services, and borrower servicing during loan tenure under the Direct Selling Agent (DSA) / Banking Correspondent model.",
+                smfg_prod_desc: "Personal Loans, Business Loans, Loan Against Property, Loan Against Securities, Two-Wheeler Loans, Commercial Vehicle Loans, Solidarity Group Loans, and Growing Enterprise Loans (GEL).",
+                smfg_care_val: "1800 103 6001 (Mon–Sat, 9 AM – 7 PM)",
+                smfg_visit: "Visit SMFG India Credit website",
                 cta_title: "Ready to Transform Financial Access?",
                 cta_desc: "Partner with Rapid Loans to bring inclusive financial services to underserved communities. Let's build a financially inclusive India together.",
                 cta_address: "Ground Floor, Raja Complex, Vijay Cross Roads, Navarangpura, Ahmedabad — 380009, Gujarat",
@@ -5222,7 +4927,7 @@
                 disclosure_label: 'Transparency',
                 disclosure_title: 'Partner Disclosures',
                 disclosure_desc: 'Regulatory disclosures for our lending partnerships, ensuring full transparency.',
-                avanti_name: 'Avanti Finance Private Limited',
+                avanti_name: 'Avanti Finance Pvt. Ltd.',
                 avanti_svc_title: 'Services Offered',
                 avanti_svc_desc: 'Sourcing of loan applicants, collection services, borrower servicing during loan tenure, and first-level grievance redressal.',
                 avanti_grv_title: 'Grievance Officer Details',
@@ -5257,7 +4962,7 @@
                 unity_prod_desc: 'Savings & Current Accounts, Fixed Deposits, Recurring Deposits, Personal Loans, MSME & Business Loans, Gold Loans, Microfinance, and Digital Banking services.',
                 unity_grv_title: 'Grievance Redressal',
                 unity_care_lbl: 'Customer Care:',
-                unity_care_val: '1800-2100-200 (Toll Free)',
+                unity_care_val: '1800-209-1122 (Toll Free)',
                 unity_email_lbl: 'Email:',
                 unity_visit: 'Visit Unity Small Finance Bank website',
                 presence_label: 'Our Presence',
@@ -5309,7 +5014,52 @@
                 calc_yrs: 'yrs',
                 calc_yr: 'yr',
                 calc_mo: 'mo',
-                footer_calculator: 'Loan Calculator'
+                footer_calculator: 'Loan Calculator',
+                state_name_ravi: 'Ravi Kumar',
+                state_role_tn: 'State Head — Tamil Nadu',
+                state_bio_ravi: 'Drives on-ground operations across Tamil Nadu — overseeing branch performance, customer outreach, and field-team execution.',
+                state_name_dariya: 'Dariya Shaikh',
+                state_role_ka: 'State Head — Karnataka',
+                state_bio_dariya: 'Leads Karnataka operations end-to-end — branch development, team building, and customer acquisition across the state.',
+                state_name_reji: 'Reji Ravindran',
+                state_role_kl: 'State Head — Kerala',
+                state_bio_reji: "Heads Kerala's state-level operations — scaling branch networks and ensuring consistent service delivery on the ground.",
+                state_name_abhilash: 'Abhilash',
+                state_role_zonal: 'Zonal Head — Kerala & Tamil Nadu',
+                state_bio_abhilash: 'Zonal lead for Kerala and Tamil Nadu, coordinating multi-state strategy, performance, and field operations across the south.',
+                legal_close: 'Close',
+                tc_title: 'Terms and Conditions',
+                tc_intro: 'Please read these terms and conditions carefully before using our website and services.',
+                tc_h1: '1. Acceptance of Terms',
+                tc_p1: 'By accessing and using this website, you accept and agree to be bound by the terms and provision of this agreement.',
+                tc_h2: '2. Use License',
+                tc_p2: 'Permission is granted to temporarily download one copy of the materials on this website for personal, non-commercial transitory viewing only.',
+                tc_h3: '3. Disclaimer',
+                tc_p3: 'The materials on this website are provided on an "as is" basis. We make no warranties, expressed or implied, and hereby disclaim and negate all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.',
+                tc_h4: '4. Limitations',
+                tc_p4: 'In no event shall we or our suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on this website.',
+                tc_h5: '5. Revisions',
+                tc_p5: 'We may revise these terms of service at any time without notice. By using this website you are agreeing to be bound by the then current version of these terms of service.',
+                tc_h6: '6. Contact Information',
+                tc_p6: 'If you have any questions about these Terms and Conditions, please contact us at <a href="mailto:info@rapidloans.ai" style="color:var(--teal);">info@rapidloans.ai</a>.',
+                pp_title: 'Privacy Policy',
+                pp_intro: 'This privacy policy describes how we collect, use, and protect your personal information when you use our website and services.',
+                pp_h1: '1. Information We Collect',
+                pp_p1: 'We collect information that you provide directly to us, such as when you create an account, make a purchase, or contact us for support. This may include your name, email address, mailing address, phone number, and payment information.',
+                pp_h2: '2. How We Use Your Information',
+                pp_p2: 'We use the information we collect to process and fulfill your orders, send you order confirmations and updates, respond to your comments and questions, improve our website and services, and send you marketing communications (with your consent).',
+                pp_h3: '3. Information Sharing',
+                pp_p3: 'We do not sell, trade, or rent your personal information to third parties. We may share your information with service providers who assist us in operating our website and conducting our business, as long as those parties agree to keep this information confidential.',
+                pp_h4: '4. Data Security',
+                pp_p4: 'We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.',
+                pp_h5: '5. Your Rights',
+                pp_p5: 'You have the right to access, update, or delete your personal information at any time. You may also opt out of receiving marketing communications from us.',
+                pp_h6: '6. Cookies',
+                pp_p6: 'We use cookies to enhance your experience on our website. You can choose to disable cookies through your browser settings, though this may affect the functionality of the site.',
+                pp_h7: '7. Changes to This Policy',
+                pp_p7: 'We may update this privacy policy from time to time. We will notify you of any changes by posting the new policy on this page.',
+                pp_h8: '8. Contact Us',
+                pp_p8: 'If you have any questions about this Privacy Policy, please contact us at <a href="mailto:info@rapidloans.ai" style="color:var(--teal);">info@rapidloans.ai</a>.'
             },
             hi: {
                 nav_about: "हमारे बारे में",
@@ -5383,6 +5133,20 @@
                 partners_desc: "हम पूरे भारत में विश्वसनीय वित्तीय सेवाएं प्रदान करने के लिए प्रमुख बैंकों और NBFCs के साथ सहयोग करते हैं।",
                 partner1_desc: "ग्रामीण भारत में समावेशी माइक्रोफाइनेंस ऋण के लिए NBFC साझेदार",
                 partner2_desc: "अंतिम-मील वित्तीय सेवा वितरण सक्षम करने वाला बैंकिंग साझेदार",
+                partner3_desc: "तेज़, कागज़-रहित ऋण उत्पत्ति और वितरण को सक्षम करने वाला डिजिटल ऋण साझेदार।",
+                partner4_desc: "विविध उपभोक्ता और लघु-व्यवसाय ऋण उत्पाद प्रदान करने वाला अखिल भारतीय NBFC साझेदार।",
+                fi_name: "एफआई लेंडिंग सॉल्यूशंस प्राइवेट लिमिटेड",
+                fi_about_desc: "FI Lending Solutions एक डिजिटल लेंडिंग फिनटेक है जो भारत भर के वंचित समुदायों के लिए ऋण और बचत समाधानों पर केंद्रित है।",
+                fi_office_val: "1017, 10वीं मंजिल, JMD मेगापोलिस, टावर – A, सोहना रोड, गुरुग्राम, हरियाणा – 122018",
+                fi_svc_desc: "ऋण आवेदकों की सोर्सिंग, डिजिटल ऑनबोर्डिंग और KYC, संग्रहण सेवाएं और ऋण अवधि के दौरान उधारकर्ता सेवा।",
+                fi_visit: "FI Lending वेबसाइट देखें",
+                smfg_name: "एसएमएफजी इंडिया क्रेडिट कं. लि.",
+                smfg_about_desc: "SMFG India Credit Co. Ltd. एक अखिल भारतीय NBFC है जो व्यक्तिगत, व्यावसायिक और सुरक्षित क्रेडिट उत्पादों की व्यापक श्रृंखला प्रदान करती है। Sumitomo Mitsui Financial Group (SMFG), जापान का हिस्सा।",
+                smfg_office_val: "Commerzone IT पार्क, टावर B, पहली मंजिल, नंबर 111, माउंट पूनमल्ली रोड, पोरूर, चेन्नई, तमिलनाडु – 600 116",
+                smfg_svc_desc: "Direct Selling Agent (DSA) / बैंकिंग कॉरस्पॉन्डेंट मॉडल के तहत ऋण आवेदकों की सोर्सिंग, संग्रहण सेवाएं और ऋण अवधि के दौरान उधारकर्ता सेवा।",
+                smfg_prod_desc: "व्यक्तिगत ऋण, व्यवसाय ऋण, संपत्ति पर ऋण, प्रतिभूतियों पर ऋण, दोपहिया ऋण, वाणिज्यिक वाहन ऋण, सॉलिडैरिटी समूह ऋण और ग्रोइंग एंटरप्राइज लोन (GEL)।",
+                smfg_care_val: "1800 103 6001 (सोम–शनि, सुबह 9 – शाम 7)",
+                smfg_visit: "SMFG India Credit वेबसाइट देखें",
                 cta_title: "वित्तीय पहुंच को बदलने के लिए तैयार हैं?",
                 cta_desc: "वंचित समुदायों में समावेशी वित्तीय सेवाएं लाने के लिए रैपिड लोन्स के साथ भागीदारी करें। आइए मिलकर एक वित्तीय रूप से समावेशी भारत का निर्माण करें।",
                 cta_address: "ग्राउंड फ्लोर, राजा कॉम्प्लेक्स, विजय क्रॉस रोड्स, नवरंगपुरा, अहमदाबाद — 380009, गुजरात",
@@ -5421,7 +5185,7 @@
                 disclosure_label: 'पारदर्शिता',
                 disclosure_title: 'साझेदार प्रकटीकरण',
                 disclosure_desc: 'पूर्ण पारदर्शिता सुनिश्चित करते हुए हमारी ऋण साझेदारियों के लिए नियामक प्रकटीकरण।',
-                avanti_name: 'अवंती फाइनेंस प्राइवेट लिमिटेड',
+                avanti_name: 'अवंती फाइनेंस प्रा. लि.',
                 avanti_svc_title: 'प्रदान की जाने वाली सेवाएं',
                 avanti_svc_desc: 'ऋण आवेदकों की सोर्सिंग, संग्रहण सेवाएं, ऋण अवधि के दौरान उधारकर्ता सेवा, और प्रथम-स्तरीय शिकायत निवारण।',
                 avanti_grv_title: 'शिकायत अधिकारी विवरण',
@@ -5456,7 +5220,7 @@
                 unity_prod_desc: 'बचत एवं चालू खाते, सावधि जमा, आवर्ती जमा, व्यक्तिगत ऋण, MSME एवं व्यापार ऋण, स्वर्ण ऋण, माइक्रोफाइनेंस, और डिजिटल बैंकिंग सेवाएं।',
                 unity_grv_title: 'शिकायत निवारण',
                 unity_care_lbl: 'ग्राहक सेवा:',
-                unity_care_val: '१८००-२१००-२०० (टोल फ्री)',
+                unity_care_val: '१८००-२०९-११२२ (टोल फ्री)',
                 unity_email_lbl: 'ईमेल:',
                 unity_visit: 'यूनिटी स्मॉल फाइनेंस बैंक वेबसाइट पर जाएं',
                 presence_label: 'हमारी उपस्थिति',
@@ -5508,7 +5272,52 @@
                 calc_yrs: 'वर्ष',
                 calc_yr: 'वर्ष',
                 calc_mo: 'म.',
-                footer_calculator: 'ऋण कैलकुलेटर'
+                footer_calculator: 'ऋण कैलकुलेटर',
+                state_name_ravi: 'रवि कुमार',
+                state_role_tn: 'राज्य प्रमुख — तमिलनाडु',
+                state_bio_ravi: 'तमिलनाडु में जमीनी संचालन का नेतृत्व — शाखा प्रदर्शन, ग्राहक पहुंच और फील्ड-टीम कार्यान्वयन की देखरेख।',
+                state_name_dariya: 'दरिया शेख',
+                state_role_ka: 'राज्य प्रमुख — कर्नाटक',
+                state_bio_dariya: 'कर्नाटक के संचालन का संपूर्ण नेतृत्व — शाखा विकास, टीम निर्माण और राज्य भर में ग्राहक अधिग्रहण।',
+                state_name_reji: 'रेजी रवींद्रन',
+                state_role_kl: 'राज्य प्रमुख — केरल',
+                state_bio_reji: 'केरल के राज्य-स्तरीय संचालन का नेतृत्व — शाखा नेटवर्क का विस्तार और जमीनी स्तर पर निरंतर सेवा वितरण सुनिश्चित करना।',
+                state_name_abhilash: 'अभिलाष',
+                state_role_zonal: 'क्षेत्रीय प्रमुख — केरल और तमिलनाडु',
+                state_bio_abhilash: 'केरल और तमिलनाडु के लिए क्षेत्रीय नेतृत्व — दक्षिण भर में बहु-राज्य रणनीति, प्रदर्शन और फील्ड संचालन का समन्वय।',
+                legal_close: 'बंद करें',
+                tc_title: 'नियम और शर्तें',
+                tc_intro: 'हमारी वेबसाइट और सेवाओं का उपयोग करने से पहले कृपया इन नियमों और शर्तों को ध्यान से पढ़ें।',
+                tc_h1: '1. शर्तों की स्वीकृति',
+                tc_p1: 'इस वेबसाइट तक पहुंच और उपयोग करके, आप इस अनुबंध की शर्तों और प्रावधानों से बंधे होने को स्वीकार करते हैं।',
+                tc_h2: '2. उपयोग लाइसेंस',
+                tc_p2: 'इस वेबसाइट की सामग्री की एक प्रति केवल व्यक्तिगत, गैर-व्यावसायिक अस्थायी देखने के लिए अस्थायी रूप से डाउनलोड करने की अनुमति दी जाती है।',
+                tc_h3: '3. अस्वीकरण',
+                tc_p3: 'इस वेबसाइट की सामग्री "जैसी है" आधार पर प्रदान की जाती है। हम कोई वारंटी, स्पष्ट या निहित, नहीं देते और सभी अन्य वारंटियों को अस्वीकार करते हैं, जिसमें बिक्री योग्यता, किसी विशेष उद्देश्य के लिए उपयुक्तता, या बौद्धिक संपदा के गैर-उल्लंघन की निहित वारंटियां शामिल हैं।',
+                tc_h4: '4. सीमाएं',
+                tc_p4: 'किसी भी स्थिति में हम या हमारे आपूर्तिकर्ता किसी भी हानि (डेटा या लाभ की हानि सहित, या व्यवसाय व्यवधान के कारण) के लिए उत्तरदायी नहीं होंगे जो इस वेबसाइट की सामग्री के उपयोग या उपयोग करने में असमर्थता से उत्पन्न होती है।',
+                tc_h5: '5. संशोधन',
+                tc_p5: 'हम बिना किसी सूचना के किसी भी समय इन सेवा शर्तों को संशोधित कर सकते हैं। इस वेबसाइट का उपयोग करके आप तत्कालीन वर्तमान संस्करण से बंधे होने पर सहमत हैं।',
+                tc_h6: '6. संपर्क जानकारी',
+                tc_p6: 'यदि आपके इन नियमों और शर्तों के बारे में कोई प्रश्न हैं, तो कृपया हमसे <a href="mailto:info@rapidloans.ai" style="color:var(--teal);">info@rapidloans.ai</a> पर संपर्क करें।',
+                pp_title: 'गोपनीयता नीति',
+                pp_intro: 'यह गोपनीयता नीति बताती है कि जब आप हमारी वेबसाइट और सेवाओं का उपयोग करते हैं तो हम आपकी व्यक्तिगत जानकारी कैसे एकत्र, उपयोग और सुरक्षित करते हैं।',
+                pp_h1: '1. हम कौन सी जानकारी एकत्र करते हैं',
+                pp_p1: 'हम वह जानकारी एकत्र करते हैं जो आप सीधे हमें प्रदान करते हैं, जैसे जब आप खाता बनाते हैं, खरीदारी करते हैं, या सहायता के लिए संपर्क करते हैं। इसमें आपका नाम, ईमेल पता, डाक पता, फोन नंबर और भुगतान जानकारी शामिल हो सकती है।',
+                pp_h2: '2. हम आपकी जानकारी का उपयोग कैसे करते हैं',
+                pp_p2: 'हम एकत्रित जानकारी का उपयोग आपके आदेशों को संसाधित करने, आदेश पुष्टि और अपडेट भेजने, आपकी टिप्पणियों और प्रश्नों का उत्तर देने, हमारी वेबसाइट और सेवाओं को बेहतर बनाने, और (आपकी सहमति से) मार्केटिंग संचार भेजने के लिए करते हैं।',
+                pp_h3: '3. जानकारी साझा करना',
+                pp_p3: 'हम आपकी व्यक्तिगत जानकारी तीसरे पक्ष को नहीं बेचते, व्यापार करते या किराए पर देते हैं। हम आपकी जानकारी सेवा प्रदाताओं के साथ साझा कर सकते हैं जो हमारी वेबसाइट और व्यवसाय संचालित करने में हमारी सहायता करते हैं, बशर्ते वे इस जानकारी को गोपनीय रखने के लिए सहमत हों।',
+                pp_h4: '4. डेटा सुरक्षा',
+                pp_p4: 'हम आपकी व्यक्तिगत जानकारी को अनधिकृत पहुंच, परिवर्तन, प्रकटीकरण या विनाश से बचाने के लिए उचित सुरक्षा उपाय लागू करते हैं।',
+                pp_h5: '5. आपके अधिकार',
+                pp_p5: 'आपको किसी भी समय अपनी व्यक्तिगत जानकारी तक पहुंचने, अद्यतन करने या हटाने का अधिकार है। आप हमसे मार्केटिंग संचार प्राप्त करने से भी बाहर निकल सकते हैं।',
+                pp_h6: '6. कुकीज़',
+                pp_p6: 'हम आपकी वेबसाइट के अनुभव को बेहतर बनाने के लिए कुकीज़ का उपयोग करते हैं। आप अपने ब्राउज़र सेटिंग्स के माध्यम से कुकीज़ को अक्षम करने का विकल्प चुन सकते हैं, हालांकि इससे साइट की कार्यक्षमता प्रभावित हो सकती है।',
+                pp_h7: '7. इस नीति में परिवर्तन',
+                pp_p7: 'हम समय-समय पर इस गोपनीयता नीति को अद्यतन कर सकते हैं। हम इस पृष्ठ पर नई नीति पोस्ट करके आपको किसी भी बदलाव की सूचना देंगे।',
+                pp_h8: '8. हमसे संपर्क करें',
+                pp_p8: 'यदि आपके इस गोपनीयता नीति के बारे में कोई प्रश्न हैं, तो कृपया हमसे <a href="mailto:info@rapidloans.ai" style="color:var(--teal);">info@rapidloans.ai</a> पर संपर्क करें।'
             },
             gu: {
                 nav_about: "અમારા વિશે",
@@ -5582,6 +5391,20 @@
                 partners_desc: "અમે સમગ્ર ભારતમાં વિશ્વસનીય નાણાકીય સેવાઓ પ્રદાન કરવા અગ્રણી બેંકો અને NBFCs સાથે સહયોગ કરીએ છીએ.",
                 partner1_desc: "ગ્રામીણ ભારતમાં સમાવેશી માઇક્રોફાઇનાન્સ ધિરાણ માટે NBFC ભાગીદાર",
                 partner2_desc: "અંતિમ-માઈલ નાણાકીય સેવા વિતરણ સક્ષમ કરતા બેંકિંગ ભાગીદાર",
+                partner3_desc: "ઝડપી, કાગળ-રહિત લોન ઉદ્ભવ અને વિતરણ સક્ષમ કરતા ડિજિટલ લેન્ડિંગ ભાગીદાર.",
+                partner4_desc: "વૈવિધ્યસભર ઉપભોક્તા અને નાના વ્યવસાય ધિરાણ ઉત્પાદનો પ્રદાન કરતા સમગ્ર ભારત NBFC ભાગીદાર.",
+                fi_name: "એફઆઇ લેન્ડિંગ સોલ્યુશન્સ પ્રા. લિ.",
+                fi_about_desc: "FI Lending Solutions એ એક ડિજિટલ લેન્ડિંગ ફિનટેક છે જે ભારત ભરના વંચિત સમુદાયો માટે ઋણ અને બચત ઉકેલો પર કેન્દ્રિત છે.",
+                fi_office_val: "1017, 10મો માળ, JMD મેગાપોલિસ, ટાવર – A, સોહના રોડ, ગુરુગ્રામ, હરિયાણા – 122018",
+                fi_svc_desc: "ઋણ અરજદારોની સોર્સિંગ, ડિજિટલ ઓનબોર્ડિંગ અને KYC, સંગ્રહ સેવાઓ અને ઋણ અવધિ દરમિયાન ઋણલેણાર સેવા.",
+                fi_visit: "FI Lending વેબસાઇટ જુઓ",
+                smfg_name: "એસએમએફજી ઇન્ડિયા ક્રેડિટ કો. લિ.",
+                smfg_about_desc: "SMFG India Credit Co. Ltd. એક સમગ્ર ભારત NBFC છે જે વ્યક્તિગત, વ્યવસાય અને સુરક્ષિત ધિરાણ ઉત્પાદનોની વ્યાપક શ્રેણી પ્રદાન કરે છે. Sumitomo Mitsui Financial Group (SMFG), જાપાનનો ભાગ.",
+                smfg_office_val: "Commerzone IT પાર્ક, ટાવર B, પહેલો માળ, નંબર 111, માઉન્ટ પૂનમલ્લી રોડ, પોરૂર, ચેન્નાઇ, તમિલનાડુ – 600 116",
+                smfg_svc_desc: "Direct Selling Agent (DSA) / બેંકિંગ કોરસ્પોન્ડન્ટ મોડેલ હેઠળ ઋણ અરજદારોની સોર્સિંગ, સંગ્રહ સેવાઓ અને ઋણ અવધિ દરમિયાન ઋણલેણાર સેવા.",
+                smfg_prod_desc: "વ્યક્તિગત લોન, વ્યવસાય લોન, મિલકત પર લોન, સિક્યોરિટીઝ પર લોન, ટુ-વ્હીલર લોન, વાણિજ્યિક વાહન લોન, સોલિડેરિટી ગ્રુપ લોન અને ગ્રોઇંગ એન્ટરપ્રાઇઝ લોન (GEL).",
+                smfg_care_val: "1800 103 6001 (સોમ–શનિ, સવારે 9 – સાંજે 7)",
+                smfg_visit: "SMFG India Credit વેબસાઇટ જુઓ",
                 cta_title: "નાણાકીય પહોંચ બદલવા તૈયાર છો?",
                 cta_desc: "વંચિત સમુદાયોમાં સમાવેશી નાણાકીય સેવાઓ લાવવા રેપિડ લોન્સ સાથે ભાગીદારી કરો. ચાલો સાથે મળીને નાણાકીય રીતે સમાવેશી ભારતનું નિર્માણ કરીએ.",
                 cta_address: "ગ્રાઉન્ડ ફ્લોર, રાજા કોમ્પ્લેક્સ, વિજય ક્રોસ રોડ્સ, નવરંગપુરા, અમદાવાદ — 380009, ગુજરાત",
@@ -5620,7 +5443,7 @@
                 disclosure_label: 'પારદર્શિતા',
                 disclosure_title: 'ભાગીદાર જાહેરાતો',
                 disclosure_desc: 'સંપૂર્ણ પારદર્શિતા સુનિશ્ચિત કરતા અમારી ધિરાણ ભાગીદારી માટે નિયમનકારી જાહેરાતો।',
-                avanti_name: 'અવંતી ફાઇનાન્સ પ્રાઇવેટ લિમિટેડ',
+                avanti_name: 'અવંતી ફાઇનાન્સ પ્રા. લિ.',
                 avanti_svc_title: 'આપવામાં આવતી સેવાઓ',
                 avanti_svc_desc: 'લોન અરજદારોની સોર્સિંગ, વસૂલાત સેવાઓ, લોન અવધિ દરમિયાન ઉધારકર્તા સેવા, અને પ્રથમ-સ્તરીય ફરિયાદ નિવારણ।',
                 avanti_grv_title: 'ફરિયાદ અધિકારી વિગતો',
@@ -5655,7 +5478,7 @@
                 unity_prod_desc: 'બચત અને ચાલુ ખાતા, ફિક્સ્ડ ડિપોઝિટ, રિકરિંગ ડિપોઝિટ, વ્યક્તિગત લોન, MSME અને બિઝનેસ લોન, ગોલ્ડ લોન, માઇક્રોફાઇનાન્સ, અને ડિજિટલ બેંકિંગ સેવાઓ.',
                 unity_grv_title: 'ફરિયાદ નિવારણ',
                 unity_care_lbl: 'ગ્રાહક સેવા:',
-                unity_care_val: '૧૮૦૦-૨૧૦૦-૨૦૦ (ટોલ ફ્રી)',
+                unity_care_val: '૧૮૦૦-૨૦૯-૧૧૨૨ (ટોલ ફ્રી)',
                 unity_email_lbl: 'ઈમેલ:',
                 unity_visit: 'યુનિટી સ્મોલ ફાઇનાન્સ બેંક વેબસાઇટની મુલાકાત લો',
                 presence_label: 'અમારી હાજરી',
@@ -5707,7 +5530,52 @@
                 calc_yrs: 'વર્ષ',
                 calc_yr: 'વર્ષ',
                 calc_mo: 'મ.',
-                footer_calculator: 'લોન કેલ્ક્યુલેટર'
+                footer_calculator: 'લોન કેલ્ક્યુલેટર',
+                state_name_ravi: 'રવિ કુમાર',
+                state_role_tn: 'રાજ્ય પ્રમુખ — તમિલનાડુ',
+                state_bio_ravi: 'તમિલનાડુમાં જમીની કામગીરીનું નેતૃત્વ — શાખા પ્રદર્શન, ગ્રાહક પહોંચ અને ફિલ્ડ-ટીમ અમલીકરણની દેખરેખ.',
+                state_name_dariya: 'દરિયા શેખ',
+                state_role_ka: 'રાજ્ય પ્રમુખ — કર્ણાટક',
+                state_bio_dariya: 'કર્ણાટક કામગીરીનું સંપૂર્ણ નેતૃત્વ — શાખા વિકાસ, ટીમ નિર્માણ અને રાજ્ય ભરમાં ગ્રાહક પ્રાપ્તિ.',
+                state_name_reji: 'રેજી રવિન્દ્રન',
+                state_role_kl: 'રાજ્ય પ્રમુખ — કેરળ',
+                state_bio_reji: 'કેરળની રાજ્ય-સ્તરની કામગીરીનું નેતૃત્વ — શાખા નેટવર્કનું વિસ્તરણ અને જમીની સ્તરે સતત સેવા વિતરણ સુનિશ્ચિત કરવું.',
+                state_name_abhilash: 'અભિલાષ',
+                state_role_zonal: 'ઝોનલ પ્રમુખ — કેરળ અને તમિલનાડુ',
+                state_bio_abhilash: 'કેરળ અને તમિલનાડુ માટે ઝોનલ નેતૃત્વ — દક્ષિણ ભરમાં બહુ-રાજ્ય રણનીતિ, પ્રદર્શન અને ફિલ્ડ કામગીરીનું સંકલન.',
+                legal_close: 'બંધ કરો',
+                tc_title: 'નિયમો અને શરતો',
+                tc_intro: 'અમારી વેબસાઇટ અને સેવાઓનો ઉપયોગ કરતા પહેલાં કૃપા કરીને આ નિયમો અને શરતો કાળજીપૂર્વક વાંચો.',
+                tc_h1: '1. શરતોની સ્વીકૃતિ',
+                tc_p1: 'આ વેબસાઇટ પર ઍક્સેસ કરીને અને તેનો ઉપયોગ કરીને, તમે આ કરારની શરતો અને જોગવાઈઓથી બંધાવા માટે સ્વીકારો છો.',
+                tc_h2: '2. ઉપયોગ લાઇસન્સ',
+                tc_p2: 'આ વેબસાઇટ પરની સામગ્રીની એક નકલ ફક્ત વ્યક્તિગત, બિન-વાણિજ્યિક અસ્થાયી જોવા માટે અસ્થાયી રૂપે ડાઉનલોડ કરવાની પરવાનગી આપવામાં આવે છે.',
+                tc_h3: '3. અસ્વીકરણ',
+                tc_p3: 'આ વેબસાઇટ પરની સામગ્રી "જેમ છે" તે આધારે પૂરી પાડવામાં આવે છે. અમે કોઈ વોરંટી, વ્યક્ત અથવા ગર્ભિત, આપતા નથી અને બધી અન્ય વોરંટીઓને નકારીએ છીએ, જેમાં વેચાણક્ષમતા, ચોક્કસ હેતુ માટે યોગ્યતા, અથવા બૌદ્ધિક સંપત્તિના બિન-ઉલ્લંઘનની ગર્ભિત વોરંટીઓ સામેલ છે.',
+                tc_h4: '4. મર્યાદાઓ',
+                tc_p4: 'કોઈપણ સંજોગોમાં અમે અથવા અમારા સપ્લાયર્સ કોઈપણ નુકસાન (ડેટા અથવા નફાના નુકસાન સહિત, અથવા વ્યવસાય વિક્ષેપને કારણે) માટે જવાબદાર રહીશું નહીં જે આ વેબસાઇટ પરની સામગ્રીના ઉપયોગ અથવા ઉપયોગ કરવામાં અસમર્થતાથી ઉદ્ભવે છે.',
+                tc_h5: '5. સંશોધનો',
+                tc_p5: 'અમે કોઈપણ સૂચના વિના કોઈપણ સમયે આ સેવાની શરતોમાં સંશોધન કરી શકીએ છીએ. આ વેબસાઇટનો ઉપયોગ કરીને તમે વર્તમાન સંસ્કરણથી બંધાવા માટે સંમત થાઓ છો.',
+                tc_h6: '6. સંપર્ક માહિતી',
+                tc_p6: 'જો તમારી પાસે આ નિયમો અને શરતો વિશે કોઈ પ્રશ્નો હોય, તો કૃપા કરીને <a href="mailto:info@rapidloans.ai" style="color:var(--teal);">info@rapidloans.ai</a> પર અમારો સંપર્ક કરો.',
+                pp_title: 'ગોપનીયતા નીતિ',
+                pp_intro: 'આ ગોપનીયતા નીતિ વર્ણવે છે કે જ્યારે તમે અમારી વેબસાઇટ અને સેવાઓનો ઉપયોગ કરો છો ત્યારે અમે તમારી વ્યક્તિગત માહિતી કેવી રીતે એકત્રિત કરીએ છીએ, ઉપયોગ કરીએ છીએ અને સુરક્ષિત કરીએ છીએ.',
+                pp_h1: '1. અમે કઈ માહિતી એકત્રિત કરીએ છીએ',
+                pp_p1: 'અમે તે માહિતી એકત્રિત કરીએ છીએ જે તમે અમને સીધી રીતે પ્રદાન કરો છો, જેમ કે જ્યારે તમે ખાતું બનાવો છો, ખરીદી કરો છો અથવા સહાય માટે સંપર્ક કરો છો. આમાં તમારું નામ, ઈમેઇલ સરનામું, ટપાલ સરનામું, ફોન નંબર અને ચુકવણી માહિતી શામેલ હોઈ શકે છે.',
+                pp_h2: '2. અમે તમારી માહિતીનો ઉપયોગ કેવી રીતે કરીએ છીએ',
+                pp_p2: 'અમે એકત્રિત માહિતીનો ઉપયોગ તમારા ઓર્ડર પર પ્રક્રિયા કરવા, ઓર્ડર પુષ્ટિ અને અપડેટ્સ મોકલવા, તમારી ટિપ્પણીઓ અને પ્રશ્નોનો જવાબ આપવા, અમારી વેબસાઇટ અને સેવાઓ સુધારવા અને (તમારી સંમતિથી) માર્કેટિંગ સંચાર મોકલવા માટે કરીએ છીએ.',
+                pp_h3: '3. માહિતી શેરિંગ',
+                pp_p3: 'અમે તમારી વ્યક્તિગત માહિતી ત્રીજા પક્ષોને વેચતા, વેપાર કરતા અથવા ભાડે આપતા નથી. અમે તમારી માહિતી સેવા પ્રદાતાઓ સાથે શેર કરી શકીએ છીએ જે અમારી વેબસાઇટ ચલાવવામાં અને અમારો વ્યવસાય ચલાવવામાં અમારી મદદ કરે છે, જ્યાં સુધી તે પક્ષો આ માહિતીને ગોપનીય રાખવા માટે સંમત થાય.',
+                pp_h4: '4. ડેટા સુરક્ષા',
+                pp_p4: 'અમે તમારી વ્યક્તિગત માહિતીને અનધિકૃત ઍક્સેસ, ફેરફાર, જાહેરાત અથવા વિનાશ સામે સુરક્ષિત રાખવા માટે યોગ્ય સુરક્ષા પગલાં લાગુ કરીએ છીએ.',
+                pp_h5: '5. તમારા અધિકારો',
+                pp_p5: 'તમને કોઈપણ સમયે તમારી વ્યક્તિગત માહિતી ઍક્સેસ કરવા, અપડેટ કરવા અથવા કાઢી નાખવાનો અધિકાર છે. તમે અમારી પાસેથી માર્કેટિંગ સંચાર પ્રાપ્ત કરવાથી પણ બહાર નીકળી શકો છો.',
+                pp_h6: '6. કૂકીઝ',
+                pp_p6: 'અમે તમારી વેબસાઇટ પરના અનુભવને વધારવા માટે કૂકીઝનો ઉપયોગ કરીએ છીએ. તમે તમારા બ્રાઉઝર સેટિંગ્સ દ્વારા કૂકીઝને નિષ્ક્રિય કરવાનું પસંદ કરી શકો છો, જોકે આ સાઇટની કાર્યક્ષમતા પર અસર કરી શકે છે.',
+                pp_h7: '7. આ નીતિમાં ફેરફાર',
+                pp_p7: 'અમે આ ગોપનીયતા નીતિ સમય-સમય પર અપડેટ કરી શકીએ છીએ. અમે આ પૃષ્ઠ પર નવી નીતિ પોસ્ટ કરીને તમને કોઈપણ ફેરફારોની સૂચના આપીશું.',
+                pp_h8: '8. અમારો સંપર્ક કરો',
+                pp_p8: 'જો તમારી પાસે આ ગોપનીયતા નીતિ વિશે કોઈ પ્રશ્નો હોય, તો કૃપા કરીને <a href="mailto:info@rapidloans.ai" style="color:var(--teal);">info@rapidloans.ai</a> પર અમારો સંપર્ક કરો.'
             },
             mr: {
                 nav_about: "आमच्याबद्दल",
@@ -5781,6 +5649,20 @@
                 partners_desc: "आम्ही संपूर्ण भारतात विश्वासार्ह आर्थिक सेवा प्रदान करण्यासाठी प्रमुख बँका आणि NBFCs सोबत सहकार्य करतो.",
                 partner1_desc: "ग्रामीण भारतातील सर्वसमावेशक मायक्रोफायनान्स कर्जासाठी NBFC भागीदार",
                 partner2_desc: "शेवटच्या टप्प्यापर्यंत आर्थिक सेवा वितरण सक्षम करणारा बँकिंग भागीदार",
+                partner3_desc: "वेगवान, कागदविरहित कर्ज प्रक्रिया आणि वितरण सक्षम करणारा डिजिटल कर्ज भागीदार.",
+                partner4_desc: "वैविध्यपूर्ण ग्राहक आणि लघु-व्यवसाय कर्ज उत्पादने पुरवणारा अखिल भारतीय NBFC भागीदार.",
+                fi_name: "एफआय लेंडिंग सोल्युशन्स प्रा. लि.",
+                fi_about_desc: "FI Lending Solutions ही एक डिजिटल कर्ज देणारी फिनटेक आहे जी भारतभरातील वंचित समुदायांसाठी कर्ज आणि बचत उपायांवर लक्ष केंद्रित करते.",
+                fi_office_val: "1017, 10वा मजला, JMD मेगापोलिस, टॉवर – A, सोहना रोड, गुरुग्राम, हरियाणा – 122018",
+                fi_svc_desc: "कर्ज अर्जदारांची सोर्सिंग, डिजिटल ऑनबोर्डिंग आणि KYC, संकलन सेवा आणि कर्ज कालावधीत कर्जदार सेवा.",
+                fi_visit: "FI Lending वेबसाइट पाहा",
+                smfg_name: "एसएमएफजी इंडिया क्रेडिट कं. लि.",
+                smfg_about_desc: "SMFG India Credit Co. Ltd. ही एक अखिल भारतीय NBFC आहे जी वैयक्तिक, व्यावसायिक आणि सुरक्षित कर्ज उत्पादनांची सर्वसमावेशक श्रेणी देऊ करते. Sumitomo Mitsui Financial Group (SMFG), जपानचा भाग.",
+                smfg_office_val: "Commerzone IT पार्क, टॉवर B, पहिला मजला, क्रमांक 111, माउंट पूनमल्ली रोड, पोरूर, चेन्नई, तमिळनाडू – 600 116",
+                smfg_svc_desc: "Direct Selling Agent (DSA) / बँकिंग कॉरस्पॉन्डंट मॉडेल अंतर्गत कर्ज अर्जदारांची सोर्सिंग, संकलन सेवा आणि कर्ज कालावधीत कर्जदार सेवा.",
+                smfg_prod_desc: "वैयक्तिक कर्ज, व्यवसाय कर्ज, मालमत्तेवर कर्ज, सिक्युरिटीजवर कर्ज, दुचाकी कर्ज, व्यावसायिक वाहन कर्ज, सॉलिडॅरिटी ग्रुप कर्ज आणि ग्रोइंग एंटरप्राइज लोन (GEL).",
+                smfg_care_val: "1800 103 6001 (सोम–शनि, सकाळी 9 – संध्याकाळी 7)",
+                smfg_visit: "SMFG India Credit वेबसाइट पाहा",
                 cta_title: "आर्थिक प्रवेश बदलण्यास तयार आहात?",
                 cta_desc: "वंचित समुदायांमध्ये सर्वसमावेशक आर्थिक सेवा आणण्यासाठी रॅपिड लोन्ससोबत भागीदारी करा. चला मिळून आर्थिकदृष्ट्या सर्वसमावेशक भारत बनवूया.",
                 cta_address: "ग्राउंड फ्लोर, राजा कॉम्प्लेक्स, विजय क्रॉस रोड्स, नवरंगपुरा, अहमदाबाद — 380009, गुजरात",
@@ -5819,7 +5701,7 @@
                 disclosure_label: 'पारदर्शकता',
                 disclosure_title: 'भागीदार प्रकटीकरणे',
                 disclosure_desc: 'पूर्ण पारदर्शकता सुनिश्चित करत आमच्या कर्ज भागीदारींसाठी नियामक प्रकटीकरणे।',
-                avanti_name: 'अवंती फायनान्स प्रायव्हेट लिमिटेड',
+                avanti_name: 'अवंती फायनान्स प्रा. लि.',
                 avanti_svc_title: 'प्रदान केलेल्या सेवा',
                 avanti_svc_desc: 'कर्ज अर्जदारांची सोर्सिंग, वसुली सेवा, कर्ज कालावधीत कर्जदार सेवा, आणि प्रथम-स्तरीय तक्रार निवारण.',
                 avanti_grv_title: 'तक्रार अधिकारी तपशील',
@@ -5854,7 +5736,7 @@
                 unity_prod_desc: 'बचत आणि चालू खाती, मुदत ठेवी, आवर्ती ठेवी, वैयक्तिक कर्ज, MSME आणि व्यवसाय कर्ज, सुवर्ण कर्ज, मायक्रोफायनान्स, आणि डिजिटल बँकिंग सेवा.',
                 unity_grv_title: 'तक्रार निवारण',
                 unity_care_lbl: 'ग्राहक सेवा:',
-                unity_care_val: '१८००-२१००-२०० (टोल फ्री)',
+                unity_care_val: '१८००-२०९-११२२ (टोल फ्री)',
                 unity_email_lbl: 'ईमेल:',
                 unity_visit: 'युनिटी स्मॉल फायनान्स बँक वेबसाइटला भेट द्या',
                 presence_label: 'आमची उपस्थिती',
@@ -5906,7 +5788,52 @@
                 calc_yrs: 'वर्षे',
                 calc_yr: 'वर्ष',
                 calc_mo: 'म.',
-                footer_calculator: 'कर्ज कॅल्क्युलेटर'
+                footer_calculator: 'कर्ज कॅल्क्युलेटर',
+                state_name_ravi: 'रवि कुमार',
+                state_role_tn: 'राज्य प्रमुख — तमिळनाडू',
+                state_bio_ravi: 'तमिळनाडूमध्ये जमिनी कामकाजाचे नेतृत्व — शाखा कामगिरी, ग्राहक संपर्क आणि क्षेत्रीय-संघ अंमलबजावणीचे निरीक्षण.',
+                state_name_dariya: 'दरिया शेख',
+                state_role_ka: 'राज्य प्रमुख — कर्नाटक',
+                state_bio_dariya: 'कर्नाटक कामकाजाचे संपूर्ण नेतृत्व — शाखा विकास, संघ बांधणी आणि राज्यभर ग्राहक संपादन.',
+                state_name_reji: 'रेजी रविंद्रन',
+                state_role_kl: 'राज्य प्रमुख — केरळ',
+                state_bio_reji: 'केरळच्या राज्य-स्तरीय कामकाजाचे नेतृत्व — शाखा नेटवर्कचा विस्तार आणि जमिनी पातळीवर सातत्यपूर्ण सेवा वितरण सुनिश्चित करणे.',
+                state_name_abhilash: 'अभिलाष',
+                state_role_zonal: 'विभागीय प्रमुख — केरळ आणि तमिळनाडू',
+                state_bio_abhilash: 'केरळ आणि तमिळनाडूसाठी विभागीय नेतृत्व — दक्षिणेकडे बहु-राज्य रणनीती, कामगिरी आणि क्षेत्रीय कामकाजाचे समन्वय.',
+                legal_close: 'बंद करा',
+                tc_title: 'अटी व शर्ती',
+                tc_intro: 'आमची वेबसाइट आणि सेवा वापरण्यापूर्वी कृपया या अटी व शर्ती काळजीपूर्वक वाचा.',
+                tc_h1: '1. अटींची स्वीकृती',
+                tc_p1: 'या वेबसाइटवर प्रवेश करून आणि वापरून, तुम्ही या कराराच्या अटी आणि तरतुदींना बांधील राहण्यास स्वीकार करता.',
+                tc_h2: '2. वापर परवाना',
+                tc_p2: 'या वेबसाइटवरील साहित्याची एक प्रत केवळ वैयक्तिक, गैर-व्यावसायिक तात्पुरत्या पाहण्यासाठी तात्पुरते डाउनलोड करण्याची परवानगी दिली आहे.',
+                tc_h3: '3. अस्वीकरण',
+                tc_p3: 'या वेबसाइटवरील साहित्य "जसे आहे तसे" आधारावर पुरवले आहे. आम्ही कोणतीही वॉरंटी, स्पष्ट किंवा निहित, देत नाही आणि सर्व इतर वॉरंटी नाकारतो, ज्यामध्ये विक्रीयोग्यता, विशिष्ट हेतूसाठी योग्यता किंवा बौद्धिक संपदेच्या गैर-उल्लंघनाच्या निहित वॉरंटी समाविष्ट आहेत.',
+                tc_h4: '4. मर्यादा',
+                tc_p4: 'कोणत्याही परिस्थितीत आम्ही किंवा आमचे पुरवठादार कोणत्याही नुकसानीसाठी (डेटा किंवा नफ्याच्या नुकसानीसह, किंवा व्यवसाय व्यत्ययामुळे) जबाबदार राहणार नाही जो या वेबसाइटवरील साहित्याच्या वापरामुळे किंवा वापर करण्यास असमर्थतेमुळे उद्भवतो.',
+                tc_h5: '5. सुधारणा',
+                tc_p5: 'आम्ही कोणत्याही सूचनेशिवाय कोणत्याही वेळी या सेवा अटींमध्ये सुधारणा करू शकतो. ही वेबसाइट वापरून तुम्ही तत्कालीन वर्तमान आवृत्तीस बांधील राहण्यास सहमत आहात.',
+                tc_h6: '6. संपर्क माहिती',
+                tc_p6: 'या अटी व शर्तींबद्दल तुमचे काही प्रश्न असल्यास, कृपया <a href="mailto:info@rapidloans.ai" style="color:var(--teal);">info@rapidloans.ai</a> वर आमच्याशी संपर्क साधा.',
+                pp_title: 'गोपनीयता धोरण',
+                pp_intro: 'हे गोपनीयता धोरण वर्णन करते की जेव्हा तुम्ही आमची वेबसाइट आणि सेवा वापरता तेव्हा आम्ही तुमची वैयक्तिक माहिती कशी संकलित, वापर आणि संरक्षित करतो.',
+                pp_h1: '1. आम्ही कोणती माहिती संकलित करतो',
+                pp_p1: 'आम्ही तुम्ही थेट आम्हाला प्रदान केलेली माहिती संकलित करतो, जसे की तुम्ही खाते तयार करता, खरेदी करता किंवा सहाय्यासाठी संपर्क साधता. यात तुमचे नाव, ईमेल पत्ता, टपाल पत्ता, फोन नंबर आणि पेमेंट माहिती समाविष्ट असू शकते.',
+                pp_h2: '2. आम्ही तुमच्या माहितीचा वापर कसा करतो',
+                pp_p2: 'आम्ही संकलित माहितीचा वापर तुमचे ऑर्डर प्रक्रिया करण्यासाठी, ऑर्डर पुष्टी आणि अद्यतने पाठवण्यासाठी, तुमच्या टिप्पण्या आणि प्रश्नांना उत्तर देण्यासाठी, आमची वेबसाइट आणि सेवा सुधारण्यासाठी आणि (तुमच्या संमतीने) मार्केटिंग संदेश पाठवण्यासाठी करतो.',
+                pp_h3: '3. माहिती सामायिकीकरण',
+                pp_p3: 'आम्ही तुमची वैयक्तिक माहिती तृतीय पक्षांना विकत नाही, व्यापार करत नाही किंवा भाड्याने देत नाही. आम्ही तुमची माहिती सेवा प्रदात्यांसोबत सामायिक करू शकतो जे आमची वेबसाइट चालवण्यात आणि आमचा व्यवसाय चालवण्यात आम्हाला मदत करतात, जोपर्यंत ते पक्ष ही माहिती गोपनीय ठेवण्यास सहमत आहेत.',
+                pp_h4: '4. डेटा सुरक्षा',
+                pp_p4: 'आम्ही तुमची वैयक्तिक माहिती अनधिकृत प्रवेश, बदल, प्रकटीकरण किंवा विनाशापासून संरक्षित करण्यासाठी योग्य सुरक्षा उपाय अंमलात आणतो.',
+                pp_h5: '5. तुमचे अधिकार',
+                pp_p5: 'तुम्हाला कोणत्याही वेळी तुमची वैयक्तिक माहिती ऍक्सेस करण्याचा, अद्यतनित करण्याचा किंवा हटवण्याचा अधिकार आहे. तुम्ही आमच्याकडून मार्केटिंग संदेश प्राप्त करण्यापासून देखील बाहेर पडू शकता.',
+                pp_h6: '6. कुकीज',
+                pp_p6: 'आम्ही तुमच्या वेबसाइट अनुभवात सुधारणा करण्यासाठी कुकीज वापरतो. तुम्ही तुमच्या ब्राउझर सेटिंग्जद्वारे कुकीज अक्षम करण्याचा पर्याय निवडू शकता, जरी यामुळे साइटच्या कार्यक्षमतेवर परिणाम होऊ शकतो.',
+                pp_h7: '7. या धोरणातील बदल',
+                pp_p7: 'आम्ही वेळोवेळी हे गोपनीयता धोरण अद्यतनित करू शकतो. या पृष्ठावर नवीन धोरण पोस्ट करून आम्ही तुम्हाला कोणत्याही बदलांची सूचना देऊ.',
+                pp_h8: '8. आमच्याशी संपर्क साधा',
+                pp_p8: 'या गोपनीयता धोरणाबद्दल तुमचे काही प्रश्न असल्यास, कृपया <a href="mailto:info@rapidloans.ai" style="color:var(--teal);">info@rapidloans.ai</a> वर आमच्याशी संपर्क साधा.'
             },
             ta: {
                 nav_about: "எங்களைப் பற்றி",
@@ -5980,6 +5907,20 @@
                 partners_desc: "இந்தியா முழுவதும் நம்பகமான நிதி சேவைகளை வழங்க முன்னணி வங்கிகள் மற்றும் NBFCகளுடன் ஒத்துழைக்கிறோம்.",
                 partner1_desc: "கிராமப்புற இந்தியாவில் உள்ளடக்கிய மைக்ரோஃபைனான்ஸ் கடனுக்கான NBFC பங்காளி",
                 partner2_desc: "கடைசி-மைல் நிதி சேவை வழங்கலை இயக்கும் வங்கி பங்காளி",
+                partner3_desc: "வேகமான, காகித-இல்லாத கடன் ஆரம்பம் மற்றும் வழங்கலை இயக்கும் டிஜிட்டல் கடன் பங்காளி.",
+                partner4_desc: "பல்வேறு நுகர்வோர் மற்றும் சிறு-வணிக கடன் தயாரிப்புகளை வழங்கும் அகில இந்திய NBFC பங்காளி.",
+                fi_name: "எஃப்ஐ லெண்டிங் சொல்யூஷன்ஸ் பிரை. லிட்.",
+                fi_about_desc: "FI Lending Solutions என்பது இந்தியா முழுவதும் உள்ள குறைவாக சேவை செய்யப்பட்ட சமூகங்களுக்கான கடன் மற்றும் சேமிப்பு தீர்வுகளில் கவனம் செலுத்தும் ஒரு டிஜிட்டல் கடன் ஃபின்டெக் ஆகும்.",
+                fi_office_val: "1017, 10வது மாடி, JMD மெகாபோலிஸ், டவர் – A, சோஹ்னா ரோடு, குருகிராம், ஹரியானா – 122018",
+                fi_svc_desc: "கடன் விண்ணப்பதாரர்களை வழங்குதல், டிஜிட்டல் ஆன்போர்டிங் மற்றும் KYC, வசூல் சேவைகள் மற்றும் கடன் காலத்தில் கடன் வாங்குபவர் சேவை.",
+                fi_visit: "FI Lending இணையதளத்தைப் பார்வையிடவும்",
+                smfg_name: "எஸ்எம்எஃப்ஜி இந்தியா கிரெடிட் கோ. லிட்.",
+                smfg_about_desc: "SMFG India Credit Co. Ltd. என்பது தனிப்பட்ட, வணிக மற்றும் பாதுகாப்பான கடன் தயாரிப்புகளின் விரிவான வரிசையை வழங்கும் ஒரு அகில இந்திய NBFC ஆகும். ஜப்பானின் Sumitomo Mitsui Financial Group (SMFG) குழுமத்தின் பகுதி.",
+                smfg_office_val: "Commerzone IT பார்க், டவர் B, 1வது மாடி, எண் 111, மவுண்ட் பூனமல்லி சாலை, பொரூர், சென்னை, தமிழ்நாடு – 600 116",
+                smfg_svc_desc: "நேரடி விற்பனை முகவர் (DSA) / பேங்கிங் கரஸ்பாண்டண்ட் மாதிரியின் கீழ் கடன் விண்ணப்பதாரர்களை வழங்குதல், வசூல் சேவைகள் மற்றும் கடன் காலத்தில் கடன் வாங்குபவர் சேவை.",
+                smfg_prod_desc: "தனிப்பட்ட கடன்கள், வணிக கடன்கள், சொத்து மீதான கடன், பத்திரங்கள் மீதான கடன், இரு சக்கர வாகன கடன்கள், வணிக வாகன கடன்கள், ஒற்றுமை குழு கடன்கள் மற்றும் வளரும் நிறுவன கடன்கள் (GEL).",
+                smfg_care_val: "1800 103 6001 (திங்கள்–சனி, காலை 9 – மாலை 7)",
+                smfg_visit: "SMFG India Credit இணையதளத்தைப் பார்வையிடவும்",
                 cta_title: "நிதி அணுகலை மாற்ற தயாரா?",
                 cta_desc: "பின்தங்கிய சமூகங்களுக்கு உள்ளடக்கிய நிதி சேவைகளை கொண்டு வர ரேபிட் லோன்ஸுடன் கூட்டணி அமையுங்கள். நிதி ரீதியாக உள்ளடக்கிய இந்தியாவை ஒன்றாக உருவாக்குவோம்.",
                 cta_address: "தரை தளம், ராஜா காம்ப்ளக்ஸ், விஜய் கிராஸ் ரோட்ஸ், நவரங்புரா, அகமதாபாத் — 380009, குஜராத்",
@@ -6018,7 +5959,7 @@
                 disclosure_label: 'வெளிப்படைத்தன்மை',
                 disclosure_title: 'கூட்டாளர் வெளிப்படுத்தல்கள்',
                 disclosure_desc: 'முழு வெளிப்படைத்தன்மையை உறுதிசெய்யும் எங்கள் கடன் கூட்டாண்மைகளுக்கான ஒழுங்குமுறை வெளிப்படுத்தல்கள்।',
-                avanti_name: 'அவந்தி ஃபைனான்ஸ் பிரைவேட் லிமிடெட்',
+                avanti_name: 'அவந்தி ஃபைனான்ஸ் பிரை. லிட்.',
                 avanti_svc_title: 'வழங்கப்படும் சேவைகள்',
                 avanti_svc_desc: 'கடன் விண்ணப்பதாரர்களின் சோர்சிங், வசூல் சேவைகள், கடன் காலத்தின் போது கடன் வாங்குபவர் சேவை, மற்றும் முதல்-நிலை குறைதீர்ப்பு.',
                 avanti_grv_title: 'குறைதீர்ப்பு அதிகாரி விவரங்கள்',
@@ -6053,7 +5994,7 @@
                 unity_prod_desc: 'சேமிப்பு மற்றும் நடப்புக் கணக்குகள், நிலையான வைப்புகள், தொடர் வைப்புகள், தனிநபர் கடன்கள், MSME மற்றும் வணிகக் கடன்கள், தங்கக் கடன்கள், மைக்ரோஃபைனான்ஸ், மற்றும் டிஜிட்டல் வங்கிச் சேவைகள்.',
                 unity_grv_title: 'குறைதீர்ப்பு',
                 unity_care_lbl: 'வாடிக்கையாளர் சேவை:',
-                unity_care_val: '௧௮௦௦-௨௧௦௦-௨௦௦ (கட்டணமில்லா)',
+                unity_care_val: '௧௮௦௦-௨௦௯-௧௧௨௨ (கட்டணமில்லா)',
                 unity_email_lbl: 'மின்னஞ்சல்:',
                 unity_visit: 'யூனிட்டி ஸ்மால் ஃபைனான்ஸ் வங்கி இணையதளத்தைப் பார்வையிடுக',
                 presence_label: 'எங்கள் இருப்பு',
@@ -6105,7 +6046,52 @@
                 calc_yrs: 'ஆண்டுகள்',
                 calc_yr: 'ஆண்டு',
                 calc_mo: 'மா.',
-                footer_calculator: 'கடன் கால்குலேட்டர்'
+                footer_calculator: 'கடன் கால்குலேட்டர்',
+                state_name_ravi: 'ரவி குமார்',
+                state_role_tn: 'மாநில தலைவர் — தமிழ்நாடு',
+                state_bio_ravi: 'தமிழ்நாட்டில் தரைமட்ட செயல்பாடுகளை வழிநடத்துகிறார் — கிளை செயல்திறன், வாடிக்கையாளர் தொடர்பு மற்றும் கள-குழு செயலாக்கத்தை மேற்பார்வையிடுகிறார்.',
+                state_name_dariya: 'தரியா ஷேக்',
+                state_role_ka: 'மாநில தலைவர் — கர்நாடகா',
+                state_bio_dariya: 'கர்நாடக செயல்பாடுகளை முழுமையாக வழிநடத்துகிறார் — கிளை வளர்ச்சி, குழு உருவாக்கம் மற்றும் மாநிலம் முழுவதும் வாடிக்கையாளர் கையகப்படுத்துதல்.',
+                state_name_reji: 'ரெஜி ரவீந்திரன்',
+                state_role_kl: 'மாநில தலைவர் — கேரளா',
+                state_bio_reji: 'கேரளாவின் மாநில அளவிலான செயல்பாடுகளை வழிநடத்துகிறார் — கிளை வலையமைப்புகளை விரிவுபடுத்துவது மற்றும் தரை மட்டத்தில் தொடர்ச்சியான சேவை வழங்கலை உறுதி செய்தல்.',
+                state_name_abhilash: 'அபிலாஷ்',
+                state_role_zonal: 'மண்டல தலைவர் — கேரளா மற்றும் தமிழ்நாடு',
+                state_bio_abhilash: 'கேரளா மற்றும் தமிழ்நாட்டிற்கான மண்டல தலைவர், தெற்கு முழுவதும் பல-மாநில உத்தி, செயல்திறன் மற்றும் கள செயல்பாடுகளை ஒருங்கிணைக்கிறார்.',
+                legal_close: 'மூடு',
+                tc_title: 'விதிமுறைகள் மற்றும் நிபந்தனைகள்',
+                tc_intro: 'எங்கள் இணையதளம் மற்றும் சேவைகளைப் பயன்படுத்துவதற்கு முன், தயவுசெய்து இந்த விதிமுறைகள் மற்றும் நிபந்தனைகளைக் கவனமாகப் படியுங்கள்.',
+                tc_h1: '1. விதிமுறைகளை ஏற்றுக்கொள்ளல்',
+                tc_p1: 'இந்த இணையதளத்தை அணுகி பயன்படுத்துவதன் மூலம், இந்த ஒப்பந்தத்தின் விதிமுறைகள் மற்றும் ஏற்பாடுகளால் கட்டுப்படுத்தப்பட ஒப்புக்கொள்கிறீர்கள்.',
+                tc_h2: '2. பயன்பாட்டு உரிமம்',
+                tc_p2: 'இந்த இணையதளத்தில் உள்ள பொருட்களின் ஒரு நகலை தற்காலிக, தனிப்பட்ட, வணிகமற்ற பார்வைக்கு மட்டுமே தற்காலிகமாக பதிவிறக்க அனுமதி வழங்கப்படுகிறது.',
+                tc_h3: '3. பொறுப்புத் துறப்பு',
+                tc_p3: 'இந்த இணையதளத்தில் உள்ள பொருட்கள் "உள்ளபடியே" அடிப்படையில் வழங்கப்படுகின்றன. நாங்கள் எந்தவொரு உத்தரவாதங்களையும், வெளிப்படையான அல்லது மறைமுகமான, வழங்குவதில்லை மற்றும் விற்பனைத்தன்மை, ஒரு குறிப்பிட்ட நோக்கத்திற்கான பொருத்தம் அல்லது அறிவுசார் சொத்தின் மீறலின்மை உள்ளிட்ட அனைத்து மற்ற உத்தரவாதங்களையும் மறுக்கிறோம்.',
+                tc_h4: '4. வரம்புகள்',
+                tc_p4: 'எந்த சூழ்நிலையிலும் நாங்கள் அல்லது எங்கள் வழங்குநர்கள் இந்த இணையதளத்தில் உள்ள பொருட்களைப் பயன்படுத்துவதன் மூலம் அல்லது பயன்படுத்த இயலாமையால் ஏற்படும் எந்தவொரு சேதங்களுக்கும் (தரவு அல்லது இலாப இழப்பு உள்ளிட்டவை, அல்லது வணிக இடையூறு காரணமாக) பொறுப்பாக மாட்டோம்.',
+                tc_h5: '5. திருத்தங்கள்',
+                tc_p5: 'எந்த அறிவிப்பும் இல்லாமல் எந்த நேரத்திலும் இந்த சேவை விதிமுறைகளை நாங்கள் திருத்தலாம். இந்த இணையதளத்தைப் பயன்படுத்துவதன் மூலம் அப்போதைய தற்போதைய பதிப்பிற்கு கட்டுப்பட ஒப்புக்கொள்கிறீர்கள்.',
+                tc_h6: '6. தொடர்பு தகவல்',
+                tc_p6: 'இந்த விதிமுறைகள் மற்றும் நிபந்தனைகள் குறித்து உங்களுக்கு ஏதேனும் கேள்விகள் இருந்தால், தயவுசெய்து <a href="mailto:info@rapidloans.ai" style="color:var(--teal);">info@rapidloans.ai</a> என்ற முகவரியில் எங்களைத் தொடர்பு கொள்ளுங்கள்.',
+                pp_title: 'தனியுரிமைக் கொள்கை',
+                pp_intro: 'எங்கள் இணையதளம் மற்றும் சேவைகளை நீங்கள் பயன்படுத்தும்போது உங்கள் தனிப்பட்ட தகவலை நாங்கள் எவ்வாறு சேகரிக்கிறோம், பயன்படுத்துகிறோம் மற்றும் பாதுகாக்கிறோம் என்பதை இந்த தனியுரிமைக் கொள்கை விவரிக்கிறது.',
+                pp_h1: '1. நாங்கள் சேகரிக்கும் தகவல்',
+                pp_p1: 'நீங்கள் கணக்கை உருவாக்கும்போது, கொள்முதல் செய்யும்போது அல்லது ஆதரவிற்கு தொடர்பு கொள்ளும்போது நீங்கள் எங்களுக்கு நேரடியாக வழங்கும் தகவலை நாங்கள் சேகரிக்கிறோம். இதில் உங்கள் பெயர், மின்னஞ்சல் முகவரி, அஞ்சல் முகவரி, தொலைபேசி எண் மற்றும் கட்டண தகவல் ஆகியவை அடங்கும்.',
+                pp_h2: '2. உங்கள் தகவலை நாங்கள் எவ்வாறு பயன்படுத்துகிறோம்',
+                pp_p2: 'உங்கள் ஆர்டர்களை செயலாக்க, ஆர்டர் உறுதிப்படுத்தல்கள் மற்றும் புதுப்பிப்புகளை அனுப்ப, உங்கள் கருத்துக்கள் மற்றும் கேள்விகளுக்கு பதிலளிக்க, எங்கள் இணையதளம் மற்றும் சேவைகளை மேம்படுத்த மற்றும் (உங்கள் ஒப்புதலுடன்) சந்தைப்படுத்தல் தொடர்புகளை அனுப்ப நாங்கள் சேகரிக்கும் தகவலைப் பயன்படுத்துகிறோம்.',
+                pp_h3: '3. தகவல் பகிர்வு',
+                pp_p3: 'உங்கள் தனிப்பட்ட தகவலை நாங்கள் மூன்றாம் தரப்பினருக்கு விற்கவோ, வர்த்தகம் செய்யவோ அல்லது வாடகைக்கு விடவோ மாட்டோம். எங்கள் இணையதளத்தை இயக்க மற்றும் வணிகத்தை நடத்த எங்களுக்கு உதவும் சேவை வழங்குநர்களுடன் உங்கள் தகவலை நாங்கள் பகிர்ந்து கொள்ளலாம், அந்த தரப்பினர் இந்த தகவலை ரகசியமாக வைத்திருக்க ஒப்புக்கொண்டால்.',
+                pp_h4: '4. தரவு பாதுகாப்பு',
+                pp_p4: 'அங்கீகரிக்கப்படாத அணுகல், மாற்றம், வெளிப்பாடு அல்லது அழிவுக்கு எதிராக உங்கள் தனிப்பட்ட தகவலைப் பாதுகாக்க பொருத்தமான பாதுகாப்பு நடவடிக்கைகளை நாங்கள் செயல்படுத்துகிறோம்.',
+                pp_h5: '5. உங்கள் உரிமைகள்',
+                pp_p5: 'எந்த நேரத்திலும் உங்கள் தனிப்பட்ட தகவலை அணுக, புதுப்பிக்க அல்லது நீக்க உங்களுக்கு உரிமை உண்டு. எங்களிடமிருந்து சந்தைப்படுத்தல் தொடர்புகளைப் பெறுவதிலிருந்தும் நீங்கள் விலகலாம்.',
+                pp_h6: '6. குக்கீகள்',
+                pp_p6: 'எங்கள் இணையதளத்தில் உங்கள் அனுபவத்தை மேம்படுத்த நாங்கள் குக்கீகளைப் பயன்படுத்துகிறோம். உங்கள் உலாவி அமைப்புகள் மூலம் குக்கீகளை முடக்க நீங்கள் தேர்வு செய்யலாம், ஆனால் இது தளத்தின் செயல்பாட்டை பாதிக்கலாம்.',
+                pp_h7: '7. இந்த கொள்கையில் மாற்றங்கள்',
+                pp_p7: 'நாங்கள் இந்த தனியுரிமைக் கொள்கையை அவ்வப்போது புதுப்பிக்கலாம். இந்த பக்கத்தில் புதிய கொள்கையை இடுகையிடுவதன் மூலம் எந்தவொரு மாற்றங்களையும் நாங்கள் உங்களுக்குத் தெரிவிப்போம்.',
+                pp_h8: '8. எங்களைத் தொடர்பு கொள்ளுங்கள்',
+                pp_p8: 'இந்த தனியுரிமைக் கொள்கை குறித்து உங்களுக்கு ஏதேனும் கேள்விகள் இருந்தால், தயவுசெய்து <a href="mailto:info@rapidloans.ai" style="color:var(--teal);">info@rapidloans.ai</a> என்ற முகவரியில் எங்களைத் தொடர்பு கொள்ளுங்கள்.'
             },
             kn: {
                 nav_about: "ನಮ್ಮ ಬಗ್ಗೆ",
@@ -6378,6 +6364,20 @@
                 partners_desc: "భారతదేశం అంతటా విశ్వసనీయ ఆర్థిక సేవలను అందించడానికి ప్రముఖ బ్యాంకులు మరియు NBFCలతో సహకరిస్తాము.",
                 partner1_desc: "గ్రామీణ భారతదేశంలో సమగ్ర మైక్రోఫైనాన్స్ రుణాల కోసం NBFC భాగస్వామి",
                 partner2_desc: "చివరి-మైలు ఆర్థిక సేవా పంపిణీని సాధ్యం చేసే బ్యాంకింగ్ భాగస్వామి",
+                partner3_desc: "వేగవంతమైన, కాగితం లేని రుణ ప్రారంభం మరియు పంపిణీని సాధ్యం చేసే డిజిటల్ లెండింగ్ భాగస్వామి.",
+                partner4_desc: "విభిన్న వినియోగదారు మరియు చిన్న-వ్యాపార క్రెడిట్ ఉత్పత్తులను అందించే అఖిల భారత NBFC భాగస్వామి.",
+                fi_name: "ఎఫ్ఐ లెండింగ్ సొల్యూషన్స్ ప్రై. లి.",
+                fi_about_desc: "FI Lending Solutions అనేది భారతదేశం అంతటా అండర్‌సర్వ్డ్ కమ్యూనిటీలకు రుణం మరియు పొదుపు పరిష్కారాలపై దృష్టి సారించిన డిజిటల్ లెండింగ్ ఫిన్‌టెక్.",
+                fi_office_val: "1017, 10వ అంతస్తు, JMD మెగాపోలిస్, టవర్ – A, సోహ్నా రోడ్, గురుగ్రామ్, హర్యానా – 122018",
+                fi_svc_desc: "రుణ దరఖాస్తుదారుల సోర్సింగ్, డిజిటల్ ఆన్‌బోర్డింగ్ మరియు KYC, కలెక్షన్ సేవలు మరియు రుణ కాలంలో రుణగ్రహీత సేవ.",
+                fi_visit: "FI Lending వెబ్‌సైట్‌ను సందర్శించండి",
+                smfg_name: "ఎస్ఎంఎఫ్‌జీ ఇండియా క్రెడిట్ కో. లి.",
+                smfg_about_desc: "SMFG India Credit Co. Ltd. వ్యక్తిగత, వ్యాపార మరియు సురక్షిత క్రెడిట్ ఉత్పత్తుల సమగ్ర శ్రేణిని అందించే అఖిల భారత NBFC. జపాన్‌కు చెందిన Sumitomo Mitsui Financial Group (SMFG) లో భాగం.",
+                smfg_office_val: "Commerzone IT పార్క్, టవర్ B, 1వ అంతస్తు, నం. 111, మౌంట్ పూనమల్లి రోడ్, పోరూర్, చెన్నై, తమిళనాడు – 600 116",
+                smfg_svc_desc: "Direct Selling Agent (DSA) / బ్యాంకింగ్ కరస్పాండెంట్ మోడల్ క్రింద రుణ దరఖాస్తుదారుల సోర్సింగ్, కలెక్షన్ సేవలు మరియు రుణ కాలంలో రుణగ్రహీత సేవ.",
+                smfg_prod_desc: "వ్యక్తిగత రుణాలు, వ్యాపార రుణాలు, ఆస్తిపై రుణం, సెక్యూరిటీలపై రుణం, ద్విచక్ర వాహన రుణాలు, వాణిజ్య వాహన రుణాలు, సాలిడారిటీ గ్రూప్ రుణాలు మరియు గ్రోయింగ్ ఎంటర్‌ప్రైజ్ లోన్స్ (GEL).",
+                smfg_care_val: "1800 103 6001 (సోమ–శని, ఉదయం 9 – సాయంత్రం 7)",
+                smfg_visit: "SMFG India Credit వెబ్‌సైట్‌ను సందర్శించండి",
                 cta_title: "ఆర్థిక ప్రాప్తిని మార్చడానికి సిద్ధంగా ఉన్నారా?",
                 cta_desc: "అణగారిన సమాజాలకు సమగ్ర ఆర్థిక సేవలను అందించడానికి రాపిడ్ లోన్స్‌తో భాగస్వామ్యం చేయండి. ఆర్థికంగా సమగ్రమైన భారతదేశాన్ని కలిసి నిర్మిద్దాం.",
                 cta_address: "గ్రౌండ్ ఫ్లోర్, రాజా కాంప్లెక్స్, విజయ్ క్రాస్ రోడ్స్, నవరంగ్‌పురా, అహ్మదాబాద్ — 380009, గుజరాత్",
@@ -6416,7 +6416,7 @@
                 disclosure_label: 'పారదర్శకత',
                 disclosure_title: 'భాగస్వామ్య వెల్లడింపులు',
                 disclosure_desc: 'పూర్తి పారదర్శకతను నిర్ధారిస్తూ మా రుణ భాగస్వామ్యాలకు నియంత్రణ వెల్లడింపులు।',
-                avanti_name: 'అవంతి ఫైనాన్స్ ప్రైవేట్ లిమిటెడ్',
+                avanti_name: 'అవంతి ఫైనాన్స్ ప్రై. లి.',
                 avanti_svc_title: 'అందించే సేవలు',
                 avanti_svc_desc: 'రుణ దరఖాస్తుదారుల సోర్సింగ్, వసూలు సేవలు, రుణ కాలంలో రుణగ్రహీత సేవ, మరియు ప్రథమ-స్థాయి ఫిర్యాదు పరిష్కారం.',
                 avanti_grv_title: 'ఫిర్యాదు అధికారి వివరాలు',
@@ -6451,7 +6451,7 @@
                 unity_prod_desc: 'పొదుపు మరియు కరెంట్ ఖాతాలు, ఫిక్స్‌డ్ డిపాజిట్లు, రికరింగ్ డిపాజిట్లు, వ్యక్తిగత రుణాలు, MSME మరియు వ్యాపార రుణాలు, బంగారు రుణాలు, మైక్రోఫైనాన్స్, మరియు డిజిటల్ బ్యాంకింగ్ సేవలు.',
                 unity_grv_title: 'ఫిర్యాదు పరిష్కారం',
                 unity_care_lbl: 'కస్టమర్ కేర్:',
-                unity_care_val: '౧౮౦౦-౨౧౦౦-౨౦౦ (టోల్ ఫ్రీ)',
+                unity_care_val: '౧౮౦౦-౨౦౯-౧౧౨౨ (టోల్ ఫ్రీ)',
                 unity_email_lbl: 'ఇమెయిల్:',
                 unity_visit: 'యూనిటీ స్మాల్ ఫైనాన్స్ బ్యాంక్ వెబ్‌సైట్‌ను సందర్శించండి',
                 presence_label: 'మా ఉనికి',
@@ -6503,7 +6503,52 @@
                 calc_yrs: 'సంవత్సరాలు',
                 calc_yr: 'సంవత్సరం',
                 calc_mo: 'నె.',
-                footer_calculator: 'రుణ కాల్క్యులేటర్'
+                footer_calculator: 'రుణ కాల్క్యులేటర్',
+                state_name_ravi: 'రవి కుమార్',
+                state_role_tn: 'రాష్ట్ర అధిపతి — తమిళనాడు',
+                state_bio_ravi: 'తమిళనాడులో గ్రౌండ్ ఆపరేషన్‌లకు నాయకత్వం వహిస్తారు — శాఖ పనితీరు, కస్టమర్ చేరువ మరియు ఫీల్డ్-టీమ్ అమలును పర్యవేక్షిస్తారు.',
+                state_name_dariya: 'దరియా షేక్',
+                state_role_ka: 'రాష్ట్ర అధిపతి — కర్ణాటక',
+                state_bio_dariya: 'కర్ణాటక కార్యకలాపాలను సంపూర్ణంగా నడిపిస్తారు — శాఖ అభివృద్ధి, బృంద నిర్మాణం మరియు రాష్ట్ర వ్యాప్తంగా కస్టమర్ సేకరణ.',
+                state_name_reji: 'రెజీ రవీంద్రన్',
+                state_role_kl: 'రాష్ట్ర అధిపతి — కేరళ',
+                state_bio_reji: 'కేరళ రాష్ట్ర-స్థాయి కార్యకలాపాలను నడిపిస్తారు — శాఖ నెట్‌వర్క్‌లను విస్తరించడం మరియు గ్రౌండ్ స్థాయిలో నిరంతర సేవా డెలివరీని నిర్ధారించడం.',
+                state_name_abhilash: 'అభిలాష్',
+                state_role_zonal: 'జోనల్ అధిపతి — కేరళ మరియు తమిళనాడు',
+                state_bio_abhilash: 'కేరళ మరియు తమిళనాడుకు జోనల్ నాయకత్వం, దక్షిణం అంతటా బహుళ-రాష్ట్ర వ్యూహం, పనితీరు మరియు ఫీల్డ్ కార్యకలాపాలను సమన్వయం చేస్తారు.',
+                legal_close: 'మూసివేయి',
+                tc_title: 'నిబంధనలు మరియు షరతులు',
+                tc_intro: 'మా వెబ్‌సైట్ మరియు సేవలను ఉపయోగించే ముందు దయచేసి ఈ నిబంధనలు మరియు షరతులను జాగ్రత్తగా చదవండి.',
+                tc_h1: '1. నిబంధనల అంగీకారం',
+                tc_p1: 'ఈ వెబ్‌సైట్‌ను యాక్సెస్ చేయడం మరియు ఉపయోగించడం ద్వారా, మీరు ఈ ఒప్పందం యొక్క నిబంధనలు మరియు ఏర్పాట్లకు కట్టుబడి ఉండటానికి అంగీకరిస్తారు.',
+                tc_h2: '2. ఉపయోగ లైసెన్స్',
+                tc_p2: 'ఈ వెబ్‌సైట్‌లోని కంటెంట్ యొక్క ఒక కాపీని వ్యక్తిగత, వాణిజ్యేతర తాత్కాలిక వీక్షణ కోసం మాత్రమే తాత్కాలికంగా డౌన్‌లోడ్ చేయడానికి అనుమతి ఇవ్వబడింది.',
+                tc_h3: '3. నిరాకరణ',
+                tc_p3: 'ఈ వెబ్‌సైట్‌లోని కంటెంట్ "ఉన్నది ఉన్నట్లు" ప్రాతిపదికన అందించబడుతుంది. మేము ఎలాంటి వారంటీలు, స్పష్టమైన లేదా అంతర్లీన, ఇవ్వము మరియు అమ్మకయోగ్యత, నిర్దిష్ట ప్రయోజనానికి తగినది లేదా మేధో సంపత్తి ఉల్లంఘన లేకపోవడం వంటి అంతర్లీన వారంటీలతో సహా అన్ని ఇతర వారంటీలను తిరస్కరిస్తాము.',
+                tc_h4: '4. పరిమితులు',
+                tc_p4: 'ఏ సందర్భంలోనూ మేము లేదా మా సరఫరాదారులు ఈ వెబ్‌సైట్‌లోని కంటెంట్ ఉపయోగం లేదా ఉపయోగించలేకపోవడం వల్ల తలెత్తే ఏ నష్టానికి (డేటా లేదా లాభం నష్టంతో సహా, లేదా వ్యాపార అంతరాయం వల్ల) బాధ్యత వహించము.',
+                tc_h5: '5. సవరణలు',
+                tc_p5: 'మేము ఎలాంటి నోటీసు లేకుండా ఎప్పుడైనా ఈ సేవా నిబంధనలను సవరించవచ్చు. ఈ వెబ్‌సైట్‌ను ఉపయోగించడం ద్వారా మీరు ప్రస్తుత వెర్షన్‌కు కట్టుబడి ఉండటానికి అంగీకరిస్తారు.',
+                tc_h6: '6. సంప్రదింపు సమాచారం',
+                tc_p6: 'ఈ నిబంధనలు మరియు షరతుల గురించి మీకు ఏవైనా ప్రశ్నలు ఉంటే, దయచేసి <a href="mailto:info@rapidloans.ai" style="color:var(--teal);">info@rapidloans.ai</a> వద్ద మమ్మల్ని సంప్రదించండి.',
+                pp_title: 'గోప్యతా విధానం',
+                pp_intro: 'మీరు మా వెబ్‌సైట్ మరియు సేవలను ఉపయోగించినప్పుడు మేము మీ వ్యక్తిగత సమాచారాన్ని ఎలా సేకరిస్తాము, ఉపయోగిస్తాము మరియు రక్షిస్తాము అనే విషయాన్ని ఈ గోప్యతా విధానం వివరిస్తుంది.',
+                pp_h1: '1. మేము ఏ సమాచారం సేకరిస్తాము',
+                pp_p1: 'మీరు ఖాతాను సృష్టించినప్పుడు, కొనుగోలు చేసినప్పుడు లేదా మద్దతు కోసం సంప్రదించినప్పుడు మీరు మాకు నేరుగా అందించే సమాచారాన్ని మేము సేకరిస్తాము. ఇందులో మీ పేరు, ఇమెయిల్ చిరునామా, మెయిలింగ్ చిరునామా, ఫోన్ నంబర్ మరియు చెల్లింపు సమాచారం ఉండవచ్చు.',
+                pp_h2: '2. మేము మీ సమాచారాన్ని ఎలా ఉపయోగిస్తాము',
+                pp_p2: 'మీ ఆర్డర్‌లను ప్రాసెస్ చేయడం, ఆర్డర్ నిర్ధారణలు మరియు అప్‌డేట్‌లను పంపడం, మీ వ్యాఖ్యలు మరియు ప్రశ్నలకు సమాధానం ఇవ్వడం, మా వెబ్‌సైట్ మరియు సేవలను మెరుగుపరచడం మరియు (మీ సమ్మతితో) మార్కెటింగ్ సందేశాలను పంపడం కోసం మేము సేకరించిన సమాచారాన్ని ఉపయోగిస్తాము.',
+                pp_h3: '3. సమాచార భాగస్వామ్యం',
+                pp_p3: 'మేము మీ వ్యక్తిగత సమాచారాన్ని మూడవ పక్షాలకు అమ్మము, వ్యాపారం చేయము లేదా అద్దెకు ఇవ్వము. మా వెబ్‌సైట్ నిర్వహణలో మరియు మా వ్యాపారాన్ని నడపడంలో మాకు సహాయపడే సేవా ప్రదాతలతో మీ సమాచారాన్ని మేము పంచుకోవచ్చు, ఆ పక్షాలు ఈ సమాచారాన్ని గోప్యంగా ఉంచడానికి అంగీకరిస్తే.',
+                pp_h4: '4. డేటా భద్రత',
+                pp_p4: 'అనధికార యాక్సెస్, మార్పు, బహిర్గతం లేదా విధ్వంసానికి వ్యతిరేకంగా మీ వ్యక్తిగత సమాచారాన్ని రక్షించడానికి మేము తగిన భద్రతా చర్యలను అమలు చేస్తాము.',
+                pp_h5: '5. మీ హక్కులు',
+                pp_p5: 'ఎప్పుడైనా మీ వ్యక్తిగత సమాచారాన్ని యాక్సెస్ చేయడానికి, నవీకరించడానికి లేదా తొలగించడానికి మీకు హక్కు ఉంది. మా నుండి మార్కెటింగ్ సందేశాలను స్వీకరించడం నుండి కూడా మీరు ఆప్ట్ అవుట్ చేయవచ్చు.',
+                pp_h6: '6. కుకీలు',
+                pp_p6: 'మా వెబ్‌సైట్‌లో మీ అనుభవాన్ని మెరుగుపరచడానికి మేము కుకీలను ఉపయోగిస్తాము. మీ బ్రౌజర్ సెట్టింగ్‌ల ద్వారా కుకీలను నిలిపివేయడాన్ని మీరు ఎంచుకోవచ్చు, అయితే ఇది సైట్ యొక్క కార్యాచరణను ప్రభావితం చేయవచ్చు.',
+                pp_h7: '7. ఈ విధానంలో మార్పులు',
+                pp_p7: 'మేము ఈ గోప్యతా విధానాన్ని కాలానుగుణంగా నవీకరించవచ్చు. ఈ పేజీలో కొత్త విధానాన్ని పోస్ట్ చేయడం ద్వారా ఏదైనా మార్పుల గురించి మేము మీకు తెలియజేస్తాము.',
+                pp_h8: '8. మమ్మల్ని సంప్రదించండి',
+                pp_p8: 'ఈ గోప్యతా విధానం గురించి మీకు ఏవైనా ప్రశ్నలు ఉంటే, దయచేసి <a href="mailto:info@rapidloans.ai" style="color:var(--teal);">info@rapidloans.ai</a> వద్ద మమ్మల్ని సంప్రదించండి.'
             },
             bn: {
                 nav_about: "আমাদের সম্পর্কে",
@@ -6975,6 +7020,20 @@
                 partners_desc: "ഇന്ത്യ ജുഡാ reliableശ്വാസ്യ സാമ്പത്തിക സേവനങ്ങൾ നൽകാൻ നിയന്ത്രണ ബാങ്കുകളും NBFC-കളും പങ്കാളി ആയി പ്രവർത്തിക്കുന്നു।",
                 partner1_desc: "ഗ്രാമീണ ഇന്ത്യ ജുഡാ സമാവേശകമായ സൂക്ഷ്മ ധനകാര്യ കടകൾക്കായുള്ള NBFC പങ്കാളി",
                 partner2_desc: "അവസാനത്തെ മൈൽ സാമ്പത്തിക സേവനം വിതരണം സജ്ജരാക്കുന്ന ബാങ്കിംഗ് പങ്കാളി",
+                partner3_desc: "വേഗത്തിലുള്ള, പേപ്പർ-രഹിത വായ്പാ ഉത്ഭവവും വിതരണവും സജ്ജമാക്കുന്ന ഡിജിറ്റൽ ലെൻഡിംഗ് പങ്കാളി.",
+                partner4_desc: "വൈവിധ്യമാർന്ന ഉപഭോക്തൃ, ചെറുകിട-ബിസിനസ് ക്രെഡിറ്റ് ഉൽപ്പന്നങ്ങൾ വാഗ്ദാനം ചെയ്യുന്ന അഖിലേന്ത്യാ NBFC പങ്കാളി.",
+                fi_name: "എഫ്ഐ ലെൻഡിംഗ് സൊല്യൂഷൻസ് പ്രൈ. ലിമിറ്റഡ്",
+                fi_about_desc: "FI Lending Solutions എന്നത് ഇന്ത്യയിലുടനീളമുള്ള സേവനം ലഭ്യമല്ലാത്ത സമൂഹങ്ങൾക്ക് ക്രെഡിറ്റ്, സമ്പാദ്യ പരിഹാരങ്ങളിൽ ശ്രദ്ധ കേന്ദ്രീകരിക്കുന്ന ഒരു ഡിജിറ്റൽ ലെൻഡിംഗ് ഫിൻടെക് ആണ്.",
+                fi_office_val: "1017, 10-ാം നില, JMD മെഗാപോളിസ്, ടവർ – A, സോഹ്ന റോഡ്, ഗുരുഗ്രാം, ഹരിയാന – 122018",
+                fi_svc_desc: "വായ്പാ അപേക്ഷകരെ കണ്ടെത്തൽ, ഡിജിറ്റൽ ഓൺബോർഡിംഗും KYC-യും, കളക്ഷൻ സേവനങ്ങൾ, വായ്പാ കാലയളവിൽ വായ്പാ ഉപഭോക്തൃ സേവനം.",
+                fi_visit: "FI Lending വെബ്‌സൈറ്റ് സന്ദർശിക്കുക",
+                smfg_name: "എസ്എംഎഫ്ജി ഇന്ത്യാ ക്രെഡിറ്റ് കോ. ലിമിറ്റഡ്",
+                smfg_about_desc: "SMFG India Credit Co. Ltd. വ്യക്തിഗത, ബിസിനസ്, സുരക്ഷിത ക്രെഡിറ്റ് ഉൽപ്പന്നങ്ങളുടെ സമഗ്രമായ ശ്രേണി വാഗ്ദാനം ചെയ്യുന്ന ഒരു അഖിലേന്ത്യാ NBFC ആണ്. ജപ്പാനിലെ Sumitomo Mitsui Financial Group (SMFG)-ന്റെ ഭാഗം.",
+                smfg_office_val: "Commerzone IT പാർക്ക്, ടവർ B, 1-ാം നില, നം. 111, മൗണ്ട് പൂനമല്ലി റോഡ്, പോരൂർ, ചെന്നൈ, തമിഴ്‌നാട് – 600 116",
+                smfg_svc_desc: "Direct Selling Agent (DSA) / ബാങ്കിംഗ് കറസ്പോണ്ടന്റ് മോഡൽ പ്രകാരം വായ്പാ അപേക്ഷകരെ കണ്ടെത്തൽ, കളക്ഷൻ സേവനങ്ങൾ, വായ്പാ കാലയളവിൽ വായ്പാ ഉപഭോക്തൃ സേവനം.",
+                smfg_prod_desc: "വ്യക്തിഗത വായ്പകൾ, ബിസിനസ് വായ്പകൾ, വസ്തുവിൽ വായ്പ, സെക്യൂരിറ്റികൾക്കെതിരെ വായ്പ, ഇരുചക്ര വാഹന വായ്പകൾ, വാണിജ്യ വാഹന വായ്പകൾ, സോളിഡാരിറ്റി ഗ്രൂപ്പ് വായ്പകൾ, ഗ്രോയിംഗ് എന്റർപ്രൈസ് ലോൺസ് (GEL).",
+                smfg_care_val: "1800 103 6001 (തിങ്കൾ–ശനി, രാവിലെ 9 – വൈകുന്നേരം 7)",
+                smfg_visit: "SMFG India Credit വെബ്‌സൈറ്റ് സന്ദർശിക്കുക",
                 cta_title: "സാമ്പത്തിക പ്രവേശനം പരിവർത്തനം ചെയ്യാൻ തയ്യാറാണോ?",
                 cta_desc: "Rapid Loans ഉപയോഗിച്ച് പങ്കാളി ആകുക സേവനം കുറഞ്ഞ സമൂഹങ്ങൾക്കുള്ള സമാവേശകമായ സാമ്പത്തിക സേവനങ്ങൾ കൊണ്ടുവരാൻ। നമ്മുൾ ഒരുമിച്ച് സാമ്പത്തികമായി സമാവേശകമായ ഇന്ത്യ വികസിപ്പിക്കാം।",
                 cta_address: "നിലവിൽ ഫ്ലോർ, രാജ സങ്കുലയ, വിജയ ക്രോസ് റോഡ്, നവരാം പുരാ, അഹമ്മദാബാദ് — 380009, ഗുജറാത്ത്",
@@ -7013,7 +7072,7 @@
                 disclosure_label: 'സുതാര്യത',
                 disclosure_title: 'പങ്കാളി വെളിപ്പെടുത്തലുകൾ',
                 disclosure_desc: 'പൂർണ്ണ സുതാര്യത ഉറപ്പാക്കുന്ന ഞങ്ങളുടെ വായ്പ പങ്കാളിത്തങ്ങൾക്കുള്ള നിയന്ത്രണ വെളിപ്പെടുത്തലുകൾ.',
-                avanti_name: 'അവന്തി ഫൈനാന്‍സ് പ്രൈവറ്റ് ലിമിറ്റഡ്',
+                avanti_name: 'അവന്തി ഫൈനാന്‍സ് പ്രൈ. ലിമിറ്റഡ്',
                 avanti_svc_title: 'നല്‍കുന്ന സേവനങ്ങള്‍',
                 avanti_svc_desc: 'വായ്പ അപേക്ഷകരുടെ സോഴ്സിംഗ്, ശേഖരണ സേവനങ്ങള്‍, വായ്പ കാലാവധിയില്‍ കടം വാങ്ങുന്നയാളുടെ സേവനം, ആദ്യ-ഘട്ട പരാതി പരിഹാരം.',
                 avanti_grv_title: 'പരാതി ഓഫീസര്‍ വിശദാംശങ്ങള്‍',
@@ -7048,7 +7107,7 @@
                 unity_prod_desc: 'സേവിംഗ്സ് & കറന്‍റ് അക്കൗണ്‍ടുകള്‍, ഫിക്സഡ് ഡെപ്പോസിറ്റുകള്‍, റിക്കറിംഗ് ഡെപ്പോസിറ്റുകള്‍, വ്യക്തിഗത വായ്പകള്‍, MSME & ബിസിനസ് വായ്പകള്‍, സ്വര്‍ണ വായ്പകള്‍, മൈക്രോഫൈനാന്‍സ്, ഡിജിറ്റല്‍ ബാങ്കിംഗ് സേവനങ്ങള്‍.',
                 unity_grv_title: 'പരാതി പരിഹാരം',
                 unity_care_lbl: 'ഉപഭോക്തൃ സേവനം:',
-                unity_care_val: '൧൮൦൦-൨൧൦൦-൨൦൦ (ടോള്‍ ഫ്രീ)',
+                unity_care_val: '൧൮൦൦-൨൦൯-൧൧൨൨ (ടോള്‍ ഫ്രീ)',
                 unity_email_lbl: 'ഇമെയില്‍:',
                 unity_visit: 'യൂണിറ്റി സ്മോള്‍ ഫൈനാന്‍സ് ബാങ്ക് വെബ്സൈറ്റ് സന്ദര്‍ശിക്കുക',
                 presence_label: 'ഞങ്ങളുടെ സാന്നിധ്യം',
@@ -7100,7 +7159,52 @@
                 calc_yrs: 'വര്‍ഷങ്ങള്‍',
                 calc_yr: 'വര്‍ഷം',
                 calc_mo: 'മാ.',
-                footer_calculator: 'ലോണ്‍ കാല്‍ക്കുലേറ്റര്‍'
+                footer_calculator: 'ലോണ്‍ കാല്‍ക്കുലേറ്റര്‍',
+                state_name_ravi: 'രവി കുമാർ',
+                state_role_tn: 'സംസ്ഥാന മേധാവി — തമിഴ്‌നാട്',
+                state_bio_ravi: 'തമിഴ്‌നാട്ടിൽ ഫീൽഡ് ഓപ്പറേഷനുകൾ നയിക്കുന്നു — ബ്രാഞ്ച് പ്രകടനം, ഉപഭോക്തൃ ഔട്ട്റീച്ച്, ഫീൽഡ്-ടീം നിർവഹണം എന്നിവ മേൽനോട്ടം വഹിക്കുന്നു.',
+                state_name_dariya: 'ദരിയ ഷെയ്ഖ്',
+                state_role_ka: 'സംസ്ഥാന മേധാവി — കർണാടക',
+                state_bio_dariya: 'കർണാടക പ്രവർത്തനങ്ങളെ പൂർണമായും നയിക്കുന്നു — ബ്രാഞ്ച് വികസനം, ടീം നിർമ്മാണം, സംസ്ഥാനത്തുടനീളം ഉപഭോക്തൃ ഏറ്റെടുക്കൽ.',
+                state_name_reji: 'രെജി രവീന്ദ്രൻ',
+                state_role_kl: 'സംസ്ഥാന മേധാവി — കേരളം',
+                state_bio_reji: 'കേരളത്തിന്റെ സംസ്ഥാന-തല പ്രവർത്തനങ്ങളെ നയിക്കുന്നു — ബ്രാഞ്ച് നെറ്റ്‌വർക്കുകൾ വിപുലീകരിക്കുന്നു, ഫീൽഡ് തലത്തിൽ സ്ഥിരമായ സേവന വിതരണം ഉറപ്പാക്കുന്നു.',
+                state_name_abhilash: 'അഭിലാഷ്',
+                state_role_zonal: 'സോണൽ മേധാവി — കേരളം & തമിഴ്‌നാട്',
+                state_bio_abhilash: 'കേരളത്തിനും തമിഴ്‌നാട്ടിനുമുള്ള സോണൽ ലീഡ്, ദക്ഷിണത്തിലുടനീളം മൾട്ടി-സ്റ്റേറ്റ് സ്ട്രാറ്റജി, പ്രകടനം, ഫീൽഡ് പ്രവർത്തനങ്ങൾ എന്നിവ ഏകോപിപ്പിക്കുന്നു.',
+                legal_close: 'അടയ്ക്കുക',
+                tc_title: 'നിബന്ധനകളും വ്യവസ്ഥകളും',
+                tc_intro: 'ഞങ്ങളുടെ വെബ്‌സൈറ്റും സേവനങ്ങളും ഉപയോഗിക്കുന്നതിന് മുമ്പ് ദയവായി ഈ നിബന്ധനകളും വ്യവസ്ഥകളും ശ്രദ്ധാപൂർവം വായിക്കുക.',
+                tc_h1: '1. നിബന്ധനകളുടെ സ്വീകാര്യത',
+                tc_p1: 'ഈ വെബ്‌സൈറ്റ് ആക്‌സസ് ചെയ്യുകയും ഉപയോഗിക്കുകയും ചെയ്യുന്നതിലൂടെ, ഈ കരാറിന്റെ നിബന്ധനകൾക്കും വ്യവസ്ഥകൾക്കും ബാധ്യസ്ഥനാകാൻ നിങ്ങൾ സമ്മതിക്കുന്നു.',
+                tc_h2: '2. ഉപയോഗ ലൈസൻസ്',
+                tc_p2: 'ഈ വെബ്‌സൈറ്റിലെ മെറ്റീരിയലിന്റെ ഒരു പകർപ്പ് വ്യക്തിഗതവും വാണിജ്യേതരവുമായ താൽക്കാലിക കാഴ്ചയ്ക്ക് മാത്രമായി താൽക്കാലികമായി ഡൗൺലോഡ് ചെയ്യാൻ അനുമതി നൽകിയിരിക്കുന്നു.',
+                tc_h3: '3. നിരാകരണം',
+                tc_p3: 'ഈ വെബ്‌സൈറ്റിലെ മെറ്റീരിയൽ "ഉള്ളതുപോലെ" എന്ന അടിസ്ഥാനത്തിലാണ് നൽകുന്നത്. ഞങ്ങൾ ഒരു വാറന്റിയും, പ്രകടമോ പരോക്ഷമോ, നൽകുന്നില്ല, വിപണനയോഗ്യത, ഒരു പ്രത്യേക ആവശ്യത്തിനുള്ള ഫിറ്റ്നസ്, ബൗദ്ധിക സ്വത്തിന്റെ ലംഘനമല്ലായ്മ എന്നിവയുൾപ്പെടെ മറ്റ് എല്ലാ വാറന്റികളും ഞങ്ങൾ നിരാകരിക്കുന്നു.',
+                tc_h4: '4. പരിമിതികൾ',
+                tc_p4: 'ഈ വെബ്‌സൈറ്റിലെ മെറ്റീരിയലുകളുടെ ഉപയോഗത്തിൽ നിന്നോ ഉപയോഗിക്കാനുള്ള കഴിവില്ലായ്മയിൽ നിന്നോ ഉണ്ടാകുന്ന ഏതെങ്കിലും നാശനഷ്ടങ്ങൾക്ക് (ഡാറ്റ അല്ലെങ്കിൽ ലാഭം നഷ്‌ടം ഉൾപ്പെടെ, അല്ലെങ്കിൽ ബിസിനസ് തടസ്സം മൂലം) ഞങ്ങളോ ഞങ്ങളുടെ വിതരണക്കാരോ ഉത്തരവാദികളല്ല.',
+                tc_h5: '5. പുനരവലോകനങ്ങൾ',
+                tc_p5: 'ഞങ്ങൾക്ക് ഏത് സമയത്തും അറിയിപ്പ് കൂടാതെ ഈ സേവന നിബന്ധനകൾ പുനരവലോകനം ചെയ്യാം. ഈ വെബ്‌സൈറ്റ് ഉപയോഗിക്കുന്നതിലൂടെ നിങ്ങൾ ഇപ്പോഴത്തെ പതിപ്പിന് ബാധ്യസ്ഥനാകാൻ സമ്മതിക്കുന്നു.',
+                tc_h6: '6. ബന്ധപ്പെടാനുള്ള വിവരം',
+                tc_p6: 'ഈ നിബന്ധനകളെയും വ്യവസ്ഥകളെയും കുറിച്ച് നിങ്ങൾക്ക് എന്തെങ്കിലും ചോദ്യങ്ങൾ ഉണ്ടെങ്കിൽ, ദയവായി <a href="mailto:info@rapidloans.ai" style="color:var(--teal);">info@rapidloans.ai</a> എന്ന വിലാസത്തിൽ ഞങ്ങളെ ബന്ധപ്പെടുക.',
+                pp_title: 'സ്വകാര്യതാ നയം',
+                pp_intro: 'ഞങ്ങളുടെ വെബ്‌സൈറ്റും സേവനങ്ങളും നിങ്ങൾ ഉപയോഗിക്കുമ്പോൾ നിങ്ങളുടെ വ്യക്തിഗത വിവരങ്ങൾ ഞങ്ങൾ എങ്ങനെ ശേഖരിക്കുന്നു, ഉപയോഗിക്കുന്നു, സംരക്ഷിക്കുന്നു എന്ന് ഈ സ്വകാര്യതാ നയം വിവരിക്കുന്നു.',
+                pp_h1: '1. ഞങ്ങൾ ശേഖരിക്കുന്ന വിവരങ്ങൾ',
+                pp_p1: 'നിങ്ങൾ ഒരു അക്കൗണ്ട് സൃഷ്ടിക്കുമ്പോഴോ, ഒരു വാങ്ങൽ നടത്തുമ്പോഴോ, പിന്തുണയ്ക്കായി ഞങ്ങളെ ബന്ധപ്പെടുമ്പോഴോ നിങ്ങൾ നേരിട്ട് ഞങ്ങൾക്ക് നൽകുന്ന വിവരങ്ങൾ ഞങ്ങൾ ശേഖരിക്കുന്നു. ഇതിൽ നിങ്ങളുടെ പേര്, ഇമെയിൽ വിലാസം, മെയിലിംഗ് വിലാസം, ഫോൺ നമ്പർ, പേയ്മെന്റ് വിവരങ്ങൾ എന്നിവ ഉൾപ്പെട്ടേക്കാം.',
+                pp_h2: '2. നിങ്ങളുടെ വിവരങ്ങൾ ഞങ്ങൾ എങ്ങനെ ഉപയോഗിക്കുന്നു',
+                pp_p2: 'നിങ്ങളുടെ ഓർഡറുകൾ പ്രോസസ്സ് ചെയ്യുന്നതിനും, ഓർഡർ സ്ഥിരീകരണങ്ങളും അപ്‌ഡേറ്റുകളും അയയ്‌ക്കുന്നതിനും, നിങ്ങളുടെ കമന്റുകളും ചോദ്യങ്ങളും പ്രതികരിക്കുന്നതിനും, ഞങ്ങളുടെ വെബ്‌സൈറ്റും സേവനങ്ങളും മെച്ചപ്പെടുത്തുന്നതിനും, (നിങ്ങളുടെ സമ്മതത്തോടെ) മാർക്കറ്റിംഗ് ആശയവിനിമയങ്ങൾ അയയ്‌ക്കുന്നതിനും ഞങ്ങൾ ശേഖരിക്കുന്ന വിവരങ്ങൾ ഉപയോഗിക്കുന്നു.',
+                pp_h3: '3. വിവര പങ്കിടൽ',
+                pp_p3: 'ഞങ്ങൾ നിങ്ങളുടെ വ്യക്തിഗത വിവരങ്ങൾ മൂന്നാം കക്ഷികൾക്ക് വിൽക്കുകയോ വ്യാപാരം ചെയ്യുകയോ വാടകയ്ക്ക് നൽകുകയോ ചെയ്യില്ല. ഞങ്ങളുടെ വെബ്‌സൈറ്റ് പ്രവർത്തിപ്പിക്കുന്നതിലും ഞങ്ങളുടെ ബിസിനസ്സ് നടത്തുന്നതിലും ഞങ്ങളെ സഹായിക്കുന്ന സേവന ദാതാക്കളുമായി നിങ്ങളുടെ വിവരങ്ങൾ ഞങ്ങൾ പങ്കിട്ടേക്കാം, ആ കക്ഷികൾ ഈ വിവരങ്ങൾ രഹസ്യമായി സൂക്ഷിക്കാൻ സമ്മതിക്കുന്നിടത്തോളം.',
+                pp_h4: '4. ഡാറ്റ സുരക്ഷ',
+                pp_p4: 'അനധികൃത ആക്‌സസ്, മാറ്റം, വെളിപ്പെടുത്തൽ, അല്ലെങ്കിൽ നാശം എന്നിവയിൽ നിന്ന് നിങ്ങളുടെ വ്യക്തിഗത വിവരങ്ങൾ സംരക്ഷിക്കാൻ ഉചിതമായ സുരക്ഷാ നടപടികൾ ഞങ്ങൾ നടപ്പിലാക്കുന്നു.',
+                pp_h5: '5. നിങ്ങളുടെ അവകാശങ്ങൾ',
+                pp_p5: 'എപ്പോൾ വേണമെങ്കിലും നിങ്ങളുടെ വ്യക്തിഗത വിവരങ്ങൾ ആക്‌സസ് ചെയ്യാനും അപ്‌ഡേറ്റ് ചെയ്യാനും ഇല്ലാതാക്കാനും നിങ്ങൾക്ക് അവകാശമുണ്ട്. ഞങ്ങളിൽ നിന്ന് മാർക്കറ്റിംഗ് ആശയവിനിമയങ്ങൾ സ്വീകരിക്കുന്നതിൽ നിന്നും നിങ്ങൾക്ക് ഒഴിവാക്കാം.',
+                pp_h6: '6. കുക്കികൾ',
+                pp_p6: 'ഞങ്ങളുടെ വെബ്‌സൈറ്റിൽ നിങ്ങളുടെ അനുഭവം മെച്ചപ്പെടുത്തുന്നതിന് ഞങ്ങൾ കുക്കികൾ ഉപയോഗിക്കുന്നു. നിങ്ങളുടെ ബ്രൗസർ ക്രമീകരണങ്ങളിലൂടെ കുക്കികൾ പ്രവർത്തനരഹിതമാക്കാൻ നിങ്ങൾക്ക് തിരഞ്ഞെടുക്കാം, എന്നാൽ ഇത് സൈറ്റിന്റെ പ്രവർത്തനത്തെ ബാധിച്ചേക്കാം.',
+                pp_h7: '7. ഈ നയത്തിലെ മാറ്റങ്ങൾ',
+                pp_p7: 'ഞങ്ങൾ ഈ സ്വകാര്യതാ നയം കാലാകാലങ്ങളിൽ അപ്‌ഡേറ്റ് ചെയ്തേക്കാം. ഈ പേജിൽ പുതിയ നയം പോസ്റ്റ് ചെയ്യുന്നതിലൂടെ ഏതെങ്കിലും മാറ്റങ്ങളെക്കുറിച്ച് ഞങ്ങൾ നിങ്ങളെ അറിയിക്കും.',
+                pp_h8: '8. ഞങ്ങളെ ബന്ധപ്പെടുക',
+                pp_p8: 'ഈ സ്വകാര്യതാ നയത്തെക്കുറിച്ച് നിങ്ങൾക്ക് എന്തെങ്കിലും ചോദ്യങ്ങൾ ഉണ്ടെങ്കിൽ, ദയവായി <a href="mailto:info@rapidloans.ai" style="color:var(--teal);">info@rapidloans.ai</a> എന്ന വിലാസത്തിൽ ഞങ്ങളെ ബന്ധപ്പെടുക.'
             },
             or: {
                 nav_about: "ଆମ ବିଷୟରେ",
@@ -7936,204 +8040,6 @@
 
     
 
-    <!-- ═══════════════════════ GLOBAL THEME GRADIENT + CONTROLS ═══════════════════════ -->
-    <script>
-    (function() {
-        // === Create fixed full-page gradient canvas ===
-        const canvas = document.createElement('canvas');
-        canvas.id = 'globalGradientCanvas';
-        canvas.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:0;transition:opacity 0.8s ease;';
-        document.body.prepend(canvas);
-        const ctx = canvas.getContext('2d');
-        const heroCanvas = document.getElementById('heroGradientCanvas');
-        let w, h, t = 0;
-
-        function resize() {
-            w = canvas.width = window.innerWidth;
-            h = canvas.height = window.innerHeight;
-            if (heroCanvas && heroCanvas.parentElement) {
-                heroCanvas.width = heroCanvas.parentElement.offsetWidth;
-                heroCanvas.height = heroCanvas.parentElement.offsetHeight;
-            }
-        }
-
-        // === Theme color palettes for the gradient canvas ===
-        const themeColors = {
-            'white': null, // No gradient
-            'pre-dawn': {
-                bg1: [15, 15, 40], bg2: [30, 20, 60],
-                blobs: [
-                    { cx:.6, cy:.2, rx:.5, ry:.6, angle:-.5, c1:[60,40,120], c2:[40,20,100], op:.7 },
-                    { cx:.4, cy:.5, rx:.45, ry:.55, angle:-.2, c1:[80,60,160], c2:[60,40,140], op:.5 },
-                    { cx:.8, cy:.6, rx:.35, ry:.5, angle:.3, c1:[100,80,180], c2:[80,60,160], op:.4 },
-                    { cx:.2, cy:.7, rx:.4, ry:.45, angle:.5, c1:[50,30,100], c2:[30,15,80], op:.35 },
-                ]
-            },
-            'sunrise': {
-                bg1: [30, 20, 60], bg2: [80, 40, 50],
-                blobs: [
-                    { cx:.6, cy:.15, rx:.5, ry:.65, angle:-.5, c1:[255,180,80], c2:[255,140,50], op:.8 },
-                    { cx:.45, cy:.45, rx:.5, ry:.6, angle:-.3, c1:[255,100,80], c2:[240,60,60], op:.6 },
-                    { cx:.75, cy:.6, rx:.4, ry:.55, angle:.3, c1:[200,60,120], c2:[160,40,100], op:.5 },
-                    { cx:.2, cy:.7, rx:.35, ry:.4, angle:.5, c1:[100,50,150], c2:[70,30,120], op:.4 },
-                    { cx:.5, cy:.05, rx:.3, ry:.2, angle:0, c1:[255,220,100], c2:[255,200,60], op:.6 },
-                ]
-            },
-            'daytime': {
-                bg1: [60, 140, 230], bg2: [100, 180, 255],
-                blobs: [
-                    { cx:.65, cy:.15, rx:.5, ry:.7, angle:-.5, c1:[255,165,50], c2:[255,120,30], op:.75 },
-                    { cx:.55, cy:.45, rx:.55, ry:.65, angle:-.3, c1:[255,80,150], c2:[240,50,140], op:.5 },
-                    { cx:.7, cy:.7, rx:.4, ry:.6, angle:.4, c1:[200,60,200], c2:[160,40,180], op:.4 },
-                    { cx:.2, cy:.8, rx:.45, ry:.4, angle:.6, c1:[140,200,255], c2:[100,170,255], op:.3 },
-                    { cx:.45, cy:.08, rx:.3, ry:.25, angle:-.2, c1:[255,230,100], c2:[255,200,60], op:.5 },
-                ]
-            },
-            'dusk': {
-                bg1: [50, 30, 70], bg2: [100, 50, 80],
-                blobs: [
-                    { cx:.6, cy:.2, rx:.5, ry:.65, angle:-.4, c1:[220,100,80], c2:[200,70,60], op:.7 },
-                    { cx:.45, cy:.5, rx:.5, ry:.6, angle:-.2, c1:[180,60,120], c2:[150,40,100], op:.55 },
-                    { cx:.75, cy:.65, rx:.4, ry:.5, angle:.3, c1:[140,50,140], c2:[110,30,120], op:.5 },
-                    { cx:.2, cy:.7, rx:.4, ry:.4, angle:.5, c1:[80,40,100], c2:[60,25,80], op:.35 },
-                    { cx:.5, cy:.05, rx:.25, ry:.2, angle:0, c1:[240,160,60], c2:[220,130,40], op:.5 },
-                ]
-            },
-            'sunset': {
-                bg1: [40, 15, 45], bg2: [130, 40, 40],
-                blobs: [
-                    { cx:.6, cy:.15, rx:.5, ry:.7, angle:-.5, c1:[255,140,40], c2:[255,100,20], op:.85 },
-                    { cx:.5, cy:.4, rx:.5, ry:.6, angle:-.3, c1:[255,60,80], c2:[230,30,60], op:.65 },
-                    { cx:.75, cy:.65, rx:.4, ry:.55, angle:.3, c1:[200,40,120], c2:[160,20,100], op:.5 },
-                    { cx:.85, cy:.4, rx:.3, ry:.5, angle:.2, c1:[140,30,160], c2:[100,15,130], op:.45 },
-                    { cx:.45, cy:.05, rx:.3, ry:.2, angle:0, c1:[255,200,50], c2:[255,170,20], op:.6 },
-                ]
-            },
-            'night': {
-                bg1: [10, 10, 35], bg2: [25, 20, 65],
-                blobs: [
-                    { cx:.6, cy:.25, rx:.5, ry:.6, angle:-.4, c1:[60,50,160], c2:[40,30,130], op:.6 },
-                    { cx:.4, cy:.5, rx:.45, ry:.55, angle:-.2, c1:[80,60,180], c2:[50,40,150], op:.45 },
-                    { cx:.75, cy:.6, rx:.35, ry:.5, angle:.3, c1:[100,70,200], c2:[70,50,170], op:.4 },
-                    { cx:.2, cy:.75, rx:.4, ry:.4, angle:.5, c1:[40,30,100], c2:[20,15,70], op:.35 },
-                    { cx:.5, cy:.1, rx:.25, ry:.2, angle:0, c1:[80,80,200], c2:[60,60,180], op:.3 },
-                ]
-            }
-        };
-
-        let currentSiteTheme = 'white';
-
-        function drawBlob(context, blob, offX, offY, sw, sh, speed) {
-            speed = speed || 0.0002;
-            const drift = Math.sin(t * speed + (blob.angle || 0)) * 0.03;
-            const cx = (blob.cx + drift) * sw + offX;
-            const cy = (blob.cy + Math.cos(t * speed * 0.7) * 0.02) * sh + offY;
-            const rx = blob.rx * sw * (0.95 + Math.sin(t * speed * 0.5) * 0.05);
-            const ry = blob.ry * sh * (0.95 + Math.cos(t * speed * 0.6) * 0.05);
-            context.save();
-            context.translate(cx, cy);
-            context.rotate((blob.angle || 0) + Math.sin(t * speed * 0.3) * 0.05);
-            context.scale(1, ry / rx);
-            const grad = context.createRadialGradient(0, 0, 0, 0, 0, rx);
-            grad.addColorStop(0, `rgba(${blob.c1.join(',')},${blob.op})`);
-            grad.addColorStop(0.4, `rgba(${blob.c2.join(',')},${blob.op * 0.6})`);
-            grad.addColorStop(0.7, `rgba(${blob.c2.join(',')},${blob.op * 0.2})`);
-            grad.addColorStop(1, `rgba(${blob.c2.join(',')},0)`);
-            context.fillStyle = grad;
-            context.beginPath();
-            context.arc(0, 0, rx, 0, Math.PI * 2);
-            context.fill();
-            context.restore();
-        }
-
-        function draw() {
-            const theme = themeColors[currentSiteTheme];
-            if (!theme) {
-                // White theme — clear canvas
-                ctx.clearRect(0, 0, w, h);
-                if (heroCanvas) { const hc = heroCanvas.getContext('2d'); hc.clearRect(0, 0, heroCanvas.width, heroCanvas.height); }
-                t++; requestAnimationFrame(draw); return;
-            }
-
-            const parallax = (window.scrollY || 0) * 0.15;
-            // Background gradient
-            const bgGrad = ctx.createLinearGradient(0, 0, 0, h);
-            bgGrad.addColorStop(0, `rgb(${theme.bg1.join(',')})`);
-            bgGrad.addColorStop(1, `rgb(${theme.bg2.join(',')})`);
-            ctx.fillStyle = bgGrad;
-            ctx.fillRect(0, 0, w, h);
-            // Draw blobs
-            theme.blobs.forEach((b, i) => drawBlob(ctx, b, 0, -parallax * 0.3, w, h * 1.5, 0.0002 + i * 0.00003));
-            // Light vignette for readability (lighter themes only)
-            if (['daytime','sunrise'].includes(currentSiteTheme)) {
-                const vig = ctx.createLinearGradient(0, 0, w * 0.45, 0);
-                vig.addColorStop(0, 'rgba(255,255,255,0.35)');
-                vig.addColorStop(1, 'rgba(255,255,255,0)');
-                ctx.fillStyle = vig;
-                ctx.fillRect(0, 0, w, h);
-            }
-
-            // Hero canvas sync
-            if (heroCanvas && heroCanvas.width) {
-                const hc = heroCanvas.getContext('2d');
-                const hw = heroCanvas.width, hh = heroCanvas.height;
-                const hBg = hc.createLinearGradient(0, 0, 0, hh);
-                hBg.addColorStop(0, `rgb(${theme.bg1.join(',')})`);
-                hBg.addColorStop(1, `rgb(${theme.bg2.join(',')})`);
-                hc.fillStyle = hBg;
-                hc.fillRect(0, 0, hw, hh);
-                theme.blobs.forEach((b, i) => drawBlob(hc, b, 0, 0, hw, hh, 0.0002 + i * 0.00003));
-                if (['daytime','sunrise'].includes(currentSiteTheme)) {
-                    const hVig = hc.createLinearGradient(0, 0, hw * 0.45, 0);
-                    hVig.addColorStop(0, 'rgba(255,255,255,0.35)');
-                    hVig.addColorStop(1, 'rgba(255,255,255,0)');
-                    hc.fillStyle = hVig;
-                    hc.fillRect(0, 0, hw, hh);
-                }
-            }
-
-            t++;
-            requestAnimationFrame(draw);
-        }
-
-        resize();
-        draw();
-        window.addEventListener('resize', resize);
-
-        // === GLOBAL THEME CONTROL ===
-        window.setSiteTheme = function(theme) {
-            currentSiteTheme = theme;
-            document.documentElement.setAttribute('data-site-theme', theme);
-            // Update canvas opacity
-            canvas.style.opacity = theme === 'white' ? '0' : '1';
-            if (heroCanvas) heroCanvas.style.opacity = theme === 'white' ? '0' : '1';
-            // Update theme menu active states
-            document.querySelectorAll('.theme-menu-option').forEach(opt => {
-                opt.classList.toggle('active', opt.dataset.theme === theme);
-            });
-            // Sync partners starburst theme (includes white)
-            if (window.setPartnersStarburstTheme) {
-                window.setPartnersStarburstTheme(theme);
-            }
-            // Close dropdown
-            document.getElementById('themeSwitcher').classList.remove('open');
-        };
-
-        window.toggleThemeMenu = function() {
-            document.getElementById('themeSwitcher').classList.toggle('open');
-            // Close lang dropdown
-            document.getElementById('langSwitcher').classList.remove('open');
-        };
-
-        // Close dropdowns on outside click
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.theme-switcher')) {
-                document.getElementById('themeSwitcher')?.classList.remove('open');
-            }
-        });
-    })();
-    </script>
-
     <!-- ═══════════════════════ BHARAT CARD SHUFFLE (NOVO-STYLE) ═══════════════════════ -->
     <script>
     (function() {
@@ -8223,51 +8129,14 @@
         let w, h, animId, particles = [];
         const COUNT = 200;
 
-        /* Theme palettes — bg gradient top/bottom, core/mid/outer/tip particle colors, glow */
-        const themes = {
-            'white': {
-                bg: [255,248,240], bgEnd: [255,220,180],
-                core: [220,80,160], mid: [180,60,200], outer: [120,80,220], tip: [255,120,100],
-                glow: [255,160,200], glowMid: [255,130,170], glowOut: [200,100,220]
-            },
-            'pre-dawn': {
-                bg: [15,15,40], bgEnd: [30,20,60],
-                core: [160,140,240], mid: [120,100,200], outer: [80,60,160], tip: [200,190,255],
-                glow: [120,100,200], glowMid: [100,80,180], glowOut: [60,40,120]
-            },
-            'sunrise': {
-                bg: [30,20,60], bgEnd: [80,40,50],
-                core: [255,180,80], mid: [255,100,80], outer: [200,60,150], tip: [255,230,120],
-                glow: [255,150,80], glowMid: [255,120,60], glowOut: [200,80,100]
-            },
-            'daytime': {
-                bg: [60,140,230], bgEnd: [100,180,255],
-                core: [255,255,255], mid: [255,240,200], outer: [200,220,255], tip: [255,255,240],
-                glow: [255,240,200], glowMid: [255,220,160], glowOut: [180,210,255]
-            },
-            'dusk': {
-                bg: [50,30,70], bgEnd: [100,50,80],
-                core: [255,180,140], mid: [220,100,140], outer: [140,60,160], tip: [255,200,160],
-                glow: [220,120,140], glowMid: [200,90,120], glowOut: [140,60,100]
-            },
-            'sunset': {
-                bg: [40,15,45], bgEnd: [130,40,40],
-                core: [255,160,60], mid: [255,80,80], outer: [180,40,140], tip: [255,200,80],
-                glow: [255,120,60], glowMid: [255,80,40], glowOut: [180,40,60]
-            },
-            'night': {
-                bg: [10,10,35], bgEnd: [25,20,65],
-                core: [180,170,255], mid: [130,120,220], outer: [80,70,180], tip: [210,205,255],
-                glow: [130,120,220], glowMid: [100,90,200], glowOut: [60,50,140]
-            }
+        /* Brand palette: white bg with blue + red particles */
+        const palette = {
+            bg: [255,255,255], bgEnd: [248,249,250],
+            core: [91,181,220], mid: [125,201,229], outer: [230,57,70], tip: [255,255,255],
+            glow: [91,181,220], glowMid: [125,201,229], glowOut: [230,57,70]
         };
 
-        let currentTheme = 'white';
-        const themeKeys = ['white','pre-dawn','sunrise','daytime','dusk','sunset','night'];
-
-        function getTheme() {
-            return themes[currentTheme] || themes['white'];
-        }
+        function getTheme() { return palette; }
 
         function resize() {
             const rect = canvas.parentElement.getBoundingClientRect();
@@ -8368,20 +8237,6 @@
 
             animId = requestAnimationFrame(draw);
         }
-
-        /* Click to cycle theme — like Stripe */
-        canvas.addEventListener('click', function() {
-            const idx = themeKeys.indexOf(currentTheme);
-            const next = themeKeys[(idx + 1) % themeKeys.length];
-            currentTheme = next;
-            /* Also set the global site theme */
-            if (window.setSiteTheme) window.setSiteTheme(next);
-        });
-
-        /* Sync when global theme changes */
-        window.setPartnersStarburstTheme = function(theme) {
-            if (themes[theme]) currentTheme = theme;
-        };
 
         /* Only animate when visible */
         const obs = new IntersectionObserver(function(entries) {
