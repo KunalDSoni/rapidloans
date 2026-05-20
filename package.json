@@ -1,0 +1,14 @@
+{
+  "name": "rapidloans-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Rapid Loans marketing website",
+  "scripts": {
+    "serve": "python3 -m http.server 8765",
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.1",
+    "@playwright/test": "^1.49.1"
+  }
+}
