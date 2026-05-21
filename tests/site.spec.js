@@ -87,10 +87,10 @@ test.describe('Rapid Loans site', () => {
     await page.evaluate(() => setLanguage('hi'));
     const hiText = (await page.locator(heroSelector).first().innerText()).trim();
     expect(hiText).not.toBe(enText);
-    // partner labels (the recently wrapped strings) should also translate
+    // partner type labels (wrapped strings) should also translate
     await page.evaluate(() => setLanguage('te'));
-    const label = (await page.locator('.partner-stat-label').first().innerText()).trim();
-    expect(label).not.toBe('States');
+    const label = (await page.locator('.partner-type').first().innerText()).trim();
+    expect(label).not.toBe('NBFC Partner');
     await page.evaluate(() => setLanguage('en'));
   });
 });

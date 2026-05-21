@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>try{var s=localStorage.getItem('rl-theme');var dark=(s===null)?(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches):(s==='dark');if(dark)document.documentElement.classList.add('theme-dark');}catch(e){}</script>
     <title>Rapid Loans - Modern Banking Correspondent | Empowering Rural India</title>
     <meta name="description" content="Rapid Loans is a tech-first banking correspondent providing inclusive microloans and financial services across rural India through advanced technology.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -64,6 +65,60 @@
             --t-item-border: #E5E5E5;
             --t-canvas-opacity: 0;
             --t-photo-bg: linear-gradient(145deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
+        }
+
+        /* ─────────────────────────────────────────────
+           Dark theme (white/black). Toggle top-right; also auto-applied
+           when the OS/browser is in dark mode (default is the light theme).
+           Backgrounds go black, text goes white, brand colors brighten.
+           ───────────────────────────────────────────── */
+        html.theme-dark {
+            --accent: #4a9ec4;
+            --accent-light: #6bb6d8;
+            --accent-dark: #3d7a94;
+            --green: #4a9ec4;
+            --green-dark: #3d7a94;
+            --brand-blue: #5bb5dc;
+            --brand-red: #ff5b68;
+            --teal: #ff5b68;
+            --teal-dark: #e63946;
+            --gold: #4a9ec4;
+            --primary: #f5f5f7;
+            --primary-light: #c2c2cb;
+            --text-dark: #f5f5f7;
+            --text-body: #c2c2cb;
+            --text-muted: #9a9aa6;
+            --bg-light: #16161b;
+            --bg-white: #1b1b21;
+            --border: rgba(255,255,255,0.10);
+            --t-card-bg: #1b1b21;
+            --t-card-border: rgba(255,255,255,0.10);
+            --t-card-blur: 0px;
+            --t-section-bg: #0e0e11;
+            --t-section-alt-bg: #16161b;
+            --t-nav-bg: rgba(14,14,17,0.85);
+            --t-nav-blur: 20px;
+            --t-nav-shadow: 0 1px 0 rgba(255,255,255,0.06);
+            --t-hero-bg: #0e0e11;
+            --t-text-dark: #f5f5f7;
+            --t-text-body: #c2c2cb;
+            --t-text-muted: #9a9aa6;
+            --t-footer-bg: #16161b;
+            --t-badge-bg: #1b1b21;
+            --t-item-bg: #1f1f26;
+            --t-item-border: rgba(255,255,255,0.10);
+            --t-canvas-opacity: 0.45;
+            --t-photo-bg: linear-gradient(145deg, #16161b 0%, #25252e 50%, #1b1b21 100%);
+            color-scheme: dark;
+        }
+        html.theme-dark body { background: var(--t-section-bg); color: var(--t-text-body); }
+        /* The India map PNG has a baked-in light background; in dark mode wrap it
+           in a clean light panel so it reads as an intentional framed map. */
+        html.theme-dark .network-map-inner {
+            background: #f3f3f4;
+            border-radius: 20px;
+            padding: 18px;
+            box-shadow: 0 16px 48px rgba(0,0,0,0.55);
         }
 
         html { scroll-behavior: smooth; font-size: 16px; }
@@ -747,6 +802,77 @@
             gap: 12px;
             flex-shrink: 0;
         }
+
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: rgba(26,26,26,0.08);
+            border: 1px solid rgba(26,26,26,0.15);
+            border-radius: 8px;
+            color: var(--t-text-body);
+            cursor: pointer;
+            transition: var(--transition);
+            flex-shrink: 0;
+            padding: 0;
+        }
+        .theme-toggle:hover {
+            background: rgba(26,26,26,0.16);
+            transform: translateY(-1px);
+        }
+        .theme-toggle svg { display: block; transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); }
+        html.theme-dark .theme-toggle {
+            background: rgba(255,255,255,0.12);
+            border-color: rgba(255,255,255,0.22);
+            color: #f5f5f7;
+        }
+        html.theme-dark .theme-toggle:hover { background: rgba(255,255,255,0.2); }
+        html.theme-dark .theme-toggle svg { transform: rotate(180deg); }
+        @media (max-width: 480px) {
+            .theme-toggle { width: 32px; height: 32px; }
+        }
+
+        /* Legal dropdown in nav */
+        .nav-dropdown { position: relative; }
+        .nav-dropdown-toggle {
+            display: inline-flex; align-items: center; gap: 4px;
+            cursor: pointer; user-select: none;
+        }
+        .nav-dropdown-menu {
+            position: absolute; top: 100%; left: 50%;
+            transform: translateX(-50%) translateY(12px);
+            display: flex; flex-direction: column;
+            min-width: 210px; padding: 8px;
+            background: var(--t-card-bg, #fff);
+            border: 1px solid var(--t-card-border, rgba(0,0,0,0.08));
+            border-radius: 12px;
+            box-shadow: 0 14px 36px rgba(0,0,0,0.14);
+            opacity: 0; visibility: hidden;
+            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+            z-index: 1100;
+        }
+        .nav-dropdown:hover .nav-dropdown-menu,
+        .nav-dropdown.open .nav-dropdown-menu {
+            opacity: 1; visibility: visible;
+            transform: translateX(-50%) translateY(8px);
+        }
+        .nav-dropdown-menu a {
+            padding: 10px 14px !important;
+            border-radius: 8px;
+            white-space: nowrap;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+        .nav-dropdown-menu a:hover { background: var(--t-item-bg, rgba(91,181,220,0.1)); color: var(--accent); }
+        /* Mobile: show submenu inline */
+        .nav-links.active .nav-dropdown { width: 100%; }
+        .nav-links.active .nav-dropdown-menu {
+            position: static; transform: none; opacity: 1; visibility: visible;
+            box-shadow: none; border: none; background: transparent;
+            min-width: 0; padding: 0 0 0 16px;
+        }
+        .nav-links.active .nav-dropdown-toggle { justify-content: space-between; }
 
         .hamburger {
             display: none;
@@ -2600,7 +2726,6 @@
             margin-bottom: 56px;
         }
 
-        .partners-header .section-label,
         .partners-header .section-title,
         .partners-header .section-desc {
             color: #FFFFFF;
@@ -2610,9 +2735,12 @@
 
         .partners-header .section-desc { margin: 0 auto; color: var(--text-body); }
 
-        .partners-header .section-label,
         .partners-header .section-title {
             color: var(--text-dark);
+            text-shadow: none;
+        }
+        .partners-header .section-label {
+            color: var(--accent);
             text-shadow: none;
         }
         .partners-header .section-desc {
@@ -3709,8 +3837,19 @@
                 <a href="#services" data-i18n="nav_services">Services</a>
                 <a href="#network" data-i18n="nav_network">Network</a>
                 <a href="#partners" data-i18n="nav_partners">Partners</a>
-                <a href="#board" data-i18n="nav_leadership">Leadership</a>
+                <a href="#board" data-i18n="nav_leadership">Boards & Leadership</a>
                 <a href="#calculator" data-i18n="nav_calculator">Loan Calculator</a>
+                <div class="nav-dropdown" id="legalDropdown">
+                    <a role="button" tabindex="0" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" onclick="toggleNavDropdown(this)">
+                        <span data-i18n="nav_legal">Legal</span>
+                        <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+                    </a>
+                    <div class="nav-dropdown-menu">
+                        <a href="legal/privacy/" data-i18n="footer_privacy">Privacy Policy</a>
+                        <a href="legal/terms/" data-i18n="footer_terms">Terms & Conditions</a>
+                        <a href="legal/posh/" data-i18n="footer_pos">POSH</a>
+                    </div>
+                </div>
                 <a href="#contact" class="nav-cta" data-i18n="nav_contact">Contact Us</a>
             </div>
             <div class="nav-right">
@@ -3730,6 +3869,9 @@
                         <button class="lang-option" onclick="setLanguage('ml')" title="മലയാളം"><span class="lang-icon">അ</span></button>
                     </div>
                 </div>
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg>
+                </button>
                 <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Toggle menu">
                     <span></span><span></span><span></span>
                 </button>
@@ -3757,7 +3899,7 @@
                             <p data-i18n="stat_states">States Covered</p>
                         </div>
                         <div class="hero-stat">
-                            <h3>60K+</h3>
+                            <h3>100K+</h3>
                             <p data-i18n="stat_loans">Loans Disbursed</p>
                         </div>
                         <div class="hero-stat">
@@ -3924,8 +4066,8 @@
                         </svg>
                     </div>
                     <div class="trust-card-line"></div>
-                    <h4 data-i18n="trust_customers">50,000+ Customers</h4>
-                    <p data-i18n="trust_customers_desc">Trusted by thousands of families across 10+ states in India</p>
+                    <h4 data-i18n="trust_customers">1,00,000+ Customers</h4>
+                    <p data-i18n="trust_customers_desc">Trusted by thousands of families across 8 states in India</p>
                 </div>
                 <div class="trust-card reveal reveal-delay-3">
                     <div class="trust-card-icon trust-icon-comply" style="background: linear-gradient(135deg, rgba(230,57,70,0.1), rgba(91,181,220,0.05)); color: #E63946; border: 1px solid rgba(230,57,70,0.1);">
@@ -4024,7 +4166,7 @@
                 <div class="about-image-wrapper reveal" style="position:relative;">
                     <img src="Images/rapid-loans.png" alt="Rapid Loans - empowering rural India with technology-driven microloans" class="about-image" style="object-fit:cover; border-radius:20px;">
                     <div class="about-image-badge">
-                        <h3 data-i18n="about_since">Since 2020</h3>
+                        <h3 data-i18n="about_since">Since 2024</h3>
                         <p data-i18n="about_serving">Serving Rural India</p>
                     </div>
                 </div>
@@ -4083,27 +4225,6 @@
                         </div>
                         <h3 data-i18n="svc3_title">Collection & Servicing</h3>
                         <p data-i18n="svc3_desc">Automated collection management with real-time tracking, digital payment options, and intelligent follow-up workflows for borrowers.</p>
-                    </div>
-                    <div class="service-card" data-pos="hidden">
-                        <div class="service-icon svc-icon-group" style="background: rgba(91,181,220,0.08); color: var(--accent);">
-                            <svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.8">
-                                <circle class="icon-group-ring" cx="15" cy="15" r="11" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.3"/>
-                                <g class="icon-group-person">
-                                    <circle cx="15" cy="8" r="2.5" fill="currentColor" stroke="none"/>
-                                    <path d="M10 19c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke-width="1.8"/>
-                                </g>
-                                <g class="icon-group-person">
-                                    <circle cx="6" cy="14" r="2" fill="currentColor" stroke="none" opacity="0.7"/>
-                                    <path d="M2 23c0-2.2 1.8-4 4-4s4 1.8 4 4" stroke-width="1.5" opacity="0.7"/>
-                                </g>
-                                <g class="icon-group-person">
-                                    <circle cx="24" cy="14" r="2" fill="currentColor" stroke="none" opacity="0.7"/>
-                                    <path d="M20 23c0-2.2 1.8-4 4-4s4 1.8 4 4" stroke-width="1.5" opacity="0.7"/>
-                                </g>
-                            </svg>
-                        </div>
-                        <h3 data-i18n="svc4_title">Group Lending</h3>
-                        <p data-i18n="svc4_desc">Community-based lending programs designed for self-help groups and joint liability groups, fostering financial inclusion at grassroot levels.</p>
                     </div>
                     <div class="service-card" data-pos="hidden">
                         <div class="service-icon svc-icon-credit" style="background: rgba(91,181,220,0.1); color: #5BB5DC;">
@@ -4226,8 +4347,8 @@
                     <div class="map-stats-overlay">
                         <div class="map-stat-pill"><span class="map-stat-dot" style="background:#5BB5DC;"></span> <span data-i18n="map_stat_states">8 States</span></div>
                         <div class="map-stat-pill"><span class="map-stat-dot" style="background:#E63946;"></span> <span data-i18n="map_stat_branches">153 Branches</span></div>
-                        <div class="map-stat-pill"><span class="map-stat-dot" style="background:#E63946;"></span> <span data-i18n="map_stat_aum">300 Crs AUM</span></div>
-                        <div class="map-stat-pill"><span class="map-stat-dot" style="background:#5BB5DC;"></span> <span data-i18n="map_stat_employees2">829 Employees</span></div>
+                        <div class="map-stat-pill"><span class="map-stat-dot" style="background:#5BB5DC;"></span> <span data-i18n="map_stat_aum">440 Crs AUM</span></div>
+                        <div class="map-stat-pill"><span class="map-stat-dot" style="background:#E63946;"></span> <span data-i18n="map_stat_employees2">700+ Employees</span></div>
                     </div>
                 </div>
             </div>
@@ -4257,20 +4378,6 @@
                     </div>
                     <div class="partner-card-body">
                         <p data-i18n="partner1_desc">NBFC partner for inclusive microfinance lending across rural India</p>
-                        <div class="partner-stats">
-                            <div class="partner-stat">
-                                <span class="partner-stat-value">15+</span>
-                                <span class="partner-stat-label" data-i18n="pstat_states">States</span>
-                            </div>
-                            <div class="partner-stat">
-                                <span class="partner-stat-value">30K+</span>
-                                <span class="partner-stat-label" data-i18n="pstat_loans">Loans</span>
-                            </div>
-                            <div class="partner-stat">
-                                <span class="partner-stat-value">98%</span>
-                                <span class="partner-stat-label" data-i18n="pstat_approval">Approval Rate</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="partner-card reveal reveal-delay-1">
@@ -4293,20 +4400,6 @@
                     </div>
                     <div class="partner-card-body">
                         <p data-i18n="partner2_desc">Banking partner enabling last-mile financial service delivery</p>
-                        <div class="partner-stats">
-                            <div class="partner-stat">
-                                <span class="partner-stat-value">10+</span>
-                                <span class="partner-stat-label" data-i18n="pstat_states">States</span>
-                            </div>
-                            <div class="partner-stat">
-                                <span class="partner-stat-value">20K+</span>
-                                <span class="partner-stat-label" data-i18n="pstat_accounts">Accounts</span>
-                            </div>
-                            <div class="partner-stat">
-                                <span class="partner-stat-value">4.8★</span>
-                                <span class="partner-stat-label" data-i18n="pstat_rating">Rating</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="partner-card reveal reveal-delay-2">
@@ -4322,20 +4415,6 @@
                     </div>
                     <div class="partner-card-body">
                         <p data-i18n="partner3_desc">Digital lending partner enabling fast, paperless loan origination and disbursement.</p>
-                        <div class="partner-stats">
-                            <div class="partner-stat">
-                                <span class="partner-stat-value">8+</span>
-                                <span class="partner-stat-label" data-i18n="pstat_states">States</span>
-                            </div>
-                            <div class="partner-stat">
-                                <span class="partner-stat-value">15K+</span>
-                                <span class="partner-stat-label" data-i18n="pstat_loans">Loans</span>
-                            </div>
-                            <div class="partner-stat">
-                                <span class="partner-stat-value">48hr</span>
-                                <span class="partner-stat-label" data-i18n="pstat_turnaround">Turnaround</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="partner-card reveal reveal-delay-3">
@@ -4350,21 +4429,7 @@
                         </div>
                     </div>
                     <div class="partner-card-body">
-                        <p data-i18n="partner4_desc">Pan-India NBFC partner offering diversified consumer and small-business credit products.</p>
-                        <div class="partner-stats">
-                            <div class="partner-stat">
-                                <span class="partner-stat-value">25+</span>
-                                <span class="partner-stat-label" data-i18n="pstat_states">States</span>
-                            </div>
-                            <div class="partner-stat">
-                                <span class="partner-stat-value">50K+</span>
-                                <span class="partner-stat-label" data-i18n="pstat_customers">Customers</span>
-                            </div>
-                            <div class="partner-stat">
-                                <span class="partner-stat-value">RBI</span>
-                                <span class="partner-stat-label" data-i18n="pstat_regulated">Regulated</span>
-                            </div>
-                        </div>
+                        <p data-i18n="partner4_desc">Pan-India NBFC partner offering diversified consumer business, housing and personal loan credit products.</p>
                     </div>
                 </div>
             </div>
@@ -4407,9 +4472,9 @@
                     <h3 data-i18n="unity_name">Unity Small Finance Bank</h3>
                     <h4 data-i18n="unity_about_title">About</h4>
                     <p class="disclosure-detail" data-i18n="unity_about_desc">Unity Small Finance Bank Limited is a licensed Small Finance Bank regulated by the Reserve Bank of India (RBI). Formerly known as Centrum Financial Services, the bank commenced operations as a Small Finance Bank on November 1, 2021.</p>
-                    <p class="disclosure-detail"><strong data-i18n="unity_cin_lbl">CIN:</strong> U65100MH2005PLC268018</p>
-                    <p class="disclosure-detail"><strong data-i18n="unity_office_lbl">Registered Office:</strong> <span data-i18n="unity_office_val">Centrum House, CST Road, Vidyanagari Marg, Kalina, Santacruz (East), Mumbai &ndash; 400098</span></p>
-                    <p class="disclosure-detail"><strong data-i18n="unity_ifsc_lbl">IFSC Prefix:</strong> UTBI</p>
+                    <p class="disclosure-detail"><strong data-i18n="unity_cin_lbl">CIN:</strong> U65990DL2021PLC385568</p>
+                    <p class="disclosure-detail"><strong data-i18n="unity_office_lbl">Registered Office:</strong> <span data-i18n="unity_office_val">Unit no. 1201, 1202 &amp; 1203, 12th Floor, Ansal Bhawan, 16, K.G. Marg, New Delhi &ndash; 110001</span></p>
+                    <p class="disclosure-detail"><strong data-i18n="unity_ifsc_lbl">IFSC Prefix:</strong> UNBA</p>
 
                     <h4 data-i18n="unity_svc_title">Services Offered</h4>
                     <p class="disclosure-detail" data-i18n="unity_svc_desc">Sourcing of loan applicants, collection services, borrower servicing during loan tenure, and first-level grievance redressal under the Banking Correspondent (BC) model.</p>
@@ -4462,7 +4527,7 @@
     <section class="section" id="board" style="position: relative; overflow: hidden;">
         <div class="container">
             <div class="reveal" style="text-align:center; margin-bottom:48px;">
-                <span class="section-label">&#9672; <span data-i18n="board_label">Leadership</span></span>
+                <span class="section-label">&#9672; <span data-i18n="board_label">Board Governance</span></span>
                 <h2 class="section-title" data-i18n="board_title">Board of Directors</h2>
                 <p class="section-desc" style="margin:0 auto;"><span data-i18n="board_desc">Visionary leaders driving Rapid Loans' mission to democratize financial access across India.</span></p>
             </div>
@@ -4503,7 +4568,7 @@
     <section class="section" id="management">
         <div class="container">
             <div class="reveal" style="text-align:center; margin-bottom:48px;">
-                <span class="section-label">&#9672; <span data-i18n="mgmt_label">Our People</span></span>
+                <span class="section-label">&#9672; <span data-i18n="mgmt_label">Business Leadership</span></span>
                 <h2 class="section-title" data-i18n="mgmt_title">Management Team</h2>
                 <p class="section-desc" style="margin:0 auto;"><span data-i18n="mgmt_desc">Experienced professionals steering day-to-day operations with precision and purpose.</span></p>
             </div>
@@ -4682,7 +4747,7 @@
                         </a>
                     </div>
                     <p style="margin-top: 20px; font-size: 0.82rem; color: rgba(255,255,255,0.55);" data-i18n="cta_address">
-                        Ground Floor, Raja Complex, Vijay Cross Roads, Navarangpura, Ahmedabad - 380009, Gujarat
+                        Ground Floor, Raja Complex, Vijay Cross Roads, Navarangpura, Ahmedabad - 380009, Gujarat, India
                     </p>
                 </div>
             </div>
@@ -4778,21 +4843,20 @@
                     <a href="#services" data-i18n="svc1_title">Microloan Origination</a>
                     <a href="#services" data-i18n="svc2_title">Banking Correspondent</a>
                     <a href="#services" data-i18n="svc3_title">Collection & Servicing</a>
-                    <a href="#services" data-i18n="svc4_title">Group Lending</a>
                 </div>
                 <div class="footer-col">
                     <h4 data-i18n="footer_contact">Contact</h4>
                     <a href="mailto:info@rapidloans.ai">info@rapidloans.ai</a>
                     <a href="tel:+918369495365">+91 83694 95365</a>
-                    <a href="#" data-i18n="footer_ahmedabad">Ahmedabad, Gujarat</a>
-                    <a href="#" data-i18n="footer_mumbai">Mumbai, Maharashtra</a>
+                    <a href="#" data-i18n="footer_ahmedabad">Ahmedabad, Gujarat, India</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p data-i18n="footer_copy">&copy; 2025 Rapid Loans India Pvt. Ltd. All rights reserved.</p>
+                <p data-i18n="footer_copy">&copy; 2026 Rapid Loans India Pvt. Ltd. All rights reserved.</p>
                 <p>
-                    <a href="#terms" onclick="document.getElementById('terms').style.display='block';" style="color: var(--t-text-muted); margin-right: 20px;" data-i18n="footer_terms">Terms & Conditions</a>
-                    <a href="#privacy" onclick="document.getElementById('privacy').style.display='block';" style="color: var(--t-text-muted);" data-i18n="footer_privacy">Privacy Policy</a>
+                    <a href="legal/terms/" style="color: var(--t-text-muted); margin-right: 20px;" data-i18n="footer_terms">Terms & Conditions</a>
+                    <a href="legal/privacy/" style="color: var(--t-text-muted); margin-right: 20px;" data-i18n="footer_privacy">Privacy Policy</a>
+                    <a href="legal/posh/" style="color: var(--t-text-muted);" data-i18n="footer_pos">POSH</a>
                 </p>
             </div>
         </div>
@@ -4835,7 +4899,7 @@
                 about_label: "Who We Are",
                 about_title: "New Age, Tech-First<br>Banking Correspondent",
                 about_desc: "Rapid Loans Private Limited is a Modern Banking Correspondent headquartered in Mumbai with a registered office in Ahmedabad. We partner with Banks and NBFCs to deliver comprehensive loan origination, collection, and servicing through advanced technology - creating an inclusive finance platform for all of India.",
-                about_since: "Since 2020",
+                about_since: "Since 2024",
                 about_serving: "Serving Rural India",
                 feat_origination: "Loan Origination",
                 feat_origination_desc: "End-to-end digital onboarding with AI verification",
@@ -4877,7 +4941,7 @@
                 partner1_desc: "NBFC partner for inclusive microfinance lending across rural India",
                 partner2_desc: "Banking partner enabling last-mile financial service delivery",
                 partner3_desc: "Digital lending partner enabling fast, paperless loan origination and disbursement.",
-                partner4_desc: "Pan-India NBFC partner offering diversified consumer and small-business credit products.",
+                partner4_desc: "Pan-India NBFC partner offering diversified consumer business, housing and personal loan credit products.",
                 fi_name: "FI Lending Solutions Pvt. Ltd.",
                 fi_about_desc: "FI Lending Solutions is a digital lending fintech focused on credit and savings solutions for underserved communities across India.",
                 fi_office_val: "1017, 10th Floor, JMD Megapolis, Tower – A, Sohna Road, Gurugram, Haryana – 122018",
@@ -4892,31 +4956,33 @@
                 smfg_visit: "Visit SMFG India Credit website",
                 cta_title: "Ready to Transform Financial Access?",
                 cta_desc: "Partner with Rapid Loans to bring inclusive financial services to underserved communities. Let's build a financially inclusive India together.",
-                cta_address: "Ground Floor, Raja Complex, Vijay Cross Roads, Navarangpura, Ahmedabad - 380009, Gujarat",
+                cta_address: "Ground Floor, Raja Complex, Vijay Cross Roads, Navarangpura, Ahmedabad - 380009, Gujarat, India",
                 footer_desc: "A Modern Banking Correspondent providing comprehensive loan origination, collection, and servicing through advanced technology across India.",
                 footer_company: "Company",
                 footer_services: "Services",
                 footer_contact: "Contact",
-                footer_ahmedabad: "Ahmedabad, Gujarat",
+                footer_ahmedabad: "Ahmedabad, Gujarat, India",
                 footer_mumbai: "Mumbai, Maharashtra",
-                footer_copy: "&copy; 2025 Rapid Loans India Pvt. Ltd. All rights reserved.",
+                footer_copy: "&copy; 2026 Rapid Loans India Pvt. Ltd. All rights reserved.",
                 footer_terms: "Terms & Conditions",
                 footer_privacy: "Privacy Policy",
+                footer_pos: "POSH",
                 logo_rbi: "Under RBI Regulated Banking Correspondent",
                 trust_rbi: "RBI Regulated",
                 trust_rbi_desc: "Registered Banking Correspondent under Reserve Bank of India guidelines",
                 trust_secure: "Bank-Grade Security",
                 trust_secure_desc: "256-bit SSL encryption, ISO 27001 compliant data protection",
-                trust_customers: "50,000+ Customers",
-                trust_customers_desc: "Trusted by thousands of families across 10+ states in India",
+                trust_customers: "1,00,000+ Customers",
+                trust_customers_desc: "Trusted by thousands of families across 8 states in India",
                 trust_compliant: "100% Compliant",
                 trust_compliant_desc: "Fully compliant with RBI, SEBI & all regulatory frameworks",
-                nav_leadership: 'Leadership',
+                nav_leadership: 'Boards & Leadership',
+                nav_legal: 'Legal',
                 nav_network: 'Network',
-                board_label: 'Leadership',
+                board_label: 'Board Governance',
                 board_title: 'Board of Directors',
                 board_desc: 'Visionary leaders driving Rapid Loans\' mission to democratize financial access across India.',
-                mgmt_label: 'Our People',
+                mgmt_label: 'Business Leadership',
                 mgmt_title: 'Management Team',
                 mgmt_desc: 'Experienced professionals steering day-to-day operations with precision and purpose.',
                 network_label: 'Our Reach',
@@ -4924,8 +4990,8 @@
                 network_desc: 'Expanding financial inclusion across India\'s heartland through a growing network of service points.',
                 map_stat_states: '8 States',
                 map_stat_branches: '153 Branches',
-                map_stat_aum: '300 Crs AUM',
-                map_stat_employees2: '829 Employees',
+                map_stat_aum: '440 Crs AUM',
+                map_stat_employees2: '700+ Employees',
                 disclosure_label: 'Transparency',
                 disclosure_title: 'Partner Disclosures',
                 disclosure_desc: 'Regulatory disclosures for our lending partnerships, ensuring full transparency.',
@@ -4956,7 +5022,7 @@
                 unity_about_desc: 'Unity Small Finance Bank Limited is a licensed Small Finance Bank regulated by the Reserve Bank of India (RBI). Formerly known as Centrum Financial Services, the bank commenced operations as a Small Finance Bank on November 1, 2021.',
                 unity_cin_lbl: 'CIN:',
                 unity_office_lbl: 'Registered Office:',
-                unity_office_val: 'Centrum House, CST Road, Vidyanagari Marg, Kalina, Santacruz (East), Mumbai – 400098',
+                unity_office_val: 'Unit no. 1201, 1202 & 1203, 12th Floor, Ansal Bhawan, 16, K.G. Marg, New Delhi – 110001',
                 unity_ifsc_lbl: 'IFSC Prefix:',
                 unity_svc_title: 'Services Offered',
                 unity_svc_desc: 'Sourcing of loan applicants, collection services, borrower servicing during loan tenure, and first-level grievance redressal under the Banking Correspondent (BC) model.',
@@ -5106,7 +5172,7 @@
                 about_label: "हम कौन हैं",
                 about_title: "नई पीढ़ी का, टेक-फर्स्ट<br>बैंकिंग कॉरेस्पोंडेंट",
                 about_desc: "रैपिड लोन्स प्राइवेट लिमिटेड मुंबई में मुख्यालय और अहमदाबाद में पंजीकृत कार्यालय के साथ एक आधुनिक बैंकिंग कॉरेस्पोंडेंट है। हम बैंकों और NBFCs के साथ साझेदारी करके उन्नत तकनीक के माध्यम से व्यापक ऋण उत्पत्ति, संग्रहण और सेवा प्रदान करते हैं - पूरे भारत के लिए एक समावेशी वित्त मंच बनाते हैं।",
-                about_since: "2020 से",
+                about_since: "2024 से",
                 about_serving: "ग्रामीण भारत की सेवा में",
                 feat_origination: "ऋण उत्पत्ति",
                 feat_origination_desc: "AI सत्यापन के साथ एंड-टू-एंड डिजिटल ऑनबोर्डिंग",
@@ -5148,7 +5214,7 @@
                 partner1_desc: "ग्रामीण भारत में समावेशी माइक्रोफाइनेंस ऋण के लिए NBFC साझेदार",
                 partner2_desc: "अंतिम-मील वित्तीय सेवा वितरण सक्षम करने वाला बैंकिंग साझेदार",
                 partner3_desc: "तेज़, कागज़-रहित ऋण उत्पत्ति और वितरण को सक्षम करने वाला डिजिटल ऋण साझेदार।",
-                partner4_desc: "विविध उपभोक्ता और लघु-व्यवसाय ऋण उत्पाद प्रदान करने वाला अखिल भारतीय NBFC साझेदार।",
+                partner4_desc: "विविध उपभोक्ता व्यवसाय, गृह और व्यक्तिगत ऋण क्रेडिट उत्पाद प्रदान करने वाला अखिल भारतीय NBFC साझेदार।",
                 fi_name: "एफआई लेंडिंग सॉल्यूशंस प्राइवेट लिमिटेड",
                 fi_about_desc: "FI Lending Solutions एक डिजिटल लेंडिंग फिनटेक है जो भारत भर के वंचित समुदायों के लिए ऋण और बचत समाधानों पर केंद्रित है।",
                 fi_office_val: "1017, 10वीं मंजिल, JMD मेगापोलिस, टावर – A, सोहना रोड, गुरुग्राम, हरियाणा – 122018",
@@ -5163,31 +5229,33 @@
                 smfg_visit: "SMFG India Credit वेबसाइट देखें",
                 cta_title: "वित्तीय पहुंच को बदलने के लिए तैयार हैं?",
                 cta_desc: "वंचित समुदायों में समावेशी वित्तीय सेवाएं लाने के लिए रैपिड लोन्स के साथ भागीदारी करें। आइए मिलकर एक वित्तीय रूप से समावेशी भारत का निर्माण करें।",
-                cta_address: "ग्राउंड फ्लोर, राजा कॉम्प्लेक्स, विजय क्रॉस रोड्स, नवरंगपुरा, अहमदाबाद - 380009, गुजरात",
+                cta_address: "ग्राउंड फ्लोर, राजा कॉम्प्लेक्स, विजय क्रॉस रोड्स, नवरंगपुरा, अहमदाबाद - 380009, गुजरात, भारत",
                 footer_desc: "एक आधुनिक बैंकिंग कॉरेस्पोंडेंट जो पूरे भारत में उन्नत तकनीक के माध्यम से व्यापक ऋण उत्पत्ति, संग्रहण और सेवा प्रदान करता है।",
                 footer_company: "कंपनी",
                 footer_services: "सेवाएं",
                 footer_contact: "संपर्क",
-                footer_ahmedabad: "अहमदाबाद, गुजरात",
+                footer_ahmedabad: "अहमदाबाद, गुजरात, भारत",
                 footer_mumbai: "मुंबई, महाराष्ट्र",
-                footer_copy: "&copy; 2025 रैपिड लोन्स इंडिया प्रा. लि. सर्वाधिकार सुरक्षित।",
+                footer_copy: "&copy; 2026 रैपिड लोन्स इंडिया प्रा. लि. सर्वाधिकार सुरक्षित।",
                 footer_terms: "नियम और शर्तें",
                 footer_privacy: "गोपनीयता नीति",
+                footer_pos: "POSH",
                 logo_rbi: "RBI विनियमित बैंकिंग कॉरेस्पोंडेंट के अंतर्गत",
                 trust_rbi: "RBI विनियमित",
                 trust_rbi_desc: "भारतीय रिज़र्व बैंक दिशानिर्देशों के तहत पंजीकृत बैंकिंग कॉरेस्पोंडेंट",
                 trust_secure: "बैंक-ग्रेड सुरक्षा",
                 trust_secure_desc: "256-बिट SSL एन्क्रिप्शन, ISO 27001 अनुपालित डेटा सुरक्षा",
-                trust_customers: "50,000+ ग्राहक",
-                trust_customers_desc: "भारत के 10+ राज्यों में हजारों परिवारों द्वारा विश्वसनीय",
+                trust_customers: "1,00,000+ ग्राहक",
+                trust_customers_desc: "भारत के 8 राज्यों में हजारों परिवारों द्वारा विश्वसनीय",
                 trust_compliant: "100% अनुपालित",
                 trust_compliant_desc: "RBI, SEBI और सभी नियामक ढांचे के साथ पूर्ण अनुपालन",
-                nav_leadership: 'नेतृत्व',
+                nav_leadership: 'बोर्ड और नेतृत्व',
+                nav_legal: 'कानूनी',
                 nav_network: 'नेटवर्क',
-                board_label: 'नेतृत्व',
+                board_label: 'बोर्ड गवर्नेंस',
                 board_title: 'निदेशक मंडल',
                 board_desc: 'भारत भर में वित्तीय पहुँच को लोकतांत्रिक बनाने के रैपिड लोन्स के मिशन को आगे बढ़ाने वाले दूरदर्शी नेता।',
-                mgmt_label: 'हमारे लोग',
+                mgmt_label: 'व्यापार नेतृत्व',
                 mgmt_title: 'प्रबंधन टीम',
                 mgmt_desc: 'सटीकता और उद्देश्य के साथ दैनिक संचालन का मार्गदर्शन करने वाले अनुभवी पेशेवर।',
                 network_label: 'हमारी पहुँच',
@@ -5195,8 +5263,8 @@
                 network_desc: 'सेवा केंद्रों के बढ़ते नेटवर्क के माध्यम से भारत के हृदय स्थल में वित्तीय समावेशन का विस्तार।',
                 map_stat_states: '8 राज्य',
                 map_stat_branches: '153 शाखाएं',
-                map_stat_aum: '300 करोड़ AUM',
-                map_stat_employees2: '829 कर्मचारी',
+                map_stat_aum: '440 करोड़ AUM',
+                map_stat_employees2: '700+ कर्मचारी',
                 disclosure_label: 'पारदर्शिता',
                 disclosure_title: 'साझेदार प्रकटीकरण',
                 disclosure_desc: 'पूर्ण पारदर्शिता सुनिश्चित करते हुए हमारी ऋण साझेदारियों के लिए नियामक प्रकटीकरण।',
@@ -5227,7 +5295,7 @@
                 unity_about_desc: 'यूनिटी स्मॉल फाइनेंस बैंक लिमिटेड भारतीय रिज़र्व बैंक (RBI) द्वारा विनियमित एक लाइसेंस प्राप्त स्मॉल फाइनेंस बैंक है। पूर्व में सेंट्रम फाइनेंशियल सर्विसेज के नाम से जाना जाता था, बैंक ने १ नवंबर, २०२१ को स्मॉल फाइनेंस बैंक के रूप में परिचालन शुरू किया।',
                 unity_cin_lbl: 'CIN:',
                 unity_office_lbl: 'पंजीकृत कार्यालय:',
-                unity_office_val: 'सेंट्रम हाउस, CST रोड, विद्यानगरी मार्ग, कलिना, सांताक्रूज़ (पूर्व), मुंबई – ४०००९८',
+                unity_office_val: 'Unit no. 1201, 1202 & 1203, 12th Floor, Ansal Bhawan, 16, K.G. Marg, New Delhi – 110001',
                 unity_ifsc_lbl: 'IFSC प्रीफिक्स:',
                 unity_svc_title: 'प्रदान की जाने वाली सेवाएं',
                 unity_svc_desc: 'बैंकिंग कॉरेस्पोंडेंट (BC) मॉडल के तहत ऋण आवेदकों की सोर्सिंग, संग्रहण सेवाएं, ऋण अवधि के दौरान उधारकर्ता सेवा, और प्रथम-स्तरीय शिकायत निवारण।',
@@ -5377,7 +5445,7 @@
                 about_label: "અમે કોણ છીએ",
                 about_title: "નવા યુગનું, ટેક-ફર્સ્ટ<br>બેંકિંગ કોરસ્પોન્ડન્ટ",
                 about_desc: "રેપિડ લોન્સ પ્રાઈવેટ લિમિટેડ મુંબઈ મુખ્યાલય અને અમદાવાદમાં રજિસ્ટર્ડ ઓફિસ ધરાવતું આધુનિક બેંકિંગ કોરસ્પોન્ડન્ટ છે. અમે બેંકો અને NBFCs સાથે ભાગીદારી કરીને અદ્યતન ટેકનોલોજી દ્વારા વ્યાપક લોન ઓરિજિનેશન, કલેક્શન અને સર્વિસિંગ પ્રદાન કરીએ છીએ - સમગ્ર ભારત માટે સમાવેશી નાણાં પ્લેટફોર્મ બનાવીએ છીએ.",
-                about_since: "2020 થી",
+                about_since: "2024 થી",
                 about_serving: "ગ્રામીણ ભારતની સેવામાં",
                 feat_origination: "લોન ઓરિજિનેશન",
                 feat_origination_desc: "AI ચકાસણી સાથે એન્ડ-ટુ-એન્ડ ડિજિટલ ઓનબોર્ડિંગ",
@@ -5419,7 +5487,7 @@
                 partner1_desc: "ગ્રામીણ ભારતમાં સમાવેશી માઇક્રોફાઇનાન્સ ધિરાણ માટે NBFC ભાગીદાર",
                 partner2_desc: "અંતિમ-માઈલ નાણાકીય સેવા વિતરણ સક્ષમ કરતા બેંકિંગ ભાગીદાર",
                 partner3_desc: "ઝડપી, કાગળ-રહિત લોન ઉદ્ભવ અને વિતરણ સક્ષમ કરતા ડિજિટલ લેન્ડિંગ ભાગીદાર.",
-                partner4_desc: "વૈવિધ્યસભર ઉપભોક્તા અને નાના વ્યવસાય ધિરાણ ઉત્પાદનો પ્રદાન કરતા સમગ્ર ભારત NBFC ભાગીદાર.",
+                partner4_desc: "વૈવિધ્યસભર ઉપભોક્તા વ્યવસાય, હાઉસિંગ અને વ્યક્તિગત લોન ધિરાણ ઉત્પાદનો પ્રદાન કરતા સમગ્ર ભારત NBFC ભાગીદાર.",
                 fi_name: "એફઆઇ લેન્ડિંગ સોલ્યુશન્સ પ્રા. લિ.",
                 fi_about_desc: "FI Lending Solutions એ એક ડિજિટલ લેન્ડિંગ ફિનટેક છે જે ભારત ભરના વંચિત સમુદાયો માટે ઋણ અને બચત ઉકેલો પર કેન્દ્રિત છે.",
                 fi_office_val: "1017, 10મો માળ, JMD મેગાપોલિસ, ટાવર – A, સોહના રોડ, ગુરુગ્રામ, હરિયાણા – 122018",
@@ -5434,31 +5502,33 @@
                 smfg_visit: "SMFG India Credit વેબસાઇટ જુઓ",
                 cta_title: "નાણાકીય પહોંચ બદલવા તૈયાર છો?",
                 cta_desc: "વંચિત સમુદાયોમાં સમાવેશી નાણાકીય સેવાઓ લાવવા રેપિડ લોન્સ સાથે ભાગીદારી કરો. ચાલો સાથે મળીને નાણાકીય રીતે સમાવેશી ભારતનું નિર્માણ કરીએ.",
-                cta_address: "ગ્રાઉન્ડ ફ્લોર, રાજા કોમ્પ્લેક્સ, વિજય ક્રોસ રોડ્સ, નવરંગપુરા, અમદાવાદ - 380009, ગુજરાત",
+                cta_address: "ગ્રાઉન્ડ ફ્લોર, રાજા કોમ્પ્લેક્સ, વિજય ક્રોસ રોડ્સ, નવરંગપુરા, અમદાવાદ - 380009, ગુજરાત, ભારત",
                 footer_desc: "એક આધુનિક બેંકિંગ કોરસ્પોન્ડન્ટ જે સમગ્ર ભારતમાં અદ્યતન ટેકનોલોજી દ્વારા વ્યાપક લોન ઓરિજિનેશન, કલેક્શન અને સર્વિસિંગ પ્રદાન કરે છે.",
                 footer_company: "કંપની",
                 footer_services: "સેવાઓ",
                 footer_contact: "સંપર્ક",
-                footer_ahmedabad: "અમદાવાદ, ગુજરાત",
+                footer_ahmedabad: "અમદાવાદ, ગુજરાત, ભારત",
                 footer_mumbai: "મુંબઈ, મહારાષ્ટ્ર",
-                footer_copy: "&copy; 2025 રેપિડ લોન્સ ઈન્ડિયા પ્રા. લિ. સર્વાધિકાર સુરક્ષિત.",
+                footer_copy: "&copy; 2026 રેપિડ લોન્સ ઈન્ડિયા પ્રા. લિ. સર્વાધિકાર સુરક્ષિત.",
                 footer_terms: "નિયમો અને શરતો",
                 footer_privacy: "ગોપનીયતા નીતિ",
+                footer_pos: "POSH",
                 logo_rbi: "RBI નિયમિત બેંકિંગ કોરસ્પોન્ડન્ટ હેઠળ",
                 trust_rbi: "RBI નિયમિત",
                 trust_rbi_desc: "ભારતીય રિઝર્વ બેંક માર્ગદર્શિકા હેઠળ નોંધાયેલ બેંકિંગ કોરસ્પોન્ડન્ટ",
                 trust_secure: "બેંક-ગ્રેડ સુરક્ષા",
                 trust_secure_desc: "256-બિટ SSL એન્ક્રિપ્શન, ISO 27001 અનુપાલિત ડેટા સુરક્ષા",
-                trust_customers: "50,000+ ગ્રાહકો",
-                trust_customers_desc: "ભારતના 10+ રાજ્યોમાં હજારો પરિવારો દ્વારા વિશ્વસનીય",
+                trust_customers: "1,00,000+ ગ્રાહકો",
+                trust_customers_desc: "ભારતના 8 રાજ્યોમાં હજારો પરિવારો દ્વારા વિશ્વસનીય",
                 trust_compliant: "100% અનુપાલિત",
                 trust_compliant_desc: "RBI, SEBI અને તમામ નિયમનકારી માળખા સાથે સંપૂર્ણ અનુપાલન",
-                nav_leadership: 'નેતૃત્વ',
+                nav_leadership: 'બોર્ડ અને નેતૃત્વ',
+                nav_legal: 'કાનૂની',
                 nav_network: 'નેટવર્ક',
-                board_label: 'નેતૃત્વ',
+                board_label: 'બોર્ડ ગવર્નન્સ',
                 board_title: 'નિયામક મંડળ',
                 board_desc: 'ભારતભરમાં નાણાકીય પહોંચને લોકતાંત્રિક બનાવવાના રેપિડ લોન્સના મિશનને આગળ વધારતા દૂરદર્શી નેતાઓ।',
-                mgmt_label: 'અમારા લોકો',
+                mgmt_label: 'બિઝનેસ નેતૃત્વ',
                 mgmt_title: 'વ્યવસ્થાપન ટીમ',
                 mgmt_desc: 'ચોકસાઈ અને હેતુ સાથે દૈનિક કામગીરીનું માર્ગદર્શન કરતા અનુભવી વ્યાવસાયિકો।',
                 network_label: 'અમારી પહોંચ',
@@ -5466,8 +5536,8 @@
                 network_desc: 'સેવા કેન્દ્રોના વધતા નેટવર્ક દ્વારા ભારતના હૃદય પ્રદેશમાં નાણાકીય સમાવેશનનો વિસ્તાર।',
                 map_stat_states: '8 રાજ્યો',
                 map_stat_branches: '153 શાખાઓ',
-                map_stat_aum: '300 કરોડ AUM',
-                map_stat_employees2: '829 કર્મચારીઓ',
+                map_stat_aum: '440 કરોડ AUM',
+                map_stat_employees2: '700+ કર્મચારીઓ',
                 disclosure_label: 'પારદર્શિતા',
                 disclosure_title: 'ભાગીદાર જાહેરાતો',
                 disclosure_desc: 'સંપૂર્ણ પારદર્શિતા સુનિશ્ચિત કરતા અમારી ધિરાણ ભાગીદારી માટે નિયમનકારી જાહેરાતો।',
@@ -5498,7 +5568,7 @@
                 unity_about_desc: 'યુનિટી સ્મોલ ફાઇનાન્સ બેંક લિમિટેડ ભારતીય રિઝર્વ બેંક (RBI) દ્વારા નિયંત્રિત એક લાઇસન્સ પ્રાપ્ત સ્મોલ ફાઇનાન્સ બેંક છે। અગાઉ સેન્ટ્રમ ફાઇનાન્શિયલ સર્વિસેઝ તરીકે ઓળખાતી, બેંકે ૧ નવેમ્બર, ૨૦૨૧ ના રોજ સ્મોલ ફાઇનાન્સ બેંક તરીકે કામગીરી શરૂ કરી.',
                 unity_cin_lbl: 'CIN:',
                 unity_office_lbl: 'નોંધાયેલ કાર્યાલય:',
-                unity_office_val: 'સેન્ટ્રમ હાઉસ, CST રોડ, વિદ્યાનગરી માર્ગ, કલિના, સાંતાક્રુઝ (પૂર્વ), મુંબઈ – ૪૦૦૦૯૮',
+                unity_office_val: 'Unit no. 1201, 1202 & 1203, 12th Floor, Ansal Bhawan, 16, K.G. Marg, New Delhi – 110001',
                 unity_ifsc_lbl: 'IFSC પ્રીફિક્સ:',
                 unity_svc_title: 'આપવામાં આવતી સેવાઓ',
                 unity_svc_desc: 'બેંકિંગ કોરસ્પોન્ડન્ટ (BC) મોડલ હેઠળ લોન અરજદારોની સોર્સિંગ, વસૂલાત સેવાઓ, લોન અવધિ દરમિયાન ઉધારકર્તા સેવા, અને પ્રથમ-સ્તરીય ફરિયાદ નિવારણ.',
@@ -5648,7 +5718,7 @@
                 about_label: "आम्ही कोण आहोत",
                 about_title: "नव्या युगाचे, टेक-फर्स्ट<br>बँकिंग कॉरस्पॉन्डंट",
                 about_desc: "रॅपिड लोन्स प्रायव्हेट लिमिटेड हे मुंबईत मुख्यालय आणि अहमदाबादमध्ये नोंदणीकृत कार्यालय असलेले आधुनिक बँकिंग कॉरस्पॉन्डंट आहे. आम्ही बँका आणि NBFCs सोबत भागीदारी करून प्रगत तंत्रज्ञानाद्वारे सर्वसमावेशक कर्ज उत्पत्ती, वसुली आणि सेवा प्रदान करतो - संपूर्ण भारतासाठी सर्वसमावेशक वित्त व्यासपीठ तयार करतो.",
-                about_since: "2020 पासून",
+                about_since: "2024 पासून",
                 about_serving: "ग्रामीण भारताच्या सेवेत",
                 feat_origination: "कर्ज उत्पत्ती",
                 feat_origination_desc: "AI सत्यापनासह एंड-टू-एंड डिजिटल ऑनबोर्डिंग",
@@ -5690,7 +5760,7 @@
                 partner1_desc: "ग्रामीण भारतातील सर्वसमावेशक मायक्रोफायनान्स कर्जासाठी NBFC भागीदार",
                 partner2_desc: "शेवटच्या टप्प्यापर्यंत आर्थिक सेवा वितरण सक्षम करणारा बँकिंग भागीदार",
                 partner3_desc: "वेगवान, कागदविरहित कर्ज प्रक्रिया आणि वितरण सक्षम करणारा डिजिटल कर्ज भागीदार.",
-                partner4_desc: "वैविध्यपूर्ण ग्राहक आणि लघु-व्यवसाय कर्ज उत्पादने पुरवणारा अखिल भारतीय NBFC भागीदार.",
+                partner4_desc: "वैविध्यपूर्ण ग्राहक व्यवसाय, गृह आणि वैयक्तिक कर्ज क्रेडिट उत्पादने पुरवणारा अखिल भारतीय NBFC भागीदार.",
                 fi_name: "एफआय लेंडिंग सोल्युशन्स प्रा. लि.",
                 fi_about_desc: "FI Lending Solutions ही एक डिजिटल कर्ज देणारी फिनटेक आहे जी भारतभरातील वंचित समुदायांसाठी कर्ज आणि बचत उपायांवर लक्ष केंद्रित करते.",
                 fi_office_val: "1017, 10वा मजला, JMD मेगापोलिस, टॉवर – A, सोहना रोड, गुरुग्राम, हरियाणा – 122018",
@@ -5705,31 +5775,33 @@
                 smfg_visit: "SMFG India Credit वेबसाइट पाहा",
                 cta_title: "आर्थिक प्रवेश बदलण्यास तयार आहात?",
                 cta_desc: "वंचित समुदायांमध्ये सर्वसमावेशक आर्थिक सेवा आणण्यासाठी रॅपिड लोन्ससोबत भागीदारी करा. चला मिळून आर्थिकदृष्ट्या सर्वसमावेशक भारत बनवूया.",
-                cta_address: "ग्राउंड फ्लोर, राजा कॉम्प्लेक्स, विजय क्रॉस रोड्स, नवरंगपुरा, अहमदाबाद - 380009, गुजरात",
+                cta_address: "ग्राउंड फ्लोर, राजा कॉम्प्लेक्स, विजय क्रॉस रोड्स, नवरंगपुरा, अहमदाबाद - 380009, गुजरात, भारत",
                 footer_desc: "एक आधुनिक बँकिंग कॉरस्पॉन्डंट जे संपूर्ण भारतात प्रगत तंत्रज्ञानाद्वारे सर्वसमावेशक कर्ज उत्पत्ती, वसुली आणि सेवा प्रदान करते.",
                 footer_company: "कंपनी",
                 footer_services: "सेवा",
                 footer_contact: "संपर्क",
-                footer_ahmedabad: "अहमदाबाद, गुजरात",
+                footer_ahmedabad: "अहमदाबाद, गुजरात, भारत",
                 footer_mumbai: "मुंबई, महाराष्ट्र",
-                footer_copy: "&copy; 2025 रॅपिड लोन्स इंडिया प्रा. लि. सर्व हक्क राखीव.",
+                footer_copy: "&copy; 2026 रॅपिड लोन्स इंडिया प्रा. लि. सर्व हक्क राखीव.",
                 footer_terms: "अटी आणि शर्ती",
                 footer_privacy: "गोपनीयता धोरण",
+                footer_pos: "POSH",
                 logo_rbi: "RBI नियमित बँकिंग कॉरस्पॉन्डंट अंतर्गत",
                 trust_rbi: "RBI नियमित",
                 trust_rbi_desc: "भारतीय रिझर्व्ह बँक मार्गदर्शक तत्त्वांनुसार नोंदणीकृत बँकिंग कॉरस्पॉन्डंट",
                 trust_secure: "बँक-ग्रेड सुरक्षा",
                 trust_secure_desc: "256-बिट SSL एन्क्रिप्शन, ISO 27001 अनुपालित डेटा संरक्षण",
-                trust_customers: "50,000+ ग्राहक",
-                trust_customers_desc: "भारतातील 10+ राज्यांमधील हजारो कुटुंबांचा विश्वास",
+                trust_customers: "1,00,000+ ग्राहक",
+                trust_customers_desc: "भारतातील 8 राज्यांमधील हजारो कुटुंबांचा विश्वास",
                 trust_compliant: "100% अनुपालित",
                 trust_compliant_desc: "RBI, SEBI आणि सर्व नियामक चौकटींचे पूर्ण अनुपालन",
-                nav_leadership: 'नेतृत्व',
+                nav_leadership: 'बोर्ड आणि नेतृत्व',
+                nav_legal: 'कायदेशीर',
                 nav_network: 'नेटवर्क',
-                board_label: 'नेतृत्व',
+                board_label: 'बोर्ड गव्हर्नन्स',
                 board_title: 'संचालक मंडळ',
                 board_desc: 'संपूर्ण भारतात आर्थिक प्रवेश लोकशाहीकरणाच्या रॅपिड लोन्सच्या मिशनला पुढे नेणारे दूरदर्शी नेते।',
-                mgmt_label: 'आमचे लोक',
+                mgmt_label: 'व्यवसाय नेतृत्व',
                 mgmt_title: 'व्यवस्थापन संघ',
                 mgmt_desc: 'अचूकता आणि उद्देशाने दैनंदिन कार्ये मार्गदर्शन करणारे अनुभवी व्यावसायिक।',
                 network_label: 'आमची पोहोच',
@@ -5737,8 +5809,8 @@
                 network_desc: 'सेवा केंद्रांच्या वाढत्या नेटवर्कद्वारे भारताच्या हृदयस्थानी आर्थिक समावेशनाचा विस्तार।',
                 map_stat_states: '8 राज्ये',
                 map_stat_branches: '153 शाखा',
-                map_stat_aum: '300 कोटी AUM',
-                map_stat_employees2: '829 कर्मचारी',
+                map_stat_aum: '440 कोटी AUM',
+                map_stat_employees2: '700+ कर्मचारी',
                 disclosure_label: 'पारदर्शकता',
                 disclosure_title: 'भागीदार प्रकटीकरणे',
                 disclosure_desc: 'पूर्ण पारदर्शकता सुनिश्चित करत आमच्या कर्ज भागीदारींसाठी नियामक प्रकटीकरणे।',
@@ -5769,7 +5841,7 @@
                 unity_about_desc: 'युनिटी स्मॉल फायनान्स बँक लिमिटेड ही भारतीय रिझर्व्ह बँक (RBI) द्वारे नियमन केलेली एक परवानाधारक स्मॉल फायनान्स बँक आहे. पूर्वी सेंट्रम फायनान्शियल सर्व्हिसेस म्हणून ओळखली जाणारी, बँकेने १ नोव्हेंबर, २०२१ रोजी स्मॉल फायनान्स बँक म्हणून कार्य सुरू केले.',
                 unity_cin_lbl: 'CIN:',
                 unity_office_lbl: 'नोंदणीकृत कार्यालय:',
-                unity_office_val: 'सेंट्रम हाउस, CST रोड, विद्यानगरी मार्ग, कलिना, सांताक्रूझ (पूर्व), मुंबई – ४०००९८',
+                unity_office_val: 'Unit no. 1201, 1202 & 1203, 12th Floor, Ansal Bhawan, 16, K.G. Marg, New Delhi – 110001',
                 unity_ifsc_lbl: 'IFSC प्रीफिक्स:',
                 unity_svc_title: 'प्रदान केलेल्या सेवा',
                 unity_svc_desc: 'बँकिंग कॉरस्पॉन्डंट (BC) मॉडेल अंतर्गत कर्ज अर्जदारांची सोर्सिंग, वसुली सेवा, कर्ज कालावधीत कर्जदार सेवा, आणि प्रथम-स्तरीय तक्रार निवारण.',
@@ -5919,7 +5991,7 @@
                 about_label: "நாங்கள் யார்",
                 about_title: "புதிய தலைமுறை, தொழில்நுட்ப-முதல்<br>வங்கி நிருபர்",
                 about_desc: "ரேபிட் லோன்ஸ் பிரைவேட் லிமிடெட் மும்பையில் தலைமையகம் மற்றும் அகமதாபாத்தில் பதிவு செய்யப்பட்ட அலுவலகம் கொண்ட ஒரு நவீன வங்கி நிருபர் ஆகும். நாங்கள் வங்கிகள் மற்றும் NBFCகளுடன் கூட்டணி அமைத்து மேம்பட்ட தொழில்நுட்பம் மூலம் விரிவான கடன் உருவாக்கம், வசூல் மற்றும் சேவையை வழங்குகிறோம் - இந்தியா முழுவதும் உள்ளடக்கிய நிதி தளத்தை உருவாக்குகிறோம்.",
-                about_since: "2020 முதல்",
+                about_since: "2024 முதல்",
                 about_serving: "கிராமப்புற இந்தியாவிற்கு சேவை",
                 feat_origination: "கடன் உருவாக்கம்",
                 feat_origination_desc: "AI சரிபார்ப்புடன் எண்ட்-டு-எண்ட் டிஜிட்டல் ஆன்போர்டிங்",
@@ -5961,7 +6033,7 @@
                 partner1_desc: "கிராமப்புற இந்தியாவில் உள்ளடக்கிய மைக்ரோஃபைனான்ஸ் கடனுக்கான NBFC பங்காளி",
                 partner2_desc: "கடைசி-மைல் நிதி சேவை வழங்கலை இயக்கும் வங்கி பங்காளி",
                 partner3_desc: "வேகமான, காகித-இல்லாத கடன் ஆரம்பம் மற்றும் வழங்கலை இயக்கும் டிஜிட்டல் கடன் பங்காளி.",
-                partner4_desc: "பல்வேறு நுகர்வோர் மற்றும் சிறு-வணிக கடன் தயாரிப்புகளை வழங்கும் அகில இந்திய NBFC பங்காளி.",
+                partner4_desc: "பல்வேறு நுகர்வோர் வணிகம், வீட்டுவசதி மற்றும் தனிநபர் கடன் தயாரிப்புகளை வழங்கும் அகில இந்திய NBFC பங்காளி.",
                 fi_name: "எஃப்ஐ லெண்டிங் சொல்யூஷன்ஸ் பிரை. லிட்.",
                 fi_about_desc: "FI Lending Solutions என்பது இந்தியா முழுவதும் உள்ள குறைவாக சேவை செய்யப்பட்ட சமூகங்களுக்கான கடன் மற்றும் சேமிப்பு தீர்வுகளில் கவனம் செலுத்தும் ஒரு டிஜிட்டல் கடன் ஃபின்டெக் ஆகும்.",
                 fi_office_val: "1017, 10வது மாடி, JMD மெகாபோலிஸ், டவர் – A, சோஹ்னா ரோடு, குருகிராம், ஹரியானா – 122018",
@@ -5976,31 +6048,33 @@
                 smfg_visit: "SMFG India Credit இணையதளத்தைப் பார்வையிடவும்",
                 cta_title: "நிதி அணுகலை மாற்ற தயாரா?",
                 cta_desc: "பின்தங்கிய சமூகங்களுக்கு உள்ளடக்கிய நிதி சேவைகளை கொண்டு வர ரேபிட் லோன்ஸுடன் கூட்டணி அமையுங்கள். நிதி ரீதியாக உள்ளடக்கிய இந்தியாவை ஒன்றாக உருவாக்குவோம்.",
-                cta_address: "தரை தளம், ராஜா காம்ப்ளக்ஸ், விஜய் கிராஸ் ரோட்ஸ், நவரங்புரா, அகமதாபாத் - 380009, குஜராத்",
+                cta_address: "தரை தளம், ராஜா காம்ப்ளக்ஸ், விஜய் கிராஸ் ரோட்ஸ், நவரங்புரா, அகமதாபாத் - 380009, குஜராத், இந்தியா",
                 footer_desc: "இந்தியா முழுவதும் மேம்பட்ட தொழில்நுட்பம் மூலம் விரிவான கடன் உருவாக்கம், வசூல் மற்றும் சேவையை வழங்கும் நவீன வங்கி நிருபர்.",
                 footer_company: "நிறுவனம்",
                 footer_services: "சேவைகள்",
                 footer_contact: "தொடர்பு",
-                footer_ahmedabad: "அகமதாபாத், குஜராத்",
+                footer_ahmedabad: "அகமதாபாத், குஜராத், இந்தியா",
                 footer_mumbai: "மும்பை, மகாராஷ்டிரா",
-                footer_copy: "&copy; 2025 ரேபிட் லோன்ஸ் இந்தியா பிரை. லிட். அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.",
+                footer_copy: "&copy; 2026 ரேபிட் லோன்ஸ் இந்தியா பிரை. லிட். அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.",
                 footer_terms: "விதிமுறைகள் & நிபந்தனைகள்",
                 footer_privacy: "தனியுரிமைக் கொள்கை",
+                footer_pos: "POSH",
                 logo_rbi: "RBI ஒழுங்குபடுத்தப்பட்ட வங்கி நிருபர் கீழ்",
                 trust_rbi: "RBI ஒழுங்குபடுத்தப்பட்டது",
                 trust_rbi_desc: "இந்திய ரிசர்வ் வங்கி வழிகாட்டுதல்களின் கீழ் பதிவுசெய்யப்பட்ட வங்கி நிருபர்",
                 trust_secure: "வங்கி-தர பாதுகாப்பு",
                 trust_secure_desc: "256-பிட் SSL குறியாக்கம், ISO 27001 இணக்கமான தரவு பாதுகாப்பு",
-                trust_customers: "50,000+ வாடிக்கையாளர்கள்",
-                trust_customers_desc: "இந்தியாவின் 10+ மாநிலங்களில் ஆயிரக்கணக்கான குடும்பங்களால் நம்பப்படுகிறது",
+                trust_customers: "1,00,000+ வாடிக்கையாளர்கள்",
+                trust_customers_desc: "இந்தியாவின் 8 மாநிலங்களில் ஆயிரக்கணக்கான குடும்பங்களால் நம்பப்படுகிறது",
                 trust_compliant: "100% இணக்கமானது",
                 trust_compliant_desc: "RBI, SEBI & அனைத்து ஒழுங்குமுறை கட்டமைப்புகளுடன் முழு இணக்கம்",
-                nav_leadership: 'தலைமை',
+                nav_leadership: 'வாரியங்கள் & தலைமை',
+                nav_legal: 'சட்டம்',
                 nav_network: 'நெட்வொர்க்',
-                board_label: 'தலைமை',
+                board_label: 'வாரிய ஆளுகை',
                 board_title: 'இயக்குநர்கள் குழு',
                 board_desc: 'இந்தியா முழுவதும் நிதி அணுகலை ஜனநாயகப்படுத்தும் ரேபிட் லோன்ஸின் நோக்கத்தை முன்னெடுக்கும் தொலைநோக்கு தலைவர்கள்।',
-                mgmt_label: 'எங்கள் மக்கள்',
+                mgmt_label: 'வணிகத் தலைமை',
                 mgmt_title: 'நிர்வாகக் குழு',
                 mgmt_desc: 'துல்லியம் மற்றும் நோக்கத்துடன் அன்றாட செயல்பாடுகளை வழிநடத்தும் அனுபவமிக்க நிபுணர்கள்।',
                 network_label: 'எங்கள் வரம்பு',
@@ -6008,8 +6082,8 @@
                 network_desc: 'வளர்ந்து வரும் சேவை மையங்கள் மூலம் இந்தியாவின் உள்நாட்டில் நிதி உள்ளடக்கத்தை விரிவாக்குதல்।',
                 map_stat_states: '8 மாநிலங்கள்',
                 map_stat_branches: '153 கிளைகள்',
-                map_stat_aum: '300 கோடி AUM',
-                map_stat_employees2: '829 ஊழியர்கள்',
+                map_stat_aum: '440 கோடி AUM',
+                map_stat_employees2: '700+ ஊழியர்கள்',
                 disclosure_label: 'வெளிப்படைத்தன்மை',
                 disclosure_title: 'கூட்டாளர் வெளிப்படுத்தல்கள்',
                 disclosure_desc: 'முழு வெளிப்படைத்தன்மையை உறுதிசெய்யும் எங்கள் கடன் கூட்டாண்மைகளுக்கான ஒழுங்குமுறை வெளிப்படுத்தல்கள்।',
@@ -6040,7 +6114,7 @@
                 unity_about_desc: 'யூனிட்டி ஸ்மால் ஃபைனான்ஸ் வங்கி லிமிடெட் இந்திய ரிசர்வ் வங்கி (RBI) மூலம் ஒழுங்குபடுத்தப்பட்ட உரிமம் பெற்ற சிறு நிதி வங்கி ஆகும். முன்னர் சென்ட்ரம் ஃபைனான்சியல் சர்வீசஸ் என்று அறியப்பட்டது, வங்கி ௧ நவம்பர், ௨௦௨௧ அன்று சிறு நிதி வங்கியாக செயல்படத் தொடங்கியது.',
                 unity_cin_lbl: 'CIN:',
                 unity_office_lbl: 'பதிவு செய்யப்பட்ட அலுவலகம்:',
-                unity_office_val: 'சென்ட்ரம் ஹவுஸ், CST ரோட், வித்யாநகரி மார்க், கலினா, சாந்தாக்ருஸ் (கிழக்கு), மும்பை – ௪௦௦௦௯௮',
+                unity_office_val: 'Unit no. 1201, 1202 & 1203, 12th Floor, Ansal Bhawan, 16, K.G. Marg, New Delhi – 110001',
                 unity_ifsc_lbl: 'IFSC முன்னொட்டு:',
                 unity_svc_title: 'வழங்கப்படும் சேவைகள்',
                 unity_svc_desc: 'வங்கி நிருபர் (BC) மாதிரியின் கீழ் கடன் விண்ணப்பதாரர்களின் சோர்சிங், வசூல் சேவைகள், கடன் காலத்தின் போது கடன் வாங்குபவர் சேவை, மற்றும் முதல்-நிலை குறைதீர்ப்பு.',
@@ -6190,7 +6264,7 @@
                 about_label: "ನಾವು ಯಾರು",
                 about_title: "ಹೊಸ ಯುಗದ, ತಂತ್ರಜ್ಞಾನ-ಮೊದಲ<br>ಬ್ಯಾಂಕಿಂಗ್ ಕರೆಸ್ಪಾಂಡೆಂಟ್",
                 about_desc: "ರ‍ಯಾಪಿಡ್ ಲೋನ್ಸ್ ಪ್ರೈವೇಟ್ ಲಿಮಿಟೆಡ್ ಮುಂಬೈನಲ್ಲಿ ಪ್ರಧಾನ ಕಚೇರಿ ಮತ್ತು ಅಹಮದಾಬಾದ್‌ನಲ್ಲಿ ನೋಂದಾಯಿತ ಕಚೇರಿ ಹೊಂದಿರುವ ಆಧುನಿಕ ಬ್ಯಾಂಕಿಂಗ್ ಕರೆಸ್ಪಾಂಡೆಂಟ್ ಆಗಿದೆ. ನಾವು ಬ್ಯಾಂಕ್‌ಗಳು ಮತ್ತು NBFCಗಳೊಂದಿಗೆ ಪಾಲುದಾರಿಕೆ ಮಾಡಿ ಸುಧಾರಿತ ತಂತ್ರಜ್ಞಾನದ ಮೂಲಕ ಸಮಗ್ರ ಸಾಲ ಉತ್ಪತ್ತಿ, ಸಂಗ್ರಹಣೆ ಮತ್ತು ಸೇವೆಯನ್ನು ಒದಗಿಸುತ್ತೇವೆ - ಭಾರತ ಮುಕ್ತವಾಗಿ ಸಮಗ್ರ ಹಣಕಾಸು ವೇದಿಕೆಯನ್ನು ರಚಿಸುತ್ತೇವೆ.",
-                about_since: "2020 ರಿಂದ",
+                about_since: "2024 ರಿಂದ",
                 about_serving: "ಗ್ರಾಮೀಣ ಭಾರತಕ್ಕೆ ಸೇವೆ",
                 feat_origination: "ಸಾಲ ಉತ್ಪತ್ತಿ",
                 feat_origination_desc: "AI ಪರಿಶೀಲನೆಯೊಂದಿಗೆ ಎಂಡ್-ಟು-ಎಂಡ್ ಡಿಜಿಟಲ್ ಆನ್‌ಬೋರ್ಡಿಂಗ್",
@@ -6233,31 +6307,33 @@
                 partner2_desc: "ಕೊನೆಯ-ಮೈಲು ಹಣಕಾಸು ಸೇವಾ ವಿತರಣೆಯನ್ನು ಸಕ್ರಿಯಗೊಳಿಸುವ ಬ್ಯಾಂಕಿಂಗ್ ಪಾಲುದಾರ",
                 cta_title: "ಹಣಕಾಸು ಪ್ರವೇಶವನ್ನು ಬದಲಾಯಿಸಲು ಸಿದ್ಧರೇ?",
                 cta_desc: "ವಂಚಿತ ಸಮುದಾಯಗಳಿಗೆ ಸಮಗ್ರ ಹಣಕಾಸು ಸೇವೆಗಳನ್ನು ತರಲು ರ‍ಯಾಪಿಡ್ ಲೋನ್ಸ್‌ನೊಂದಿಗೆ ಪಾಲುದಾರಿಕೆ ಮಾಡಿ. ಹಣಕಾಸಿನ ಸೇರ್ಪಡೆಯ ಭಾರತವನ್ನು ಒಟ್ಟಾಗಿ ನಿರ್ಮಿಸೋಣ.",
-                cta_address: "ಗ್ರೌಂಡ್ ಫ್ಲೋರ್, ರಾಜಾ ಕಾಂಪ್ಲೆಕ್ಸ್, ವಿಜಯ್ ಕ್ರಾಸ್ ರೋಡ್ಸ್, ನವರಂಗ್‌ಪುರಾ, ಅಹಮದಾಬಾದ್ - 380009, ಗುಜರಾತ್",
+                cta_address: "ಗ್ರೌಂಡ್ ಫ್ಲೋರ್, ರಾಜಾ ಕಾಂಪ್ಲೆಕ್ಸ್, ವಿಜಯ್ ಕ್ರಾಸ್ ರೋಡ್ಸ್, ನವರಂಗ್‌ಪುರಾ, ಅಹಮದಾಬಾದ್ - 380009, ಗುಜರಾತ್, ಭಾರತ",
                 footer_desc: "ಭಾರತದಾದ್ಯಂತ ಸುಧಾರಿತ ತಂತ್ರಜ್ಞಾನದ ಮೂಲಕ ಸಮಗ್ರ ಸಾಲ ಉತ್ಪತ್ತಿ, ಸಂಗ್ರಹಣೆ ಮತ್ತು ಸೇವೆಯನ್ನು ಒದಗಿಸುವ ಆಧುನಿಕ ಬ್ಯಾಂಕಿಂಗ್ ಕರೆಸ್ಪಾಂಡೆಂಟ್.",
                 footer_company: "ಕಂಪನಿ",
                 footer_services: "ಸೇವೆಗಳು",
                 footer_contact: "ಸಂಪರ್ಕ",
-                footer_ahmedabad: "ಅಹಮದಾಬಾದ್, ಗುಜರಾತ್",
+                footer_ahmedabad: "ಅಹಮದಾಬಾದ್, ಗುಜರಾತ್, ಭಾರತ",
                 footer_mumbai: "ಮುಂಬೈ, ಮಹಾರಾಷ್ಟ್ರ",
-                footer_copy: "&copy; 2025 ರ‍ಯಾಪಿಡ್ ಲೋನ್ಸ್ ಇಂಡಿಯಾ ಪ್ರೈ. ಲಿ. ಎಲ್ಲ ಹಕ್ಕುಗಳನ್ನು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ.",
+                footer_copy: "&copy; 2026 ರ‍ಯಾಪಿಡ್ ಲೋನ್ಸ್ ಇಂಡಿಯಾ ಪ್ರೈ. ಲಿ. ಎಲ್ಲ ಹಕ್ಕುಗಳನ್ನು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ.",
                 footer_terms: "ನಿಯಮಗಳು & ಷರತ್ತುಗಳು",
                 footer_privacy: "ಗೌಪ್ಯತಾ ನೀತಿ",
+                footer_pos: "POSH",
                 logo_rbi: "RBI ನಿಯಂತ್ರಿತ ಬ್ಯಾಂಕಿಂಗ್ ಕರೆಸ್ಪಾಂಡೆಂಟ್ ಅಡಿಯಲ್ಲಿ",
                 trust_rbi: "RBI ನಿಯಂತ್ರಿತ",
                 trust_rbi_desc: "ಭಾರತೀಯ ರಿಸರ್ವ್ ಬ್ಯಾಂಕ್ ಮಾರ್ಗಸೂಚಿಗಳ ಅಡಿಯಲ್ಲಿ ನೋಂದಾಯಿತ ಬ್ಯಾಂಕಿಂಗ್ ಕರೆಸ್ಪಾಂಡೆಂಟ್",
                 trust_secure: "ಬ್ಯಾಂಕ್-ಗ್ರೇಡ್ ಭದ್ರತೆ",
                 trust_secure_desc: "256-ಬಿಟ್ SSL ಎನ್‌ಕ್ರಿಪ್ಶನ್, ISO 27001 ಅನುಸರಣೆ ಡೇಟಾ ರಕ್ಷಣೆ",
-                trust_customers: "50,000+ ಗ್ರಾಹಕರು",
-                trust_customers_desc: "ಭಾರತದ 10+ ರಾಜ್ಯಗಳಲ್ಲಿ ಸಾವಿರಾರು ಕುಟುಂಬಗಳಿಂದ ವಿಶ್ವಾಸಾರ್ಹ",
+                trust_customers: "1,00,000+ ಗ್ರಾಹಕರು",
+                trust_customers_desc: "ಭಾರತದ 8 ರಾಜ್ಯಗಳಲ್ಲಿ ಸಾವಿರಾರು ಕುಟುಂಬಗಳಿಂದ ವಿಶ್ವಾಸಾರ್ಹ",
                 trust_compliant: "100% ಅನುಸರಣೆ",
                 trust_compliant_desc: "RBI, SEBI & ಎಲ್ಲಾ ನಿಯಂತ್ರಕ ಚೌಕಟ್ಟುಗಳೊಂದಿಗೆ ಸಂಪೂರ್ಣ ಅನುಸರಣೆ",
-                nav_leadership: 'ನಾಯಕತ್ವ',
+                nav_leadership: 'ಮಂಡಳಿಗಳು & ನಾಯಕತ್ವ',
+                nav_legal: 'ಕಾನೂನು',
                 nav_network: 'ನೆಟ್‌ವರ್ಕ್',
-                board_label: 'ನಾಯಕತ್ವ',
+                board_label: 'ಮಂಡಳಿ ಆಡಳಿತ',
                 board_title: 'ನಿರ್ದೇಶಕರ ಮಂಡಳಿ',
                 board_desc: 'ಭಾರತದಾದ್ಯಂತ ಹಣಕಾಸು ಪ್ರವೇಶವನ್ನು ಪ್ರಜಾಪ್ರಭುತ್ವಗೊಳಿಸುವ ರ‍್ಯಾಪಿಡ್ ಲೋನ್ಸ್ ಧ್ಯೇಯವನ್ನು ಮುನ್ನಡೆಸುವ ದೂರದೃಷ್ಟಿಯ ನಾಯಕರು।',
-                mgmt_label: 'ನಮ್ಮ ಜನರು',
+                mgmt_label: 'ವ್ಯಾಪಾರ ನಾಯಕತ್ವ',
                 mgmt_title: 'ನಿರ್ವಹಣಾ ತಂಡ',
                 mgmt_desc: 'ನಿಖರತೆ ಮತ್ತು ಉದ್ದೇಶದೊಂದಿಗೆ ದೈನಂದಿನ ಕಾರ್ಯಾಚರಣೆಗಳನ್ನು ಮಾರ್ಗದರ್ಶನ ಮಾಡುವ ಅನುಭವಿ ವೃತ್ತಿಪರರು।',
                 network_label: 'ನಮ್ಮ ತಲುಪು',
@@ -6265,8 +6341,8 @@
                 network_desc: 'ಬೆಳೆಯುತ್ತಿರುವ ಸೇವಾ ಕೇಂದ್ರಗಳ ಜಾಲದ ಮೂಲಕ ಭಾರತದ ಹೃದಯಭಾಗದಲ್ಲಿ ಹಣಕಾಸು ಸೇರ್ಪಡೆಯ ವಿಸ್ತರಣೆ।',
                 map_stat_states: '8 ರಾಜ್ಯಗಳು',
                 map_stat_branches: '153 ಶಾಖೆಗಳು',
-                map_stat_aum: '300 ಕೋಟಿ AUM',
-                map_stat_employees2: '829 ಉದ್ಯೋಗಿಗಳು',
+                map_stat_aum: '440 ಕೋಟಿ AUM',
+                map_stat_employees2: '700+ ಉದ್ಯೋಗಿಗಳು',
                 disclosure_label: 'ಪಾರದರ್ಶಕತೆ',
                 disclosure_title: 'ಪಾಲುದಾರ ಬಹಿರಂಗಪಡಿಸುವಿಕೆಗಳು',
                 disclosure_desc: 'ಸಂಪೂರ್ಣ ಪಾರದರ್ಶಕತೆಯನ್ನು ಖಚಿತಪಡಿಸುವ ನಮ್ಮ ಸಾಲ ಪಾಲುದಾರಿಕೆಗಳಿಗೆ ನಿಯಂತ್ರಕ ಬಹಿರಂಗಪಡಿಸುವಿಕೆಗಳು।',
@@ -6297,7 +6373,7 @@
                 unity_about_desc: 'ಯೂನಿಟಿ ಸ್ಮಾಲ್ ಫೈನಾನ್ಸ್ ಬ್ಯಾಂಕ್ ಲಿಮಿಟೆಡ್ ಭಾರತೀಯ ರಿಸರ್ವ್ ಬ್ಯಾಂಕ್ (RBI) ನಿಯಂತ್ರಿತ ಪರವಾನಗಿ ಪಡೆದ ಸ್ಮಾಲ್ ಫೈನಾನ್ಸ್ ಬ್ಯಾಂಕ್ ಆಗಿದೆ. ಹಿಂದೆ ಸೆಂಟ್ರಮ್ ಫೈನಾನ್ಶಿಯಲ್ ಸರ್ವೀಸಸ್ ಎಂದು ಕರೆಯಲ್ಪಡುತ್ತಿತ್ತು, ಬ್ಯಾಂಕ್ ೧ ನವೆಂಬರ್, ೨೦೨೧ ರಂದು ಸ್ಮಾಲ್ ಫೈನಾನ್ಸ್ ಬ್ಯಾಂಕ್ ಆಗಿ ಕಾರ್ಯಾರಂಭ ಮಾಡಿತು.',
                 unity_cin_lbl: 'CIN:',
                 unity_office_lbl: 'ನೋಂದಾಯಿತ ಕಚೇರಿ:',
-                unity_office_val: 'ಸೆಂಟ್ರಮ್ ಹೌಸ್, CST ರೋಡ್, ವಿದ್ಯಾನಗರಿ ಮಾರ್ಗ, ಕಲಿನಾ, ಸಾಂತಾಕ್ರೂಜ್ (ಪೂರ್ವ), ಮುಂಬೈ – ೪೦೦೦೯೮',
+                unity_office_val: 'Unit no. 1201, 1202 & 1203, 12th Floor, Ansal Bhawan, 16, K.G. Marg, New Delhi – 110001',
                 unity_ifsc_lbl: 'IFSC ಪೂರ್ವಪ್ರತ್ಯಯ:',
                 unity_svc_title: 'ನೀಡುವ ಸೇವೆಗಳು',
                 unity_svc_desc: 'ಬ್ಯಾಂಕಿಂಗ್ ಕರೆಸ್ಪಾಂಡೆಂಟ್ (BC) ಮಾದರಿಯಡಿ ಸಾಲ ಅರ್ಜಿದಾರರ ಸೋರ್ಸಿಂಗ್, ವಸೂಲಿ ಸೇವೆಗಳು, ಸಾಲದ ಅವಧಿಯಲ್ಲಿ ಸಾಲಗಾರ ಸೇವೆ, ಮತ್ತು ಪ್ರಥಮ-ಹಂತದ ದೂರು ನಿವಾರಣೆ.',
@@ -6390,7 +6466,7 @@
                 about_label: "మేము ఎవరు",
                 about_title: "కొత్త తరం, టెక్-ఫస్ట్<br>బ్యాంకింగ్ కరస్పాండెంట్",
                 about_desc: "రాపిడ్ లోన్స్ ప్రైవేట్ లిమిటెడ్ ముంబైలో ప్రధాన కార్యాలయం మరియు అహ్మదాబాద్‌లో నమోదిత కార్యాలయం కలిగిన ఆధునిక బ్యాంకింగ్ కరస్పాండెంట్. మేము బ్యాంకులు మరియు NBFCలతో భాగస్వామ్యం చేసి అధునాతన సాంకేతికత ద్వారా సమగ్ర రుణ ఉత్పత్తి, వసూలు మరియు సేవను అందిస్తాము - భారతదేశం మొత్తానికి సమగ్ర ఆర్థిక వేదికను సృష్టిస్తాము.",
-                about_since: "2020 నుండి",
+                about_since: "2024 నుండి",
                 about_serving: "గ్రామీణ భారతదేశానికి సేవ",
                 feat_origination: "రుణ ఉత్పత్తి",
                 feat_origination_desc: "AI ధృవీకరణతో ఎండ్-టు-ఎండ్ డిజిటల్ ఆన్‌బోర్డింగ్",
@@ -6432,7 +6508,7 @@
                 partner1_desc: "గ్రామీణ భారతదేశంలో సమగ్ర మైక్రోఫైనాన్స్ రుణాల కోసం NBFC భాగస్వామి",
                 partner2_desc: "చివరి-మైలు ఆర్థిక సేవా పంపిణీని సాధ్యం చేసే బ్యాంకింగ్ భాగస్వామి",
                 partner3_desc: "వేగవంతమైన, కాగితం లేని రుణ ప్రారంభం మరియు పంపిణీని సాధ్యం చేసే డిజిటల్ లెండింగ్ భాగస్వామి.",
-                partner4_desc: "విభిన్న వినియోగదారు మరియు చిన్న-వ్యాపార క్రెడిట్ ఉత్పత్తులను అందించే అఖిల భారత NBFC భాగస్వామి.",
+                partner4_desc: "విభిన్న వినియోగదారు వ్యాపారం, గృహ మరియు వ్యక్తిగత రుణ క్రెడిట్ ఉత్పత్తులను అందించే అఖిల భారత NBFC భాగస్వామి.",
                 fi_name: "ఎఫ్ఐ లెండింగ్ సొల్యూషన్స్ ప్రై. లి.",
                 fi_about_desc: "FI Lending Solutions అనేది భారతదేశం అంతటా అండర్‌సర్వ్డ్ కమ్యూనిటీలకు రుణం మరియు పొదుపు పరిష్కారాలపై దృష్టి సారించిన డిజిటల్ లెండింగ్ ఫిన్‌టెక్.",
                 fi_office_val: "1017, 10వ అంతస్తు, JMD మెగాపోలిస్, టవర్ – A, సోహ్నా రోడ్, గురుగ్రామ్, హర్యానా – 122018",
@@ -6447,31 +6523,33 @@
                 smfg_visit: "SMFG India Credit వెబ్‌సైట్‌ను సందర్శించండి",
                 cta_title: "ఆర్థిక ప్రాప్తిని మార్చడానికి సిద్ధంగా ఉన్నారా?",
                 cta_desc: "అణగారిన సమాజాలకు సమగ్ర ఆర్థిక సేవలను అందించడానికి రాపిడ్ లోన్స్‌తో భాగస్వామ్యం చేయండి. ఆర్థికంగా సమగ్రమైన భారతదేశాన్ని కలిసి నిర్మిద్దాం.",
-                cta_address: "గ్రౌండ్ ఫ్లోర్, రాజా కాంప్లెక్స్, విజయ్ క్రాస్ రోడ్స్, నవరంగ్‌పురా, అహ్మదాబాద్ - 380009, గుజరాత్",
+                cta_address: "గ్రౌండ్ ఫ్లోర్, రాజా కాంప్లెక్స్, విజయ్ క్రాస్ రోడ్స్, నవరంగ్‌పురా, అహ్మదాబాద్ - 380009, గుజరాత్, భారతదేశం",
                 footer_desc: "భారతదేశం అంతటా అధునాతన సాంకేతికత ద్వారా సమగ్ర రుణ ఉత్పత్తి, వసూలు మరియు సేవను అందించే ఆధునిక బ్యాంకింగ్ కరస్పాండెంట్.",
                 footer_company: "కంపెనీ",
                 footer_services: "సేవలు",
                 footer_contact: "సంప్రదించండి",
-                footer_ahmedabad: "అహ్మదాబాద్, గుజరాత్",
+                footer_ahmedabad: "అహ్మదాబాద్, గుజరాత్, భారతదేశం",
                 footer_mumbai: "ముంబై, మహారాష్ట్ర",
-                footer_copy: "&copy; 2025 రాపిడ్ లోన్స్ ఇండియా ప్రై. లిమి. అన్ని హక్కులు రిజర్వ్ చేయబడ్డాయి.",
+                footer_copy: "&copy; 2026 రాపిడ్ లోన్స్ ఇండియా ప్రై. లిమి. అన్ని హక్కులు రిజర్వ్ చేయబడ్డాయి.",
                 footer_terms: "నిబంధనలు & షరతులు",
                 footer_privacy: "గోప్యతా విధానం",
+                footer_pos: "POSH",
                 logo_rbi: "RBI నియంత్రిత బ్యాంకింగ్ కరస్పాండెంట్ కింద",
                 trust_rbi: "RBI నియంత్రిత",
                 trust_rbi_desc: "భారతీయ రిజర్వ్ బ్యాంక్ మార్గదర్శకాల కింద నమోదిత బ్యాంకింగ్ కరస్పాండెంట్",
                 trust_secure: "బ్యాంక్-గ్రేడ్ భద్రత",
                 trust_secure_desc: "256-బిట్ SSL ఎన్‌క్రిప్షన్, ISO 27001 అనుసరణ డేటా రక్షణ",
-                trust_customers: "50,000+ కస్టమర్లు",
-                trust_customers_desc: "భారతదేశంలో 10+ రాష్ట్రాల్లో వేలాది కుటుంబాల నమ్మకం",
+                trust_customers: "1,00,000+ కస్టమర్లు",
+                trust_customers_desc: "భారతదేశంలో 8 రాష్ట్రాల్లో వేలాది కుటుంబాల నమ్మకం",
                 trust_compliant: "100% అనుసరణ",
                 trust_compliant_desc: "RBI, SEBI & అన్ని నియంత్రణ ఫ్రేమ్‌వర్క్‌లతో పూర్తి అనుసరణ",
-                nav_leadership: 'నాయకత్వం',
+                nav_leadership: 'బోర్డులు & నాయకత్వం',
+                nav_legal: 'చట్టపరమైన',
                 nav_network: 'నెట్‌వర్క్',
-                board_label: 'నాయకత్వం',
+                board_label: 'బోర్డు పాలన',
                 board_title: 'డైరెక్టర్ల బోర్డు',
                 board_desc: 'భారతదేశం అంతటా ఆర్థిక ప్రాప్యతను ప్రజాస్వామ్యీకరించే రాపిడ్ లోన్స్ లక్ష్యాన్ని ముందుకు నడిపిస్తున్న దూరదృష్టి గల నాయకులు।',
-                mgmt_label: 'మా వ్యక్తులు',
+                mgmt_label: 'వ్యాపార నాయకత్వం',
                 mgmt_title: 'నిర్వహణ బృందం',
                 mgmt_desc: 'ఖచ్చితత్వం మరియు ఉద్దేశ్యంతో రోజువారీ కార్యకలాపాలను నడిపించే అనుభవజ్ఞులైన నిపుణులు।',
                 network_label: 'మా వ్యాప్తి',
@@ -6479,8 +6557,8 @@
                 network_desc: 'పెరుగుతున్న సేవా కేంద్రాల నెట్‌వర్క్ ద్వారా భారతదేశ హృదయభాగంలో ఆర్థిక చేరిక విస్తరణ।',
                 map_stat_states: '8 రాష్ట్రాలు',
                 map_stat_branches: '153 శాఖలు',
-                map_stat_aum: '300 కోట్లు AUM',
-                map_stat_employees2: '829 ఉద్యోగులు',
+                map_stat_aum: '440 కోట్లు AUM',
+                map_stat_employees2: '700+ ఉద్యోగులు',
                 disclosure_label: 'పారదర్శకత',
                 disclosure_title: 'భాగస్వామ్య వెల్లడింపులు',
                 disclosure_desc: 'పూర్తి పారదర్శకతను నిర్ధారిస్తూ మా రుణ భాగస్వామ్యాలకు నియంత్రణ వెల్లడింపులు।',
@@ -6511,7 +6589,7 @@
                 unity_about_desc: 'యూనిటీ స్మాల్ ఫైనాన్స్ బ్యాంక్ లిమిటెడ్ భారతీయ రిజర్వ్ బ్యాంక్ (RBI) ద్వారా నియంత్రించబడే లైసెన్స్ పొందిన స్మాల్ ఫైనాన్స్ బ్యాంక్. గతంలో సెంట్రమ్ ఫైనాన్షియల్ సర్వీసెస్ గా పిలువబడేది, బ్యాంక్ ౧ నవంబర్, ౨౦౨౧ న స్మాల్ ఫైనాన్స్ బ్యాంక్ గా కార్యకలాపాలు ప్రారంభించింది.',
                 unity_cin_lbl: 'CIN:',
                 unity_office_lbl: 'నమోదిత కార్యాలయం:',
-                unity_office_val: 'సెంట్రమ్ హౌస్, CST రోడ్, విద్యానగరి మార్గ్, కలినా, సాంతాక్రూజ్ (తూర్పు), ముంబై – ౪౦౦౦౯౮',
+                unity_office_val: 'Unit no. 1201, 1202 & 1203, 12th Floor, Ansal Bhawan, 16, K.G. Marg, New Delhi – 110001',
                 unity_ifsc_lbl: 'IFSC ప్రిఫిక్స్:',
                 unity_svc_title: 'అందించే సేవలు',
                 unity_svc_desc: 'బ్యాంకింగ్ కరస్పాండెంట్ (BC) మోడల్ కింద రుణ దరఖాస్తుదారుల సోర్సింగ్, వసూలు సేవలు, రుణ కాలంలో రుణగ్రహీత సేవ, మరియు ప్రథమ-స్థాయి ఫిర్యాదు పరిష్కారం.',
@@ -6661,7 +6739,7 @@
                 about_label: "আমরা কে",
                 about_title: "নতুন যুগ, প্রযুক্তি-প্রথম<br>ব্যাংকিং সংবাদদাতা",
                 about_desc: "Rapid Loans Private Limited একটি আধুনিক ব্যাংকিং সংবাদদাতা যা মুম্বাইতে অবস্থিত এবং আহমেদাবাদে নিবন্ধিত। আমরা ব্যাংক এবং NBFC-এর সাথে অংশীদারিত্ব করে অত্যাধুনিক প্রযুক্তির মাধ্যমে ব্যাপক ঋণ উৎপাদন, সংগ্রহ এবং সেবা প্রদান করি - ভারতের সকলের জন্য একটি অন্তর্ভুক্তিমূলক আর্থিক প্ল্যাটফর্ম তৈরি করি।",
-                about_since: "২০২০ সাল থেকে",
+                about_since: "২০২৪ সাল থেকে",
                 about_serving: "গ্রামীণ ভারতের সেবা করছি",
                 feat_origination: "ঋণ উৎপাদন",
                 feat_origination_desc: "AI যাচাইকরণ সহ সম্পূর্ণ ডিজিটাল অনবোর্ডিং",
@@ -6704,31 +6782,33 @@
                 partner2_desc: "শেষ মাইল আর্থিক সেবা প্রদান সক্ষম করার জন্য ব্যাংকিং অংশীদার",
                 cta_title: "আর্থিক অ্যাক্সেস রূপান্তরিত করতে প্রস্তুত?",
                 cta_desc: "Rapid Loans-এর সাথে অংশীদারিত্ব করুন অনুন্নত সম্প্রদায়গুলিতে অন্তর্ভুক্তিমূলক আর্থিক সেবা আনতে। আসুন একসাথে একটি আর্থিকভাবে অন্তর্ভুক্তিমূলক ভারত তৈরি করি।",
-                cta_address: "গ্রাউন্ড ফ্লোর, রাজা কমপ্লেক্স, বিজয় ক্রস রোড, নভরঙ্গপুরা, আহমেদাবাদ - ৩৮০০০৯, গুজরাত",
+                cta_address: "গ্রাউন্ড ফ্লোর, রাজা কমপ্লেক্স, বিজয় ক্রস রোড, নভরঙ্গপুরা, আহমেদাবাদ - ৩৮০০০৯, গুজরাত, ভারত",
                 footer_desc: "একটি আধুনিক ব্যাংকিং সংবাদদাতা যা ভারত জুড়ে অত্যাধুনিক প্রযুক্তির মাধ্যমে ব্যাপক ঋণ উৎপাদন, সংগ্রহ এবং সেবা প্রদান করছে।",
                 footer_company: "কোম্পানি",
                 footer_services: "সেবাসমূহ",
                 footer_contact: "যোগাযোগ",
-                footer_ahmedabad: "আহমেদাবাদ, গুজরাত",
+                footer_ahmedabad: "আহমেদাবাদ, গুজরাত, ভারত",
                 footer_mumbai: "মুম্বাই, মহারাষ্ট্র",
-                footer_copy: "&copy; ২০২৫ Rapid Loans India Pvt. Ltd. সর্বাধিকার সংরক্ষিত।",
+                footer_copy: "&copy; ২০২৬ Rapid Loans India Pvt. Ltd. সর্বাধিকার সংরক্ষিত।",
                 footer_terms: "শর্তাবলী",
                 footer_privacy: "গোপনীয়তা নীতি",
+                footer_pos: "POSH",
                 logo_rbi: "RBI নিয়ন্ত্রিত ব্যাংকিং সংবাদদাতার অধীন",
                 trust_rbi: "RBI নিয়ন্ত্রিত",
                 trust_rbi_desc: "রিজার্ভ ব্যাংক অফ ইন্ডিয়ার নির্দেশিকা অনুযায়ী নিবন্ধিত ব্যাংকিং সংবাদদাতা",
                 trust_secure: "ব্যাংক-গ্রেড নিরাপত্তা",
                 trust_secure_desc: "২৫৬-বিট SSL এনক্রিপশন, ISO 27001 সম্মতিসম্পন্ন ডেটা সুরক্ষা",
-                trust_customers: "৫০,০০০+ গ্রাহক",
-                trust_customers_desc: "ভারতের ১০+ রাজ্যে হাজার হাজার পরিবার দ্বারা বিশ্বাসী",
+                trust_customers: "১,০০,০০০+ গ্রাহক",
+                trust_customers_desc: "ভারতের ৮ রাজ্যে হাজার হাজার পরিবার দ্বারা বিশ্বাসী",
                 trust_compliant: "১০০% সম্মতিসম্পন্ন",
                 trust_compliant_desc: "RBI, SEBI এবং সমস্ত নিয়ন্ত্রক কাঠামোর সাথে সম্পূর্ণভাবে সম্মতিসম্পন্ন",
-                nav_leadership: 'নেতৃত্ব',
+                nav_leadership: 'বোর্ড ও নেতৃত্ব',
+                nav_legal: 'আইনি',
                 nav_network: 'নেটওয়ার্ক',
-                board_label: 'নেতৃত্ব',
+                board_label: 'বোর্ড গভর্ন্যান্স',
                 board_title: 'পরিচালনা পর্ষদ',
                 board_desc: 'সারা ভারতে আর্থিক প্রবেশাধিকারকে গণতান্ত্রিক করার র‍্যাপিড লোন্সের মিশনকে এগিয়ে নেওয়া দূরদৃষ্টিসম্পন্ন নেতারা।',
-                mgmt_label: 'আমাদের মানুষজন',
+                mgmt_label: 'ব্যবসায়িক নেতৃত্ব',
                 mgmt_title: 'ব্যবস্থাপনা দল',
                 mgmt_desc: 'নির্ভুলতা ও উদ্দেশ্যের সাথে দৈনন্দিন কার্যক্রম পরিচালনাকারী অভিজ্ঞ পেশাদাররা।',
                 network_label: 'আমাদের ব্যাপ্তি',
@@ -6736,8 +6816,8 @@
                 network_desc: 'ক্রমবর্ধমান সেবা কেন্দ্রগুলির নেটওয়ার্কের মাধ্যমে ভারতের হৃদয়ভূমিতে আর্থিক অন্তর্ভুক্তির বিস্তার।',
                 map_stat_states: '8টি রাজ্য',
                 map_stat_branches: '153টি শাখা',
-                map_stat_aum: '300 কোটি AUM',
-                map_stat_employees2: '829 কর্মচারী',
+                map_stat_aum: '440 কোটি AUM',
+                map_stat_employees2: '700+ কর্মচারী',
                 disclosure_label: 'স্বচ্ছতা',
                 disclosure_title: 'অংশীদার প্রকাশ',
                 disclosure_desc: 'সম্পূর্ণ স্বচ্ছতা নিশ্চিত করে আমাদের ঋণ অংশীদারিত্বের জন্য নিয়ন্ত্রক প্রকাশ।',
@@ -6768,7 +6848,7 @@
                 unity_about_desc: 'ইউনিটি স্মল ফাইন্যান্স ব্যাংক লিমিটেড ভারতীয় রিজার্ভ ব্যাংক (RBI) দ্বারা নিয়ন্ত্রিত একটি লাইসেন্সপ্রাপ্ত স্মল ফাইন্যান্স ব্যাংক। পূর্বে সেন্ট্রাম ফাইন্যান্সিয়াল সার্ভিসেস নামে পরিচিত, ব্যাংকটি ১ নভেম্বর, ২০২১-এ স্মল ফাইন্যান্স ব্যাংক হিসেবে কার্যক্রম শুরু করে।',
                 unity_cin_lbl: 'CIN:',
                 unity_office_lbl: 'নিবন্ধিত কার্যালয়:',
-                unity_office_val: 'সেন্ট্রাম হাউস, CST রোড, বিদ্যানগরী মার্গ, কলিনা, সান্তাক্রুজ (পূর্ব), মুম্বাই – ৪০০০৯৮',
+                unity_office_val: 'Unit no. 1201, 1202 & 1203, 12th Floor, Ansal Bhawan, 16, K.G. Marg, New Delhi – 110001',
                 unity_ifsc_lbl: 'IFSC প্রিফিক্স:',
                 unity_svc_title: 'প্রদত্ত সেবাসমূহ',
                 unity_svc_desc: 'ব্যাংকিং করেসপন্ডেন্ট (BC) মডেলের অধীনে ঋণ আবেদনকারীদের সোর্সিং, আদায় সেবা, ঋণ মেয়াদে ঋণগ্রহীতা সেবা, এবং প্রথম-স্তরের অভিযোগ নিষ্পত্তি।',
@@ -6861,7 +6941,7 @@
                 about_label: "ਅਸੀਂ ਕੌਣ ਹਾਂ",
                 about_title: "ਨਵਾਂ ਯੁਗ, ਤਕਨੀਕ-ਪਹਿਲਾ<br>ਬੈਂਕਿੰਗ ਸਹਾਇਕ",
                 about_desc: "Rapid Loans Private Limited ਇੱਕ ਆਧੁਨਿਕ ਬੈਂਕਿੰਗ ਸਹਾਇਕ ਹੈ ਜੋ ਮੁੰਬਈ ਵਿੱਚ ਸਥਿਤ ਹੈ ਅਤੇ ਅਹਿਮਦਾਬਾਦ ਵਿੱਚ ਰਜਿਸਟਰਡ ਹੈ। ਅਸੀਂ ਬੈਂਕਾਂ ਅਤੇ NBFC ਦੇ ਨਾਲ ਮਿਲ ਕੇ ਉਨ੍ਹਤ ਤਕਨੀਕ ਦੁਆਰਾ ਵਿਆਪਕ ਲੋਨ ਸ਼ੁਰੂ, ਸੰਗ੍ਰਹਿ ਅਤੇ ਸੇਵਾ ਪ੍ਰਦਾਨ ਕਰ ਰਹੇ ਹਾਂ - ਭਾਰਤ ਦੇ ਸਾਰੇ ਲੋਕਾਂ ਲਈ ਇੱਕ ਸਮਾਵੇਸ਼ੀ ਵਿੱਤ ਪਲੇਟਫਾਰਮ ਬਣਾ ਰਹੇ ਹਾਂ।",
-                about_since: "2020 ਤੋਂ",
+                about_since: "2024 ਤੋਂ",
                 about_serving: "ਗ੍ਰਾਮੀਣ ਭਾਰਤ ਦੀ ਸੇਵਾ ਕਰ ਰਹੇ ਹਾਂ",
                 feat_origination: "ਲੋਨ ਸ਼ੁਰੂ",
                 feat_origination_desc: "AI ਤਸਦੀਕ ਨਾਲ ਅੰਤ-ਤੋਂ-ਅੰਤ ਡਿਜੀਟਲ ਆਨਬੋਰਡਿੰਗ",
@@ -6904,31 +6984,33 @@
                 partner2_desc: "ਆਖਰੀ ਮੀਲ ਵਿੱਤ ਸੇਵਾ ਪ੍ਰਦਾਨ ਨੂੰ ਸਮਰਥ ਕਰਨ ਵਾਲਾ ਬੈਂਕਿੰਗ ਸਾਥੀ",
                 cta_title: "ਵਿੱਤ ਪਹੁੰਚ ਨੂੰ ਬਦਲਣ ਲਈ ਤਿਆਰ?",
                 cta_desc: "Rapid Loans ਦੇ ਨਾਲ ਸਾਥੀ ਬਣੋ ਘੱਟ ਸੇਵਾ ਵਾਲੀ ਆਬਾਦੀ ਵਿੱਚ ਸਮਾਵੇਸ਼ੀ ਵਿੱਤ ਸੇਵਾਵਾਂ ਲਿਆਉਣ ਲਈ। ਆਓ ਮਿਲ ਕੇ ਇੱਕ ਆਰਥਿਕ ਅਲੱਗ ਭਾਰਤ ਬਣਾਈਏ।",
-                cta_address: "ਗ੍ਰਾਉਂਡ ਫਲੋਰ, ਰਾਜਾ ਕੰਪਲੈਕਸ, ਵਿਜੈ ਕਰਾਸ ਰੋਡ, ਨਵਰੰਗਪੁਰਾ, ਅਹਿਮਦਾਬਾਦ - 380009, ਗੁਜਰਾਤ",
+                cta_address: "ਗ੍ਰਾਉਂਡ ਫਲੋਰ, ਰਾਜਾ ਕੰਪਲੈਕਸ, ਵਿਜੈ ਕਰਾਸ ਰੋਡ, ਨਵਰੰਗਪੁਰਾ, ਅਹਿਮਦਾਬਾਦ - 380009, ਗੁਜਰਾਤ, ਭਾਰਤ",
                 footer_desc: "ਇੱਕ ਆਧੁਨਿਕ ਬੈਂਕਿੰਗ ਸਹਾਇਕ ਜੋ ਭਾਰਤ ਭਰ ਵਿੱਚ ਉਨ੍ਹਤ ਤਕਨੀਕ ਰਾਹੀਂ ਵਿਆਪਕ ਲੋਨ ਸ਼ੁਰੂ, ਸੰਗ੍ਰਹਿ ਅਤੇ ਸੇਵਾ ਪ੍ਰਦਾਨ ਕਰ ਰਿਹਾ ਹੈ।",
                 footer_company: "ਕੰਪਨੀ",
                 footer_services: "ਸੇਵਾਵਾਂ",
                 footer_contact: "ਸੰਪਰਕ",
-                footer_ahmedabad: "ਅਹਿਮਦਾਬਾਦ, ਗੁਜਰਾਤ",
+                footer_ahmedabad: "ਅਹਿਮਦਾਬਾਦ, ਗੁਜਰਾਤ, ਭਾਰਤ",
                 footer_mumbai: "ਮੁੰਬਈ, ਮਹਾਰਾਸ਼ਟਰ",
-                footer_copy: "&copy; 2025 Rapid Loans India Pvt. Ltd. ਸਮਸਤ ਅਧਿਕਾਰ ਰਾਖਵੇ ਹੋਏ।",
+                footer_copy: "&copy; 2026 Rapid Loans India Pvt. Ltd. ਸਮਸਤ ਅਧਿਕਾਰ ਰਾਖਵੇ ਹੋਏ।",
                 footer_terms: "ਸ਼ਰਤਾਂ ਅਤੇ ਸ਼ਰਾਇਤ",
                 footer_privacy: "ਗੋਪਨੀਯਤਾ ਨੀਤੀ",
+                footer_pos: "POSH",
                 logo_rbi: "RBI ਨਿਯੰਤ੍ਰਿਤ ਬੈਂਕਿੰਗ ਸਹਾਇਕ ਅਧੀਨ",
                 trust_rbi: "RBI ਨਿਯੰਤ੍ਰਿਤ",
                 trust_rbi_desc: "ਰਿਜ਼ਰਵ ਬੈਂਕ ਆਫ ਇੰਡੀਆ ਦੀ ਦਿਸ਼ਾ-ਨਿਰਦੇਸ਼ਨ ਅਨੁਸਾਰ ਰਜਿਸਟਰਡ ਬੈਂਕਿੰਗ ਸਹਾਇਕ",
                 trust_secure: "ਬੈਂਕ-ਗ੍ਰੇਡ ਸੁਰੱਖਿਆ",
                 trust_secure_desc: "256-ਬਿਟ SSL ਇਨਕ੍ਰਿਪਸ਼ਨ, ISO 27001 ਮੁਤਾਬਕ ਡੇਟਾ ਸੁਰੱਖਿਆ",
-                trust_customers: "50,000+ ਗ੍ਰਾਹਕ",
-                trust_customers_desc: "ਭਾਰਤ ਦੇ 10+ ਰਾਜਾਂ ਵਿੱਚ ਹਜ਼ਾਰਾਂ ਪਰਿਵਾਰਾਂ ਦੁਆਰਾ ਵਿਸ਼ਵਾਸ ਕੀਤਾ ਗਿਆ",
+                trust_customers: "1,00,000+ ਗ੍ਰਾਹਕ",
+                trust_customers_desc: "ਭਾਰਤ ਦੇ 8 ਰਾਜਾਂ ਵਿੱਚ ਹਜ਼ਾਰਾਂ ਪਰਿਵਾਰਾਂ ਦੁਆਰਾ ਵਿਸ਼ਵਾਸ ਕੀਤਾ ਗਿਆ",
                 trust_compliant: "100% ਮੁਤਾਬਕ",
                 trust_compliant_desc: "RBI, SEBI ਅਤੇ ਸਾਰੀ ਨਿਯਾਮਕ ਫ੍ਰੇਮਵਰਕ ਦੇ ਨਾਲ ਪੂਰੀ ਤਰ੍ਹਾਂ ਮੁਤਾਬਕ",
-                nav_leadership: 'ਲੀਡਰਸ਼ਿਪ',
+                nav_leadership: 'ਬੋਰਡ ਅਤੇ ਲੀਡਰਸ਼ਿਪ',
+                nav_legal: 'ਕਾਨੂੰਨੀ',
                 nav_network: 'ਨੈੱਟਵਰਕ',
-                board_label: 'ਲੀਡਰਸ਼ਿਪ',
+                board_label: 'ਬੋਰਡ ਗਵਰਨੈਂਸ',
                 board_title: 'ਡਾਇਰੈਕਟਰ ਬੋਰਡ',
                 board_desc: 'ਪੂਰੇ ਭਾਰਤ ਵਿੱਚ ਵਿੱਤੀ ਪਹੁੰਚ ਨੂੰ ਲੋਕਤੰਤਰੀ ਬਣਾਉਣ ਦੇ ਰੈਪਿਡ ਲੋਨਜ਼ ਦੇ ਮਿਸ਼ਨ ਨੂੰ ਅੱਗੇ ਵਧਾਉਣ ਵਾਲੇ ਦੂਰਦਰਸ਼ੀ ਆਗੂ।',
-                mgmt_label: 'ਸਾਡੇ ਲੋਕ',
+                mgmt_label: 'ਕਾਰੋਬਾਰ ਲੀਡਰਸ਼ਿਪ',
                 mgmt_title: 'ਪ੍ਰਬੰਧਨ ਟੀਮ',
                 mgmt_desc: 'ਸਟੀਕਤਾ ਅਤੇ ਉਦੇਸ਼ ਨਾਲ ਰੋਜ਼ਾਨਾ ਕਾਰਜਾਂ ਦੀ ਅਗਵਾਈ ਕਰਨ ਵਾਲੇ ਤਜਰਬੇਕਾਰ ਪੇਸ਼ੇਵਰ।',
                 network_label: 'ਸਾਡੀ ਪਹੁੰਚ',
@@ -6936,8 +7018,8 @@
                 network_desc: 'ਵਧ ਰਹੇ ਸੇਵਾ ਕੇਂਦਰਾਂ ਦੇ ਨੈੱਟਵਰਕ ਰਾਹੀਂ ਭਾਰਤ ਦੇ ਦਿਲ ਵਿੱਚ ਵਿੱਤੀ ਸ਼ਾਮਲੀਅਤ ਦਾ ਵਿਸਤਾਰ।',
                 map_stat_states: '8 ਰਾਜ',
                 map_stat_branches: '153 ਸ਼ਾਖਾਵਾਂ',
-                map_stat_aum: '300 ਕਰੋੜ AUM',
-                map_stat_employees2: '829 ਕਰਮਚਾਰੀ',
+                map_stat_aum: '440 ਕਰੋੜ AUM',
+                map_stat_employees2: '700+ ਕਰਮਚਾਰੀ',
                 disclosure_label: 'ਪਾਰਦਰਸ਼ਿਤਾ',
                 disclosure_title: 'ਭਾਈਵਾਲ ਖੁਲਾਸੇ',
                 disclosure_desc: 'ਪੂਰੀ ਪਾਰਦਰਸ਼ਿਤਾ ਯਕੀਨੀ ਬਣਾਉਂਦੇ ਹੋਏ ਸਾਡੀਆਂ ਕਰਜ਼ ਭਾਈਵਾਲੀਆਂ ਲਈ ਨਿਯਮਕ ਖੁਲਾਸੇ।',
@@ -6968,7 +7050,7 @@
                 unity_about_desc: 'ਯੂਨਿਟੀ ਸਮਾਲ ਫਾਇਨੈਂਸ ਬੈਂਕ ਲਿਮਿਟੇਡ ਭਾਰਤੀ ਰਿਜ਼ਰਵ ਬੈਂਕ (RBI) ਦੁਆਰਾ ਨਿਯਮਿਤ ਇੱਕ ਲਾਇਸੰਸਸ਼ੁਦਾ ਸਮਾਲ ਫਾਇਨੈਂਸ ਬੈਂਕ ਹੈ। ਪਹਿਲਾਂ ਸੈਂਟ੍ਰਮ ਫਾਇਨੈਂਸ਼ੀਅਲ ਸਰਵਿਸਿਜ਼ ਵਜੋਂ ਜਾਣਿਆ ਜਾਂਦਾ ਸੀ, ਬੈਂਕ ਨੇ ੧ ਨਵੰਬਰ, ੨੦੨੧ ਨੂੰ ਸਮਾਲ ਫਾਇਨੈਂਸ ਬੈਂਕ ਵਜੋਂ ਕੰਮ ਸ਼ੁਰੂ ਕੀਤਾ।',
                 unity_cin_lbl: 'CIN:',
                 unity_office_lbl: 'ਰਜਿਸਟਰਡ ਦਫ਼ਤਰ:',
-                unity_office_val: 'ਸੈਂਟ੍ਰਮ ਹਾਊਸ, CST ਰੋਡ, ਵਿਦਿਆਨਗਰੀ ਮਾਰਗ, ਕਲੀਨਾ, ਸਾਂਤਾਕ੍ਰੂਜ਼ (ਪੂਰਬ), ਮੁੰਬਈ – ੪੦੦੦੯੮',
+                unity_office_val: 'Unit no. 1201, 1202 & 1203, 12th Floor, Ansal Bhawan, 16, K.G. Marg, New Delhi – 110001',
                 unity_ifsc_lbl: 'IFSC ਪ੍ਰੀਫਿਕਸ:',
                 unity_svc_title: 'ਦਿੱਤੀਆਂ ਜਾਣ ਵਾਲੀਆਂ ਸੇਵਾਵਾਂ',
                 unity_svc_desc: 'ਬੈਂਕਿੰਗ ਕੋਰੈਸਪੋਂਡੈਂਟ (BC) ਮਾਡਲ ਅਧੀਨ ਕਰਜ਼ ਅਰਜ਼ੀਕਾਰਾਂ ਦੀ ਸੋਰਸਿੰਗ, ਵਸੂਲੀ ਸੇਵਾਵਾਂ, ਕਰਜ਼ ਮਿਆਦ ਦੌਰਾਨ ਕਰਜ਼ਦਾਰ ਸੇਵਾ, ਅਤੇ ਪਹਿਲੇ-ਪੱਧਰ ਦੀ ਸ਼ਿਕਾਇਤ ਨਿਵਾਰਣ।',
@@ -7061,7 +7143,7 @@
                 about_label: "ഞങ്ങൾ ആരാണ്",
                 about_title: "പുതിയ യുഗം, പ്രയുക്തി-ഫസ്റ്റ്<br>ബാങ്കിങ് പ്രതിനിധി",
                 about_desc: "Rapid Loans Private Limited മുംബൈയിൽ സ്ഥിതി ചെയ്യുന്ന ആധുനിക ബാങ്കിങ് പ്രതിനിധി ആയി പ്രവർത്തിക്കുന്നു, അഹമ്മദാബാദിൽ രജിസ്ട്രീകരിത ഓഫീസ് ഉണ്ട്. ബാങ്കുകളും NBFC-കളും പങ്കാളി ആയി പ്രവർത്തിച്ച്, അത്യാധുനിക പ്രയുക്തിയിലൂടെ വ്യാപകമായ കടമെടുക്കൽ, ശേഖരണം, സേവനം നൽകുകയും - ഇന്ത്യയിലെ എല്ലാവർക്കും സമാവേശകമായ സാമ്പത്തിക പ്ലാറ്റ്‌ഫോം സൃഷ്ടി ചെയ്യുകയും ചെയ്യുന്നു।",
-                about_since: "2020 മുതൽ",
+                about_since: "2024 മുതൽ",
                 about_serving: "ഗ്രാമീണ ഇന്ത്യയ്ക്കു സേവനം നൽകുകയാണ്",
                 feat_origination: "കടാവലംബനം",
                 feat_origination_desc: "AI സത്യാപനം ഉപയോഗിച്ച് സമ്പൂർണ്ണ ഡിജിറ്റൽ ഓൺബോർഡിംഗ്",
@@ -7103,7 +7185,7 @@
                 partner1_desc: "ഗ്രാമീണ ഇന്ത്യ ജുഡാ സമാവേശകമായ സൂക്ഷ്മ ധനകാര്യ കടകൾക്കായുള്ള NBFC പങ്കാളി",
                 partner2_desc: "അവസാനത്തെ മൈൽ സാമ്പത്തിക സേവനം വിതരണം സജ്ജരാക്കുന്ന ബാങ്കിംഗ് പങ്കാളി",
                 partner3_desc: "വേഗത്തിലുള്ള, പേപ്പർ-രഹിത വായ്പാ ഉത്ഭവവും വിതരണവും സജ്ജമാക്കുന്ന ഡിജിറ്റൽ ലെൻഡിംഗ് പങ്കാളി.",
-                partner4_desc: "വൈവിധ്യമാർന്ന ഉപഭോക്തൃ, ചെറുകിട-ബിസിനസ് ക്രെഡിറ്റ് ഉൽപ്പന്നങ്ങൾ വാഗ്ദാനം ചെയ്യുന്ന അഖിലേന്ത്യാ NBFC പങ്കാളി.",
+                partner4_desc: "വൈവിധ്യമാർന്ന ഉപഭോക്തൃ ബിസിനസ്, ഭവന, വ്യക്തിഗത വായ്പ ക്രെഡിറ്റ് ഉൽപ്പന്നങ്ങൾ വാഗ്ദാനം ചെയ്യുന്ന അഖിലേന്ത്യാ NBFC പങ്കാളി.",
                 fi_name: "എഫ്ഐ ലെൻഡിംഗ് സൊല്യൂഷൻസ് പ്രൈ. ലിമിറ്റഡ്",
                 fi_about_desc: "FI Lending Solutions എന്നത് ഇന്ത്യയിലുടനീളമുള്ള സേവനം ലഭ്യമല്ലാത്ത സമൂഹങ്ങൾക്ക് ക്രെഡിറ്റ്, സമ്പാദ്യ പരിഹാരങ്ങളിൽ ശ്രദ്ധ കേന്ദ്രീകരിക്കുന്ന ഒരു ഡിജിറ്റൽ ലെൻഡിംഗ് ഫിൻടെക് ആണ്.",
                 fi_office_val: "1017, 10-ാം നില, JMD മെഗാപോളിസ്, ടവർ – A, സോഹ്ന റോഡ്, ഗുരുഗ്രാം, ഹരിയാന – 122018",
@@ -7118,31 +7200,33 @@
                 smfg_visit: "SMFG India Credit വെബ്‌സൈറ്റ് സന്ദർശിക്കുക",
                 cta_title: "സാമ്പത്തിക പ്രവേശനം പരിവർത്തനം ചെയ്യാൻ തയ്യാറാണോ?",
                 cta_desc: "Rapid Loans ഉപയോഗിച്ച് പങ്കാളി ആകുക സേവനം കുറഞ്ഞ സമൂഹങ്ങൾക്കുള്ള സമാവേശകമായ സാമ്പത്തിക സേവനങ്ങൾ കൊണ്ടുവരാൻ। നമ്മുൾ ഒരുമിച്ച് സാമ്പത്തികമായി സമാവേശകമായ ഇന്ത്യ വികസിപ്പിക്കാം।",
-                cta_address: "നിലവിൽ ഫ്ലോർ, രാജ സങ്കുലയ, വിജയ ക്രോസ് റോഡ്, നവരാം പുരാ, അഹമ്മദാബാദ് - 380009, ഗുജറാത്ത്",
+                cta_address: "നിലവിൽ ഫ്ലോർ, രാജ സങ്കുലയ, വിജയ ക്രോസ് റോഡ്, നവരാം പുരാ, അഹമ്മദാബാദ് - 380009, ഗുജറാത്ത്, ഇന്ത്യ",
                 footer_desc: "ഒരു ആധുനിക ബാങ്കിംഗ് പ്രതിനിധി ഇന്ത്യ ജുഡാ അത്യാധുനിക പ്രയുക്തിയിലൂടെ വ്യാപകമായ കടാവലംബനം, ശേഖരണം, സേവനം നൽകുകയാണ്।",
                 footer_company: "കമ്പനി",
                 footer_services: "സേവനങ്ങൾ",
                 footer_contact: "സംപർക്കം",
-                footer_ahmedabad: "അഹമ്മദാബാദ്, ഗുജറാത്ത്",
+                footer_ahmedabad: "അഹമ്മദാബാദ്, ഗുജറാത്ത്, ഇന്ത്യ",
                 footer_mumbai: "മുംബൈ, മഹാരാഷ്ട്ര",
-                footer_copy: "&copy; 2025 Rapid Loans India Pvt. Ltd. എല്ലാ അവകാശങ്ങളും സ്വാതന്ത്ര്യം।",
+                footer_copy: "&copy; 2026 Rapid Loans India Pvt. Ltd. എല്ലാ അവകാശങ്ങളും നിക്ഷിപ്തം.",
                 footer_terms: "നിബന്ധനകളും സാഹചര്യവും",
                 footer_privacy: "സ്വകാര്യത നയം",
+                footer_pos: "POSH",
                 logo_rbi: "RBI നിയന്ത്രിത ബാങ്കിംഗ് പ്രതിനിധിയുടെ കീഴിൽ",
                 trust_rbi: "RBI നിയന്ത്രിതം",
                 trust_rbi_desc: "ഇന്ത്യൻ റിസർവ് ബാങ്ക് നിർദേശങ്ങൾ അനുസരിച്ച് രജിസ്ട്രീകരിത ബാങ്കിംഗ് പ്രതിനിധി",
                 trust_secure: "ബാങ്ക്-ഗ്രേഡ് സുരക്ഷ",
                 trust_secure_desc: "256-ബിറ്റ് SSL എൻക്രിപ്ഷൻ, ISO 27001 പാലന ഡാറ്റാ സുരക്ഷ",
-                trust_customers: "50,000+ ഗ്രാഹകർ",
-                trust_customers_desc: "ഇന്ത്യയിലെ 10+ സംസ്ഥാനങ്ങളിൽ ആയിരങ്ങൾ കുടുംബങ്ങൾ വിശ്വാസ ചെയ്യുന്നു",
+                trust_customers: "1,00,000+ ഗ്രാഹകർ",
+                trust_customers_desc: "ഇന്ത്യയിലെ 8 സംസ്ഥാനങ്ങളിൽ ആയിരങ്ങൾ കുടുംബങ്ങൾ വിശ്വാസ ചെയ്യുന്നു",
                 trust_compliant: "100% പാലന",
                 trust_compliant_desc: "RBI, SEBI എല്ലാ നിയന്ത്രിത അവസരങ്ങൾക്കും പൂർണ്ണ പാലനം",
-                nav_leadership: 'നേതൃത്വം',
+                nav_leadership: 'ബോർഡുകളും നേതൃത്വവും',
+                nav_legal: 'നിയമപരം',
                 nav_network: 'നെറ്റ്‌വർക്ക്',
-                board_label: 'നേതൃത്വം',
+                board_label: 'ബോർഡ് ഭരണം',
                 board_title: 'ഡയറക്ടർ ബോർഡ്',
                 board_desc: 'ഇന്ത്യയിലുടനീളം സാമ്പത്തിക ലഭ്യത ജനാധിപത്യവൽക്കരിക്കുന്ന റാപ്പിഡ് ലോൺസിന്റെ ദൗത്യം മുന്നോട്ട് നയിക്കുന്ന ദീർഘദൃഷ്ടിയുള്ള നേതാക്കൾ.',
-                mgmt_label: 'ഞങ്ങളുടെ ആളുകൾ',
+                mgmt_label: 'ബിസിനസ് നേതൃത്വം',
                 mgmt_title: 'മാനേജ്‌മെന്റ് ടീം',
                 mgmt_desc: 'കൃത്യതയോടെയും ലക്ഷ്യത്തോടെയും ദൈനംദിന പ്രവർത്തനങ്ങൾ നയിക്കുന്ന പരിചയസമ്പന്നരായ പ്രൊഫഷണലുകൾ.',
                 network_label: 'ഞങ്ങളുടെ വ്യാപ്തി',
@@ -7150,8 +7234,8 @@
                 network_desc: 'വളരുന്ന സേവന കേന്ദ്രങ്ങളുടെ ശൃംഖലയിലൂടെ ഇന്ത്യയുടെ ഹൃദയഭാഗത്ത് സാമ്പത്തിക ഉൾപ്പെടുത്തൽ വിപുലീകരിക്കൽ.',
                 map_stat_states: '8 സംസ്ഥാനങ്ങൾ',
                 map_stat_branches: '153 ശാഖകൾ',
-                map_stat_aum: '300 കോടി AUM',
-                map_stat_employees2: '829 ജീവനക്കാർ',
+                map_stat_aum: '440 കോടി AUM',
+                map_stat_employees2: '700+ ജീവനക്കാർ',
                 disclosure_label: 'സുതാര്യത',
                 disclosure_title: 'പങ്കാളി വെളിപ്പെടുത്തലുകൾ',
                 disclosure_desc: 'പൂർണ്ണ സുതാര്യത ഉറപ്പാക്കുന്ന ഞങ്ങളുടെ വായ്പ പങ്കാളിത്തങ്ങൾക്കുള്ള നിയന്ത്രണ വെളിപ്പെടുത്തലുകൾ.',
@@ -7182,7 +7266,7 @@
                 unity_about_desc: 'യൂണിറ്റി സ്മോള്‍ ഫൈനാന്‍സ് ബാങ്ക് ലിമിറ്റഡ് ഭാരതീയ റിസര്‍വ് ബാങ്ക് (RBI) നിയന്ത്രിത ലൈസന്‍സ് ലഭിച്ച സ്മോള്‍ ഫൈനാന്‍സ് ബാങ്കാണ്. മുമ്പ് സെന്‍ട്രം ഫൈനാന്‍ഷ്യല്‍ സര്‍വീസസ് എന്ന് അറിയപ്പെട്ടിരുന്നു, ബാങ്ക് ൧ നവംബര്‍, ൨൦൨൧-ന് സ്മോള്‍ ഫൈനാന്‍സ് ബാങ്കായി പ്രവര്‍ത്തനം ആരംഭിച്ചു.',
                 unity_cin_lbl: 'CIN:',
                 unity_office_lbl: 'രജിസ്റ്റേര്‍ഡ് ഓഫീസ്:',
-                unity_office_val: 'സെന്‍ട്രം ഹൗസ്, CST റോഡ്, വിദ്യാനഗരി മാര്‍ഗ്, കലിന, സാന്‍താക്രൂസ് (കിഴക്ക്), മുംബൈ – ൪൦൦൦൯൮',
+                unity_office_val: 'Unit no. 1201, 1202 & 1203, 12th Floor, Ansal Bhawan, 16, K.G. Marg, New Delhi – 110001',
                 unity_ifsc_lbl: 'IFSC പ്രിഫിക്സ്:',
                 unity_svc_title: 'നല്‍കുന്ന സേവനങ്ങള്‍',
                 unity_svc_desc: 'ബാങ്കിംഗ് കറസ്പോണ്‍ഡന്‍റ് (BC) മോഡലിന് കീഴില്‍ വായ്പ അപേക്ഷകരുടെ സോഴ്സിംഗ്, ശേഖരണ സേവനങ്ങള്‍, വായ്പ കാലാവധിയില്‍ കടം വാങ്ങുന്നയാളുടെ സേവനം, ആദ്യ-ഘട്ട പരാതി പരിഹാരം.',
@@ -7332,7 +7416,7 @@
                 about_label: "ଆମେ କିଏ",
                 about_title: "ନୂତନ ଯୁଗ, ପ୍ରୋଦ୍ୟୋଗିକ-ପ୍ରଥମ<br>ବାଙ୍କିଙ୍ଗ ସଂବାଦଦାତା",
                 about_desc: "Rapid Loans Private Limited ମୁମ୍ବାଇରେ ଅବସ୍ଥିତ ଏକ ଆଧୁନିକ ବାଙ୍କିଙ୍ଗ ସଂବାଦଦାତା ଏବଂ ଅହମ୍ମଦାବାଦରେ ଅଧିବାସ ଅଗ୍ରଭାଗ ଅଛି। ଆମେ ବାଙ୍କ ଏବଂ NBFC ପାଇଁ ଅଂଶୀଦାର ଭାବେ ଅଧୁନିକ ପ୍ରୋଦ୍ୟୋଗିକା ଦ୍ୱାରା ବ୍ୟାପକ ଋଣ ସୃଷ୍ଟି, ସଂଗ୍ରହ ଏବଂ ସେବା ପ୍ରଦାନ କରିଥାଏ - ଭାରତର ସମସ୍ତଙ୍କ ପାଇଁ ଏକ ବିଶେଷ ଅର୍ଥାୟନ ପ୍ଲାଟଫର୍ମ ସୃଷ୍ଟି କରିଥାଏ।",
-                about_since: "2020 ବର୍ଷ ଥିବା",
+                about_since: "2024 ବର୍ଷ ଥିବା",
                 about_serving: "ଗ୍ରାମୀଣ ଭାରତଙ୍କୁ ସେବା ପ୍ରଦାନ ମଧ୍ୟପ୍ରଦେଶ",
                 feat_origination: "ଋଣ ସୃଷ୍ଟି",
                 feat_origination_desc: "AI ଯାଚାଇବା ସହ ସମ୍ପୂର୍ଣ୍ଣ ଡିଜିଟାଲ ଅନବୋର୍ଡିଙ୍ଗ",
@@ -7375,31 +7459,33 @@
                 partner2_desc: "ଅନ୍ତିମ-ମାଇଲ ଆର୍ଥିକ ସେବା ଭିତ୍ତିଭୂମି ଛାଡୁ ବାଙ୍କିଙ୍ଗ ଅଂଶୀଦାର",
                 cta_title: "ଆର୍ଥିକ ଅଧିକାର ରୂପାନ୍ତରିତ ପାଇଁ ସାଜା?",
                 cta_desc: "Rapid Loans ସହ ଅଂଶୀଦାର ହୋଇ ଅଲ୍ପ ସେବାପ୍ରାପ୍ତ ସମୁଦାୟକୁ ବିଶେଷ ଆର୍ଥିକ ସେବା ଆଣିଥାନ୍ତୁ। ଆସ ଏକତ୍ରିତ ହୋଇ ଆର୍ଥିକ ଦୃଷ୍ଟିରୁ ବିଶେଷ ଭାରତ ଗଠନ କରିବା।",
-                cta_address: "ଭୂତଳ, ରାଜାବାଦୋଟି, ବିଜୟ କ୍ରସ ରୋଡ, ନବରଙ୍ଗପୁର, ଅହମ୍ମଦାବାଦ - 380009, ଗୁଜରାଟ",
+                cta_address: "ଭୂତଳ, ରାଜାବାଦୋଟି, ବିଜୟ କ୍ରସ ରୋଡ, ନବରଙ୍ଗପୁର, ଅହମ୍ମଦାବାଦ - 380009, ଗୁଜରାଟ, ଭାରତ",
                 footer_desc: "ଆଧୁନିକ ବାଙ୍କିଙ୍ଗ ସଂବାଦଦାତା ଭାରତ ଭାଙୁଡି ଅଧୁନିକ ପ୍ରୋଦ୍ୟୋଗିକ ଦ୍ୱାରା ବ୍ୟାପକ ଋଣ ସୃଷ୍ଟି, ସଂଗ୍ରହ ଏବଂ ସେବା ପ୍ରଦାନ କରିଥାଏ।",
                 footer_company: "ଯକମ୍ପାନୀ",
                 footer_services: "ସେବା",
                 footer_contact: "ସଂପର୍କ",
-                footer_ahmedabad: "ଅହମ୍ମଦାବାଦ, ଗୁଜରାଟ",
+                footer_ahmedabad: "ଅହମ୍ମଦାବାଦ, ଗୁଜରାଟ, ଭାରତ",
                 footer_mumbai: "ମୁମ୍ବାଇ, ମହାରାଷ୍ଟ୍ର",
-                footer_copy: "&copy; 2025 Rapid Loans India Pvt. Ltd. ସମସ୍ତ ସୁରକ୍ଷିତ।",
+                footer_copy: "&copy; 2026 Rapid Loans India Pvt. Ltd. ସମସ୍ତ ଅଧିକାର ସଂରକ୍ଷିତ।",
                 footer_terms: "ସର୍ତ୍ତାବଳୀ ଓ ସର୍ତସୀମା",
                 footer_privacy: "ଗୋପନୀୟତା ନୀତି",
+                footer_pos: "POSH",
                 logo_rbi: "RBI ନିୟନ୍ତ୍ରିତ ବାଙ୍କିଙ୍ଗ ସଂବାଦଦାତା ଅନ୍ତର୍ଗତ",
                 trust_rbi: "RBI ନିୟନ୍ତ୍ରିତ",
                 trust_rbi_desc: "ଭାରତୀୟ ରିଜର୍ଭ ବାଙ୍କ ଦିଗନିର୍ଦେଶନ ଅନୁଯାୟୀ ଅଧିବାସ ବାଙ୍କିଙ୍ଗ ସଂବାଦଦାତା",
                 trust_secure: "ବାଙ୍କ-ଗ୍ରେଡ ସୁରକ୍ଷା",
                 trust_secure_desc: "256-ବିଟ୍ SSL ଏନକ୍ରିପସନ, ISO 27001 ଯୋଗ ତଥ୍ୟ ସୁରକ୍ଷା",
-                trust_customers: "50,000+ ଗ୍ରାହକ",
-                trust_customers_desc: "ଭାରତର 10+ ରାଜ୍ୟ ବିସ୍ତୃତ ହଜାର ଅଂଶ ପରିବାରଦ୍ୱାରା ବିଶ୍ୱସ୍ତ",
+                trust_customers: "1,00,000+ ଗ୍ରାହକ",
+                trust_customers_desc: "ଭାରତର 8 ରାଜ୍ୟ ବିସ୍ତୃତ ହଜାର ଅଂଶ ପରିବାରଦ୍ୱାରା ବିଶ୍ୱସ୍ତ",
                 trust_compliant: "100% ସଙ୍ଗତି",
                 trust_compliant_desc: "RBI, SEBI ଓ ସମସ୍ତ ନିୟନ୍ତ୍ରିତ ଫଳ ସାଥେ ସଂପୂର୍ଣ୍ଣ ସଙ୍ଗତି",
-                nav_leadership: 'ନେତୃତ୍ୱ',
+                nav_leadership: 'ବୋର୍ଡ ଓ ନେତୃତ୍ୱ',
+                nav_legal: 'ଆଇନଗତ',
                 nav_network: 'ନେଟୱର୍କ',
-                board_label: 'ନେତୃତ୍ୱ',
+                board_label: 'ବୋର୍ଡ ଶାସନ',
                 board_title: 'ପରିଚାଳନା ପରିଷଦ',
                 board_desc: 'ସମଗ୍ର ଭାରତରେ ଆର୍ଥିକ ପ୍ରବେଶକୁ ଗଣତାନ୍ତ୍ରିକ କରିବାର ରାପିଡ଼ ଲୋନ୍ସର ଲକ୍ଷ୍ୟକୁ ଆଗେଇ ନେଉଥିବା ଦୂରଦୃଷ୍ଟିସମ୍ପନ୍ନ ନେତାମାନେ।',
-                mgmt_label: 'ଆମ ଲୋକ',
+                mgmt_label: 'ବ୍ୟବସାୟ ନେତୃତ୍ୱ',
                 mgmt_title: 'ପରିଚାଳନା ଦଳ',
                 mgmt_desc: 'ସଠିକତା ଏବଂ ଉଦ୍ଦେଶ୍ୟ ସହ ଦୈନନ୍ଦିନ କାର୍ଯ୍ୟ ପରିଚାଳନା କରୁଥିବା ଅଭିଜ୍ଞ ବୃତ୍ତିଜୀବୀମାନେ।',
                 network_label: 'ଆମ ବ୍ୟାପ୍ତି',
@@ -7407,8 +7493,8 @@
                 network_desc: 'ବଢ଼ୁଥିବା ସେବା କେନ୍ଦ୍ରଗୁଡ଼ିକର ନେଟୱର୍କ ମାଧ୍ୟମରେ ଭାରତର ହୃଦୟଭୂମିରେ ଆର୍ଥିକ ସାମିଲକରଣର ବିସ୍ତାର।',
                 map_stat_states: '8 ରାଜ୍ୟ',
                 map_stat_branches: '153 ଶାଖା',
-                map_stat_aum: '300 କୋଟି AUM',
-                map_stat_employees2: '829 କର୍ମଚାରୀ',
+                map_stat_aum: '440 କୋଟି AUM',
+                map_stat_employees2: '700+ କର୍ମଚାରୀ',
                 disclosure_label: 'ସ୍ୱଚ୍ଛତା',
                 disclosure_title: 'ଭାଗୀଦାର ପ୍ରକାଶ',
                 disclosure_desc: 'ସମ୍ପୂର୍ଣ୍ଣ ସ୍ୱଚ୍ଛତା ସୁନିଶ୍ଚିତ କରୁଥିବା ଆମ ଋଣ ଭାଗୀଦାରିତ୍ୱ ପାଇଁ ନିୟନ୍ତ୍ରଣମୂଳକ ପ୍ରକାଶ।',
@@ -7439,7 +7525,7 @@
                 unity_about_desc: 'ୟୁନିଟି ସ୍ମଲ ଫାଇନାନ୍ସ ବ୍ୟାଙ୍କ ଲିମିଟେଡ୍ ଭାରତୀୟ ରିଜର୍ଭ ବ୍ୟାଙ୍କ (RBI) ଦ୍ୱାରା ନିୟନ୍ତ୍ରିତ ଏକ ଲାଇସେନ୍ସପ୍ରାପ୍ତ ସ୍ମଲ ଫାଇନାନ୍ସ ବ୍ୟାଙ୍କ। ପୂର୍ବରୁ ସେଣ୍ଟ୍ରମ ଫାଇନାନ୍ସିଆଲ ସର୍ଭିସେସ ଭାବରେ ଜଣାଶୁଣା, ବ୍ୟାଙ୍କ ୧ ନଭେମ୍ବର, ୨୦୨୧ ରେ ସ୍ମଲ ଫାଇନାନ୍ସ ବ୍ୟାଙ୍କ ଭାବରେ କାର୍ଯ୍ୟ ଆରମ୍ଭ କଲା।',
                 unity_cin_lbl: 'CIN:',
                 unity_office_lbl: 'ପଞ୍ଜୀକୃତ କାର୍ଯ୍ୟାଳୟ:',
-                unity_office_val: 'ସେଣ୍ଟ୍ରମ ହାଉସ, CST ରୋଡ, ବିଦ୍ୟାନଗରୀ ମାର୍ଗ, କଲିନା, ସାନ୍ତାକ୍ରୁଜ (ପୂର୍ବ), ମୁମ୍ବାଇ – ୪୦୦୦୯୮',
+                unity_office_val: 'Unit no. 1201, 1202 & 1203, 12th Floor, Ansal Bhawan, 16, K.G. Marg, New Delhi – 110001',
                 unity_ifsc_lbl: 'IFSC ପ୍ରିଫିକ୍ସ:',
                 unity_svc_title: 'ପ୍ରଦାନ କରାଯାଉଥିବା ସେବା',
                 unity_svc_desc: 'ବ୍ୟାଙ୍କିଂ କରେସ୍ପଣ୍ଡେଣ୍ଟ (BC) ମଡେଲ ଅଧୀନରେ ଋଣ ଆବେଦନକାରୀଙ୍କ ସୋର୍ସିଂ, ଆଦାୟ ସେବା, ଋଣ ଅବଧିରେ ଋଣଗ୍ରହୀତା ସେବା, ଏବଂ ପ୍ରଥମ-ସ୍ତରୀୟ ଅଭିଯୋଗ ନିବାରଣ।',
@@ -7532,7 +7618,7 @@
                 about_label: "আমরা কি",
                 about_title: "নতুন যুগ, প্রযুক্তি-প্রথম<br>ব্যাংকিং প্রতিনিধি",
                 about_desc: "Rapid Loans Private Limited মুম্বাইয়ে অবস্থিত আধুনিক ব্যাংকিং প্রতিনিধি এবং আহমেদাবাদে নিবন্ধিত। আমরা ব্যাংক এবং NBFC-দের সাথে অংশীদার হিসাবে অত্যাধুনিক প্রযুক্তির মাধ্যমে ব্যাপক ঋণ উৎপাদন, সংগ্রহ এবং সেবা প্রদান কৰি - সমগ্র ভারতের সকলের জন্য একটি সামগ্রিক আর্থিক প্ল্যাটফর্ম তৈরি কৰি।",
-                about_since: "2020 সালেৰ পৰা",
+                about_since: "2024 সালেৰ পৰা",
                 about_serving: "গ্রামীণ ভাৰত সেবা কৰছি",
                 feat_origination: "ঋণ উৎপাদন",
                 feat_origination_desc: "AI যাচাইকৰণ সহ সম্পূৰ্ণ ডিজিটাল অনবোর্ডিং",
@@ -7575,31 +7661,33 @@
                 partner2_desc: "শেষ-মাইল আর্থিক সেবা বিতৰণ সক্ষম কৰে এমন ব্যাংকিং সহযোগী",
                 cta_title: "আর্থিক প্রবেশাধিকাৰ রূপান্তৰ কৰতে প্রস্তুত?",
                 cta_desc: "Rapid Loans-এৰ সাথে সহযোগী হোন কম সেবাপ্রাপ্ত সম্প্রদায়ে সামগ্রিক আর্থিক সেবা আনতে। আসুন একসাথে একটি আর্থিকভাৱে সামগ্রিক ভাৰত নিৰ্মাণ কৰি।",
-                cta_address: "ভূতল, রাজা কমপ্লেক্স, বিজয় ক্রস রোড, নভরঙ্গপুৰা, আহমেদাবাদ - 380009, গুজৰাত",
+                cta_address: "ভূতল, রাজা কমপ্লেক্স, বিজয় ক্রস রোড, নভরঙ্গপুৰা, আহমেদাবাদ - 380009, গুজৰাত, ভাৰত",
                 footer_desc: "আধুনিক ব্যাংকিং প্রতিনিধি যি ভাৰত জুৰি অত্যাধুনিক প্রযুক্তৰ মাধ্যমে ব্যাপক ঋণ উৎপাদন, সংগ্রহ এবং সেবা প্রদান কৰে।",
                 footer_company: "কোম্পানী",
                 footer_services: "সেবাসমূহ",
                 footer_contact: "যোগাযোগ",
-                footer_ahmedabad: "আহমেদাবাদ, গুজৰাত",
+                footer_ahmedabad: "আহমেদাবাদ, গুজৰাত, ভাৰত",
                 footer_mumbai: "মুম্বাই, মহারাষ্ট্র",
-                footer_copy: "&copy; 2025 Rapid Loans India Pvt. Ltd. সব অধিকাৰ সংৰক্ষিত।",
+                footer_copy: "&copy; 2026 Rapid Loans India Pvt. Ltd. সব অধিকাৰ সংৰক্ষিত।",
                 footer_terms: "শর্তাৱলী এবং শর্তসমূহ",
                 footer_privacy: "গোপনীয়তা নীতি",
+                footer_pos: "POSH",
                 logo_rbi: "RBI নিয়ন্ত্রিত ব্যাংকিং প্রতিনিধিৰ অধীন",
                 trust_rbi: "RBI নিয়ন্ত্রিত",
                 trust_rbi_desc: "ভাৰতীয় ৰিজার্ভ ব্যাংকৰ নির্দেশাৱলী অনুযায়ী নিবন্ধিত ব্যাংকিং প্রতিনিধি",
                 trust_secure: "ব্যাংক-স্তৰের সুরক্ষা",
                 trust_secure_desc: "256-বিট SSL এনক্রিপশন, ISO 27001 সম্মতিসম্পন্ন ডেটা সুরক্ষা",
-                trust_customers: "50,000+ গ্রাহক",
-                trust_customers_desc: "ভাৰতৰ 10+ অঞ্চল জুৰি হাজাৰ হাজাৰ পৰিবাৰ দ্বাৰা বিশ্বস্ত",
+                trust_customers: "1,00,000+ গ্রাহক",
+                trust_customers_desc: "ভাৰতৰ 8 অঞ্চল জুৰি হাজাৰ হাজাৰ পৰিবাৰ দ্বাৰা বিশ্বস্ত",
                 trust_compliant: "100% সম্মতিসম্পন্ন",
                 trust_compliant_desc: "RBI, SEBI এবং সকল নিয়ন্ত্রক কাঠামোৰ সাথে সম্পূৰ্ণভাৱে সম্মতিসম্পন্ন",
-                nav_leadership: 'নেতৃত্ব',
+                nav_leadership: 'বৰ্ড আৰু নেতৃত্ব',
+                nav_legal: 'আইনী',
                 nav_network: 'নেটৱৰ্ক',
-                board_label: 'নেতৃত্ব',
+                board_label: 'বৰ্ড গভৰ্নেন্স',
                 board_title: 'পৰিচালনা পৰিষদ',
                 board_desc: 'সমগ্ৰ ভাৰতত বিত্তীয় প্ৰৱেশাধিকাৰ গণতান্ত্ৰিক কৰাৰ ৰেপিড লোন্সৰ মিছনক আগবঢ়াই নিয়া দূৰদৰ্শী নেতাসকল।',
-                mgmt_label: 'আমাৰ মানুহ',
+                mgmt_label: 'ব্যৱসায় নেতৃত্ব',
                 mgmt_title: 'ব্যৱস্থাপনা দল',
                 mgmt_desc: 'সঠিকতা আৰু উদ্দেশ্যেৰে দৈনন্দিন কাৰ্যকলাপ পৰিচালনা কৰা অভিজ্ঞ পেছাদাৰসকল।',
                 network_label: 'আমাৰ ব্যাপ্তি',
@@ -7607,8 +7695,8 @@
                 network_desc: 'বৰ্ধিত সেৱা কেন্দ্ৰৰ নেটৱৰ্কৰ জৰিয়তে ভাৰতৰ হৃদয়ভূমিত বিত্তীয় অন্তৰ্ভুক্তিৰ সম্প্ৰসাৰণ।',
                 map_stat_states: '8 ৰাজ্য',
                 map_stat_branches: '153 শাখা',
-                map_stat_aum: '300 কোটি AUM',
-                map_stat_employees2: '829 কৰ্মচাৰী',
+                map_stat_aum: '440 কোটি AUM',
+                map_stat_employees2: '700+ কৰ্মচাৰী',
                 disclosure_label: 'স্বচ্ছতা',
                 disclosure_title: 'অংশীদাৰ প্ৰকাশ',
                 disclosure_desc: 'সম্পূৰ্ণ স্বচ্ছতা নিশ্চিত কৰি আমাৰ ঋণ অংশীদাৰিত্বৰ বাবে নিয়ন্ত্ৰণমূলক প্ৰকাশ।',
@@ -7639,7 +7727,7 @@
                 unity_about_desc: 'ইউনিটি স্মল ফাইনেন্স বেংক লিমিটেড ভাৰতীয় ৰিজাৰ্ভ বেংক (RBI) দ্বাৰা নিয়ন্ত্ৰিত এটা অনুজ্ঞাপত্ৰপ্ৰাপ্ত স্মল ফাইনেন্স বেংক। পূৰ্বতে চেণ্ট্ৰাম ফাইনেন্সিয়েল চাৰ্ভিচেজ নামেৰে জনাজাত, বেংকে ১ নৱেম্বৰ, ২০২১-ত স্মল ফাইনেন্স বেংক হিচাপে কাৰ্যকলাপ আৰম্ভ কৰে।',
                 unity_cin_lbl: 'CIN:',
                 unity_office_lbl: 'পঞ্জীভুক্ত কাৰ্যালয়:',
-                unity_office_val: 'চেণ্ট্ৰাম হাউচ, CST ৰোড, বিদ্যানগৰী মাৰ্গ, কলিনা, চান্তাক্ৰুজ (পূব), মুম্বাই – ৪০০০৯৮',
+                unity_office_val: 'Unit no. 1201, 1202 & 1203, 12th Floor, Ansal Bhawan, 16, K.G. Marg, New Delhi – 110001',
                 unity_ifsc_lbl: 'IFSC প্ৰিফিক্স:',
                 unity_svc_title: 'প্ৰদান কৰা সেৱাসমূহ',
                 unity_svc_desc: 'বেংকিং কৰেচপণ্ডেণ্ট (BC) মডেলৰ অধীনত ঋণ আবেদনকাৰীৰ ছ’ৰ্চিং, আদায় সেৱা, ঋণৰ ম্যাদত ঋণগ্ৰহীতা সেৱা, আৰু প্ৰথম-স্তৰৰ অভিযোগ নিষ্পত্তি।',
@@ -7708,6 +7796,33 @@
         // ═══════════════════════════════════════════
         let currentLanguage = 'en';
 
+        function syncThemeToggleBtn() {
+            const btn = document.getElementById('themeToggle');
+            if (btn) btn.setAttribute('aria-pressed', document.documentElement.classList.contains('theme-dark') ? 'true' : 'false');
+        }
+
+        function toggleTheme() {
+            const dark = document.documentElement.classList.toggle('theme-dark');
+            try { localStorage.setItem('rl-theme', dark ? 'dark' : 'light'); } catch (e) {}
+            syncThemeToggleBtn();
+        }
+
+        // Default = light (white) theme. With no explicit user choice, follow the
+        // OS/browser dark-mode setting and live-update if it changes.
+        (function () {
+            syncThemeToggleBtn();
+            if (!window.matchMedia) return;
+            const mq = window.matchMedia('(prefers-color-scheme: dark)');
+            const onChange = (e) => {
+                let stored = null;
+                try { stored = localStorage.getItem('rl-theme'); } catch (err) {}
+                if (stored !== null) return; // manual choice wins
+                document.documentElement.classList.toggle('theme-dark', e.matches);
+                syncThemeToggleBtn();
+            };
+            mq.addEventListener ? mq.addEventListener('change', onChange) : mq.addListener(onChange);
+        })();
+
         function toggleTeamCard(btn) {
             const bio = btn.previousElementSibling;
             bio.classList.toggle('open');
@@ -7773,7 +7888,23 @@
             hamburger.classList.toggle('active');
         }
 
-        document.querySelectorAll('.nav-links a').forEach(link => {
+        function toggleNavDropdown(el) {
+            const d = el.closest('.nav-dropdown');
+            const open = d.classList.toggle('open');
+            el.setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
+
+        // Close the Legal dropdown when clicking outside it
+        document.addEventListener('click', (e) => {
+            const d = document.getElementById('legalDropdown');
+            if (d && !d.contains(e.target)) {
+                d.classList.remove('open');
+                const t = d.querySelector('.nav-dropdown-toggle');
+                if (t) t.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        document.querySelectorAll('.nav-links a:not(.nav-dropdown-toggle)').forEach(link => {
             link.addEventListener('click', () => {
                 document.getElementById('navLinks').classList.remove('active');
                 document.getElementById('hamburger').classList.remove('active');
@@ -7815,14 +7946,16 @@
             navLinks.style.flexShrink = '0';
             void container.offsetWidth; // force reflow
 
-            // Measure the actual width each link needs
-            var links = navLinks.querySelectorAll('a');
+            // Measure the actual width each top-level nav item needs.
+            // Use direct children (not all <a>) so links inside the Legal
+            // dropdown menu don't get double-counted.
+            var items = navLinks.children;
             var totalLinksWidth = 0;
             var navGap = parseFloat(getComputedStyle(navLinks).gap) || 20;
-            links.forEach(function(link) {
-                totalLinksWidth += link.scrollWidth;
-            });
-            totalLinksWidth += navGap * Math.max(0, links.length - 1);
+            for (var ix = 0; ix < items.length; ix++) {
+                totalLinksWidth += items[ix].offsetWidth;
+            }
+            totalLinksWidth += navGap * Math.max(0, items.length - 1);
 
             var logo = container.querySelector('.logo');
             var navRight = container.querySelector('.nav-right');
@@ -8242,7 +8375,12 @@
             glow: [91,181,220], glowMid: [125,201,229], glowOut: [230,57,70]
         };
 
-        function getTheme() { return palette; }
+        function getTheme() {
+            if (document.documentElement.classList.contains('theme-dark')) {
+                return Object.assign({}, palette, { bg: [14,14,17], bgEnd: [22,22,27], tip: [235,235,240] });
+            }
+            return palette;
+        }
 
         function resize() {
             const rect = canvas.parentElement.getBoundingClientRect();

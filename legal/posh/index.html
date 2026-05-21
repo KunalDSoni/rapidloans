@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>try{var s=localStorage.getItem('rl-theme');var dark=(s===null)?(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches):(s==='dark');if(dark)document.documentElement.classList.add('theme-dark');}catch(e){}</script>
+    <title>POSH Policy | Rapid Loans</title>
+    <meta name="description" content="Prevention of Sexual Harassment (POSH) Policy for Rapid Loans India Pvt. Ltd.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #ffffff; --surface: #f8f9fa;
+            --text-dark: #1a1a1a; --text-body: #4a4a4a; --text-muted: #727272;
+            --border: #e8e8ea; --accent: #3d7a94; --red: #d13440;
+            --nav-bg: rgba(255,255,255,0.92); --footer-bg: #f8f9fa; --card: #fff;
+        }
+        html.theme-dark {
+            --bg: #0e0e11; --surface: #16161b;
+            --text-dark: #f5f5f7; --text-body: #c2c2cb; --text-muted: #9a9aa6;
+            --border: rgba(255,255,255,0.10); --accent: #5bb5dc; --red: #ff5b68;
+            --nav-bg: rgba(14,14,17,0.85); --footer-bg: #16161b; --card: #1b1b21;
+            color-scheme: dark;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text-body); line-height: 1.75; -webkit-font-smoothing: antialiased; }
+        a { color: inherit; text-decoration: none; }
+
+        /* ── Navbar ── */
+        .navbar { position: sticky; top: 0; z-index: 1000; background: var(--nav-bg); backdrop-filter: saturate(180%) blur(18px); -webkit-backdrop-filter: saturate(180%) blur(18px); border-bottom: 1px solid var(--border); }
+        .nav-inner { max-width: 1240px; margin: 0 auto; padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+        .logo { display: inline-flex; align-items: center; gap: 10px; }
+        .logo-icon { width: 42px; height: 42px; flex-shrink: 0; }
+        .logo-name { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.3rem; color: var(--accent); letter-spacing: -0.01em; }
+        .logo-name .loans { color: var(--red); }
+        .nav-links { display: flex; align-items: center; gap: 22px; }
+        .nav-links > a, .nav-dropdown-toggle { font-size: 0.85rem; font-weight: 500; color: var(--text-body); white-space: nowrap; transition: color 0.2s; cursor: pointer; }
+        .nav-links > a:hover, .nav-dropdown-toggle:hover { color: var(--accent); }
+        .nav-cta { background: var(--accent); color: #fff !important; padding: 8px 20px; border-radius: 20px; font-weight: 600; }
+        .nav-cta:hover { color: #fff !important; opacity: 0.92; }
+        .nav-dropdown { position: relative; }
+        .nav-dropdown-toggle { display: inline-flex; align-items: center; gap: 4px; }
+        .nav-dropdown-toggle.active { color: var(--accent); font-weight: 600; }
+        .nav-dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(12px); display: flex; flex-direction: column; min-width: 210px; padding: 8px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 14px 36px rgba(0,0,0,0.14); opacity: 0; visibility: hidden; transition: all 0.2s ease; }
+        .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(8px); }
+        .nav-dropdown-menu a { padding: 10px 14px; border-radius: 8px; font-size: 0.85rem; white-space: nowrap; }
+        .nav-dropdown-menu a:hover { background: var(--surface); color: var(--accent); }
+        .nav-right { display: flex; align-items: center; gap: 12px; }
+        .theme-toggle { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: rgba(128,128,128,0.12); border: 1px solid var(--border); border-radius: 8px; color: var(--text-body); cursor: pointer; padding: 0; }
+        .theme-toggle:hover { background: rgba(128,128,128,0.2); }
+        html.theme-dark .theme-toggle svg { transform: rotate(180deg); }
+        .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+        .hamburger span { width: 22px; height: 2px; background: var(--text-dark); border-radius: 2px; }
+
+        @media (max-width: 900px) {
+            .nav-links { display: none; position: fixed; top: 64px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; padding: 12px 24px 28px; background: var(--nav-bg); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border); }
+            .nav-links.open { display: flex; }
+            .nav-links > a, .nav-dropdown-toggle { padding: 14px 4px; font-size: 1rem; border-bottom: 1px solid var(--border); }
+            .nav-cta { text-align: center; margin-top: 14px; border-bottom: none; }
+            .nav-dropdown-menu { position: static; transform: none; opacity: 1; visibility: visible; box-shadow: none; border: none; background: transparent; min-width: 0; padding: 0 0 0 16px; }
+            .hamburger { display: flex; }
+        }
+
+        /* ── Content ── */
+        .wrap { max-width: 820px; margin: 0 auto; padding: 64px 24px 80px; }
+        .page-head { text-align: center; margin-bottom: 48px; }
+        h1 { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text-dark); font-size: 2.4rem; letter-spacing: -0.02em; margin-bottom: 14px; }
+        .accent-rule { width: 64px; height: 4px; border-radius: 4px; background: linear-gradient(90deg, var(--accent), var(--red)); margin: 0 auto 14px; }
+        .subtitle { color: var(--text-muted); font-size: 0.9rem; }
+        .card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 44px 48px; }
+        .intro { font-size: 1.06rem; color: var(--text-dark); margin-bottom: 8px; }
+        h2 { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text-dark); font-size: 1.18rem; margin: 34px 0 10px; padding-left: 14px; border-left: 3px solid var(--accent); }
+        .card p { margin-bottom: 14px; }
+        .card ul { margin: 0 0 14px 20px; }
+        .card li { margin-bottom: 8px; }
+        .card a { color: var(--accent); }
+
+        /* ── Footer ── */
+        .footer { background: var(--footer-bg); border-top: 1px solid var(--border); padding: 64px 0 28px; }
+        .footer-inner { max-width: 1240px; margin: 0 auto; padding: 0 28px; }
+        .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 44px; }
+        .footer-brand .logo { margin-bottom: 16px; }
+        .footer-brand p { font-size: 0.88rem; color: var(--text-muted); max-width: 320px; }
+        .footer-social { margin-top: 16px; }
+        .footer-social a { display: inline-flex; width: 36px; height: 36px; align-items: center; justify-content: center; border: 1px solid var(--border); border-radius: 8px; color: var(--text-body); }
+        .footer-social a:hover { color: var(--accent); border-color: var(--accent); }
+        .footer-col h4 { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text-dark); font-size: 0.95rem; margin-bottom: 16px; }
+        .footer-col a { display: block; font-size: 0.86rem; color: var(--text-muted); margin-bottom: 10px; }
+        .footer-col a:hover { color: var(--accent); }
+        .footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 0.82rem; color: var(--text-muted); }
+        .footer-bottom a { color: var(--text-muted); }
+        .footer-bottom a:hover { color: var(--accent); }
+        .footer-bottom a.active { color: var(--accent); font-weight: 600; }
+
+        @media (max-width: 768px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; } .wrap { padding: 44px 16px 64px; }
+            .card { padding: 28px 22px; border-radius: 16px; }
+            .nav-inner { padding: 12px 16px; } .logo-name { font-size: 1.15rem; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+
+        .lang-switcher { position: relative; }
+        .lang-btn { display:inline-flex; align-items:center; gap:6px; padding:7px 12px; background:rgba(128,128,128,0.12); border:1px solid var(--border); border-radius:8px; color:var(--text-body); font:inherit; font-size:0.8rem; font-weight:600; cursor:pointer; }
+        .lang-btn:hover { background:rgba(128,128,128,0.2); }
+        .lang-dropdown { position:absolute; top:calc(100% + 8px); right:0; display:none; flex-direction:column; min-width:58px; padding:6px; background:var(--card); border:1px solid var(--border); border-radius:10px; box-shadow:0 14px 36px rgba(0,0,0,0.14); z-index:1100; }
+        .lang-switcher.open .lang-dropdown { display:flex; }
+        .lang-option { padding:8px; border:none; background:none; border-radius:6px; cursor:pointer; font-size:1rem; color:var(--text-dark); text-align:center; }
+        .lang-option:hover, .lang-option.active { background:var(--surface); color:var(--accent); }
+    </style>
+</head>
+<body>
+    <!-- ── Header ── -->
+    <nav class="navbar">
+        <div class="nav-inner">
+            <a class="logo" href="../../" aria-label="Rapid Loans home">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="logo-icon" aria-hidden="true">
+                    <ellipse cx="50" cy="50" rx="44" ry="32" fill="none" stroke="#E63946" stroke-width="6" stroke-linecap="round" stroke-dasharray="175 55" stroke-dashoffset="-28" transform="rotate(-12 50 50)"/>
+                    <path d="M 4 75 Q 50 100, 96 73" fill="none" stroke="#5BB5DC" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
+                    <text x="50" y="70" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="900" font-size="50" fill="#5BB5DC" letter-spacing="-2">RL</text>
+                </svg>
+                <span class="logo-name">Rapid<span class="loans">Loans</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="../../#about" data-i18n="nav_about">About</a>
+                <a href="../../#services" data-i18n="nav_services">Services</a>
+                <a href="../../#network" data-i18n="nav_network">Network</a>
+                <a href="../../#partners" data-i18n="nav_partners">Partners</a>
+                <a href="../../#board" data-i18n="nav_leadership">Boards &amp; Leadership</a>
+                <a href="../../#calculator" data-i18n="nav_calculator">Loan Calculator</a>
+                <div class="nav-dropdown">
+                    <span class="nav-dropdown-toggle active"><span data-i18n="nav_legal">Legal</span>
+                        <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+                    </span>
+                    <div class="nav-dropdown-menu">
+                        <a href="../privacy/" data-i18n="footer_privacy">Privacy Policy</a>
+                        <a href="../terms/" data-i18n="footer_terms">Terms &amp; Conditions</a>
+                        <a href="../posh/" data-i18n="footer_pos">POSH</a>
+                    </div>
+                </div>
+                <a href="../../#contact" class="nav-cta" data-i18n="nav_contact">Contact Us</a>
+            </div>
+            <div class="nav-right">
+                <div class="lang-switcher" id="langSwitcher">
+                    <button class="lang-btn" onclick="toggleLangDropdown(event)" aria-label="Select language">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        <span id="currentLang">EN</span>
+                        <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="lang-dropdown">
+                        <button class="lang-option active" onclick="setLanguage('en')" title="English">A</button>
+                        <button class="lang-option" onclick="setLanguage('hi')" title="हिन्दी">अ</button>
+                        <button class="lang-option" onclick="setLanguage('mr')" title="मराठी">अ</button>
+                        <button class="lang-option" onclick="setLanguage('gu')" title="ગુજરાતી">અ</button>
+                        <button class="lang-option" onclick="setLanguage('te')" title="తెలుగు">అ</button>
+                        <button class="lang-option" onclick="setLanguage('ta')" title="தமிழ்">அ</button>
+                        <button class="lang-option" onclick="setLanguage('ml')" title="മലയാളം">അ</button>
+                    </div>
+                </div>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg>
+                </button>
+                <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ── Content ── -->
+    <main class="wrap">
+        <div class="page-head">
+            <h1 data-i18n="posh_title">POSH Policy</h1>
+            <div class="accent-rule"></div>
+            <p class="subtitle" data-i18n="posh_sub">Prevention of Sexual Harassment at the Workplace</p>
+        </div>
+        <div class="card">
+            <p class="intro">Rapid Loans India Pvt. Ltd. is committed to providing a safe, respectful, and inclusive workplace that is free from sexual harassment. This policy is framed in accordance with the Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013 and the rules made thereunder.</p>
+
+            <h2>1. Objective</h2>
+            <p>To prevent and prohibit sexual harassment at the workplace, to provide a mechanism for the redressal of complaints, and to ensure a working environment where every individual is treated with dignity and respect.</p>
+
+            <h2>2. Scope &amp; Applicability</h2>
+            <p>This policy applies to all employees, trainees, interns, contractors, consultants, and visitors, irrespective of gender, across all offices, branches, and work-related locations of Rapid Loans, including off-site events and digital communication channels.</p>
+
+            <h2>3. What Constitutes Sexual Harassment</h2>
+            <p>Sexual harassment includes any unwelcome act or behaviour, whether directly or by implication, such as:</p>
+            <ul>
+                <li>Physical contact and advances;</li>
+                <li>A demand or request for sexual favours;</li>
+                <li>Sexually coloured remarks;</li>
+                <li>Showing pornography or sexually explicit material;</li>
+                <li>Any other unwelcome physical, verbal, or non-verbal conduct of a sexual nature.</li>
+            </ul>
+
+            <h2>4. Internal Committee (IC)</h2>
+            <p>The Company has constituted an Internal Committee (IC) to receive and address complaints of sexual harassment, in compliance with the Act. The IC comprises a Presiding Officer, internal members, and an external member with experience in matters relating to sexual harassment.</p>
+
+            <h2>5. Complaint &amp; Redressal Procedure</h2>
+            <p>An aggrieved person may submit a written complaint to the Internal Committee within the time period prescribed under the Act. The IC will conduct an inquiry in a fair, time-bound, and confidential manner, provide both parties an opportunity to be heard, and recommend appropriate action upon conclusion.</p>
+
+            <h2>6. Confidentiality</h2>
+            <p>The identity of the complainant, respondent, witnesses, and the details of the proceedings will be kept strictly confidential and will not be disclosed except as permitted under the Act.</p>
+
+            <h2>7. Protection Against Retaliation</h2>
+            <p>The Company prohibits any form of retaliation against a person who files a complaint, supports a complainant, or participates in an inquiry. Any act of retaliation will be treated as misconduct.</p>
+
+            <h2>8. Action on False or Malicious Complaints</h2>
+            <p>While genuine complaints are encouraged, complaints found to be deliberately false or malicious may attract disciplinary action against the complainant, as provided under the Act. A complaint that cannot be substantiated does not, by itself, amount to a false complaint.</p>
+
+            <h2>9. Awareness &amp; Training</h2>
+            <p>The Company conducts regular awareness sessions and training programmes to sensitise employees about their rights and responsibilities under this policy and the Act.</p>
+
+            <h2>10. Contact</h2>
+            <p>To report a concern or for any questions regarding this POSH Policy, please contact the Internal Committee at <a href="mailto:info@rapidloans.ai">info@rapidloans.ai</a>.</p>
+        </div>
+    </main>
+
+    <!-- ── Footer ── -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a class="logo" href="../../">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="logo-icon" aria-hidden="true">
+                            <ellipse cx="50" cy="50" rx="44" ry="32" fill="none" stroke="#E63946" stroke-width="6" stroke-linecap="round" stroke-dasharray="175 55" stroke-dashoffset="-28" transform="rotate(-12 50 50)"/>
+                            <path d="M 4 75 Q 50 100, 96 73" fill="none" stroke="#5BB5DC" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
+                            <text x="50" y="70" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="900" font-size="50" fill="#5BB5DC" letter-spacing="-2">RL</text>
+                        </svg>
+                        <span class="logo-name">Rapid<span class="loans">Loans</span></span>
+                    </a>
+                    <p data-i18n="footer_desc">A Modern Banking Correspondent providing comprehensive loan origination, collection, and servicing through advanced technology across India.</p>
+                    <div class="footer-social">
+                        <a href="https://www.linkedin.com/company/rapid-loans-private-limited/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="footer_company">Company</h4>
+                    <a href="../../#about" data-i18n="nav_about">About Us</a>
+                    <a href="../../#board" data-i18n="footer_board">Board of Directors</a>
+                    <a href="../../#management" data-i18n="footer_mgmt">Management Team</a>
+                    <a href="../../#network" data-i18n="footer_network">Our Network</a>
+                    <a href="../../#partners-disclosure" data-i18n="footer_disclosures">Partner Disclosures</a>
+                    <a href="../../#calculator" data-i18n="nav_calculator">Loan Calculator</a>
+                    <a href="../../#contact" data-i18n="nav_contact">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="footer_services">Services</h4>
+                    <a href="../../#services" data-i18n="svc1_title">Microloan Origination</a>
+                    <a href="../../#services" data-i18n="svc2_title">Banking Correspondent</a>
+                    <a href="../../#services" data-i18n="svc3_title">Collection &amp; Servicing</a>
+                </div>
+                <div class="footer-col">
+                    <h4 data-i18n="footer_contact">Contact</h4>
+                    <a href="mailto:info@rapidloans.ai">info@rapidloans.ai</a>
+                    <a href="tel:+918369495365">+91 83694 95365</a>
+                    <a href="../../#contact" data-i18n="footer_ahmedabad">Ahmedabad, Gujarat, India</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer_copy">&copy; 2026 Rapid Loans India Pvt. Ltd. All rights reserved.</p>
+                <p>
+                    <a href="../terms/" data-i18n="footer_terms" style="margin-right:20px;">Terms &amp; Conditions</a>
+                    <a href="../privacy/" data-i18n="footer_privacy" style="margin-right:20px;">Privacy Policy</a>
+                    <a href="../posh/" data-i18n="footer_pos" class="active">POSH</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        var L = {"en": {"nav_about": "About", "nav_services": "Services", "nav_network": "Network", "nav_partners": "Partners", "nav_leadership": "Boards & Leadership", "nav_calculator": "Loan Calculator", "nav_legal": "Legal", "nav_contact": "Contact Us", "footer_privacy": "Privacy Policy", "footer_terms": "Terms & Conditions", "footer_pos": "POSH", "footer_company": "Company", "footer_services": "Services", "footer_contact": "Contact", "footer_desc": "A Modern Banking Correspondent providing comprehensive loan origination, collection, and servicing through advanced technology across India.", "footer_board": "Board of Directors", "footer_mgmt": "Management Team", "footer_network": "Our Network", "footer_disclosures": "Partner Disclosures", "footer_calculator": "Loan Calculator", "footer_copy": "&copy; 2026 Rapid Loans India Pvt. Ltd. All rights reserved.", "footer_ahmedabad": "Ahmedabad, Gujarat, India", "svc1_title": "Microloan Origination", "svc2_title": "Banking Correspondent", "svc3_title": "Collection & Servicing", "pp_title": "Privacy Policy", "tc_title": "Terms and Conditions", "posh_title": "POSH Policy", "posh_sub": "Prevention of Sexual Harassment at the Workplace"}, "hi": {"nav_about": "हमारे बारे में", "nav_services": "सेवाएं", "nav_network": "नेटवर्क", "nav_partners": "साझेदार", "nav_leadership": "बोर्ड और नेतृत्व", "nav_calculator": "ऋण कैलकुलेटर", "nav_legal": "कानूनी", "nav_contact": "संपर्क करें", "footer_privacy": "गोपनीयता नीति", "footer_terms": "नियम और शर्तें", "footer_pos": "POSH", "footer_company": "कंपनी", "footer_services": "सेवाएं", "footer_contact": "संपर्क", "footer_desc": "एक आधुनिक बैंकिंग कॉरेस्पोंडेंट जो पूरे भारत में उन्नत तकनीक के माध्यम से व्यापक ऋण उत्पत्ति, संग्रहण और सेवा प्रदान करता है।", "footer_board": "निदेशक मंडल", "footer_mgmt": "प्रबंधन टीम", "footer_network": "हमारा नेटवर्क", "footer_disclosures": "साझेदार प्रकटीकरण", "footer_calculator": "ऋण कैलकुलेटर", "footer_copy": "&copy; 2026 रैपिड लोन्स इंडिया प्रा. लि. सर्वाधिकार सुरक्षित।", "footer_ahmedabad": "अहमदाबाद, गुजरात, भारत", "svc1_title": "माइक्रोलोन उत्पत्ति", "svc2_title": "बैंकिंग कॉरेस्पोंडेंट", "svc3_title": "संग्रहण और सेवा", "pp_title": "गोपनीयता नीति", "tc_title": "नियम और शर्तें", "posh_title": "पॉश नीति", "posh_sub": "कार्यस्थल पर यौन उत्पीड़न की रोकथाम"}, "mr": {"nav_about": "आमच्याबद्दल", "nav_services": "सेवा", "nav_network": "नेटवर्क", "nav_partners": "भागीदार", "nav_leadership": "बोर्ड आणि नेतृत्व", "nav_calculator": "कर्ज कॅल्क्युलेटर", "nav_legal": "कायदेशीर", "nav_contact": "संपर्क करा", "footer_privacy": "गोपनीयता धोरण", "footer_terms": "अटी आणि शर्ती", "footer_pos": "POSH", "footer_company": "कंपनी", "footer_services": "सेवा", "footer_contact": "संपर्क", "footer_desc": "एक आधुनिक बँकिंग कॉरस्पॉन्डंट जे संपूर्ण भारतात प्रगत तंत्रज्ञानाद्वारे सर्वसमावेशक कर्ज उत्पत्ती, वसुली आणि सेवा प्रदान करते.", "footer_board": "संचालक मंडळ", "footer_mgmt": "व्यवस्थापन संघ", "footer_network": "आमचे नेटवर्क", "footer_disclosures": "भागीदार प्रकटीकरणे", "footer_calculator": "कर्ज कॅल्क्युलेटर", "footer_copy": "&copy; 2026 रॅपिड लोन्स इंडिया प्रा. लि. सर्व हक्क राखीव.", "footer_ahmedabad": "अहमदाबाद, गुजरात, भारत", "svc1_title": "मायक्रोलोन उत्पत्ती", "svc2_title": "बँकिंग कॉरस्पॉन्डंट", "svc3_title": "वसुली आणि सेवा", "pp_title": "गोपनीयता धोरण", "tc_title": "अटी व शर्ती", "posh_title": "पॉश धोरण", "posh_sub": "कामाच्या ठिकाणी लैंगिक छळ प्रतिबंध"}, "gu": {"nav_about": "અમારા વિશે", "nav_services": "સેવાઓ", "nav_network": "નેટવર્ક", "nav_partners": "ભાગીદારો", "nav_leadership": "બોર્ડ અને નેતૃત્વ", "nav_calculator": "લોન કેલ્ક્યુલેટર", "nav_legal": "કાનૂની", "nav_contact": "સંપર્ક કરો", "footer_privacy": "ગોપનીયતા નીતિ", "footer_terms": "નિયમો અને શરતો", "footer_pos": "POSH", "footer_company": "કંપની", "footer_services": "સેવાઓ", "footer_contact": "સંપર્ક", "footer_desc": "એક આધુનિક બેંકિંગ કોરસ્પોન્ડન્ટ જે સમગ્ર ભારતમાં અદ્યતન ટેકનોલોજી દ્વારા વ્યાપક લોન ઓરિજિનેશન, કલેક્શન અને સર્વિસિંગ પ્રદાન કરે છે.", "footer_board": "નિયામક મંડળ", "footer_mgmt": "વ્યવસ્થાપન ટીમ", "footer_network": "અમારું નેટવર્ક", "footer_disclosures": "ભાગીદાર જાહેરાતો", "footer_calculator": "લોન કેલ્ક્યુલેટર", "footer_copy": "&copy; 2026 રેપિડ લોન્સ ઈન્ડિયા પ્રા. લિ. સર્વાધિકાર સુરક્ષિત.", "footer_ahmedabad": "અમદાવાદ, ગુજરાત, ભારત", "svc1_title": "માઇક્રોલોન ઓરિજિનેશન", "svc2_title": "બેંકિંગ કોરસ્પોન્ડન્ટ", "svc3_title": "કલેક્શન અને સર્વિસિંગ", "pp_title": "ગોપનીયતા નીતિ", "tc_title": "નિયમો અને શરતો", "posh_title": "POSH નીતિ", "posh_sub": "કાર્યસ્થળે જાતીય સતામણી નિવારણ"}, "te": {"nav_about": "మా గురించి", "nav_services": "సేవలు", "nav_network": "నెట్‌వర్క్", "nav_partners": "భాగస్వాములు", "nav_leadership": "బోర్డులు & నాయకత్వం", "nav_calculator": "రుణ కాల్క్యులేటర్", "nav_legal": "చట్టపరమైన", "nav_contact": "సంప్రదించండి", "footer_privacy": "గోప్యతా విధానం", "footer_terms": "నిబంధనలు & షరతులు", "footer_pos": "POSH", "footer_company": "కంపెనీ", "footer_services": "సేవలు", "footer_contact": "సంప్రదించండి", "footer_desc": "భారతదేశం అంతటా అధునాతన సాంకేతికత ద్వారా సమగ్ర రుణ ఉత్పత్తి, వసూలు మరియు సేవను అందించే ఆధునిక బ్యాంకింగ్ కరస్పాండెంట్.", "footer_board": "డైరెక్టర్ల బోర్డు", "footer_mgmt": "నిర్వహణ బృందం", "footer_network": "మా నెట్‌వర్క్", "footer_disclosures": "భాగస్వామ్య వెల్లడింపులు", "footer_calculator": "రుణ కాల్క్యులేటర్", "footer_copy": "&copy; 2026 రాపిడ్ లోన్స్ ఇండియా ప్రై. లిమి. అన్ని హక్కులు రిజర్వ్ చేయబడ్డాయి.", "footer_ahmedabad": "అహ్మదాబాద్, గుజరాత్, భారతదేశం", "svc1_title": "మైక్రోలోన్ ఉత్పత్తి", "svc2_title": "బ్యాంకింగ్ కరస్పాండెంట్", "svc3_title": "వసూలు & సేవ", "pp_title": "గోప్యతా విధానం", "tc_title": "నిబంధనలు మరియు షరతులు", "posh_title": "POSH విధానం", "posh_sub": "కార్యాలయంలో లైంగిక వేధింపుల నివారణ"}, "ta": {"nav_about": "எங்களைப் பற்றி", "nav_services": "சேவைகள்", "nav_network": "நெட்வொர்க்", "nav_partners": "பங்காளிகள்", "nav_leadership": "வாரியங்கள் & தலைமை", "nav_calculator": "கடன் கால்குலேட்டர்", "nav_legal": "சட்டம்", "nav_contact": "தொடர்பு கொள்ளுங்கள்", "footer_privacy": "தனியுரிமைக் கொள்கை", "footer_terms": "விதிமுறைகள் & நிபந்தனைகள்", "footer_pos": "POSH", "footer_company": "நிறுவனம்", "footer_services": "சேவைகள்", "footer_contact": "தொடர்பு", "footer_desc": "இந்தியா முழுவதும் மேம்பட்ட தொழில்நுட்பம் மூலம் விரிவான கடன் உருவாக்கம், வசூல் மற்றும் சேவையை வழங்கும் நவீன வங்கி நிருபர்.", "footer_board": "இயக்குநர்கள் குழு", "footer_mgmt": "நிர்வாகக் குழு", "footer_network": "எங்கள் நெட்வொர்க்", "footer_disclosures": "கூட்டாளர் வெளிப்படுத்தல்கள்", "footer_calculator": "கடன் கால்குலேட்டர்", "footer_copy": "&copy; 2026 ரேபிட் லோன்ஸ் இந்தியா பிரை. லிட். அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.", "footer_ahmedabad": "அகமதாபாத், குஜராத், இந்தியா", "svc1_title": "மைக்ரோலோன் உருவாக்கம்", "svc2_title": "வங்கி நிருபர்", "svc3_title": "வசூல் & சேவை", "pp_title": "தனியுரிமைக் கொள்கை", "tc_title": "விதிமுறைகள் மற்றும் நிபந்தனைகள்", "posh_title": "POSH கொள்கை", "posh_sub": "பணியிடத்தில் பாலியல் துன்புறுத்தல் தடுப்பு"}, "ml": {"nav_about": "ഞങ്ങളെ കുറിച്ച്", "nav_services": "സേവനങ്ങൾ", "nav_network": "നെറ്റ്‌വർക്ക്", "nav_partners": "പങ്കാളികൾ", "nav_leadership": "ബോർഡുകളും നേതൃത്വവും", "nav_calculator": "ലോണ്‍ കാല്‍ക്കുലേറ്റര്‍", "nav_legal": "നിയമപരം", "nav_contact": "ഞങ്ങളെ ബന്ധപ്പെടുക", "footer_privacy": "സ്വകാര്യത നയം", "footer_terms": "നിബന്ധനകളും സാഹചര്യവും", "footer_pos": "POSH", "footer_company": "കമ്പനി", "footer_services": "സേവനങ്ങൾ", "footer_contact": "സംപർക്കം", "footer_desc": "ഒരു ആധുനിക ബാങ്കിംഗ് പ്രതിനിധി ഇന്ത്യ ജുഡാ അത്യാധുനിക പ്രയുക്തിയിലൂടെ വ്യാപകമായ കടാവലംബനം, ശേഖരണം, സേവനം നൽകുകയാണ്।", "footer_board": "ഡയറക്ടർ ബോർഡ്", "footer_mgmt": "മാനേജ്‌മെന്റ് ടീം", "footer_network": "ഞങ്ങളുടെ നെറ്റ്‌വർക്ക്", "footer_disclosures": "പങ്കാളി വെളിപ്പെടുത്തലുകൾ", "footer_calculator": "ലോണ്‍ കാല്‍ക്കുലേറ്റര്‍", "footer_copy": "&copy; 2026 Rapid Loans India Pvt. Ltd. എല്ലാ അവകാശങ്ങളും നിക്ഷിപ്തം.", "footer_ahmedabad": "അഹമ്മദാബാദ്, ഗുജറാത്ത്, ഇന്ത്യ", "svc1_title": "സൂക്ഷ്മ കടാവലംബനം", "svc2_title": "ബാങ്കിങ് പ്രതിനിധി", "svc3_title": "ശേഖരണം & സേവനം", "pp_title": "സ്വകാര്യതാ നയം", "tc_title": "നിബന്ധനകളും വ്യവസ്ഥകളും", "posh_title": "POSH നയം", "posh_sub": "ജോലിസ്ഥലത്തെ ലൈംഗിക പീഡന തടയല്‍"}};
+        var langLabels = {en:'EN',hi:'हिं',gu:'ગુ',mr:'मरा',te:'తె',ta:'த',ml:'മല'};
+        function toggleLangDropdown(e){ e.stopPropagation(); document.getElementById('langSwitcher').classList.toggle('open'); }
+        function setLanguage(lang){
+            document.documentElement.setAttribute('data-lang', lang);
+            var cl=document.getElementById('currentLang'); if(cl) cl.textContent = langLabels[lang]||'EN';
+            document.querySelectorAll('[data-i18n]').forEach(function(el){ var k=el.getAttribute('data-i18n'); if(L[lang] && L[lang][k]!=null) el.innerHTML = L[lang][k]; });
+            document.querySelectorAll('.lang-option').forEach(function(o){ o.classList.remove('active'); });
+            var b=document.querySelector('.lang-option[onclick="setLanguage(\''+lang+'\')"]'); if(b) b.classList.add('active');
+            document.getElementById('langSwitcher').classList.remove('open');
+            try{ localStorage.setItem('rl-lang', lang); }catch(e){}
+        }
+        document.addEventListener('click', function(e){ var s=document.getElementById('langSwitcher'); if(s && !s.contains(e.target)) s.classList.remove('open'); });
+        (function(){ try{ var l=localStorage.getItem('rl-lang'); if(l && L[l]) setLanguage(l); }catch(e){} })();
+
+        function toggleTheme() {
+            var dark = document.documentElement.classList.toggle('theme-dark');
+            try { localStorage.setItem('rl-theme', dark ? 'dark' : 'light'); } catch (e) {}
+        }
+    </script>
+</body>
+</html>
