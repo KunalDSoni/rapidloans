@@ -1656,8 +1656,9 @@
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 32px;
         }
-        .team-grid-solo {
-            grid-template-columns: minmax(280px, 360px);
+        /* ID-scoped so it stays a single centered column even inside the responsive .team-grid breakpoints */
+        #management .team-grid-solo {
+            grid-template-columns: min(100%, 360px);
             justify-content: center;
         }
 
@@ -5088,7 +5089,7 @@
                 dir2_role: 'Investor Management, Compliance & Strategy',
                 dir2_bio: '20+ years at Barclays, HSBC, and ICICI Bank. Excels in advisory roles with proven ability to drive success and cultivate high-performing teams.',
                 dir2_bio_ext: 'Expert in cost management (P&L), strategic visioning, innovation, and financial analysis. Mentors IoT startups at the Technology Innovation Hub (TIH) of IIT Bombay and acts as a brand strategist for fintech startups, guiding growth strategies, go-to-market initiatives, and fundraising.',
-                mgmt1_role: 'Chief Financial Officer',
+                mgmt1_role: 'Chief Executive Officer',
                 mgmt1_bio: 'A results-driven leader with over two decades across banking, microfinance, and financial inclusion. Before joining Rapid Loans as CEO, he was COO of Saija Finance, and earlier SVP & Business Head - Individual Loans and VP - West Zone at Janalakshmi Financial Services, where he built the microfinance business to a 900-crore book across 68 branches and 1,500 employees. He began his career at IndusInd Bank, rising to Deputy Vice President, with deep expertise across P&L, sales, collections, operations, and branch expansion.',
                 mgmt2_role: 'Head of Operations',
                 mgmt2_bio: 'An astute professional with extensive experience leading micro-finance operations, designing policies, overseeing customer service, and implementing technology solutions for rapid, responsible growth.',
