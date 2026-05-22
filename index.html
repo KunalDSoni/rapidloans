@@ -7890,6 +7890,7 @@
         function setLanguage(lang) {
             currentLanguage = lang;
             document.documentElement.setAttribute('data-lang', lang);
+            try { localStorage.setItem('rl-lang', lang); } catch (e) {}
 
             const langLabels = { en: 'EN', hi: 'हिं', gu: 'ગુ', mr: 'मरा', ta: 'த', kn: 'ಕ', te: 'తె', bn: 'বাং', pa: 'ਪੰ', ml: 'മല', or: 'ଓ', as: 'অস' };
             document.getElementById('currentLang').textContent = langLabels[lang];
@@ -8330,7 +8331,11 @@
         document.getElementById('donutInterest').setAttribute('stroke-dashoffset', 25 - principalPct);
     }
     // Initialize on load
-    document.addEventListener('DOMContentLoaded', function() { updateCalc(); });
+    document.addEventListener('DOMContentLoaded', function() {
+        updateCalc();
+        // Restore the site-wide language preference (shared across all pages)
+        try { var __sl = localStorage.getItem('rl-lang'); if (__sl && typeof translations !== 'undefined' && translations[__sl]) setLanguage(__sl); } catch (e) {}
+    });
     </script>
 
     <!-- Network map is a plain image, no JS needed -->

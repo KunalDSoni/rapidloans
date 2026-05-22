@@ -298,10 +298,10 @@
             document.querySelectorAll('.lang-option').forEach(function(o){ o.classList.remove('active'); });
             var b=document.querySelector('.lang-option[onclick="setLanguage(\''+lang+'\')"]'); if(b) b.classList.add('active');
             document.getElementById('langSwitcher').classList.remove('open');
-            /* language is session-only; default is English (no persistence) */
+            try{ localStorage.setItem('rl-lang', lang); }catch(e){}
         }
         document.addEventListener('click', function(e){ var s=document.getElementById('langSwitcher'); if(s && !s.contains(e.target)) s.classList.remove('open'); });
-        /* default language is English; do not auto-switch from saved value */
+        (function(){ try{ var l=localStorage.getItem('rl-lang'); if(l && L[l]) setLanguage(l); }catch(e){} })();
 
         function toggleTheme() {
             var dark = document.documentElement.classList.toggle('theme-dark');
