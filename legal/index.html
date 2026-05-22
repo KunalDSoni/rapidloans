@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>try{var s=localStorage.getItem('rl-theme');var dark=(s===null)?(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches):(s==='dark');if(dark)document.documentElement.classList.add('theme-dark');}catch(e){}</script>
-    <title>Privacy Policy | Rapid Loans</title>
-    <meta name="description" content="Privacy Policy for Rapid Loans India Pvt. Ltd.">
+    <title>Legal | Rapid Loans</title>
+    <meta name="description" content="Legal policies for Rapid Loans India Pvt. Ltd. — Privacy Policy, Terms & Conditions, and POSH Policy.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
@@ -110,13 +110,24 @@
         .lang-switcher.open .lang-dropdown { display:flex; }
         .lang-option { padding:8px; border:none; background:none; border-radius:6px; cursor:pointer; font-size:1rem; color:var(--text-dark); text-align:center; }
         .lang-option:hover, .lang-option.active { background:var(--surface); color:var(--accent); }
+
+        /* ── Legal index listing ── */
+        .legal-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+        .legal-link-card { display: flex; align-items: flex-start; gap: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px 26px; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
+        .legal-link-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+        .legal-link-card .ico { flex-shrink: 0; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 11px; background: rgba(61,122,148,0.12); color: var(--accent); }
+        html.theme-dark .legal-link-card .ico { background: rgba(91,181,220,0.16); }
+        .legal-link-card h3 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text-dark); font-size: 1.1rem; margin-bottom: 6px; }
+        .legal-link-card p { color: var(--text-muted); font-size: 0.9rem; margin: 0; }
+        .legal-link-card .arrow { margin-left: auto; align-self: center; color: var(--text-muted); transition: transform 0.2s, color 0.2s; }
+        .legal-link-card:hover .arrow { color: var(--accent); transform: translateX(3px); }
     </style>
 </head>
 <body>
     <!-- ── Header ── -->
     <nav class="navbar">
         <div class="nav-inner">
-            <a class="logo" href="../../" aria-label="Rapid Loans home">
+            <a class="logo" href="../" aria-label="Rapid Loans home">
                 <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="logo-icon" aria-hidden="true">
                     <ellipse cx="50" cy="50" rx="44" ry="32" fill="none" stroke="#E63946" stroke-width="6" stroke-linecap="round" stroke-dasharray="175 55" stroke-dashoffset="-28" transform="rotate(-12 50 50)"/>
                     <path d="M 4 75 Q 50 100, 96 73" fill="none" stroke="#5BB5DC" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
@@ -125,23 +136,23 @@
                 <span class="logo-name">Rapid<span class="loans">Loans</span></span>
             </a>
             <div class="nav-links" id="navLinks">
-                <a href="../../#about" data-i18n="nav_about">About</a>
-                <a href="../../#services" data-i18n="nav_services">Services</a>
-                <a href="../../#network" data-i18n="nav_network">Network</a>
-                <a href="../../#partners" data-i18n="nav_partners">Partners</a>
-                <a href="../../#board" data-i18n="nav_leadership">Boards &amp; Leadership</a>
-                <a href="../../#calculator" data-i18n="nav_calculator">Loan Calculator</a>
+                <a href="../#about" data-i18n="nav_about">About</a>
+                <a href="../#services" data-i18n="nav_services">Services</a>
+                <a href="../#network" data-i18n="nav_network">Network</a>
+                <a href="../#partners" data-i18n="nav_partners">Partners</a>
+                <a href="../#board" data-i18n="nav_leadership">Boards &amp; Leadership</a>
+                <a href="../#calculator" data-i18n="nav_calculator">Loan Calculator</a>
                 <div class="nav-dropdown">
-                    <a href="../" class="nav-dropdown-toggle active"><span data-i18n="nav_legal">Legal</span>
+                    <a href="./" class="nav-dropdown-toggle active"><span data-i18n="nav_legal">Legal</span>
                         <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
                     </a>
                     <div class="nav-dropdown-menu">
-                        <a href="../privacy/" data-i18n="footer_privacy">Privacy Policy</a>
-                        <a href="../terms/" data-i18n="footer_terms">Terms &amp; Conditions</a>
-                        <a href="../posh/" data-i18n="footer_pos">POSH</a>
+                        <a href="privacy/" data-i18n="footer_privacy">Privacy Policy</a>
+                        <a href="terms/" data-i18n="footer_terms">Terms &amp; Conditions</a>
+                        <a href="posh/" data-i18n="footer_pos">POSH</a>
                     </div>
                 </div>
-                <a href="../../#contact" class="nav-cta" data-i18n="nav_contact">Contact Us</a>
+                <a href="../#contact" class="nav-cta" data-i18n="nav_contact">Contact Us</a>
             </div>
             <div class="nav-right">
                 <div class="lang-switcher" id="langSwitcher">
@@ -171,44 +182,35 @@
     <!-- ── Content ── -->
     <main class="wrap">
         <div class="page-head">
-            <h1 data-i18n="footer_privacy">Privacy Policy</h1>
+            <h1 data-i18n="legal_index_title">Legal</h1>
             <div class="accent-rule"></div>
+            <p class="subtitle" data-i18n="legal_index_sub">Policies and disclosures for Rapid Loans India Pvt. Ltd.</p>
         </div>
-        <div class="card">
-            <p class="intro" data-i18n="pp_b_intro">This Privacy Policy explains how Rapid Loans India Pvt. Ltd. ("Rapid Loans", "we", "us") collects, uses, stores, shares, and protects your personal data. It is published in accordance with the Digital Personal Data Protection Act, 2023 (DPDP Act), the Information Technology Act, 2000 read with the Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011, and applicable Reserve Bank of India (RBI) guidelines. As a banking correspondent, we act as a Data Fiduciary in respect of the personal data we process.</p>
-
-            <h2 data-i18n="pp_b_h1">1. Information We Collect</h2>
-            <p data-i18n="pp_b_p1">We collect personal data that you provide and that is necessary to facilitate financial services, including: identity and KYC information (name, date of birth, PAN, Aadhaar/identity documents as permitted by law), contact details (address, email, mobile number), financial and transaction information, and technical data (device and usage information). We collect Aadhaar-related information only with your explicit consent and strictly in accordance with the Aadhaar Act, 2016 and RBI directions.</p>
-
-            <h2 data-i18n="pp_b_h2">2. Lawful Basis &amp; Purpose</h2>
-            <p data-i18n="pp_b_p2">We process your personal data based on your consent and for legitimate uses permitted under the DPDP Act. Personal data is used solely to verify identity (KYC), facilitate loan origination, collection and servicing on behalf of our regulated lending partners, comply with legal and regulatory obligations, prevent fraud, and improve our services. We will not use your data for any purpose incompatible with these stated purposes without obtaining fresh consent.</p>
-
-            <h2 data-i18n="pp_b_h3">3. Information Sharing &amp; Disclosure</h2>
-            <p data-i18n="pp_b_p3">We do not sell or rent your personal data. We may share it with: (a) RBI-regulated banks and NBFCs who are our lending partners, for processing your application; (b) authorised service providers under binding confidentiality and data-protection obligations; and (c) regulators, courts, or government authorities where required by law. Any cross-border transfer is undertaken only as permitted under the DPDP Act and applicable RBI data-storage norms.</p>
-
-            <h2 data-i18n="pp_b_h4">4. Data Security</h2>
-            <p data-i18n="pp_b_p4">We implement reasonable security practices and procedures as required under Section 43A of the IT Act, 2000 and the SPDI Rules, 2011, including encryption, access controls, and secure storage, to protect your data against unauthorised access, alteration, disclosure, or destruction.</p>
-
-            <h2 data-i18n="pp_b_h5">5. Data Retention</h2>
-            <p data-i18n="pp_b_p5">We retain personal data only for as long as necessary to fulfil the purposes set out in this policy or as mandated by applicable law and RBI record-keeping requirements, after which it is securely erased or anonymised.</p>
-
-            <h2 data-i18n="pp_b_h6">6. Your Rights as a Data Principal</h2>
-            <p data-i18n="pp_b_p6">Under the DPDP Act, 2023 you have the right to: access a summary of your personal data and processing; request correction, completion, updating, or erasure of your data; withdraw consent at any time; nominate another individual to exercise your rights; and seek grievance redressal. To exercise these rights, contact our Grievance Officer (Section 9).</p>
-
-            <h2 data-i18n="pp_b_h7">7. Cookies</h2>
-            <p data-i18n="pp_b_p7">We use cookies to enhance your experience and analyse website usage. You may disable cookies through your browser settings, although certain features of the site may not function properly as a result.</p>
-
-            <h2 data-i18n="pp_b_h8">8. Children's Data</h2>
-            <p data-i18n="pp_b_p8">We do not knowingly process the personal data of children (persons below 18 years) except with verifiable consent of a parent or lawful guardian, and never in a manner detrimental to a child, in accordance with the DPDP Act.</p>
-
-            <h2 data-i18n="pp_b_h9">9. Grievance Officer</h2>
-            <p data-i18n="pp_b_p9">In compliance with the DPDP Act, 2023 and the IT Act, 2000, you may address any privacy grievance to our Grievance Officer at <a href="mailto:info@rapidloans.ai">info@rapidloans.ai</a>. We will acknowledge and endeavour to resolve grievances within the timelines prescribed under applicable law.</p>
-
-            <h2 data-i18n="pp_b_h10">10. Changes to This Policy</h2>
-            <p data-i18n="pp_b_p10">We may update this Privacy Policy from time to time to reflect changes in law or our practices. The revised policy will be posted on this page with effect from the date of publication.</p>
-
-            <h2 data-i18n="pp_b_h11">11. Governing Law</h2>
-            <p data-i18n="pp_b_p11">This Privacy Policy is governed by and construed in accordance with the laws of India, and any disputes are subject to the exclusive jurisdiction of the courts at Ahmedabad, Gujarat.</p>
+        <div class="legal-grid">
+            <a class="legal-link-card" href="privacy/">
+                <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+                <span>
+                    <h3 data-i18n="footer_privacy">Privacy Policy</h3>
+                    <p data-i18n="legal_desc_privacy">How we collect, use, and protect your personal data.</p>
+                </span>
+                <span class="arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
+            </a>
+            <a class="legal-link-card" href="terms/">
+                <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h8M8 9h2"/></svg></span>
+                <span>
+                    <h3 data-i18n="footer_terms">Terms &amp; Conditions</h3>
+                    <p data-i18n="legal_desc_terms">The terms governing your use of our website and services.</p>
+                </span>
+                <span class="arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
+            </a>
+            <a class="legal-link-card" href="posh/">
+                <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+                <span>
+                    <h3 data-i18n="footer_pos">POSH</h3>
+                    <p data-i18n="legal_desc_posh">Our policy for prevention of sexual harassment at the workplace.</p>
+                </span>
+                <span class="arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
+            </a>
         </div>
     </main>
 
@@ -217,7 +219,7 @@
         <div class="footer-inner">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <a class="logo" href="../../">
+                    <a class="logo" href="../">
                         <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="logo-icon" aria-hidden="true">
                             <ellipse cx="50" cy="50" rx="44" ry="32" fill="none" stroke="#E63946" stroke-width="6" stroke-linecap="round" stroke-dasharray="175 55" stroke-dashoffset="-28" transform="rotate(-12 50 50)"/>
                             <path d="M 4 75 Q 50 100, 96 73" fill="none" stroke="#5BB5DC" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
@@ -232,34 +234,34 @@
                 </div>
                 <div class="footer-col">
                     <h4 data-i18n="footer_company">Company</h4>
-                    <a href="../../#about" data-i18n="nav_about">About Us</a>
-                    <a href="../../#board" data-i18n="footer_board">Board of Directors</a>
-                    <a href="../../#management" data-i18n="footer_mgmt">Management Team</a>
-                    <a href="../../#network" data-i18n="footer_network">Our Network</a>
-                    <a href="../../#partners-disclosure" data-i18n="footer_disclosures">Partner Disclosures</a>
-                    <a href="../../#calculator" data-i18n="nav_calculator">Loan Calculator</a>
-                    <a href="../../#contact" data-i18n="nav_contact">Contact</a>
+                    <a href="../#about" data-i18n="nav_about">About Us</a>
+                    <a href="../#board" data-i18n="footer_board">Board of Directors</a>
+                    <a href="../#management" data-i18n="footer_mgmt">Management Team</a>
+                    <a href="../#network" data-i18n="footer_network">Our Network</a>
+                    <a href="../#partners-disclosure" data-i18n="footer_disclosures">Partner Disclosures</a>
+                    <a href="../#calculator" data-i18n="nav_calculator">Loan Calculator</a>
+                    <a href="../#contact" data-i18n="nav_contact">Contact</a>
                 </div>
                 <div class="footer-col">
                     <h4 data-i18n="footer_services">Services</h4>
-                    <a href="../../#services" data-i18n="svc1_title">Microloan Origination</a>
-                    <a href="../../#services" data-i18n="svc2_title">Banking Correspondent</a>
-                    <a href="../../#services" data-i18n="svc3_title">Collection &amp; Servicing</a>
+                    <a href="../#services" data-i18n="svc1_title">Microloan Origination</a>
+                    <a href="../#services" data-i18n="svc2_title">Banking Correspondent</a>
+                    <a href="../#services" data-i18n="svc3_title">Collection &amp; Servicing</a>
                 </div>
                 <div class="footer-col">
                     <h4 data-i18n="footer_contact">Contact</h4>
                     <a href="mailto:info@rapidloans.ai">info@rapidloans.ai</a>
                     <a href="tel:+918369495365">+91 83694 95365</a>
-                    <a href="../../#contact" data-i18n="footer_ahmedabad">Ahmedabad, Gujarat, India</a>
+                    <a href="../#contact" data-i18n="footer_ahmedabad">Ahmedabad, Gujarat, India</a>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p data-i18n="footer_copy">&copy; 2026 Rapid Loans India Pvt. Ltd. All rights reserved.</p>
                 <p>
-                    <a href="../" data-i18n="nav_legal" style="margin-right:20px;">Legal</a>
-                    <a href="../terms/" data-i18n="footer_terms" style="margin-right:20px;">Terms &amp; Conditions</a>
-                    <a href="../privacy/" data-i18n="footer_privacy" class="active" style="margin-right:20px;">Privacy Policy</a>
-                    <a href="../posh/" data-i18n="footer_pos">POSH</a>
+                    <a href="./" data-i18n="nav_legal" style="margin-right:20px;">Legal</a>
+                    <a href="terms/" data-i18n="footer_terms" style="margin-right:20px;">Terms &amp; Conditions</a>
+                    <a href="privacy/" data-i18n="footer_privacy" style="margin-right:20px;">Privacy Policy</a>
+                    <a href="posh/" data-i18n="footer_pos">POSH</a>
                 </p>
             </div>
         </div>
@@ -276,6 +278,16 @@
 "ta": {"pp_b_intro": "இந்த தனியுரிமைக் கொள்கை, ரேபிட் லோன்ஸ் இந்தியா பிரை. லிட். ('ரேபிட் லோன்ஸ்', 'நாங்கள்', 'எங்கள்') உங்கள் தனிப்பட்ட தரவை எவ்வாறு சேகரிக்கிறது, பயன்படுத்துகிறது, சேமிக்கிறது, பகிர்கிறது மற்றும் பாதுகாக்கிறது என்பதை விளக்குகிறது. இது டிஜிட்டல் பர்சனல் டேட்டா புரொடெக்ஷன் ஆக்ட், 2023 (DPDP Act), இன்ஃபர்மேஷன் டெக்னாலஜி ஆக்ட், 2000 மற்றும் இன்ஃபர்மேஷன் டெக்னாலஜி (நியாயமான பாதுகாப்பு நடைமுறைகள் மற்றும் செயல்முறைகள் மற்றும் உணர்திறன் தனிப்பட்ட தரவு அல்லது தகவல்) விதிகள், 2011, மற்றும் பொருந்தும் இந்திய ரிசர்வ் வங்கி (RBI) வழிகாட்டுதல்களின்படி வெளியிடப்படுகிறது. வங்கி நிருபராக, நாங்கள் செயலாக்கும் தனிப்பட்ட தரவைப் பொறுத்தவரை டேட்டா ஃபிட்யூஷியரியாக செயல்படுகிறோம்.", "pp_b_h1": "1. நாங்கள் சேகரிக்கும் தகவல்", "pp_b_p1": "நீங்கள் வழங்கும் மற்றும் நிதி சேவைகளை எளிதாக்க தேவையான தனிப்பட்ட தரவை நாங்கள் சேகரிக்கிறோம், இதில் அடங்கும்: அடையாளம் மற்றும் KYC தகவல் (பெயர், பிறந்த தேதி, PAN, சட்டத்தால் அனுமதிக்கப்பட்ட Aadhaar/அடையாள ஆவணங்கள்), தொடர்பு விவரங்கள் (முகவரி, மின்னஞ்சல், மொபைல் எண்), நிதி மற்றும் பரிவர்த்தனை தகவல், மற்றும் தொழில்நுட்ப தரவு (சாதனம் மற்றும் பயன்பாட்டு தகவல்). நாங்கள் Aadhaar தொடர்பான தகவலை உங்கள் வெளிப்படையான ஒப்புதலுடன் மட்டுமே மற்றும் Aadhaar Act, 2016 மற்றும் RBI வழிகாட்டுதல்களின்படி கண்டிப்பாக சேகரிக்கிறோம்.", "pp_b_h2": "2. சட்டபூர்வ அடிப்படை மற்றும் நோக்கம்", "pp_b_p2": "நாங்கள் உங்கள் தனிப்பட்ட தரவை உங்கள் ஒப்புதலின் அடிப்படையில் மற்றும் DPDP Act இன் கீழ் அனுமதிக்கப்பட்ட சட்டபூர்வ பயன்பாடுகளுக்காக செயலாக்குகிறோம். தனிப்பட்ட தரவு அடையாள சரிபார்ப்பு (KYC), எங்கள் ஒழுங்குபடுத்தப்பட்ட கடன் வழங்கும் கூட்டாளர்களின் சார்பாக கடன் உருவாக்கம், வசூல் மற்றும் சேவையை எளிதாக்குதல், சட்ட மற்றும் ஒழுங்குமுறை கடமைகளுக்கு இணங்குதல், மோசடியைத் தடுத்தல் மற்றும் எங்கள் சேவைகளை மேம்படுத்துதல் ஆகியவற்றுக்காக மட்டுமே பயன்படுத்தப்படுகிறது. புதிய ஒப்புதலைப் பெறாமல் இந்த குறிப்பிட்ட நோக்கங்களுடன் பொருந்தாத எந்த நோக்கத்திற்காகவும் உங்கள் தரவை நாங்கள் பயன்படுத்த மாட்டோம்.", "pp_b_h3": "3. தகவல் பகிர்வு மற்றும் வெளிப்படுத்தல்", "pp_b_p3": "நாங்கள் உங்கள் தனிப்பட்ட தரவை விற்கவோ வாடகைக்கு விடவோ இல்லை. நாங்கள் அதைப் பகிரலாம்: (அ) எங்கள் கடன் வழங்கும் கூட்டாளர்களான RBI-ஒழுங்குபடுத்தப்பட்ட வங்கிகள் மற்றும் NBFCகளுடன், உங்கள் விண்ணப்பத்தை செயலாக்க; (ஆ) கட்டுப்படுத்தும் ரகசியத்தன்மை மற்றும் தரவு-பாதுகாப்பு கடமைகளின் கீழ் அங்கீகரிக்கப்பட்ட சேவை வழங்குநர்கள்; மற்றும் (இ) சட்டத்தால் தேவைப்படும் இடத்தில் ஒழுங்குமுறையாளர்கள், நீதிமன்றங்கள் அல்லது அரசு அதிகாரிகள். எந்தவொரு எல்லை தாண்டிய பரிமாற்றமும் DPDP Act மற்றும் பொருந்தும் RBI தரவு-சேமிப்பு விதிமுறைகளின்படி மட்டுமே மேற்கொள்ளப்படுகிறது.", "pp_b_h4": "4. தரவு பாதுகாப்பு", "pp_b_p4": "உங்கள் தரவை அங்கீகரிக்கப்படாத அணுகல், மாற்றம், வெளிப்படுத்தல் அல்லது அழிவிலிருந்து பாதுகாக்க, IT Act, 2000 இன் பிரிவு 43A மற்றும் SPDI Rules, 2011 இன் கீழ் தேவையான நியாயமான பாதுகாப்பு நடைமுறைகள் மற்றும் செயல்முறைகளை நாங்கள் செயல்படுத்துகிறோம், இதில் குறியாக்கம், அணுகல் கட்டுப்பாடுகள் மற்றும் பாதுகாப்பான சேமிப்பு அடங்கும்.", "pp_b_h5": "5. தரவு தக்கவைப்பு", "pp_b_p5": "இந்தக் கொள்கையில் குறிப்பிடப்பட்டுள்ள நோக்கங்களை நிறைவேற்ற தேவையான வரை அல்லது பொருந்தும் சட்டம் மற்றும் RBI பதிவு-பராமரிப்பு தேவைகளால் கட்டாயப்படுத்தப்பட்ட வரை மட்டுமே நாங்கள் தனிப்பட்ட தரவை தக்கவைக்கிறோம், அதன் பிறகு அது பாதுகாப்பாக அழிக்கப்படுகிறது அல்லது அநாமதேயமாக்கப்படுகிறது.", "pp_b_h6": "6. டேட்டா பிரின்சிபலாக உங்கள் உரிமைகள்", "pp_b_p6": "DPDP Act, 2023 இன் கீழ் உங்களுக்கு இந்த உரிமை உள்ளது: உங்கள் தனிப்பட்ட தரவு மற்றும் செயலாக்கத்தின் சுருக்கத்தை அணுகுதல்; உங்கள் தரவில் திருத்தம், நிறைவு, புதுப்பித்தல் அல்லது அழித்தலைக் கோருதல்; எந்த நேரத்திலும் ஒப்புதலைத் திரும்பப் பெறுதல்; உங்கள் உரிமைகளைப் பயன்படுத்த மற்றொரு நபரை நியமித்தல்; மற்றும் குறை தீர்ப்பைக் கோருதல். இந்த உரிமைகளைப் பயன்படுத்த, எங்கள் குறைதீர்ப்பு அதிகாரியை (பிரிவு 9) தொடர்பு கொள்ளுங்கள்.", "pp_b_h7": "7. குக்கீகள்", "pp_b_p7": "உங்கள் அனுபவத்தை மேம்படுத்தவும் வலைத்தள பயன்பாட்டை பகுப்பாய்வு செய்யவும் நாங்கள் குக்கீகளைப் பயன்படுத்துகிறோம். உங்கள் உலாவி அமைப்புகள் வழியாக நீங்கள் குக்கீகளை முடக்கலாம், இருப்பினும் இதன் விளைவாக தளத்தின் சில அம்சங்கள் சரியாக செயல்படாமல் போகலாம்.", "pp_b_h8": "8. குழந்தைகளின் தரவு", "pp_b_p8": "நாங்கள் DPDP Act இன்படி பெற்றோர் அல்லது சட்டப்பூர்வ பாதுகாவலரின் சரிபார்க்கக்கூடிய ஒப்புதல் இல்லாமல் குழந்தைகளின் (18 வயதுக்கு கீழ் உள்ளவர்கள்) தனிப்பட்ட தரவை அறிந்து செயலாக்க மாட்டோம், மேலும் ஒருபோதும் குழந்தைக்கு தீங்கு விளைவிக்கும் வகையில் இல்லை.", "pp_b_h9": "9. குறைதீர்ப்பு அதிகாரி", "pp_b_p9": "DPDP Act, 2023 மற்றும் IT Act, 2000 இன் இணக்கத்தில், நீங்கள் எந்தவொரு தனியுரிமை குறையையும் எங்கள் குறைதீர்ப்பு அதிகாரிக்கு <a href=\"mailto:info@rapidloans.ai\">info@rapidloans.ai</a> இல் அனுப்பலாம். நாங்கள் குறைகளை ஒப்புக்கொண்டு, பொருந்தும் சட்டத்தின் கீழ் நிர்ணயிக்கப்பட்ட கால அளவுகளுக்குள் அவற்றைத் தீர்க்க முயற்சிப்போம்.", "pp_b_h10": "10. இந்தக் கொள்கையில் மாற்றங்கள்", "pp_b_p10": "சட்டத்தில் அல்லது எங்கள் நடைமுறைகளில் ஏற்படும் மாற்றங்களைப் பிரதிபலிக்க நாங்கள் இந்த தனியுரிமைக் கொள்கையை அவ்வப்போது புதுப்பிக்கலாம். திருத்தப்பட்ட கொள்கை வெளியீட்டு தேதியிலிருந்து அமலுக்கு வரும் வகையில் இந்தப் பக்கத்தில் இடப்படும்.", "pp_b_h11": "11. ஆளும் சட்டம்", "pp_b_p11": "இந்த தனியுரிமைக் கொள்கை இந்திய சட்டங்களால் நிர்வகிக்கப்பட்டு அவற்றின்படி விளக்கப்படுகிறது, மேலும் எந்தவொரு தகராறுகளும் அகமதாபாத், குஜராத் நீதிமன்றங்களின் தனிப்பட்ட அதிகார வரம்பிற்கு உட்பட்டவை."},
 "ml": {"pp_b_intro": "ഈ സ്വകാര്യതാ നയം റാപിഡ് ലോൺസ് ഇന്ത്യ പ്രൈ. ലിമിറ്റഡ് ('റാപിഡ് ലോൺസ്', 'ഞങ്ങൾ', 'ഞങ്ങളുടെ') നിങ്ങളുടെ വ്യക്തിഗത ഡാറ്റ എങ്ങനെ ശേഖരിക്കുന്നു, ഉപയോഗിക്കുന്നു, സംഭരിക്കുന്നു, പങ്കിടുന്നു, സംരക്ഷിക്കുന്നു എന്ന് വിശദീകരിക്കുന്നു. ഇത് ഡിജിറ്റൽ പേഴ്സണൽ ഡാറ്റ പ്രൊട്ടക്ഷൻ ആക്റ്റ്, 2023 (DPDP Act), ഇൻഫർമേഷൻ ടെക്നോളജി ആക്റ്റ്, 2000, ഇൻഫർമേഷൻ ടെക്നോളജി (ന്യായമായ സുരക്ഷാ രീതികളും നടപടിക്രമങ്ങളും സെൻസിറ്റീവ് വ്യക്തിഗത ഡാറ്റയോ വിവരമോ) നിയമങ്ങൾ, 2011, കൂടാതെ ബാധകമായ റിസർവ് ബാങ്ക് ഓഫ് ഇന്ത്യ (RBI) മാർഗ്ഗനിർദ്ദേശങ്ങൾക്ക് അനുസൃതമായി പ്രസിദ്ധീകരിച്ചിരിക്കുന്നു. ബാങ്കിംഗ് പ്രതിനിധി എന്ന നിലയിൽ, ഞങ്ങൾ പ്രോസസ്സ് ചെയ്യുന്ന വ്യക്തിഗത ഡാറ്റയുമായി ബന്ധപ്പെട്ട് ഞങ്ങൾ ഡാറ്റ ഫിഡ്യൂഷ്യറിയായി പ്രവർത്തിക്കുന്നു.", "pp_b_h1": "1. ഞങ്ങൾ ശേഖരിക്കുന്ന വിവരങ്ങൾ", "pp_b_p1": "നിങ്ങൾ നൽകുന്നതും സാമ്പത്തിക സേവനങ്ങൾ സുഗമമാക്കാൻ ആവശ്യമായതുമായ വ്യക്തിഗത ഡാറ്റ ഞങ്ങൾ ശേഖരിക്കുന്നു, ഇതിൽ ഉൾപ്പെടുന്നു: തിരിച്ചറിയൽ, KYC വിവരങ്ങൾ (പേര്, ജനന തീയതി, PAN, നിയമം അനുവദിക്കുന്ന Aadhaar/തിരിച്ചറിയൽ രേഖകൾ), ബന്ധപ്പെടാനുള്ള വിശദാംശങ്ങൾ (വിലാസം, ഇമെയിൽ, മൊബൈൽ നമ്പർ), സാമ്പത്തിക, ഇടപാട് വിവരങ്ങൾ, സാങ്കേതിക ഡാറ്റ (ഉപകരണവും ഉപയോഗ വിവരവും). Aadhaar സംബന്ധമായ വിവരങ്ങൾ നിങ്ങളുടെ വ്യക്തമായ സമ്മതത്തോടെ മാത്രവും Aadhaar Act, 2016, RBI നിർദ്ദേശങ്ങൾ പ്രകാരം കർശനമായും ഞങ്ങൾ ശേഖരിക്കുന്നു.", "pp_b_h2": "2. നിയമപരമായ അടിസ്ഥാനവും ഉദ്ദേശ്യവും", "pp_b_p2": "നിങ്ങളുടെ സമ്മതത്തിന്റെ അടിസ്ഥാനത്തിലും DPDP Act പ്രകാരം അനുവദനീയമായ നിയമപരമായ ഉപയോഗങ്ങൾക്കും ഞങ്ങൾ നിങ്ങളുടെ വ്യക്തിഗത ഡാറ്റ പ്രോസസ്സ് ചെയ്യുന്നു. വ്യക്തിഗത ഡാറ്റ തിരിച്ചറിയൽ പരിശോധന (KYC), ഞങ്ങളുടെ നിയന്ത്രിത വായ്പാ പങ്കാളികൾക്ക് വേണ്ടി വായ്പാ ഉൽപ്പാദനം, ശേഖരണം, സേവനം സുഗമമാക്കൽ, നിയമപരവും നിയന്ത്രണപരവുമായ ബാധ്യതകൾ പാലിക്കൽ, വഞ്ചന തടയൽ, ഞങ്ങളുടെ സേവനങ്ങൾ മെച്ചപ്പെടുത്തൽ എന്നിവയ്ക്ക് മാത്രമേ ഉപയോഗിക്കൂ. പുതിയ സമ്മതം നേടാതെ ഈ പ്രസ്താവിച്ച ഉദ്ദേശ്യങ്ങളുമായി പൊരുത്തപ്പെടാത്ത ഒരു ഉദ്ദേശ്യത്തിനും ഞങ്ങൾ നിങ്ങളുടെ ഡാറ്റ ഉപയോഗിക്കില്ല.", "pp_b_h3": "3. വിവര പങ്കിടലും വെളിപ്പെടുത്തലും", "pp_b_p3": "ഞങ്ങൾ നിങ്ങളുടെ വ്യക്തിഗത ഡാറ്റ വിൽക്കുകയോ വാടകയ്ക്ക് നൽകുകയോ ഇല്ല. ഞങ്ങൾ ഇത് പങ്കിട്ടേക്കാം: (എ) ഞങ്ങളുടെ വായ്പാ പങ്കാളികളായ RBI-നിയന്ത്രിത ബാങ്കുകളും NBFCകളും, നിങ്ങളുടെ അപേക്ഷ പ്രോസസ്സ് ചെയ്യാൻ; (ബി) ബാധ്യതാപരമായ രഹസ്യാത്മകതയ്ക്കും ഡാറ്റ-സംരക്ഷണ ബാധ്യതകൾക്കും കീഴിലുള്ള അംഗീകൃത സേവന ദാതാക്കൾ; (സി) നിയമം ആവശ്യപ്പെടുന്നിടത്ത് നിയന്ത്രകർ, കോടതികൾ അല്ലെങ്കിൽ സർക്കാർ അധികാരികൾ. ഏതെങ്കിലും അതിർത്തി-കടന്നുള്ള കൈമാറ്റം DPDP Act, ബാധകമായ RBI ഡാറ്റ-സംഭരണ മാനദണ്ഡങ്ങൾ പ്രകാരം മാത്രമേ നടത്തൂ.", "pp_b_h4": "4. ഡാറ്റ സുരക്ഷ", "pp_b_p4": "നിങ്ങളുടെ ഡാറ്റയെ അനധികൃത ആക്സസ്, മാറ്റം, വെളിപ്പെടുത്തൽ അല്ലെങ്കിൽ നശീകരണത്തിൽ നിന്ന് സംരക്ഷിക്കാൻ, IT Act, 2000 ന്റെ സെക്ഷൻ 43A, SPDI Rules, 2011 പ്രകാരം ആവശ്യമായ ന്യായമായ സുരക്ഷാ രീതികളും നടപടിക്രമങ്ങളും ഞങ്ങൾ നടപ്പിലാക്കുന്നു, ഇതിൽ എൻക്രിപ്ഷൻ, ആക്സസ് നിയന്ത്രണങ്ങൾ, സുരക്ഷിത സംഭരണം എന്നിവ ഉൾപ്പെടുന്നു.", "pp_b_h5": "5. ഡാറ്റ നിലനിർത്തൽ", "pp_b_p5": "ഈ നയത്തിൽ പറഞ്ഞിരിക്കുന്ന ഉദ്ദേശ്യങ്ങൾ നിറവേറ്റാൻ ആവശ്യമായ കാലത്തേക്ക് അല്ലെങ്കിൽ ബാധകമായ നിയമവും RBI രേഖ-സൂക്ഷിപ്പ് ആവശ്യകതകളും അനുശാസിക്കുന്ന കാലത്തേക്ക് മാത്രമേ ഞങ്ങൾ വ്യക്തിഗത ഡാറ്റ നിലനിർത്തൂ, അതിനുശേഷം അത് സുരക്ഷിതമായി മായ്ക്കുകയോ അജ്ഞാതമാക്കുകയോ ചെയ്യുന്നു.", "pp_b_h6": "6. ഡാറ്റ പ്രിൻസിപ്പൽ എന്ന നിലയിൽ നിങ്ങളുടെ അവകാശങ്ങൾ", "pp_b_p6": "DPDP Act, 2023 പ്രകാരം നിങ്ങൾക്ക് ഈ അവകാശമുണ്ട്: നിങ്ങളുടെ വ്യക്തിഗത ഡാറ്റയുടെയും പ്രോസസ്സിംഗിന്റെയും സംഗ്രഹം ആക്സസ് ചെയ്യുക; നിങ്ങളുടെ ഡാറ്റയിൽ തിരുത്തൽ, പൂർത്തീകരണം, അപ്ഡേറ്റ് അല്ലെങ്കിൽ മായ്ക്കൽ അഭ്യർത്ഥിക്കുക; എപ്പോൾ വേണമെങ്കിലും സമ്മതം പിൻവലിക്കുക; നിങ്ങളുടെ അവകാശങ്ങൾ വിനിയോഗിക്കാൻ മറ്റൊരാളെ നാമനിർദ്ദേശം ചെയ്യുക; പരാതി പരിഹാരം തേടുക. ഈ അവകാശങ്ങൾ വിനിയോഗിക്കാൻ, ഞങ്ങളുടെ പരാതി ഓഫീസറെ (സെക്ഷൻ 9) ബന്ധപ്പെടുക.", "pp_b_h7": "7. കുക്കികൾ", "pp_b_p7": "നിങ്ങളുടെ അനുഭവം മെച്ചപ്പെടുത്താനും വെബ്സൈറ്റ് ഉപയോഗം വിശകലനം ചെയ്യാനും ഞങ്ങൾ കുക്കികൾ ഉപയോഗിക്കുന്നു. നിങ്ങളുടെ ബ്രൗസർ ക്രമീകരണങ്ങളിലൂടെ കുക്കികൾ പ്രവർത്തനരഹിതമാക്കാം, എന്നിരുന്നാലും അതിന്റെ ഫലമായി സൈറ്റിന്റെ ചില സവിശേഷതകൾ ശരിയായി പ്രവർത്തിച്ചേക്കില്ല.", "pp_b_h8": "8. കുട്ടികളുടെ ഡാറ്റ", "pp_b_p8": "DPDP Act അനുസരിച്ച് മാതാപിതാക്കളുടെയോ നിയമപരമായ രക്ഷിതാവിന്റെയോ പരിശോധിക്കാവുന്ന സമ്മതമില്ലാതെ കുട്ടികളുടെ (18 വയസ്സിന് താഴെയുള്ളവർ) വ്യക്തിഗത ഡാറ്റ ഞങ്ങൾ ബോധപൂർവ്വം പ്രോസസ്സ് ചെയ്യില്ല, കൂടാതെ ഒരിക്കലും കുട്ടിക്ക് ഹാനികരമായ രീതിയിലും അല്ല.", "pp_b_h9": "9. പരാതി ഓഫീസർ", "pp_b_p9": "DPDP Act, 2023, IT Act, 2000 എന്നിവയ്ക്ക് അനുസൃതമായി, നിങ്ങൾക്ക് ഏതെങ്കിലും സ്വകാര്യതാ പരാതി ഞങ്ങളുടെ പരാതി ഓഫീസർക്ക് <a href=\"mailto:info@rapidloans.ai\">info@rapidloans.ai</a> എന്ന വിലാസത്തിൽ അയയ്ക്കാം. ഞങ്ങൾ പരാതികൾ അംഗീകരിക്കുകയും ബാധകമായ നിയമപ്രകാരം നിശ്ചയിച്ച സമയപരിധിക്കുള്ളിൽ അവ പരിഹരിക്കാൻ ശ്രമിക്കുകയും ചെയ്യും.", "pp_b_h10": "10. ഈ നയത്തിലെ മാറ്റങ്ങൾ", "pp_b_p10": "നിയമത്തിലോ ഞങ്ങളുടെ രീതികളിലോ ഉള്ള മാറ്റങ്ങൾ പ്രതിഫലിപ്പിക്കാൻ ഞങ്ങൾ ഈ സ്വകാര്യതാ നയം കാലാകാലങ്ങളിൽ അപ്ഡേറ്റ് ചെയ്തേക്കാം. പരിഷ്കരിച്ച നയം പ്രസിദ്ധീകരണ തീയതി മുതൽ പ്രാബല്യത്തിൽ വരുന്ന തരത്തിൽ ഈ പേജിൽ പോസ്റ്റ് ചെയ്യും.", "pp_b_h11": "11. ഭരണ നിയമം", "pp_b_p11": "ഈ സ്വകാര്യതാ നയം ഇന്ത്യൻ നിയമങ്ങൾ പ്രകാരം നിയന്ത്രിക്കപ്പെടുകയും വ്യാഖ്യാനിക്കപ്പെടുകയും ചെയ്യുന്നു, കൂടാതെ ഏതെങ്കിലും തർക്കങ്ങൾ അഹമ്മദാബാദ്, ഗുജറാത്ത് കോടതികളുടെ പ്രത്യേക അധികാരപരിധിക്ക് വിധേയമാണ്."}
 };
+        Object.keys(LB).forEach(function(lang){ if(!L[lang]) L[lang]={}; for(var k in LB[lang]){ L[lang][k]=LB[lang][k]; } });
+        var LB = {
+        "en": {"legal_index_title":"Legal","legal_index_sub":"Policies and disclosures for Rapid Loans India Pvt. Ltd.","legal_desc_privacy":"How we collect, use, and protect your personal data.","legal_desc_terms":"The terms governing your use of our website and services.","legal_desc_posh":"Our policy for prevention of sexual harassment at the workplace."},
+        "hi": {"legal_index_title":"कानूनी","legal_index_sub":"रैपिड लोन्स इंडिया प्रा. लि. की नीतियाँ और प्रकटीकरण।","legal_desc_privacy":"हम आपके व्यक्तिगत डेटा को कैसे एकत्र, उपयोग और सुरक्षित करते हैं।","legal_desc_terms":"हमारी वेबसाइट और सेवाओं के उपयोग को नियंत्रित करने वाली शर्तें।","legal_desc_posh":"कार्यस्थल पर यौन उत्पीड़न की रोकथाम हेतु हमारी नीति।"},
+        "mr": {"legal_index_title":"कायदेशीर","legal_index_sub":"रॅपिड लोन्स इंडिया प्रा. लि. ची धोरणे आणि प्रकटीकरणे.","legal_desc_privacy":"आम्ही आपला वैयक्तिक डेटा कसा गोळा करतो, वापरतो आणि संरक्षित करतो.","legal_desc_terms":"आमच्या वेबसाइट आणि सेवांच्या वापरास नियंत्रित करणाऱ्या अटी.","legal_desc_posh":"कामाच्या ठिकाणी लैंगिक छळ प्रतिबंधासाठी आमचे धोरण."},
+        "gu": {"legal_index_title":"કાનૂની","legal_index_sub":"રેપિડ લોન્સ ઈન્ડિયા પ્રા. લિ. ની નીતિઓ અને જાહેરાતો.","legal_desc_privacy":"અમે તમારો વ્યક્તિગત ડેટા કેવી રીતે એકત્ર કરીએ, વાપરીએ અને સુરક્ષિત કરીએ છીએ.","legal_desc_terms":"અમારી વેબસાઇટ અને સેવાઓના ઉપયોગને નિયંત્રિત કરતી શરતો.","legal_desc_posh":"કાર્યસ્થળે જાતીય સતામણી નિવારણ માટેની અમારી નીતિ."},
+        "te": {"legal_index_title":"చట్టపరమైన","legal_index_sub":"రాపిడ్ లోన్స్ ఇండియా ప్రై. లిమి. విధానాలు మరియు వెల్లడింపులు.","legal_desc_privacy":"మేము మీ వ్యక్తిగత డేటాను ఎలా సేకరిస్తాము, ఉపయోగిస్తాము మరియు రక్షిస్తాము.","legal_desc_terms":"మా వెబ్‌సైట్ మరియు సేవల వినియోగాన్ని నియంత్రించే నిబంధనలు.","legal_desc_posh":"కార్యాలయంలో లైంగిక వేధింపుల నివారణకు మా విధానం."},
+        "ta": {"legal_index_title":"சட்டம்","legal_index_sub":"ரேபிட் லோன்ஸ் இந்தியா பிரை. லிட். கொள்கைகள் மற்றும் வெளிப்படுத்தல்கள்.","legal_desc_privacy":"உங்கள் தனிப்பட்ட தரவை நாங்கள் எவ்வாறு சேகரிக்கிறோம், பயன்படுத்துகிறோம், பாதுகாக்கிறோம்.","legal_desc_terms":"எங்கள் இணையதளம் மற்றும் சேவைகளின் பயன்பாட்டை நிர்வகிக்கும் விதிமுறைகள்.","legal_desc_posh":"பணியிடத்தில் பாலியல் துன்புறுத்தலைத் தடுப்பதற்கான எங்கள் கொள்கை."},
+        "ml": {"legal_index_title":"നിയമപരം","legal_index_sub":"റാപ്പിഡ് ലോൺസ് ഇന്ത്യ പ്രൈ. ലിമിറ്റഡിന്റെ നയങ്ങളും വെളിപ്പെടുത്തലുകളും.","legal_desc_privacy":"നിങ്ങളുടെ വ്യക്തിഗത ഡാറ്റ ഞങ്ങൾ എങ്ങനെ ശേഖരിക്കുന്നു, ഉപയോഗിക്കുന്നു, സംരക്ഷിക്കുന്നു.","legal_desc_terms":"ഞങ്ങളുടെ വെബ്‌സൈറ്റിന്റെയും സേവനങ്ങളുടെയും ഉപയോഗത്തെ നിയന്ത്രിക്കുന്ന വ്യവസ്ഥകൾ.","legal_desc_posh":"ജോലിസ്ഥലത്തെ ലൈംഗിക പീഡനം തടയുന്നതിനുള്ള ഞങ്ങളുടെ നയം."}
+        };
         Object.keys(LB).forEach(function(lang){ if(!L[lang]) L[lang]={}; for(var k in LB[lang]){ L[lang][k]=LB[lang][k]; } });
         var langLabels = {en:'EN',hi:'हिं',gu:'ગુ',mr:'मरा',te:'తె',ta:'த',ml:'മല'};
         function toggleLangDropdown(e){ e.stopPropagation(); document.getElementById('langSwitcher').classList.toggle('open'); }

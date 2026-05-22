@@ -1656,6 +1656,10 @@
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 32px;
         }
+        .team-grid-solo {
+            grid-template-columns: minmax(280px, 360px);
+            justify-content: center;
+        }
 
         .team-card {
             background: var(--t-card-bg);
@@ -1758,6 +1762,21 @@
 
         .team-card-bio.open {
             max-height: 400px;
+        }
+
+        /* Auto-clamp long bios to ~4 lines with Read more */
+        .team-card-info .clamp-bio {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 4;
+            line-clamp: 4;
+            overflow: hidden;
+        }
+        .team-card-info .clamp-bio.open {
+            -webkit-line-clamp: unset;
+            line-clamp: unset;
+            display: block;
+            overflow: visible;
         }
 
         /* ═══════════════════════════════════════════
@@ -3840,7 +3859,7 @@
                 <a href="#board" data-i18n="nav_leadership">Boards & Leadership</a>
                 <a href="#calculator" data-i18n="nav_calculator">Loan Calculator</a>
                 <div class="nav-dropdown" id="legalDropdown">
-                    <a role="button" tabindex="0" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false" onclick="toggleNavDropdown(this)">
+                    <a href="legal/" class="nav-dropdown-toggle" aria-haspopup="true">
                         <span data-i18n="nav_legal">Legal</span>
                         <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
                     </a>
@@ -4457,14 +4476,12 @@
                     <p class="disclosure-detail" data-i18n="avanti_grv_contact">Email: edwin.samuel@avantifinance.in | Phone: +91 98803 65147</p>
                     <p class="disclosure-detail" style="margin-top:8px;"><a class="disclosure-link" href="https://www.avantifinance.in/" target="_blank" rel="noopener"><span data-i18n="avanti_visit">Visit Avanti Finance website</span> &#8599;</a></p>
 
-                    <h4 data-i18n="avanti_dlg_title">DLG Disclosure (as on May 31, 2025)</h4>
+                    <h4 data-i18n="avanti_dlg_title">DLG Disclosure (as on March 31, 2026)</h4>
                     <table class="disclosure-table">
                         <thead><tr><th data-i18n="avanti_th_portfolio">Portfolio</th><th data-i18n="avanti_th_amount">Amount (DLG Covered)</th></tr></thead>
                         <tbody>
-                            <tr><td data-i18n="avanti_p1">Portfolio 1</td><td data-i18n="avanti_p1_amt">Rs. 2,34,50,000</td></tr>
-                            <tr><td data-i18n="avanti_p2">Portfolio 2</td><td data-i18n="avanti_p2_amt">Rs. 3,87,20,000</td></tr>
-                            <tr><td data-i18n="avanti_p3">Portfolio 3</td><td data-i18n="avanti_p3_amt">Rs. 2,47,37,000</td></tr>
-                            <tr><td data-i18n="avanti_total_lbl">Total</td><td data-i18n="avanti_total_amt">Rs. 8,69,07,000</td></tr>
+                            <tr><td data-i18n="avanti_p1">Portfolio 1</td><td data-i18n="avanti_p1_amt">₹ 125,101,507.77</td></tr>
+                            <tr><td data-i18n="avanti_total_lbl">Total</td><td data-i18n="avanti_total_amt">₹ 125,101,507.77</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -4572,7 +4589,7 @@
                 <h2 class="section-title" data-i18n="mgmt_title">Management Team</h2>
                 <p class="section-desc" style="margin:0 auto;"><span data-i18n="mgmt_desc">Experienced professionals steering day-to-day operations with precision and purpose.</span></p>
             </div>
-            <div class="team-grid">
+            <div class="team-grid team-grid-solo" style="margin-bottom:32px;">
                 <div class="team-card reveal">
                     <div class="team-card-photo-wrap">
                         <img class="team-card-photo" src="Photos/Rajendra Thote Ceo.png" alt="Rajendra Thote">
@@ -4580,10 +4597,12 @@
                     <div class="team-card-info">
                         <h3 data-i18n="mgmt1_name">Rajendra Thote</h3>
                         <p class="team-card-role" data-i18n="mgmt1_role">Chief Executive Officer</p>
-                        <p data-i18n="mgmt1_bio">Seasoned leader steering Rapid Loans' strategy and growth - driving execution across operations, technology, and partnerships to deliver inclusive finance at scale.</p>
+                        <p data-i18n="mgmt1_bio">A results-driven leader with over two decades across banking, microfinance, and financial inclusion. Before joining Rapid Loans as CEO, he was COO of Saija Finance, and earlier SVP & Business Head - Individual Loans and VP - West Zone at Janalakshmi Financial Services, where he built the microfinance business to a 900-crore book across 68 branches and 1,500 employees. He began his career at IndusInd Bank, rising to Deputy Vice President, with deep expertise across P&L, sales, collections, operations, and branch expansion.</p>
                     </div>
                 </div>
-                <div class="team-card reveal reveal-delay-1">
+            </div>
+            <div class="team-grid">
+                <div class="team-card reveal">
                     <div class="team-card-photo-wrap">
                         <img class="team-card-photo" src="Photos/Rakhi Sharma Head of Operations.png" alt="Rakhi Sharma">
                     </div>
@@ -4593,7 +4612,7 @@
                         <p data-i18n="mgmt2_bio">An astute professional with extensive experience leading micro-finance operations, designing policies, overseeing customer service, and implementing technology solutions for rapid, responsible growth.</p>
                     </div>
                 </div>
-                <div class="team-card reveal reveal-delay-2">
+                <div class="team-card reveal reveal-delay-1">
                     <div class="team-card-photo-wrap">
                         <img class="team-card-photo" src="Photos/Mitali Christian​ Head HR.png" alt="Mitali Christian">
                     </div>
@@ -4601,6 +4620,16 @@
                         <h3 data-i18n="mgmt3_name">Mitali Christian</h3>
                         <p class="team-card-role" data-i18n="mgmt3_role">Head of Human Resources</p>
                         <p data-i18n="mgmt3_bio">13 years in retail banking and client investment portfolio management at ICICI, CITI, and KOTAK. Multi-dimensional expertise spanning employee engagement, training, sales, and operations.</p>
+                    </div>
+                </div>
+                <div class="team-card reveal reveal-delay-2">
+                    <div class="team-card-photo-wrap">
+                        <img class="team-card-photo" src="Photos/Abhilash, Zonal Head - Kerala and Tamilnadu.png" alt="Abhilash">
+                    </div>
+                    <div class="team-card-info">
+                        <h3 data-i18n="state_name_abhilash">Abhilash Saloman</h3>
+                        <p class="team-card-role" data-i18n="state_role_zonal">Zonal Head - Kerala &amp; Tamil Nadu</p>
+                        <p data-i18n="state_bio_abhilash">An NBFC and microfinance banking professional with 17 years of experience in portfolio building, risk handling, and bucket recovery. He leads the Kerala & Tamil Nadu zone for Rapid Loans, taking individual loans and micro-MSMEs to the next level. Earlier he was AVP Operations at Inditrade Microfinance; General Manager at Bharath Financial Inclusion (an IndusInd Bank subsidiary), running a 400-crore portfolio with a 400+ member team; and Zonal Head and State Head at Belstar Microfinance. He began in the field at Madura Micro Finance / CreditAccess Grameen and holds a B.Com from Kerala University.</p>
                     </div>
                 </div>
                 <div class="team-card reveal">
@@ -4631,16 +4660,6 @@
                         <h3 data-i18n="state_name_reji">Reji Ravindran</h3>
                         <p class="team-card-role" data-i18n="state_role_kl">State Head - Kerala</p>
                         <p data-i18n="state_bio_reji">Heads Kerala's state-level operations - scaling branch networks and ensuring consistent service delivery on the ground.</p>
-                    </div>
-                </div>
-                <div class="team-card reveal">
-                    <div class="team-card-photo-wrap">
-                        <img class="team-card-photo" src="Photos/Abhilash, Zonal Head - Kerala and Tamilnadu.png" alt="Abhilash">
-                    </div>
-                    <div class="team-card-info">
-                        <h3 data-i18n="state_name_abhilash">Abhilash</h3>
-                        <p class="team-card-role" data-i18n="state_role_zonal">Zonal Head - Kerala &amp; Tamil Nadu</p>
-                        <p data-i18n="state_bio_abhilash">Zonal lead for Kerala and Tamil Nadu, coordinating multi-state strategy, performance, and field operations across the south.</p>
                     </div>
                 </div>
             </div>
@@ -4854,6 +4873,7 @@
             <div class="footer-bottom">
                 <p data-i18n="footer_copy">&copy; 2026 Rapid Loans India Pvt. Ltd. All rights reserved.</p>
                 <p>
+                    <a href="legal/" style="color: var(--t-text-muted); margin-right: 20px;" data-i18n="nav_legal">Legal</a>
                     <a href="legal/terms/" style="color: var(--t-text-muted); margin-right: 20px;" data-i18n="footer_terms">Terms & Conditions</a>
                     <a href="legal/privacy/" style="color: var(--t-text-muted); margin-right: 20px;" data-i18n="footer_privacy">Privacy Policy</a>
                     <a href="legal/posh/" style="color: var(--t-text-muted);" data-i18n="footer_pos">POSH</a>
@@ -5006,17 +5026,17 @@
                 avanti_grv_name: 'Edwin Samuel',
                 avanti_grv_contact: 'Email: edwin.samuel@avantifinance.in | Phone: +91 98803 65147',
                 avanti_visit: 'Visit Avanti Finance website',
-                avanti_dlg_title: 'DLG Disclosure (as on May 31, 2025)',
+                avanti_dlg_title: 'DLG Disclosure (as on March 31, 2026)',
                 avanti_th_portfolio: 'Portfolio',
                 avanti_th_amount: 'Amount (DLG Covered)',
                 avanti_p1: 'Portfolio 1',
-                avanti_p1_amt: 'Rs. 2,34,50,000',
+                avanti_p1_amt: '₹ 125,101,507.77',
                 avanti_p2: 'Portfolio 2',
                 avanti_p2_amt: 'Rs. 3,87,20,000',
                 avanti_p3: 'Portfolio 3',
                 avanti_p3_amt: 'Rs. 2,47,37,000',
                 avanti_total_lbl: 'Total',
-                avanti_total_amt: 'Rs. 8,69,07,000',
+                avanti_total_amt: '₹ 125,101,507.77',
                 unity_name: 'Unity Small Finance Bank',
                 unity_about_title: 'About',
                 unity_about_desc: 'Unity Small Finance Bank Limited is a licensed Small Finance Bank regulated by the Reserve Bank of India (RBI). Formerly known as Centrum Financial Services, the bank commenced operations as a Small Finance Bank on November 1, 2021.',
@@ -5059,7 +5079,7 @@
                 logo_name: 'Rapid<span class="logo-name-loans">Loans</span>',
                 dir1_name: 'Hemendrasinh Solanki',
                 dir2_name: 'Mahesh Ahuja',
-                mgmt1_name: 'Prashant Mane',
+                mgmt1_name: 'Rajendra Thote',
                 mgmt2_name: 'Rakhi Sharma',
                 mgmt3_name: 'Mitali Christian',
                 dir1_role: 'Founder, Modern Group',
@@ -5069,7 +5089,7 @@
                 dir2_bio: '20+ years at Barclays, HSBC, and ICICI Bank. Excels in advisory roles with proven ability to drive success and cultivate high-performing teams.',
                 dir2_bio_ext: 'Expert in cost management (P&L), strategic visioning, innovation, and financial analysis. Mentors IoT startups at the Technology Innovation Hub (TIH) of IIT Bombay and acts as a brand strategist for fintech startups, guiding growth strategies, go-to-market initiatives, and fundraising.',
                 mgmt1_role: 'Chief Financial Officer',
-                mgmt1_bio: 'A Chartered Accountant heading finance, with stints at ICICI Bank, HDFC Bank, and SVC Bank. His hands-on audit and accounts experience ensures seamless financial operations from Day 1.',
+                mgmt1_bio: 'A results-driven leader with over two decades across banking, microfinance, and financial inclusion. Before joining Rapid Loans as CEO, he was COO of Saija Finance, and earlier SVP & Business Head - Individual Loans and VP - West Zone at Janalakshmi Financial Services, where he built the microfinance business to a 900-crore book across 68 branches and 1,500 employees. He began his career at IndusInd Bank, rising to Deputy Vice President, with deep expertise across P&L, sales, collections, operations, and branch expansion.',
                 mgmt2_role: 'Head of Operations',
                 mgmt2_bio: 'An astute professional with extensive experience leading micro-finance operations, designing policies, overseeing customer service, and implementing technology solutions for rapid, responsible growth.',
                 mgmt3_role: 'Head of Human Resources',
@@ -5104,9 +5124,9 @@
                 state_name_reji: 'Reji Ravindran',
                 state_role_kl: 'State Head - Kerala',
                 state_bio_reji: "Heads Kerala's state-level operations - scaling branch networks and ensuring consistent service delivery on the ground.",
-                state_name_abhilash: 'Abhilash',
+                state_name_abhilash: 'Abhilash Saloman',
                 state_role_zonal: 'Zonal Head - Kerala & Tamil Nadu',
-                state_bio_abhilash: 'Zonal lead for Kerala and Tamil Nadu, coordinating multi-state strategy, performance, and field operations across the south.',
+                state_bio_abhilash: 'An NBFC and microfinance banking professional with 17 years of experience in portfolio building, risk handling, and bucket recovery. He leads the Kerala & Tamil Nadu zone for Rapid Loans, taking individual loans and micro-MSMEs to the next level. Earlier he was AVP Operations at Inditrade Microfinance; General Manager at Bharath Financial Inclusion (an IndusInd Bank subsidiary), running a 400-crore portfolio with a 400+ member team; and Zonal Head and State Head at Belstar Microfinance. He began in the field at Madura Micro Finance / CreditAccess Grameen and holds a B.Com from Kerala University.',
                 legal_close: 'Close',
                 tc_title: 'Terms and Conditions',
                 tc_intro: 'Please read these terms and conditions carefully before using our website and services.',
@@ -5279,17 +5299,17 @@
                 avanti_grv_name: 'एडविन सैमुअल',
                 avanti_grv_contact: 'ईमेल: edwin.samuel@avantifinance.in | फोन: +९१ ९८८०३ ६५१४७',
                 avanti_visit: 'अवंती फाइनेंस वेबसाइट पर जाएं',
-                avanti_dlg_title: 'DLG प्रकटीकरण (३१ मई, २०२५ तक)',
+                avanti_dlg_title: 'DLG प्रकटीकरण (३१ मार्च, २०२६ तक)',
                 avanti_th_portfolio: 'पोर्टफोलियो',
                 avanti_th_amount: 'राशि (DLG कवर)',
                 avanti_p1: 'पोर्टफोलियो १',
-                avanti_p1_amt: 'रु. २,३४,५०,०००',
+                avanti_p1_amt: '₹ १२५,१०१,५०७.७७',
                 avanti_p2: 'पोर्टफोलियो २',
                 avanti_p2_amt: 'रु. ३,८७,२०,०००',
                 avanti_p3: 'पोर्टफोलियो ३',
                 avanti_p3_amt: 'रु. २,४७,३७,०००',
                 avanti_total_lbl: 'कुल',
-                avanti_total_amt: 'रु. ८,६९,०७,०००',
+                avanti_total_amt: '₹ १२५,१०१,५०७.७७',
                 unity_name: 'यूनिटी स्मॉल फाइनेंस बैंक',
                 unity_about_title: 'परिचय',
                 unity_about_desc: 'यूनिटी स्मॉल फाइनेंस बैंक लिमिटेड भारतीय रिज़र्व बैंक (RBI) द्वारा विनियमित एक लाइसेंस प्राप्त स्मॉल फाइनेंस बैंक है। पूर्व में सेंट्रम फाइनेंशियल सर्विसेज के नाम से जाना जाता था, बैंक ने १ नवंबर, २०२१ को स्मॉल फाइनेंस बैंक के रूप में परिचालन शुरू किया।',
@@ -5332,7 +5352,7 @@
                 logo_name: 'रैपिड<span class="logo-name-loans">लोन्स</span>',
                 dir1_name: 'हेमेन्द्रसिंह सोलंकी',
                 dir2_name: 'महेश आहूजा',
-                mgmt1_name: 'प्रशांत माने',
+                mgmt1_name: 'राजेंद्र थोटे',
                 mgmt2_name: 'राखी शर्मा',
                 mgmt3_name: 'मिताली क्रिश्चियन',
                 dir1_role: 'संस्थापक, Modern Group',
@@ -5342,7 +5362,7 @@
                 dir2_bio: 'Barclays, HSBC, और ICICI Bank में 20+ वर्षों का अनुभव। सलाह देने वाली भूमिकाओं में उत्कृष्टता प्राप्त करते हैं और उच्च प्रदर्शन करने वाली टीमें बनाने की सिद्ध क्षमता रखते हैं।',
                 dir2_bio_ext: 'लागत प्रबंधन (P&L), रणनीतिक दृष्टिकोण, नवाचार और वित्तीय विश्लेषण में विशेषज्ञ। IIT Bombay के Technology Innovation Hub (TIH) में IoT स्टार्टअप के सलाहकार हैं और fintech स्टार्टअप के लिए ब्रांड रणनीति के रूप में कार्य करते हैं, विकास रणनीति, बाजार-प्रवेश पहल और जमा राशि का मार्गदर्शन करते हैं।',
                 mgmt1_role: 'मुख्य वित्तीय अधिकारी',
-                mgmt1_bio: 'एक चार्टर्ड अकाउंटेंट जो वित्त का नेतृत्व करते हैं, ICICI Bank, HDFC Bank, और SVC Bank में काम किया है। उनका व्यावहारिक लेखा परीक्षा और लेखा अनुभव दिन 1 से निर्बाध वित्तीय संचालन सुनिश्चित करता है।',
+                mgmt1_bio: 'बैंकिंग, माइक्रोफाइनेंस और वित्तीय समावेशन में दो दशकों से अधिक अनुभव वाले परिणाम-केंद्रित नेता। Rapid Loans में CEO बनने से पहले वे Saija Finance के COO रहे, और इससे पूर्व Janalakshmi Financial Services में SVP एवं बिज़नेस हेड - इंडिविजुअल लोन्स तथा VP - वेस्ट ज़ोन रहे, जहाँ उन्होंने माइक्रोफाइनेंस व्यवसाय को 68 शाखाओं और 1,500 कर्मचारियों के साथ 900 करोड़ की बुक तक विकसित किया। उन्होंने अपने करियर की शुरुआत IndusInd Bank से की और Deputy Vice President तक पहुँचे। उनके पास P&L, सेल्स, कलेक्शन, ऑपरेशंस और शाखा विस्तार में गहन विशेषज्ञता है।',
                 mgmt2_role: 'संचालन प्रमुख',
                 mgmt2_bio: 'एक चतुर पेशेवर जो सूक्ष्म-वित्त संचालन का नेतृत्व, नीतियों का डिजाइन, ग्राहक सेवा की देखरेख और तेजी से, जिम्मेदार विकास के लिए प्रौद्योगिकी समाधान लागू करने में व्यापक अनुभव रखते हैं।',
                 mgmt3_role: 'मानव संसाधन प्रमुख',
@@ -5377,9 +5397,9 @@
                 state_name_reji: 'रेजी रवींद्रन',
                 state_role_kl: 'राज्य प्रमुख - केरल',
                 state_bio_reji: 'केरल के राज्य-स्तरीय संचालन का नेतृत्व - शाखा नेटवर्क का विस्तार और जमीनी स्तर पर निरंतर सेवा वितरण सुनिश्चित करना।',
-                state_name_abhilash: 'अभिलाष',
+                state_name_abhilash: 'अभिलाष सालोमन',
                 state_role_zonal: 'क्षेत्रीय प्रमुख - केरल और तमिलनाडु',
-                state_bio_abhilash: 'केरल और तमिलनाडु के लिए क्षेत्रीय नेतृत्व - दक्षिण भर में बहु-राज्य रणनीति, प्रदर्शन और फील्ड संचालन का समन्वय।',
+                state_bio_abhilash: 'पोर्टफोलियो निर्माण, रिस्क हैंडलिंग और बकेट रिकवरी में 17 वर्षों के अनुभव वाले NBFC एवं माइक्रोफाइनेंस बैंकिंग पेशेवर। वे Rapid Loans के केरल एवं तमिलनाडु ज़ोन का नेतृत्व करते हैं और इंडिविजुअल लोन्स तथा माइक्रो-MSME को अगले स्तर तक ले जा रहे हैं। इससे पूर्व वे Inditrade Microfinance में AVP ऑपरेशंस; Bharath Financial Inclusion (IndusInd Bank की सहायक कंपनी) में General Manager रहे, जहाँ उन्होंने 400+ सदस्यों की टीम के साथ 400 करोड़ का पोर्टफोलियो संभाला; तथा Belstar Microfinance में Zonal Head एवं State Head रहे। उन्होंने अपने करियर की शुरुआत Madura Micro Finance / CreditAccess Grameen में की और Kerala University से B.Com किया है।',
                 legal_close: 'बंद करें',
                 tc_title: 'नियम और शर्तें',
                 tc_intro: 'हमारी वेबसाइट और सेवाओं का उपयोग करने से पहले कृपया इन नियमों और शर्तों को ध्यान से पढ़ें।',
@@ -5552,17 +5572,17 @@
                 avanti_grv_name: 'એડવિન સેમ્યુઅલ',
                 avanti_grv_contact: 'ઈમેલ: edwin.samuel@avantifinance.in | ફોન: +૯૧ ૯૮૮૦૩ ૬૫૧૪૭',
                 avanti_visit: 'અવંતી ફાઇનાન્સ વેબસાઇટની મુલાકાત લો',
-                avanti_dlg_title: 'DLG જાહેરાત (૩૧ મે, ૨૦૨૫ સુધી)',
+                avanti_dlg_title: 'DLG જાહેરાત (૩૧ માર્ચ, ૨૦૨૬ સુધી)',
                 avanti_th_portfolio: 'પોર્ટફોલિયો',
                 avanti_th_amount: 'રકમ (DLG કવર)',
                 avanti_p1: 'પોર્ટફોલિયો ૧',
-                avanti_p1_amt: 'રૂ. ૨,૩૪,૫૦,૦૦૦',
+                avanti_p1_amt: '₹ ૧૨૫,૧૦૧,૫૦૭.૭૭',
                 avanti_p2: 'પોર્ટફોલિયો ૨',
                 avanti_p2_amt: 'રૂ. ૩,૮૭,૨૦,૦૦૦',
                 avanti_p3: 'પોર્ટફોલિયો ૩',
                 avanti_p3_amt: 'રૂ. ૨,૪૭,૩૭,૦૦૦',
                 avanti_total_lbl: 'કુલ',
-                avanti_total_amt: 'રૂ. ૮,૬૯,૦૭,૦૦૦',
+                avanti_total_amt: '₹ ૧૨૫,૧૦૧,૫૦૭.૭૭',
                 unity_name: 'યુનિટી સ્મોલ ફાઇનાન્સ બેંક',
                 unity_about_title: 'પરિચય',
                 unity_about_desc: 'યુનિટી સ્મોલ ફાઇનાન્સ બેંક લિમિટેડ ભારતીય રિઝર્વ બેંક (RBI) દ્વારા નિયંત્રિત એક લાઇસન્સ પ્રાપ્ત સ્મોલ ફાઇનાન્સ બેંક છે। અગાઉ સેન્ટ્રમ ફાઇનાન્શિયલ સર્વિસેઝ તરીકે ઓળખાતી, બેંકે ૧ નવેમ્બર, ૨૦૨૧ ના રોજ સ્મોલ ફાઇનાન્સ બેંક તરીકે કામગીરી શરૂ કરી.',
@@ -5605,7 +5625,7 @@
                 logo_name: 'રેપિડ<span class="logo-name-loans">લોન્સ</span>',
                 dir1_name: 'હેમેન્દ્રસિંહ સોલંકી',
                 dir2_name: 'મહેશ આહુજા',
-                mgmt1_name: 'પ્રશાંત માને',
+                mgmt1_name: 'રાજેન્દ્ર થોટે',
                 mgmt2_name: 'રાખી શર્મા',
                 mgmt3_name: 'મિતાલી ક્રિશ્ચિયન',
                 dir1_role: 'સંસ્થાપક, Modern Group',
@@ -5615,7 +5635,7 @@
                 dir2_bio: 'Barclays, HSBC, અને ICICI Bank માં 20+ વર્ષો આપ્સ્લો અનુભવ. સલાહ કાર્યમાં શ્રેષ્ઠતા પ્રાપ્ત કરે છે અને ઉચ્ચ કર્મક્ષમ દલો બનાવવાની સાબિત ક્ષમતા ધરાવે છે.',
                 dir2_bio_ext: 'ખર્ચ વ્યવસ્થાપન (P&L), વ્યુહરચનાત્મક દૃષ્ટિકોણ, નવીનતા અને આર્થિક વિશ્લેષણમાં નિષ્ણાત. IIT Bombay ના Technology Innovation Hub (TIH) માં IoT સ્ટાર્ટઅપોને સલાહ આપે છે અને fintech સ્ટાર્ટઅપો માટે બ્રાંડ વ્યુહરચનાકાર તરીકે કાર્ય કરે છે, વૃદ્ધિ વ્યુહરચના, બજાર-પ્રવેશ પહેલ અને ભંડોળ આપતા નમૂના માર્ગદર્શન કરે છે.',
                 mgmt1_role: 'મુખ્ય આર્થિક અધિકારી',
-                mgmt1_bio: 'એક પ્રમાણીત લેખક જે ધિરાણનું નેતૃત્વ કરે છે, ICICI Bank, HDFC Bank, અને SVC Bank માં કામ કર્યું છે. તેમનો વ્યવહારુ ખાતાવાહી અને નોંધણી અનુભવ પ્રથમ દિવસથી નિર્બાધ આર્થિક કામગીરી સુનિશ્ચિત કરે છે.',
+                mgmt1_bio: 'બેંકિંગ, માઇક્રોફાઇનાન્સ અને નાણાકીય સમાવેશમાં બે દાયકાથી વધુ અનુભવ ધરાવતા પરિણામ-લક્ષી નેતા. Rapid Loans માં CEO બનતા પહેલાં તેઓ Saija Finance ના COO હતા, અને તે પૂર્વે Janalakshmi Financial Services માં SVP અને બિઝનેસ હેડ - ઇન્ડિવિજ્યુઅલ લોન્સ તથા VP - વેસ્ટ ઝોન રહ્યા, જ્યાં તેમણે માઇક્રોફાઇનાન્સ વ્યવસાયને 68 શાખાઓ અને 1,500 કર્મચારીઓ સાથે 900 કરોડની બુક સુધી વિકસાવ્યો. તેમણે કારકિર્દીની શરૂઆત IndusInd Bank થી કરી અને Deputy Vice President સુધી પહોંચ્યા. તેમની પાસે P&L, સેલ્સ, કલેક્શન, ઓપરેશન્સ અને શાખા વિસ્તરણમાં ઊંડી નિપુણતા છે.',
                 mgmt2_role: 'કામગીરી નેતા',
                 mgmt2_bio: 'એક તીક્ષ્ણ વ્યાવસાયિક જે સૂક્ષ્મ-ધિરાણ કામગીરીનું નેતૃત્વ, નીતિઓનું નિર્માણ, ગ્રાહક સેવાની દેખરેખ અને ઝડપી, જવાબદારી વૃદ્ધि માટે તકનીક ઉકેલો અમલમાં મૂકવામાં વ્યાપક અનુભવ ધરાવે છે.',
                 mgmt3_role: 'માનવ સંસાધન નેતા',
@@ -5650,9 +5670,9 @@
                 state_name_reji: 'રેજી રવિન્દ્રન',
                 state_role_kl: 'રાજ્ય પ્રમુખ - કેરળ',
                 state_bio_reji: 'કેરળની રાજ્ય-સ્તરની કામગીરીનું નેતૃત્વ - શાખા નેટવર્કનું વિસ્તરણ અને જમીની સ્તરે સતત સેવા વિતરણ સુનિશ્ચિત કરવું.',
-                state_name_abhilash: 'અભિલાષ',
+                state_name_abhilash: 'અભિલાષ સાલોમન',
                 state_role_zonal: 'ઝોનલ પ્રમુખ - કેરળ અને તમિલનાડુ',
-                state_bio_abhilash: 'કેરળ અને તમિલનાડુ માટે ઝોનલ નેતૃત્વ - દક્ષિણ ભરમાં બહુ-રાજ્ય રણનીતિ, પ્રદર્શન અને ફિલ્ડ કામગીરીનું સંકલન.',
+                state_bio_abhilash: 'પોર્ટફોલિયો નિર્માણ, રિસ્ક હેન્ડલિંગ અને બકેટ રિકવરીમાં 17 વર્ષનો અનુભવ ધરાવતા NBFC અને માઇક્રોફાઇનાન્સ બેંકિંગ વ્યાવસાયિક. તેઓ Rapid Loans ના કેરળ અને તમિલનાડુ ઝોનનું નેતૃત્વ કરે છે અને ઇન્ડિવિજ્યુઅલ લોન્સ તથા માઇક્રો-MSME ને આગલા સ્તરે લઈ જઈ રહ્યા છે. તે પૂર્વે તેઓ Inditrade Microfinance માં AVP ઓપરેશન્સ; Bharath Financial Inclusion (IndusInd Bank ની સહાયક કંપની) માં General Manager રહ્યા, જ્યાં તેમણે 400+ સભ્યોની ટીમ સાથે 400 કરોડનો પોર્ટફોલિયો સંભાળ્યો; તથા Belstar Microfinance માં Zonal Head અને State Head રહ્યા. તેમણે કારકિર્દીની શરૂઆત Madura Micro Finance / CreditAccess Grameen માં કરી અને Kerala University માંથી B.Com કર્યું છે.',
                 legal_close: 'બંધ કરો',
                 tc_title: 'નિયમો અને શરતો',
                 tc_intro: 'અમારી વેબસાઇટ અને સેવાઓનો ઉપયોગ કરતા પહેલાં કૃપા કરીને આ નિયમો અને શરતો કાળજીપૂર્વક વાંચો.',
@@ -5825,17 +5845,17 @@
                 avanti_grv_name: 'एडविन सॅम्युअल',
                 avanti_grv_contact: 'ईमेल: edwin.samuel@avantifinance.in | फोन: +९१ ९८८०३ ६५१४७',
                 avanti_visit: 'अवंती फायनान्स वेबसाइटला भेट द्या',
-                avanti_dlg_title: 'DLG प्रकटीकरण (३१ मे, २०२५ पर्यंत)',
+                avanti_dlg_title: 'DLG प्रकटीकरण (३१ मार्च, २०२६ पर्यंत)',
                 avanti_th_portfolio: 'पोर्टफोलिओ',
                 avanti_th_amount: 'रक्कम (DLG कव्हर)',
                 avanti_p1: 'पोर्टफोलिओ १',
-                avanti_p1_amt: 'रु. २,३४,५०,०००',
+                avanti_p1_amt: '₹ १२५,१०१,५०७.७७',
                 avanti_p2: 'पोर्टफोलिओ २',
                 avanti_p2_amt: 'रु. ३,८७,२०,०००',
                 avanti_p3: 'पोर्टफोलिओ ३',
                 avanti_p3_amt: 'रु. २,४७,३७,०००',
                 avanti_total_lbl: 'एकूण',
-                avanti_total_amt: 'रु. ८,६९,०७,०००',
+                avanti_total_amt: '₹ १२५,१०१,५०७.७७',
                 unity_name: 'युनिटी स्मॉल फायनान्स बँक',
                 unity_about_title: 'परिचय',
                 unity_about_desc: 'युनिटी स्मॉल फायनान्स बँक लिमिटेड ही भारतीय रिझर्व्ह बँक (RBI) द्वारे नियमन केलेली एक परवानाधारक स्मॉल फायनान्स बँक आहे. पूर्वी सेंट्रम फायनान्शियल सर्व्हिसेस म्हणून ओळखली जाणारी, बँकेने १ नोव्हेंबर, २०२१ रोजी स्मॉल फायनान्स बँक म्हणून कार्य सुरू केले.',
@@ -5878,7 +5898,7 @@
                 logo_name: 'रॅपिड<span class="logo-name-loans">लोन्स</span>',
                 dir1_name: 'हेमेंद्रसिंह सोलंकी',
                 dir2_name: 'महेश आहुजा',
-                mgmt1_name: 'प्रशांत माने',
+                mgmt1_name: 'राजेंद्र थोटे',
                 mgmt2_name: 'राखी शर्मा',
                 mgmt3_name: 'मिताली क्रिश्चन',
                 dir1_role: 'संस्थापक, Modern Group',
@@ -5888,7 +5908,7 @@
                 dir2_bio: 'Barclays, HSBC, आणि ICICI Bank मध्ये 20+ वर्षांचा अनुभव. सल्ला देण्याच्या भूमिकांमध्ये उत्कृष्टता प्राप्त करतात आणि यशाचे चालन करण्याची आणि उच्च कामगिरी करणारी टीमे निर्मिती करण्याची सिद्ध क्षमता आहे.',
                 dir2_bio_ext: 'खर्च व्यवस्थापन (P&L), रणनीतिक दृष्टीकोन, नावीन्यता आणि आर्थिक विश्लेषणात तज्ञ. IIT Bombay च्या Technology Innovation Hub (TIH) मध्ये IoT स्टार्टअप्सचे सलाहकार आणि fintech स्टार्टअप्सचे ब्रँड रणनीतिकार म्हणून कार्य करतात, वाढ रणनीती, बाजार-प्रवेश पहल आणि निधी उपलब्धाचे मार्गदर्शन करतात.',
                 mgmt1_role: 'मुख्य आर्थिक अधिकारी',
-                mgmt1_bio: 'एक चार्टर्ड अकाउंटंट जो वित्तीय व्यवस्थापन करतात, ICICI Bank, HDFC Bank, आणि SVC Bank मध्ये कार्य केले आहे. त्यांचा व्यावहारिक ऑडिट आणि लेखा अनुभव पहिल्या दिवसापासून निर्बाध आर्थिक कार्यक्रम सुनिश्चित करतो.',
+                mgmt1_bio: 'बँकिंग, मायक्रोफायनान्स आणि आर्थिक समावेशनात दोन दशकांहून अधिक अनुभव असलेले निकाल-केंद्रित नेते. Rapid Loans मध्ये CEO होण्यापूर्वी ते Saija Finance चे COO होते, आणि त्याआधी Janalakshmi Financial Services मध्ये SVP व बिझनेस हेड - इंडिव्हिज्युअल लोन्स तसेच VP - वेस्ट झोन होते, जिथे त्यांनी मायक्रोफायनान्स व्यवसाय 68 शाखा आणि 1,500 कर्मचाऱ्यांसह 900 कोटींच्या बुकपर्यंत वाढवला. त्यांनी कारकिर्दीची सुरुवात IndusInd Bank पासून केली आणि Deputy Vice President पर्यंत पोहोचले. त्यांच्याकडे P&L, सेल्स, कलेक्शन, ऑपरेशन्स आणि शाखा विस्तारात सखोल कौशल्य आहे.',
                 mgmt2_role: 'संचालन प्रमुख',
                 mgmt2_bio: 'एक चतुर व्यावसायिक जो सूक्ष्मवित्त संचालन नेतृत्व, धोरण डिजाइन, ग्राहक सेवा पर्यवेक्षण आणि द्रुत, जबाबदारीत्व-पूर्ण वाढीसाठी तंत्रज्ञान समाधान लागू करण्यात विस्तृत अनुभव आहे.',
                 mgmt3_role: 'मानव संसाधन प्रमुख',
@@ -5923,9 +5943,9 @@
                 state_name_reji: 'रेजी रविंद्रन',
                 state_role_kl: 'राज्य प्रमुख - केरळ',
                 state_bio_reji: 'केरळच्या राज्य-स्तरीय कामकाजाचे नेतृत्व - शाखा नेटवर्कचा विस्तार आणि जमिनी पातळीवर सातत्यपूर्ण सेवा वितरण सुनिश्चित करणे.',
-                state_name_abhilash: 'अभिलाष',
+                state_name_abhilash: 'अभिलाष सालोमन',
                 state_role_zonal: 'विभागीय प्रमुख - केरळ आणि तमिळनाडू',
-                state_bio_abhilash: 'केरळ आणि तमिळनाडूसाठी विभागीय नेतृत्व - दक्षिणेकडे बहु-राज्य रणनीती, कामगिरी आणि क्षेत्रीय कामकाजाचे समन्वय.',
+                state_bio_abhilash: 'पोर्टफोलिओ बांधणी, रिस्क हँडलिंग आणि बकेट रिकव्हरीमध्ये 17 वर्षांचा अनुभव असलेले NBFC व मायक्रोफायनान्स बँकिंग व्यावसायिक. ते Rapid Loans च्या केरळ व तमिळनाडू झोनचे नेतृत्व करतात आणि इंडिव्हिज्युअल लोन्स तसेच मायक्रो-MSME ला पुढील स्तरावर नेत आहेत. यापूर्वी ते Inditrade Microfinance मध्ये AVP ऑपरेशन्स; Bharath Financial Inclusion (IndusInd Bank ची उपकंपनी) मध्ये General Manager होते, जिथे त्यांनी 400+ सदस्यांच्या संघासह 400 कोटींचा पोर्टफोलिओ सांभाळला; तसेच Belstar Microfinance मध्ये Zonal Head व State Head होते. त्यांनी कारकिर्दीची सुरुवात Madura Micro Finance / CreditAccess Grameen मध्ये केली आणि Kerala University मधून B.Com केले आहे.',
                 legal_close: 'बंद करा',
                 tc_title: 'अटी व शर्ती',
                 tc_intro: 'आमची वेबसाइट आणि सेवा वापरण्यापूर्वी कृपया या अटी व शर्ती काळजीपूर्वक वाचा.',
@@ -6098,17 +6118,17 @@
                 avanti_grv_name: 'எட்வின் சாமுவேல்',
                 avanti_grv_contact: 'மின்னஞ்சல்: edwin.samuel@avantifinance.in | தொலைபேசி: +௯௧ ௯௮௮௦௩ ௬௫௧௪௭',
                 avanti_visit: 'அவந்தி ஃபைனான்ஸ் இணையதளத்தைப் பார்வையிடுக',
-                avanti_dlg_title: 'DLG வெளிப்படுத்தல் (௩௧ மே, ௨௦௨௫ வரை)',
+                avanti_dlg_title: 'DLG வெளிப்படுத்தல் (௩௧ மார்ச், ௨௦௨௬ வரை)',
                 avanti_th_portfolio: 'போர்ட்ஃபோலியோ',
                 avanti_th_amount: 'தொகை (DLG கவர்)',
                 avanti_p1: 'போர்ட்ஃபோலியோ ௧',
-                avanti_p1_amt: 'ரூ. ௨,௩௪,௫௦,௦௦௦',
+                avanti_p1_amt: '₹ ௧௨௫,௧௦௧,௫௦௭.௭௭',
                 avanti_p2: 'போர்ட்ஃபோலியோ ௨',
                 avanti_p2_amt: 'ரூ. ௩,௮௭,௨௦,௦௦௦',
                 avanti_p3: 'போர்ட்ஃபோலியோ ௩',
                 avanti_p3_amt: 'ரூ. ௨,௪௭,௩௭,௦௦௦',
                 avanti_total_lbl: 'மொத்தம்',
-                avanti_total_amt: 'ரூ. ௮,௬௯,௦௭,௦௦௦',
+                avanti_total_amt: '₹ ௧௨௫,௧௦௧,௫௦௭.௭௭',
                 unity_name: 'யூனிட்டி ஸ்மால் ஃபைனான்ஸ் வங்கி',
                 unity_about_title: 'பற்றி',
                 unity_about_desc: 'யூனிட்டி ஸ்மால் ஃபைனான்ஸ் வங்கி லிமிடெட் இந்திய ரிசர்வ் வங்கி (RBI) மூலம் ஒழுங்குபடுத்தப்பட்ட உரிமம் பெற்ற சிறு நிதி வங்கி ஆகும். முன்னர் சென்ட்ரம் ஃபைனான்சியல் சர்வீசஸ் என்று அறியப்பட்டது, வங்கி ௧ நவம்பர், ௨௦௨௧ அன்று சிறு நிதி வங்கியாக செயல்படத் தொடங்கியது.',
@@ -6151,7 +6171,7 @@
                 logo_name: 'ரேபிட்<span class="logo-name-loans">லோன்ஸ்</span>',
                 dir1_name: 'ஹேமேந்திரசிங் சோலங்கி',
                 dir2_name: 'மகேஷ் ஆஹுஜா',
-                mgmt1_name: 'பிரஷாந்த் மானே',
+                mgmt1_name: 'ராஜேந்திர தோட்டே',
                 mgmt2_name: 'ராகி ஷர்மா',
                 mgmt3_name: 'மிதாலி கிறிஸ்டியன்',
                 dir1_role: 'நிறுவனர், Modern Group',
@@ -6161,7 +6181,7 @@
                 dir2_bio: 'Barclays, HSBC, மற்றும் ICICI வங்கியில் 20+ ஆண்டுகளின் அனுபவம். ஆலோசனை பங்கங்களில் சிறந்து விளங்குகிறது மற்றும் வெற்றி இயக்க நிரூபிக்கப்பட்ட திறனையும் உচ்চ செயல்பாட்டு குழுக்களை வளர்ப்பதற்கும் கொண்டுள்ளது.',
                 dir2_bio_ext: 'செலவு ব்যবস்थாபन (P&L), வ்யூக பார்வை, உদ்ভாவনம் மற்றும் வित்தीய பகுப்பாய்வுவில் வல்லுநர். IIT Bombay இன் Technology Innovation Hub (TIH) இல் IoT தொடக்கங்களுக்கு ஆலோசகராக பணியாற்றுகிறார் மற்றும் fintech தொடக்கங்களுக்கு ব্রান்ட் வ்யூக மூலனாக செயல்பட்டு, வளர்ச்சி வ்யூக, சந்தை-நுழைவு উদ்যோग மற்றும் நிதி திரட்டல் வழிகாட்டுகிறார்.',
                 mgmt1_role: 'தலைமை நிதி அதிகாரி',
-                mgmt1_bio: 'ஒரு சாசன கணக்கியல் நிபுணர் நிதியை தலைமை இடுகிறது, ICICI வங்கி, HDFC வங்கி மற்றும் SVC வங்கி வில் நேரம் செலவிட்டுள்ளது. அவரின் ব்যবহারிக ஆய்வு மற்றும் கணக்கு அভিজ্ઞತা நாளிலிருந்து 1 தொடங்கி ஆபத்திலாத நிதி நடவடிக்கைக்கு உறுதி அளிக்கிறது.',
+                mgmt1_bio: 'வங்கி, நுண்நிதி மற்றும் நிதி உள்ளடக்கத்தில் இரண்டு தசாப்தங்களுக்கும் மேலான அனுபவம் கொண்ட முடிவு சார்ந்த தலைவர். Rapid Loans இல் CEO ஆவதற்கு முன், அவர் Saija Finance இன் COO ஆக இருந்தார்; அதற்கு முன் Janalakshmi Financial Services இல் SVP மற்றும் பிசினஸ் ஹெட் - இண்டிவிஜுவல் லோன்ஸ் மற்றும் VP - வெஸ்ட் ஜோன் ஆக பணியாற்றினார், அங்கு நுண்நிதி வணிகத்தை 68 கிளைகள் மற்றும் 1,500 ஊழியர்களுடன் 900 கோடி புத்தகமாக வளர்த்தார். அவர் தனது பணியை IndusInd Bank இல் தொடங்கி Deputy Vice President வரை உயர்ந்தார். P&L, விற்பனை, வசூல், செயல்பாடுகள் மற்றும் கிளை விரிவாக்கத்தில் ஆழ்ந்த நிபுணத்துவம் கொண்டவர்.',
                 mgmt2_role: 'செயல்பாட்டு பிரধிமை',
                 mgmt2_bio: 'ஒரு புத்திசாலியான பেশாদார் நுண்ணிய நிதி செயல்பாட்டை தலைமை இடுதல், নীதிகளை வடிவமைத்தல், பயனர் சேவையை அதிகாரம் மற்றும் விரைவு, உত்തரவாத வளர்ச்சிக்கான தொழில்நுட்ப সমাধানங்களை செயல்படுத்துதல் ஆகியவற்றில் விস்தரமான அভிজ்ఞతை கொண்டு உள்ளார்.',
                 mgmt3_role: 'மனித வளங்கள் பிரதிதும்',
@@ -6196,9 +6216,9 @@
                 state_name_reji: 'ரெஜி ரவீந்திரன்',
                 state_role_kl: 'மாநில தலைவர் - கேரளா',
                 state_bio_reji: 'கேரளாவின் மாநில அளவிலான செயல்பாடுகளை வழிநடத்துகிறார் - கிளை வலையமைப்புகளை விரிவுபடுத்துவது மற்றும் தரை மட்டத்தில் தொடர்ச்சியான சேவை வழங்கலை உறுதி செய்தல்.',
-                state_name_abhilash: 'அபிலாஷ்',
+                state_name_abhilash: 'அபிலாஷ் சாலமன்',
                 state_role_zonal: 'மண்டல தலைவர் - கேரளா மற்றும் தமிழ்நாடு',
-                state_bio_abhilash: 'கேரளா மற்றும் தமிழ்நாட்டிற்கான மண்டல தலைவர், தெற்கு முழுவதும் பல-மாநில உத்தி, செயல்திறன் மற்றும் கள செயல்பாடுகளை ஒருங்கிணைக்கிறார்.',
+                state_bio_abhilash: 'போர்ட்ஃபோலியோ உருவாக்கம், ரிஸ்க் ஹேண்ட்லிங் மற்றும் பக்கெட் ரிகவரியில் 17 ஆண்டுகள் அனுபவம் கொண்ட NBFC மற்றும் நுண்நிதி வங்கி நிபுணர். அவர் Rapid Loans இன் கேரளா மற்றும் தமிழ்நாடு மண்டலத்தை வழிநடத்துகிறார், தனிநபர் கடன்கள் மற்றும் மைக்ரோ-MSME களை அடுத்த நிலைக்கு கொண்டு செல்கிறார். இதற்கு முன், அவர் Inditrade Microfinance இல் AVP ஆபரேஷன்ஸ்; Bharath Financial Inclusion (IndusInd Bank இன் துணை நிறுவனம்) இல் General Manager ஆக இருந்தார், அங்கு 400+ உறுப்பினர்கள் கொண்ட குழுவுடன் 400 கோடி போர்ட்ஃபோலியோவை நிர்வகித்தார்; மேலும் Belstar Microfinance இல் Zonal Head மற்றும் State Head ஆக இருந்தார். அவர் தனது பணியை Madura Micro Finance / CreditAccess Grameen இல் தொடங்கினார், மேலும் Kerala University இல் B.Com பட்டம் பெற்றுள்ளார்.',
                 legal_close: 'மூடு',
                 tc_title: 'விதிமுறைகள் மற்றும் நிபந்தனைகள்',
                 tc_intro: 'எங்கள் இணையதளம் மற்றும் சேவைகளைப் பயன்படுத்துவதற்கு முன், தயவுசெய்து இந்த விதிமுறைகள் மற்றும் நிபந்தனைகளைக் கவனமாகப் படியுங்கள்.',
@@ -6357,17 +6377,17 @@
                 avanti_grv_name: 'ಎಡ್ವಿನ್ ಸ್ಯಾಮ್ಯುಯೆಲ್',
                 avanti_grv_contact: 'ಇಮೇಲ್: edwin.samuel@avantifinance.in | ಫೋನ್: +೯೧ ೯೮೮೦೩ ೬೫೧೪೭',
                 avanti_visit: 'ಅವಂತಿ ಫೈನಾನ್ಸ್ ವೆಬ್‌ಸೈಟ್‌ಗೆ ಭೇಟಿ ನೀಡಿ',
-                avanti_dlg_title: 'DLG ಬಹಿರಂಗಪಡಿಸುವಿಕೆ (೩೧ ಮೇ, ೨೦೨೫ ರವರೆಗೆ)',
+                avanti_dlg_title: 'DLG ಬಹಿರಂಗಪಡಿಸುವಿಕೆ (೩೧ ಮಾರ್ಚ್, ೨೦೨೬ ರವರೆಗೆ)',
                 avanti_th_portfolio: 'ಪೋರ್ಟ್‌ಫೋಲಿಯೋ',
                 avanti_th_amount: 'ಮೊತ್ತ (DLG ಕವರ್)',
                 avanti_p1: 'ಪೋರ್ಟ್‌ಫೋಲಿಯೋ ೧',
-                avanti_p1_amt: 'ರೂ. ೨,೩೪,೫೦,೦೦೦',
+                avanti_p1_amt: '₹ ೧೨೫,೧೦೧,೫೦೭.೭೭',
                 avanti_p2: 'ಪೋರ್ಟ್‌ಫೋಲಿಯೋ ೨',
                 avanti_p2_amt: 'ರೂ. ೩,೮೭,೨೦,೦೦೦',
                 avanti_p3: 'ಪೋರ್ಟ್‌ಫೋಲಿಯೋ ೩',
                 avanti_p3_amt: 'ರೂ. ೨,೪೭,೩೭,೦೦೦',
                 avanti_total_lbl: 'ಒಟ್ಟು',
-                avanti_total_amt: 'ರೂ. ೮,೬೯,೦೭,೦೦೦',
+                avanti_total_amt: '₹ ೧೨೫,೧೦೧,೫೦೭.೭೭',
                 unity_name: 'ಯೂನಿಟಿ ಸ್ಮಾಲ್ ಫೈನಾನ್ಸ್ ಬ್ಯಾಂಕ್',
                 unity_about_title: 'ಪರಿಚಯ',
                 unity_about_desc: 'ಯೂನಿಟಿ ಸ್ಮಾಲ್ ಫೈನಾನ್ಸ್ ಬ್ಯಾಂಕ್ ಲಿಮಿಟೆಡ್ ಭಾರತೀಯ ರಿಸರ್ವ್ ಬ್ಯಾಂಕ್ (RBI) ನಿಯಂತ್ರಿತ ಪರವಾನಗಿ ಪಡೆದ ಸ್ಮಾಲ್ ಫೈನಾನ್ಸ್ ಬ್ಯಾಂಕ್ ಆಗಿದೆ. ಹಿಂದೆ ಸೆಂಟ್ರಮ್ ಫೈನಾನ್ಶಿಯಲ್ ಸರ್ವೀಸಸ್ ಎಂದು ಕರೆಯಲ್ಪಡುತ್ತಿತ್ತು, ಬ್ಯಾಂಕ್ ೧ ನವೆಂಬರ್, ೨೦೨೧ ರಂದು ಸ್ಮಾಲ್ ಫೈನಾನ್ಸ್ ಬ್ಯಾಂಕ್ ಆಗಿ ಕಾರ್ಯಾರಂಭ ಮಾಡಿತು.',
@@ -6398,7 +6418,7 @@
                 logo_name: 'ರ‍ಾಪಿಡ್<span class="logo-name-loans">ಲೋನ್ಸ್</span>',
                 dir1_name: 'ಹೇಮೇಂದ್ರಸಿಂಹ ಸೋಲಂಕಿ',
                 dir2_name: 'ಮಹೇಶ್ ಆಹೂಜಾ',
-                mgmt1_name: 'ಪ್ರಶಾಂತ್ ಮಾನೆ',
+                mgmt1_name: 'ರಾಜೇಂದ್ರ ಥೋಟೆ',
                 mgmt2_name: 'ರಾಖಿ ಶರ್ಮಾ',
                 mgmt3_name: 'ಮಿತಾಲಿ ಕ್ರಿಶ್ಚಿಯನ್',
                 dir1_role: 'ಸಂಸ್ಥಾಪಕ, Modern Group',
@@ -6408,7 +6428,7 @@
                 dir2_bio: 'Barclays, HSBC, ಮತ್ತು ICICI ಬ್ಯಾಂಕಿನಲ್ಲಿ 20+ ವರ್ಷಗಳ ಅನುಭವ. ಸಲಹೆ ಪಾತ್ರಗಳಲ್ಲಿ ಶ್ರೇಷ್ಠತೆ ಪಡೆದು ಯಶಸ್ಸನ್ನು ನಿರ್ವಹಿಸುವ ಮತ್ತು ಉನ್ನತ-ಕಾರ್ಯಕಾರಿ ತಂಡಗಳನ್ನು ತೀಗೆ ಅಧಿಕಾರ ಅನುಭವ.',
                 dir2_bio_ext: 'ವೆಚ್ಚ ನಿರ್ವಹಣೆ (P&L), ತಂತ್ರಗತ ದೃಷ್ಟಿ, ಪರಿವರ್ತನೆ ಮತ್ತು ಆರ್ಥಿಕ ವಿಶ್ಲೇಷಣೆಯಲ್ಲಿ ತಜ್ಞ. IIT Bombay ನ Technology Innovation Hub (TIH) ನಲ್ಲಿ IoT ಆರಂಭಿಕೆಗಳನ್ನು ಮಾರ್ಗದರ್ಶನ ಮಾಡುತ್ತಿದ್ದಾರೆ ಮತ್ತು fintech ಆರಂಭಿಕೆಗಳಿಗೆ ಬ್ರ್ಯಾಂಡ್ ತಂತ್ರಜ್ಞ ಆಗಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತಿದ್ದಾರೆ, ವಾದ್ಯತೆ ತಂತ್ರ, ಮಾರುಕಟ್ಟೆ-ಪ್ರವೇಶ ಉದ್ಯೋಗ ಮತ್ತು ಹಣ ಸಂಗ್ರಹಣೆ ಮಾರ್ಗದರ್ಶನ.',
                 mgmt1_role: 'ಮುಖ್ಯ ಆರ್ಥಿಕ ಅಧಿಕಾರಿ',
-                mgmt1_bio: 'ಒಂದು ಚಾರ್ಟರ್ಡ್ ಅಕೌಂಟೆಂಟ್ ಆರ್ಥಿಕತೆ ನಿರ್ವಹಿಸುತ್ತಿದ್ದಾರೆ, ICICI ಬ್ಯಾಂಕ, HDFC ಬ್ಯಾಂಕ, ಮತ್ತು SVC ಬ್ಯಾಂಕಿನಲ್ಲಿ ಕಾರ್ಯನಿರ್ವಹಿಸಿದ್ದಾರೆ. ಅವರ ಪ್ರಾಯೋಗಿಕ ತೆರಿಗೆ ಹಿಂತಾಗಿ ಮತ್ತು ಲೆಕ್ಕ ಖಾತೆ ಅನುಭವ ದಿನ 1 ನಿಂದ ನಿರುಪದ್ರವ ಆರ್ಥಿಕ ಕಾರ್ಯೀಕರಣ ನಿಶ್ಚಿತ ಮಾಡುತ್ತದೆ.',
+                mgmt1_bio: 'ಬ್ಯಾಂಕಿಂಗ್, ಮೈಕ್ರೋಫೈನಾನ್ಸ್ ಮತ್ತು ಆರ್ಥಿಕ ಒಳಗೊಳ್ಳುವಿಕೆಯಲ್ಲಿ ಎರಡು ದಶಕಗಳಿಗೂ ಹೆಚ್ಚು ಅನುಭವ ಹೊಂದಿರುವ ಫಲಿತಾಂಶ ಆಧಾರಿತ ನಾಯಕ. Rapid Loans ನಲ್ಲಿ CEO ಆಗುವ ಮೊದಲು ಅವರು Saija Finance ನ COO ಆಗಿದ್ದರು, ಮತ್ತು ಅದಕ್ಕೂ ಮೊದಲು Janalakshmi Financial Services ನಲ್ಲಿ SVP ಮತ್ತು ಬ್ಯುಸಿನೆಸ್ ಹೆಡ್ - ಇಂಡಿವಿಜುವಲ್ ಲೋನ್ಸ್ ಹಾಗೂ VP - ವೆಸ್ಟ್ ಝೋನ್ ಆಗಿದ್ದರು, ಅಲ್ಲಿ ಅವರು ಮೈಕ್ರೋಫೈನಾನ್ಸ್ ವ್ಯವಹಾರವನ್ನು 68 ಶಾಖೆಗಳು ಮತ್ತು 1,500 ಉದ್ಯೋಗಿಗಳೊಂದಿಗೆ 900 ಕೋಟಿ ಪುಸ್ತಕದವರೆಗೆ ಬೆಳೆಸಿದರು. ಅವರು ತಮ್ಮ ವೃತ್ತಿಜೀವನವನ್ನು IndusInd Bank ನಲ್ಲಿ ಆರಂಭಿಸಿ Deputy Vice President ವರೆಗೆ ಏರಿದರು. P&L, ಮಾರಾಟ, ವಸೂಲಿ, ಕಾರ್ಯಾಚರಣೆ ಮತ್ತು ಶಾಖೆ ವಿಸ್ತರಣೆಯಲ್ಲಿ ಆಳವಾದ ಪರಿಣತಿ ಹೊಂದಿದ್ದಾರೆ.',
                 mgmt2_role: 'ಕಾರ್ಯಾಭಿವೃದ್ಧಿ ಮುಖ್ಯ',
                 mgmt2_bio: 'ಒಂದು ತಿವ್ರಬುದ್ಧಿ ವೃತ್ತಿಜೀವಿ ಸೂಕ್ಷ್ಮ-ಆರ್ಥಿಕ ಕಾರ್ಯಾಭಿವೃದ್ಧಿ ನಿರ್ವಹಿಸುತ್ತಿದ್ದಾರೆ, ನೀತಿಮತ್ತೆ ರಚನೆ, ಗ್ರಾಹಕ ಸೇವೆ ಮೇಲ್ವಿಚಾರಣೆ ಮತ್ತು ವೇಗವಾದ, ಜವಾಬ್ದಾರಿ ಬೆಳವಣಿಗೆಗಾಗಿ ತಂತ್ರಜ್ಞಾನ ಪರಿಹಾರ ಅನುಸ್ಮಾರಕ ವ್ಯಾಪಕ ಅನುಭವ ಹೊಂದುತ್ತಿದ್ದಾರೆ.',
                 mgmt3_role: 'ಮಾನವ ಮೂಲ ಮುಖ್ಯ',
@@ -6573,17 +6593,17 @@
                 avanti_grv_name: 'ఎడ్విన్ శామ్యుయెల్',
                 avanti_grv_contact: 'ఇమెయిల్: edwin.samuel@avantifinance.in | ఫోన్: +౯౧ ౯౮౮౦౩ ౬౫౧౪౭',
                 avanti_visit: 'అవంతి ఫైనాన్స్ వెబ్‌సైట్‌ను సందర్శించండి',
-                avanti_dlg_title: 'DLG వెల్లడింపు (౩౧ మే, ౨౦౨౫ నాటికి)',
+                avanti_dlg_title: 'DLG వెల్లడింపు (౩౧ మార్చి, ౨౦౨౬ నాటికి)',
                 avanti_th_portfolio: 'పోర్ట్‌ఫోలియో',
                 avanti_th_amount: 'మొత్తం (DLG కవర్)',
                 avanti_p1: 'పోర్ట్‌ఫోలియో ౧',
-                avanti_p1_amt: 'రూ. ౨,౩౪,౫౦,౦౦౦',
+                avanti_p1_amt: '₹ ౧౨౫,౧౦౧,౫౦౭.౭౭',
                 avanti_p2: 'పోర్ట్‌ఫోలియో ౨',
                 avanti_p2_amt: 'రూ. ౩,౮౭,౨౦,౦౦౦',
                 avanti_p3: 'పోర్ట్‌ఫోలియో ౩',
                 avanti_p3_amt: 'రూ. ౨,౪౭,౩౭,౦౦౦',
                 avanti_total_lbl: 'మొత్తం',
-                avanti_total_amt: 'రూ. ౮,౬౯,౦౭,౦౦౦',
+                avanti_total_amt: '₹ ౧౨౫,౧౦౧,౫౦౭.౭౭',
                 unity_name: 'యూనిటీ స్మాల్ ఫైనాన్స్ బ్యాంక్',
                 unity_about_title: 'పరిచయం',
                 unity_about_desc: 'యూనిటీ స్మాల్ ఫైనాన్స్ బ్యాంక్ లిమిటెడ్ భారతీయ రిజర్వ్ బ్యాంక్ (RBI) ద్వారా నియంత్రించబడే లైసెన్స్ పొందిన స్మాల్ ఫైనాన్స్ బ్యాంక్. గతంలో సెంట్రమ్ ఫైనాన్షియల్ సర్వీసెస్ గా పిలువబడేది, బ్యాంక్ ౧ నవంబర్, ౨౦౨౧ న స్మాల్ ఫైనాన్స్ బ్యాంక్ గా కార్యకలాపాలు ప్రారంభించింది.',
@@ -6626,7 +6646,7 @@
                 logo_name: 'ర్యాపిడ్<span class="logo-name-loans">లోన్స్</span>',
                 dir1_name: 'హేమేంద్రసింహ సోలంకి',
                 dir2_name: 'మహేష్ ఆహుజా',
-                mgmt1_name: 'ప్రశాంత్ మానే',
+                mgmt1_name: 'రాజేంద్ర థోటే',
                 mgmt2_name: 'రాఖీ శర్మ',
                 mgmt3_name: 'మితాలి క్రిస్టియన్',
                 dir1_role: 'సంస్థాపకుడు, Modern Group',
@@ -6636,7 +6656,7 @@
                 dir2_bio: 'Barclays, HSBC, మరియు ICICI బ్యాంక్‌లో 20+ సంవత్సరాల అనుభవం. సలహాదాత పాత్రలలో శ్రేష్ఠత సాధించారు మరియు సఫలతను నిర్వహించడానికి మరియు అధిక-పనితీరు బృందాలను పెంపొందించడానికి నిరూపిత సామర్థ్యం కలిగి ఉన్నారు.',
                 dir2_bio_ext: 'వ్యయ నిర్వహణ (P&L), వ్యూహాత్మక దృష్టి, ఆవిష్కరణ మరియు ఆర్థిక విశ్లేషణలో నిపుణుడు. IIT Bombay యొక్క Technology Innovation Hub (TIH)లో IoT స్టార్టআప్‌లను మెంటర్ చేస్తారు మరియు ఫింటెక్ స్టార్టআప్‌ల కోసం బ్రాండ్ వ్యూహకర్త వలె పనిచేస్తారు, వృద్ధి వ్యూహాలు, మార్కెట్-ప్రవేశ ప్రయత్నాలు మరియు నిధి సేకరణను నిర్దేశిస్తారు.',
                 mgmt1_role: 'ప్రధాన ఆర్థిక అధికారి',
-                mgmt1_bio: 'ఆర్థికతను నిర్వహించే చార్టర్‌డ్ ఖాతాదారు, ICICI బ్యాంక్, HDFC బ్యాంక్ మరియు SVC బ్యాంక్‌లో పాటపడ్డారు. అతని ఆచరణీయ ఆడిట్ మరియు ఖాతాల అనుభవం రోజు 1 నుండి నిర్విఘ్న ఆర్థిక కార్యకలాపాలను నిర్ధారిస్తుంది.',
+                mgmt1_bio: 'బ్యాంకింగ్, మైక్రోఫైనాన్స్ మరియు ఆర్థిక సమ్మిళితతలో రెండు దశాబ్దాలకు పైగా అనుభవం ఉన్న ఫలిత ఆధారిత నాయకుడు. Rapid Loans లో CEO కావడానికి ముందు ఆయన Saija Finance కు COO గా ఉన్నారు, అంతకుముందు Janalakshmi Financial Services లో SVP మరియు బిజినెస్ హెడ్ - ఇండివిజువల్ లోన్స్ అలాగే VP - వెస్ట్ జోన్ గా పనిచేశారు, అక్కడ మైక్రోఫైనాన్స్ వ్యాపారాన్ని 68 శాఖలు మరియు 1,500 ఉద్యోగులతో 900 కోట్ల బుక్ వరకు అభివృద్ధి చేశారు. ఆయన తన కెరీర్‌ను IndusInd Bank లో ప్రారంభించి Deputy Vice President వరకు ఎదిగారు. P&L, సేల్స్, కలెక్షన్స్, ఆపరేషన్స్ మరియు శాఖల విస్తరణలో లోతైన నైపుణ్యం కలిగి ఉన్నారు.',
                 mgmt2_role: 'కార్యకలాపాల నిర్దేశకుడు',
                 mgmt2_bio: 'సూక్ష్మ-ఆర్థిక కార్యకలాపాలను నిర్వహించడంలో విస్తృత అనుభవం కలిగిన, విధానాలను రూపొందించిన, క客户 సేవాను పర్యవేక్షించిన మరియు శీఘ్ర, బాధ్యతాయుక్త వృద్ధికోసం సాంకేతిక సమాధానాలను అమలు చేసిన విచక్షణ నిపుణుడు.',
                 mgmt3_role: 'మానవ వనరుల నిర్దేశకుడు',
@@ -6671,9 +6691,9 @@
                 state_name_reji: 'రెజీ రవీంద్రన్',
                 state_role_kl: 'రాష్ట్ర అధిపతి - కేరళ',
                 state_bio_reji: 'కేరళ రాష్ట్ర-స్థాయి కార్యకలాపాలను నడిపిస్తారు - శాఖ నెట్‌వర్క్‌లను విస్తరించడం మరియు గ్రౌండ్ స్థాయిలో నిరంతర సేవా డెలివరీని నిర్ధారించడం.',
-                state_name_abhilash: 'అభిలాష్',
+                state_name_abhilash: 'అభిలాష్ సాలోమన్',
                 state_role_zonal: 'జోనల్ అధిపతి - కేరళ మరియు తమిళనాడు',
-                state_bio_abhilash: 'కేరళ మరియు తమిళనాడుకు జోనల్ నాయకత్వం, దక్షిణం అంతటా బహుళ-రాష్ట్ర వ్యూహం, పనితీరు మరియు ఫీల్డ్ కార్యకలాపాలను సమన్వయం చేస్తారు.',
+                state_bio_abhilash: 'పోర్ట్‌ఫోలియో నిర్మాణం, రిస్క్ హ్యాండ్లింగ్ మరియు బకెట్ రికవరీలో 17 సంవత్సరాల అనుభవం ఉన్న NBFC మరియు మైక్రోఫైనాన్స్ బ్యాంకింగ్ నిపుణుడు. ఆయన Rapid Loans యొక్క కేరళ మరియు తమిళనాడు జోన్‌ను నడిపిస్తారు, వ్యక్తిగత రుణాలు మరియు మైక్రో-MSME లను తదుపరి స్థాయికి తీసుకువెళుతున్నారు. అంతకుముందు ఆయన Inditrade Microfinance లో AVP ఆపరేషన్స్; Bharath Financial Inclusion (IndusInd Bank అనుబంధ సంస్థ) లో General Manager గా ఉన్నారు, అక్కడ 400+ సభ్యుల బృందంతో 400 కోట్ల పోర్ట్‌ఫోలియోను నిర్వహించారు; అలాగే Belstar Microfinance లో Zonal Head మరియు State Head గా ఉన్నారు. ఆయన తన కెరీర్‌ను Madura Micro Finance / CreditAccess Grameen లో ప్రారంభించారు మరియు Kerala University నుండి B.Com పూర్తి చేశారు.',
                 legal_close: 'మూసివేయి',
                 tc_title: 'నిబంధనలు మరియు షరతులు',
                 tc_intro: 'మా వెబ్‌సైట్ మరియు సేవలను ఉపయోగించే ముందు దయచేసి ఈ నిబంధనలు మరియు షరతులను జాగ్రత్తగా చదవండి.',
@@ -6832,17 +6852,17 @@
                 avanti_grv_name: 'এডউইন স্যামুয়েল',
                 avanti_grv_contact: 'ইমেল: edwin.samuel@avantifinance.in | ফোন: +৯১ ৯৮৮০৩ ৬৫১৪৭',
                 avanti_visit: 'অবন্তী ফাইন্যান্স ওয়েবসাইট দেখুন',
-                avanti_dlg_title: 'DLG প্রকাশ (৩১ মে, ২০২৫ পর্যন্ত)',
+                avanti_dlg_title: 'DLG প্রকাশ (৩১ মার্চ, ২০২৬ পর্যন্ত)',
                 avanti_th_portfolio: 'পোর্টফোলিও',
                 avanti_th_amount: 'পরিমাণ (DLG কভার)',
                 avanti_p1: 'পোর্টফোলিও ১',
-                avanti_p1_amt: 'টাকা ২,৩৪,৫০,০০০',
+                avanti_p1_amt: '₹ ১২৫,১০১,৫০৭.৭৭',
                 avanti_p2: 'পোর্টফোলিও ২',
                 avanti_p2_amt: 'টাকা ৩,৮৭,২০,০০০',
                 avanti_p3: 'পোর্টফোলিও ৩',
                 avanti_p3_amt: 'টাকা ২,৪৭,৩৭,০০০',
                 avanti_total_lbl: 'মোট',
-                avanti_total_amt: 'টাকা ৮,৬৯,০৭,০০০',
+                avanti_total_amt: '₹ ১২৫,১০১,৫০৭.৭৭',
                 unity_name: 'ইউনিটি স্মল ফাইন্যান্স ব্যাংক',
                 unity_about_title: 'পরিচিতি',
                 unity_about_desc: 'ইউনিটি স্মল ফাইন্যান্স ব্যাংক লিমিটেড ভারতীয় রিজার্ভ ব্যাংক (RBI) দ্বারা নিয়ন্ত্রিত একটি লাইসেন্সপ্রাপ্ত স্মল ফাইন্যান্স ব্যাংক। পূর্বে সেন্ট্রাম ফাইন্যান্সিয়াল সার্ভিসেস নামে পরিচিত, ব্যাংকটি ১ নভেম্বর, ২০২১-এ স্মল ফাইন্যান্স ব্যাংক হিসেবে কার্যক্রম শুরু করে।',
@@ -6873,7 +6893,7 @@
                 logo_name: 'র‍্যাপিড<span class="logo-name-loans">লোন্স</span>',
                 dir1_name: 'হেমেন্দ্রসিং সোলাঙ্কি',
                 dir2_name: 'মহেশ আহুজা',
-                mgmt1_name: 'প্রশান্ত মানে',
+                mgmt1_name: 'রাজেন্দ্র থোটে',
                 mgmt2_name: 'রাখি শর্মা',
                 mgmt3_name: 'মিতালি ক্রিশ্চিয়ান',
                 dir1_role: 'প্রতিষ্ঠাতা, Modern Group',
@@ -6883,7 +6903,7 @@
                 dir2_bio: 'Barclays, HSBC, এবং ICICI ব্যাংকে 20+ বছরের অভিজ্ঞতা। পরামর্শ ভূমিকায় শ্রেষ্ঠত্ব অর্জন করেছেন এবং সাফল্য চালনা এবং উচ্চ-পারফরম্যান্স দল গড়ে তোলার প্রমাণিত ক্ষমতা রয়েছে।',
                 dir2_bio_ext: 'খরচ ব্যবস্থাপনা (P&L), কৌশলগত দৃষ্টিভঙ্গি, উদ্ভাবন এবং আর্থিক বিশ্লেষণে বিশেষজ্ঞ। IIT বোম্বে এর Technology Innovation Hub (TIH)-এ IoT স্টার্টআপগুলিকে পরামর্শ দেন এবং ফিনটেক স্টার্টআপগুলির জন্য ব্র্যান্ড কৌশলকারী হিসাবে কাজ করেন, বৃদ্ধি কৌশল, বাজার-প্রবেশ উদ্যোগ এবং তহবিল সংগ্রহ নির্দেশনা প্রদান করেন।',
                 mgmt1_role: 'প্রধান আর্থিক কর্মকর্তা',
-                mgmt1_bio: 'একজন চার্টার্ড অ্যাকাউন্ট্যান্ট যিনি আর্থিক পরিচালনা করেন, ICICI ব্যাংক, HDFC ব্যাংক এবং SVC ব্যাংকে কাজ করেছেন। তার ব্যবহারিক নিরীক্ষা এবং অ্যাকাউন্ট অভিজ্ঞতা দিন 1 থেকে নির্বিঘ্ন আর্থিক ক্রিয়াকলাপ নিশ্চিত করে।',
+                mgmt1_bio: 'ব্যাংকিং, মাইক্রোফাইন্যান্স এবং আর্থিক অন্তর্ভুক্তিতে দুই দশকেরও বেশি অভিজ্ঞতাসম্পন্ন ফলাফল-কেন্দ্রিক নেতা। Rapid Loans-এ CEO হওয়ার আগে তিনি Saija Finance-এর COO ছিলেন, এবং তার আগে Janalakshmi Financial Services-এ SVP ও বিজনেস হেড - ইন্ডিভিজুয়াল লোনস এবং VP - ওয়েস্ট জোন ছিলেন, যেখানে তিনি মাইক্রোফাইন্যান্স ব্যবসাকে 68টি শাখা ও 1,500 কর্মী নিয়ে 900 কোটির বুক পর্যন্ত গড়ে তোলেন। তিনি তার কর্মজীবন IndusInd Bank-এ শুরু করেন এবং Deputy Vice President পর্যন্ত উন্নীত হন। P&L, সেলস, কালেকশন, অপারেশন ও শাখা সম্প্রসারণে তার গভীর দক্ষতা রয়েছে।',
                 mgmt2_role: 'ক্রিয়াকলাপ প্রধান',
                 mgmt2_bio: 'একজন বুদ্ধিমান পেশাদার যার সূক্ষ্ম-অর্থায়ন ক্রিয়াকলাপ পরিচালনা, নীতি ডিজাইন, গ্রাহক সেবা তত্ত্বাবধান এবং দ্রুত, দায়বদ্ধ বৃদ্ধির জন্য প্রযুক্তি সমাধান বাস্তবায়নে বিস্তৃত অভিজ্ঞতা রয়েছে।',
                 mgmt3_role: 'মানব সম্পদ প্রধান',
@@ -7034,17 +7054,17 @@
                 avanti_grv_name: 'ਐਡਵਿਨ ਸੈਮੂਅਲ',
                 avanti_grv_contact: 'ਈਮੇਲ: edwin.samuel@avantifinance.in | ਫ਼ੋਨ: +੯੧ ੯੮੮੦੩ ੬੫੧੪੭',
                 avanti_visit: 'ਅਵੰਤੀ ਫਾਇਨੈਂਸ ਵੈੱਬਸਾਈਟ \'ਤੇ ਜਾਓ',
-                avanti_dlg_title: 'DLG ਖੁਲਾਸਾ (੩੧ ਮਈ, ੨੦੨੫ ਤੱਕ)',
+                avanti_dlg_title: 'DLG ਖੁਲਾਸਾ (੩੧ ਮਾਰਚ, ੨੦੨੬ ਤੱਕ)',
                 avanti_th_portfolio: 'ਪੋਰਟਫੋਲੀਓ',
                 avanti_th_amount: 'ਰਕਮ (DLG ਕਵਰ)',
                 avanti_p1: 'ਪੋਰਟਫੋਲੀਓ ੧',
-                avanti_p1_amt: 'ਰੁ. ੨,੩੪,੫੦,੦੦੦',
+                avanti_p1_amt: '₹ ੧੨੫,੧੦੧,੫੦੭.੭੭',
                 avanti_p2: 'ਪੋਰਟਫੋਲੀਓ ੨',
                 avanti_p2_amt: 'ਰੁ. ੩,੮੭,੨੦,੦੦੦',
                 avanti_p3: 'ਪੋਰਟਫੋਲੀਓ ੩',
                 avanti_p3_amt: 'ਰੁ. ੨,੪੭,੩੭,੦੦੦',
                 avanti_total_lbl: 'ਕੁੱਲ',
-                avanti_total_amt: 'ਰੁ. ੮,੬੯,੦੭,੦੦੦',
+                avanti_total_amt: '₹ ੧੨੫,੧੦੧,੫੦੭.੭੭',
                 unity_name: 'ਯੂਨਿਟੀ ਸਮਾਲ ਫਾਇਨੈਂਸ ਬੈਂਕ',
                 unity_about_title: 'ਜਾਣਕਾਰੀ',
                 unity_about_desc: 'ਯੂਨਿਟੀ ਸਮਾਲ ਫਾਇਨੈਂਸ ਬੈਂਕ ਲਿਮਿਟੇਡ ਭਾਰਤੀ ਰਿਜ਼ਰਵ ਬੈਂਕ (RBI) ਦੁਆਰਾ ਨਿਯਮਿਤ ਇੱਕ ਲਾਇਸੰਸਸ਼ੁਦਾ ਸਮਾਲ ਫਾਇਨੈਂਸ ਬੈਂਕ ਹੈ। ਪਹਿਲਾਂ ਸੈਂਟ੍ਰਮ ਫਾਇਨੈਂਸ਼ੀਅਲ ਸਰਵਿਸਿਜ਼ ਵਜੋਂ ਜਾਣਿਆ ਜਾਂਦਾ ਸੀ, ਬੈਂਕ ਨੇ ੧ ਨਵੰਬਰ, ੨੦੨੧ ਨੂੰ ਸਮਾਲ ਫਾਇਨੈਂਸ ਬੈਂਕ ਵਜੋਂ ਕੰਮ ਸ਼ੁਰੂ ਕੀਤਾ।',
@@ -7075,7 +7095,7 @@
                 logo_name: 'ਰੈਪਿਡ<span class="logo-name-loans">ਲੋਨਜ਼</span>',
                 dir1_name: 'ਹੇਮੇਂਦਰਸਿੰਘ ਸੋਲੰਕੀ',
                 dir2_name: 'ਮਹੇਸ਼ ਆਹੂਜਾ',
-                mgmt1_name: 'ਪ੍ਰਸ਼ਾਂਤ ਮਾਨੇ',
+                mgmt1_name: 'ਰਾਜੇਂਦਰ ਥੋਟੇ',
                 mgmt2_name: 'ਰਾਖੀ ਸ਼ਰਮਾ',
                 mgmt3_name: 'ਮਿਤਾਲੀ ਕ੍ਰਿਸ਼ਚੀਅਨ',
                 dir1_role: 'ਸਥਾਪਕ, Modern Group',
@@ -7085,7 +7105,7 @@
                 dir2_bio: 'Barclays, HSBC, ਅਤੇ ICICI ਬੈਂਕ ਵਿੱਚ 20+ ਸਾਲਾਂ ਦਾ ਅਨੁਭਵ। ਸਲਾਹਕਾਰੀ ਭੂਮਿਕਾਵਾਂ ਵਿੱਚ ਵਿਸ਼ੇਸ਼ਤਾ ਪ੍ਰਾਪਤ ਕਰਦਾ ਹੈ ਅਤੇ ਕਾਮਯਾਬੀ ਨੂੰ ਚਲਾਉਣ ਅਤੇ ਉੱਚ-ਪ੍ਰਦਰਸ਼ਨ ਕਰਨ ਵਾਲੀਆਂ ਟੀਮਾਂ ਨੂੰ ਪਾਲਣ-ਪੋਸਣ ਦੀ ਸਾਬਤ ਸਮਰਥਾ ਹੈ।',
                 dir2_bio_ext: 'ਖਰਚ ਪ੍ਰਬੰਧਨ (P&L), ਰਣਨੀਤਕ ਦ੍ਰਿਸ਼ਟੀਕੋਣ, ਨਵਾਚਾਰ, ਅਤੇ ਆਰਥਿਕ ਵਿਸ਼ਲੇਸ਼ਣ ਵਿੱਚ ਮਾਹਿਰ। IIT Bombay ਦੇ Technology Innovation Hub (TIH) ਵਿੱਚ IoT ਸਟਾਰਟ-ਅਪਸ ਦੇ ਸਲਾਹਕਾਰ ਵਜੋਂ ਕੰਮ ਕਰਦਾ ਹੈ ਅਤੇ fintech ਸਟਾਰਟ-ਅਪਸ ਲਈ ਬ੍ਰਾਂਡ ਰਣਨੀਤਿਕ ਵਜੋਂ ਕੰਮ ਕਰਦਾ ਹੈ, ਵਿਕਾਸ ਰਣਨੀਤਿਆਂ, ਬਾਜ਼ਾਰ-ਪ੍ਰਵੇਸ਼ ਪਹਿਲਕਦਮੀਆਂ ਅਤੇ ਫੰਡਰਾਈਜ਼ਿੰਗ ਦੀ ਰਹਨੁਮਾਈ ਕਰਦਾ ਹੈ।',
                 mgmt1_role: 'ਮੁੱਖ ਆਰਥਿਕ ਅਫਸਰ',
-                mgmt1_bio: 'ਇੱਕ ਚਾਰਟਰਡ ਅਕਾਉਂਟੇਂਟ ਜੋ ਵਿੱਤ ਦਾ ਆਗੂ ਹੈ, ICICI ਬੈਂਕ, HDFC ਬੈਂਕ, ਅਤੇ SVC ਬੈਂਕ ਵਿੱਚ ਕੰਮ ਕਿਆ ਹੈ। ਉਸਦਾ ਵਯਵਹਾਰਕ ਆਡਿਟ ਅਤੇ ਖਾਤੇ ਅਨੁਭਵ ਦਿਨ 1 ਤੋਂ ਨਿਰਬਾਧ ਆਰਥਿਕ ਕਾਰਜਸ਼ੀਲਤਾ ਯਕੀਨੀ ਬਣਾਉਂਦਾ ਹੈ।',
+                mgmt1_bio: 'ਬੈਂਕਿੰਗ, ਮਾਈਕ੍ਰੋਫਾਈਨੈਂਸ ਅਤੇ ਵਿੱਤੀ ਸ਼ਮੂਲੀਅਤ ਵਿੱਚ ਦੋ ਦਹਾਕਿਆਂ ਤੋਂ ਵੱਧ ਤਜਰਬੇ ਵਾਲੇ ਨਤੀਜਾ-ਕੇਂਦ੍ਰਿਤ ਆਗੂ। Rapid Loans ਵਿੱਚ CEO ਬਣਨ ਤੋਂ ਪਹਿਲਾਂ ਉਹ Saija Finance ਦੇ COO ਰਹੇ, ਅਤੇ ਇਸ ਤੋਂ ਪਹਿਲਾਂ Janalakshmi Financial Services ਵਿੱਚ SVP ਅਤੇ ਬਿਜ਼ਨੈੱਸ ਹੈੱਡ - ਇੰਡੀਵਿਜੁਅਲ ਲੋਨਜ਼ ਅਤੇ VP - ਵੈਸਟ ਜ਼ੋਨ ਰਹੇ, ਜਿੱਥੇ ਉਨ੍ਹਾਂ ਨੇ ਮਾਈਕ੍ਰੋਫਾਈਨੈਂਸ ਕਾਰੋਬਾਰ ਨੂੰ 68 ਸ਼ਾਖਾਵਾਂ ਅਤੇ 1,500 ਕਰਮਚਾਰੀਆਂ ਨਾਲ 900 ਕਰੋੜ ਦੀ ਬੁੱਕ ਤੱਕ ਵਧਾਇਆ। ਉਨ੍ਹਾਂ ਨੇ ਆਪਣਾ ਕਰੀਅਰ IndusInd Bank ਤੋਂ ਸ਼ੁਰੂ ਕੀਤਾ ਅਤੇ Deputy Vice President ਤੱਕ ਪਹੁੰਚੇ। ਉਨ੍ਹਾਂ ਕੋਲ P&L, ਸੇਲਜ਼, ਕਲੈਕਸ਼ਨ, ਓਪਰੇਸ਼ਨਜ਼ ਅਤੇ ਸ਼ਾਖਾ ਵਿਸਥਾਰ ਵਿੱਚ ਡੂੰਘੀ ਮੁਹਾਰਤ ਹੈ।',
                 mgmt2_role: 'ਸੰਚਾਲਨ ਦਾ ਮੁਖ',
                 mgmt2_bio: 'ਇੱਕ ਤੀਖੀ ਪੇਸ਼ੇਵਰ ਜਿਸ ਕੋਲ ਸੂਖਮ-ਵਿੱਤ ਸੰਚਾਲਨ ਦੀ ਆਗੂਈ, ਨੀਤੀਆਂ ਦੇ ਡਿਜ਼ਾਈਨ, ਗ੍ਰਾਹਕ ਸੇਵਾ ਦੀ ਨਿਗਰਾਨੀ, ਅਤੇ ਤੇਜ਼, ਜਵਾਬਦੇਹ ਵਿਕਾਸ ਲਈ ਤਕਨੀਕੀ ਹੱਲ ਲਾਗੂ ਕਰਨ ਵਿੱਚ ਵਿਸ਼ਾਲ ਅਨੁਭਵ ਹੈ।',
                 mgmt3_role: 'ਮਾਨਵ ਸਰੋਤ ਦਾ ਮੁਖ',
@@ -7250,17 +7270,17 @@
                 avanti_grv_name: 'എഡ്വിന്‍ സാമുവല്‍',
                 avanti_grv_contact: 'ഇമെയില്‍: edwin.samuel@avantifinance.in | ഫോണ്‍: +൯൧ ൯൮൮൦൩ ൬൫൧൪൭',
                 avanti_visit: 'അവന്തി ഫൈനാന്‍സ് വെബ്സൈറ്റ് സന്ദര്‍ശിക്കുക',
-                avanti_dlg_title: 'DLG വെളിപ്പെടുത്തല്‍ (൩൧ മേയ്, ൨൦൨൫ വരെ)',
+                avanti_dlg_title: 'DLG വെളിപ്പെടുത്തല്‍ (൩൧ മാർച്ച്, ൨൦൨൬ വരെ)',
                 avanti_th_portfolio: 'പോര്‍ട്ട്ഫോളിയോ',
                 avanti_th_amount: 'തുക (DLG കവര്‍)',
                 avanti_p1: 'പോര്‍ട്ട്ഫോളിയോ ൧',
-                avanti_p1_amt: 'രൂ. ൨,൩൪,൫൦,൦൦൦',
+                avanti_p1_amt: '₹ ൧൨൫,൧൦൧,൫൦൭.൭൭',
                 avanti_p2: 'പോര്‍ട്ട്ഫോളിയോ ൨',
                 avanti_p2_amt: 'രൂ. ൩,൮൭,൨൦,൦൦൦',
                 avanti_p3: 'പോര്‍ട്ട്ഫോളിയോ ൩',
                 avanti_p3_amt: 'രൂ. ൨,൪൭,൩൭,൦൦൦',
                 avanti_total_lbl: 'ആകെ',
-                avanti_total_amt: 'രൂ. ൮,൬൯,൦൭,൦൦൦',
+                avanti_total_amt: '₹ ൧൨൫,൧൦൧,൫൦൭.൭൭',
                 unity_name: 'യൂണിറ്റി സ്മോള്‍ ഫൈനാന്‍സ് ബാങ്ക്',
                 unity_about_title: 'പരിചയം',
                 unity_about_desc: 'യൂണിറ്റി സ്മോള്‍ ഫൈനാന്‍സ് ബാങ്ക് ലിമിറ്റഡ് ഭാരതീയ റിസര്‍വ് ബാങ്ക് (RBI) നിയന്ത്രിത ലൈസന്‍സ് ലഭിച്ച സ്മോള്‍ ഫൈനാന്‍സ് ബാങ്കാണ്. മുമ്പ് സെന്‍ട്രം ഫൈനാന്‍ഷ്യല്‍ സര്‍വീസസ് എന്ന് അറിയപ്പെട്ടിരുന്നു, ബാങ്ക് ൧ നവംബര്‍, ൨൦൨൧-ന് സ്മോള്‍ ഫൈനാന്‍സ് ബാങ്കായി പ്രവര്‍ത്തനം ആരംഭിച്ചു.',
@@ -7303,7 +7323,7 @@
                 logo_name: 'റാപിഡ്<span class="logo-name-loans">ലോൺസ്</span>',
                 dir1_name: 'ഹേമേന്ദ്രസിംഹ് സോലങ്കി',
                 dir2_name: 'മഹേഷ് ആഹുജ',
-                mgmt1_name: 'പ്രശാന്ത് മാനെ',
+                mgmt1_name: 'രാജേന്ദ്ര തോട്ടെ',
                 mgmt2_name: 'രാഖി ശർമ',
                 mgmt3_name: 'മിതാലി ക്രിസ്റ്റ്യൻ',
                 dir1_role: 'സ്ഥാപകൻ, Modern Group',
@@ -7313,7 +7333,7 @@
                 dir2_bio: 'Barclays, HSBC, കയിനു് ICICI ബാങ്കിൽ 20+ വര്ഷ സാധ്യതകൾ. സഹായ ഭൂമികയിൽ ഉത്തരമദര്ത നിലവിൽ വരുന്നു കയിനു് വിജയ്യത്ത നിർവഹിക്കാനുള്ള സത്യപ്പെടെ ഭാഗം യും ഉയർച-പ്രവൃത്തി ടീമുകലെ നോക്കുന്നുണ്ട്.',
                 dir2_bio_ext: 'വിജയകേസ്( P&L), തന്ത്രാത്മക വീക്ഷണങ്ങൾ, നവികരാവണ്ടിയൊപ്പം സാമ്പത്തിക വിശ്ലേഷണയ്കായിലെ നിപുണൻ. IIT Bombay ന്റെ Technology Innovation Hub (TIH) ൽ IoT ആരംഭ്കരണത്ത് ഗൈഡുകെടുതിക്കയും fintech സ്റ്റാർട്ടപ്പുകെ ബ്രാന്ഡ് തന്ത്രജ്ഞനെയായി സംവരിച്ച് വിളാരു ആവിഷ്കാരങ്ങൾ, വിപണന-സെപ്പാ ഉദ്ദേശ്യങ്ങൾ, ഒപ്പം നിധി സമാഹരണ നിമ്നകരിച്ചു.',
                 mgmt1_role: 'പ്രധാന സാമ്പത്തിക ഓഫിസർ',
-                mgmt1_bio: 'ഒരു സാർട്ടിഫൈഡ് അക്കൗണ്ടന്റ് ധനകാര്യത്ത നിരീക്ഷണം ചെയ്യുന്നു, ICICI ബാങ്ക്, HDFC ബാങ്ക്, കയിനു് SVC ബാങ്കിൽ സമയം ചിത്തരിച്ച്. അവന്റെ പ്രായോഗിക ഓഡിറ്റ് കയിനു് അക്കൗണ്ടുകൾ അനുഭവത്ത് ദിന 1 ൽ നിന്നിരുന്നു സുരോാ സാമ്പത്തിക പ്രവൃത്തിനിർണയ്തും നിമ്നകരിച്ചു.',
+                mgmt1_bio: 'ബാങ്കിംഗ്, മൈക്രോഫിനാൻസ്, സാമ്പത്തിക ഉൾപ്പെടുത്തൽ എന്നിവയിൽ രണ്ട് ദശാബ്ദത്തിലേറെ പരിചയമുള്ള ഫലാധിഷ്ഠിത നേതാവ്. Rapid Loans-ൽ CEO ആകുന്നതിന് മുമ്പ് അദ്ദേഹം Saija Finance-ന്റെ COO ആയിരുന്നു, അതിനുമുമ്പ് Janalakshmi Financial Services-ൽ SVP, ബിസിനസ് ഹെഡ് - ഇൻഡിവിജ്വൽ ലോൺസ്, VP - വെസ്റ്റ് സോൺ എന്നീ പദവികളിൽ പ്രവർത്തിച്ചു, അവിടെ മൈക്രോഫിനാൻസ് ബിസിനസ്സ് 68 ശാഖകളും 1,500 ജീവനക്കാരുമായി 900 കോടി ബുക്ക് വരെ വളർത്തി. അദ്ദേഹം തന്റെ കരിയർ IndusInd Bank-ൽ ആരംഭിച്ച് Deputy Vice President വരെ ഉയർന്നു. P&L, സെയിൽസ്, കളക്ഷൻ, ഓപ്പറേഷൻസ്, ശാഖാ വ്യാപനം എന്നിവയിൽ ആഴമേറിയ വൈദഗ്ധ്യമുണ്ട്.',
                 mgmt2_role: 'പ്രവർത്തനങ്ങൾ നേതൃത്വം',
                 mgmt2_bio: 'ഒരു പ്രതിഭാഷ പെരുമാൻ സാധാരണ-സാമ്പത്തികത കാര്യങ്ങൾ നിരീക്ഷണം, നൈറ്റിയ സ്ഥിരതകൾ, പഠര-സേവന ശാഖവാണിക, കയിനു് തീവ്രതര, ഉത്തരവാദിത്ത വികസനത്ത് സാങ്കേതിക പരിഹാരം വിതരണം സാധാരാത്ത അനുഭവങ്ങളുണ്ടെത്ത്സമീപിച്ച.',
                 mgmt3_role: 'മനുഷ്യ വനിതാ നേതൃത്വം',
@@ -7348,9 +7368,9 @@
                 state_name_reji: 'രെജി രവീന്ദ്രൻ',
                 state_role_kl: 'സംസ്ഥാന മേധാവി - കേരളം',
                 state_bio_reji: 'കേരളത്തിന്റെ സംസ്ഥാന-തല പ്രവർത്തനങ്ങളെ നയിക്കുന്നു - ബ്രാഞ്ച് നെറ്റ്‌വർക്കുകൾ വിപുലീകരിക്കുന്നു, ഫീൽഡ് തലത്തിൽ സ്ഥിരമായ സേവന വിതരണം ഉറപ്പാക്കുന്നു.',
-                state_name_abhilash: 'അഭിലാഷ്',
+                state_name_abhilash: 'അഭിലാഷ് സാലമൻ',
                 state_role_zonal: 'സോണൽ മേധാവി - കേരളം & തമിഴ്‌നാട്',
-                state_bio_abhilash: 'കേരളത്തിനും തമിഴ്‌നാട്ടിനുമുള്ള സോണൽ ലീഡ്, ദക്ഷിണത്തിലുടനീളം മൾട്ടി-സ്റ്റേറ്റ് സ്ട്രാറ്റജി, പ്രകടനം, ഫീൽഡ് പ്രവർത്തനങ്ങൾ എന്നിവ ഏകോപിപ്പിക്കുന്നു.',
+                state_bio_abhilash: 'പോർട്ട്‌ഫോളിയോ നിർമ്മാണം, റിസ്ക് ഹാൻഡ്‌ലിംഗ്, ബക്കറ്റ് റിക്കവറി എന്നിവയിൽ 17 വർഷത്തെ പരിചയമുള്ള NBFC, മൈക്രോഫിനാൻസ് ബാങ്കിംഗ് വിദഗ്ധൻ. അദ്ദേഹം Rapid Loans-ന്റെ കേരള, തമിഴ്‌നാട് സോൺ നയിക്കുന്നു, വ്യക്തിഗത വായ്പകളും മൈക്രോ-MSME-കളും അടുത്ത ഘട്ടത്തിലേക്ക് കൊണ്ടുപോകുന്നു. നേരത്തെ അദ്ദേഹം Inditrade Microfinance-ൽ AVP ഓപ്പറേഷൻസ്; Bharath Financial Inclusion (IndusInd Bank-ന്റെ ഉപകമ്പനി)-ൽ General Manager ആയിരുന്നു, അവിടെ 400+ അംഗ ടീമിനൊപ്പം 400 കോടി പോർട്ട്‌ഫോളിയോ കൈകാര്യം ചെയ്തു; കൂടാതെ Belstar Microfinance-ൽ Zonal Head, State Head എന്നീ പദവികളിൽ പ്രവർത്തിച്ചു. അദ്ദേഹം തന്റെ കരിയർ Madura Micro Finance / CreditAccess Grameen-ൽ ആരംഭിച്ചു, Kerala University-ൽ നിന്ന് B.Com നേടി.',
                 legal_close: 'അടയ്ക്കുക',
                 tc_title: 'നിബന്ധനകളും വ്യവസ്ഥകളും',
                 tc_intro: 'ഞങ്ങളുടെ വെബ്‌സൈറ്റും സേവനങ്ങളും ഉപയോഗിക്കുന്നതിന് മുമ്പ് ദയവായി ഈ നിബന്ധനകളും വ്യവസ്ഥകളും ശ്രദ്ധാപൂർവം വായിക്കുക.',
@@ -7509,17 +7529,17 @@
                 avanti_grv_name: 'ଏଡୱିନ ସାମୁଏଲ',
                 avanti_grv_contact: 'ଇମେଲ: edwin.samuel@avantifinance.in | ଫୋନ: +୯୧ ୯୮୮୦୩ ୬୫୧୪୭',
                 avanti_visit: 'ଅବନ୍ତୀ ଫାଇନାନ୍ସ ୱେବସାଇଟ୍ ଦେଖନ୍ତୁ',
-                avanti_dlg_title: 'DLG ପ୍ରକାଶ (୩୧ ମଇ, ୨୦୨୫ ପର୍ଯ୍ୟନ୍ତ)',
+                avanti_dlg_title: 'DLG ପ୍ରକାଶ (୩୧ ମାର୍ଚ୍ଚ, ୨୦୨୬ ପର୍ଯ୍ୟନ୍ତ)',
                 avanti_th_portfolio: 'ପୋର୍ଟଫୋଲିଓ',
                 avanti_th_amount: 'ପରିମାଣ (DLG କଭର)',
                 avanti_p1: 'ପୋର୍ଟଫୋଲିଓ ୧',
-                avanti_p1_amt: 'ଟଙ୍କା ୨,୩୪,୫୦,୦୦୦',
+                avanti_p1_amt: '₹ ୧୨୫,୧୦୧,୫୦୭.୭୭',
                 avanti_p2: 'ପୋର୍ଟଫୋଲିଓ ୨',
                 avanti_p2_amt: 'ଟଙ୍କା ୩,୮୭,୨୦,୦୦୦',
                 avanti_p3: 'ପୋର୍ଟଫୋଲିଓ ୩',
                 avanti_p3_amt: 'ଟଙ୍କା ୨,୪୭,୩୭,୦୦୦',
                 avanti_total_lbl: 'ମୋଟ',
-                avanti_total_amt: 'ଟଙ୍କା ୮,୬୯,୦୭,୦୦୦',
+                avanti_total_amt: '₹ ୧୨୫,୧୦୧,୫୦୭.୭୭',
                 unity_name: 'ୟୁନିଟି ସ୍ମଲ ଫାଇନାନ୍ସ ବ୍ୟାଙ୍କ',
                 unity_about_title: 'ପରିଚୟ',
                 unity_about_desc: 'ୟୁନିଟି ସ୍ମଲ ଫାଇନାନ୍ସ ବ୍ୟାଙ୍କ ଲିମିଟେଡ୍ ଭାରତୀୟ ରିଜର୍ଭ ବ୍ୟାଙ୍କ (RBI) ଦ୍ୱାରା ନିୟନ୍ତ୍ରିତ ଏକ ଲାଇସେନ୍ସପ୍ରାପ୍ତ ସ୍ମଲ ଫାଇନାନ୍ସ ବ୍ୟାଙ୍କ। ପୂର୍ବରୁ ସେଣ୍ଟ୍ରମ ଫାଇନାନ୍ସିଆଲ ସର୍ଭିସେସ ଭାବରେ ଜଣାଶୁଣା, ବ୍ୟାଙ୍କ ୧ ନଭେମ୍ବର, ୨୦୨୧ ରେ ସ୍ମଲ ଫାଇନାନ୍ସ ବ୍ୟାଙ୍କ ଭାବରେ କାର୍ଯ୍ୟ ଆରମ୍ଭ କଲା।',
@@ -7550,7 +7570,7 @@
                 logo_name: 'ର୍ୟାପିଡ<span class="logo-name-loans">ଲୋନ୍ସ</span>',
                 dir1_name: 'ହେମେନ୍ଦ୍ରସିଂହ ସୋଲଙ୍କି',
                 dir2_name: 'ମହେଶ ଆହୁଜା',
-                mgmt1_name: 'ପ୍ରଶାନ୍ତ ମାନେ',
+                mgmt1_name: 'ରାଜେନ୍ଦ୍ର ଥୋଟେ',
                 mgmt2_name: 'ରାଖୀ ଶର୍ମା',
                 mgmt3_name: 'ମିତାଲି କ୍ରିଶ୍ଚିଆନ',
                 dir1_role: 'ପ୍ରତିଷ୍ଠାତା, Modern Group',
@@ -7560,7 +7580,7 @@
                 dir2_bio: 'Barclays, HSBC, ଏବଂ ICICI ବ୍ୟାଙ୍କରେ 20+ ବର୍ଷ ଅଭିଜ୍ଞତା। ପରାମର୍ଶ ଭୂମିକାରେ ଉତ୍କର୍ଷତା ସାଧନ କରନ୍ତି ଏବଂ ସଫଳତା ଚଳାଇବା ଏବଂ ଉଚ୍ଚ-କାର୍ଯ୍ୟକାରିତା ଟିମ ଲାଳନ ର ପ୍ରমାଣିତ ଦକ୍ଷତା ରଖନ୍ତି।',
                 dir2_bio_ext: 'ରାଜସ୍ୱ ବ୍ୟବସ୍ଥାପନା (P&L), କୌଶলଗତ ଦୃଷ୍ଟିଭଙ୍ଗୀ, ନବଶୃଙ୍ଖଳନ ଏବଂ ଆର୍ଥିକ ବିଶ୍ଳେଷଣରେ ବିଶେଷଜ୍ଞ। IIT Bombay ର Technology Innovation Hub (TIH) ରେ IoT ଆରମ୍ଭଲ ପାଇଁ ପରାମର୍ଶଦାତା ଅଳୋକନ ଏବଂ fintech ଆରମ୍ଭଲ ପାଇଁ ବ୍ରାଣ୍ଡ ଚିନ୍ତାଧାରାକାରୀ ଭୂମିକା ବଜାୟ ରଖନ୍ତି, ବୃଦ୍ଧି ଚିନ୍ତାଧାରା, ବଜାର-ପ୍ରବେଶ ଉଦ୍ୟୋଗ ଏବଂ ଆର୍ଥିକ ସଂଗ୍ରହ ନିର୍ଦେଶନା ପ୍ରଦାନ କରନ୍ତି।',
                 mgmt1_role: 'ମୁଖ୍ୟ ଆର୍ଥିକ ଅଧିକାରୀ',
-                mgmt1_bio: 'ଏକ ରାଜ୍ୟ ଚାର୍ଟର୍ଡ ଲେଖାଏଷ୍ଠ ଯିଏ ଆର୍ଥିକତା ଆଗେଇ ରଖନ୍ତି, ICICI ବ୍ୟାଙ୍କ, HDFC ବ୍ୟାଙ୍କ ଏବଂ SVC ବ୍ୟାଙ୍କରେ କାଜ କରିଛନ୍ତି। ତାଙ୍କ ବ୍ୟବହାରିକ ଲେଖାପରୀକ୍ଷା ଏବଂ ଖାତା ଅଭିଜ୍ଞତା ଦିନ 1 ଠାରୁ ନିରବଛିନ୍ନ ଆର୍ଥିକ କାର୍ଯ୍ୟକଳାପ ନିଶ୍ଚିତ କରେ।',
+                mgmt1_bio: 'ବ୍ୟାଙ୍କିଂ, ମାଇକ୍ରୋଫାଇନାନ୍ସ ଏବଂ ଆର୍ଥିକ ଅନ୍ତର୍ଭୁକ୍ତିରେ ଦୁଇ ଦଶକରୁ ଅଧିକ ଅଭିଜ୍ଞତା ଥିବା ଫଳାଫଳ-କେନ୍ଦ୍ରିତ ନେତା। Rapid Loans ରେ CEO ହେବା ପୂର୍ବରୁ ସେ Saija Finance ର COO ଥିଲେ, ଏବଂ ତାହା ପୂର୍ବରୁ Janalakshmi Financial Services ରେ SVP ଏବଂ ବିଜନେସ୍ ହେଡ୍ - ଇଣ୍ଡିଭିଜୁଆଲ୍ ଲୋନ୍ସ ତଥା VP - ୱେଷ୍ଟ ଜୋନ୍ ଥିଲେ, ଯେଉଁଠାରେ ସେ ମାଇକ୍ରୋଫାଇନାନ୍ସ ବ୍ୟବସାୟକୁ 68 ଶାଖା ଏବଂ 1,500 କର୍ମଚାରୀଙ୍କ ସହ 900 କୋଟିର ବୁକ୍ ପର୍ଯ୍ୟନ୍ତ ବିକଶିତ କଲେ। ସେ ତାଙ୍କ କ୍ୟାରିଅର IndusInd Bank ରୁ ଆରମ୍ଭ କରି Deputy Vice President ପର୍ଯ୍ୟନ୍ତ ପହଞ୍ଚିଲେ। P&L, ସେଲ୍ସ, କଲେକ୍ସନ୍, ଅପରେସନ୍ ଏବଂ ଶାଖା ବିସ୍ତାରରେ ତାଙ୍କର ଗଭୀର ଦକ୍ଷତା ଅଛି।',
                 mgmt2_role: 'ପ୍ରକିୟାକରଣ ନେତୃତ୍ୱ',
                 mgmt2_bio: 'ଏକ ବୁଦ୍ଧିସେବୀ ବୃତ୍ତିଜୀବୀ ଯାହାକୁ ସୂକ୍ଷ୍ମ-ଆର୍ଥିକତା ପ୍ରକିୟାକରଣ ନେତୃତ୍ୱ, ନୀତି ଡିଜାଇନ, ଗ୍ରାହକ ସେବା ଅଧୀକ୍ଷଣ, ଏବଂ ଦ୍ରୁତ, ଦାୟବଦ୍ଧତା ବୃଦ୍ଧିଧିଁ ଆଦ୍ଭୁକ୍ତ ସମାଧାନ କାର୍ଯ୍ୟନ୍ୱୟନରେ ବିସ୍ତୃତ ଅଭିଜ୍ଞତା ଅଛି।',
                 mgmt3_role: 'ମାନବ ସମ୍ବଳ ନେତୃତ୍ୱ',
@@ -7711,17 +7731,17 @@
                 avanti_grv_name: 'এডউইন চেমুৱেল',
                 avanti_grv_contact: 'ইমেইল: edwin.samuel@avantifinance.in | ফোন: +৯১ ৯৮৮০৩ ৬৫১৪৭',
                 avanti_visit: 'অৱন্তী ফাইনেন্স ৱেবছাইট চাওক',
-                avanti_dlg_title: 'DLG প্ৰকাশ (৩১ মে’, ২০২৫ লৈকে)',
+                avanti_dlg_title: 'DLG প্ৰকাশ (৩১ মাৰ্চ, ২০২৬ লৈকে)',
                 avanti_th_portfolio: 'পৰ্টফলিঅ’',
                 avanti_th_amount: 'পৰিমাণ (DLG কভাৰ)',
                 avanti_p1: 'পৰ্টফলিঅ’ ১',
-                avanti_p1_amt: 'টকা ২,৩৪,৫০,০০০',
+                avanti_p1_amt: '₹ ১২৫,১০১,৫০৭.৭৭',
                 avanti_p2: 'পৰ্টফলিঅ’ ২',
                 avanti_p2_amt: 'টকা ৩,৮৭,২০,০০০',
                 avanti_p3: 'পৰ্টফলিঅ’ ৩',
                 avanti_p3_amt: 'টকা ২,৪৭,৩৭,০০০',
                 avanti_total_lbl: 'মুঠ',
-                avanti_total_amt: 'টকা ৮,৬৯,০৭,০০০',
+                avanti_total_amt: '₹ ১২৫,১০১,৫০৭.৭৭',
                 unity_name: 'ইউনিটি স্মল ফাইনেন্স বেংক',
                 unity_about_title: 'পৰিচয়',
                 unity_about_desc: 'ইউনিটি স্মল ফাইনেন্স বেংক লিমিটেড ভাৰতীয় ৰিজাৰ্ভ বেংক (RBI) দ্বাৰা নিয়ন্ত্ৰিত এটা অনুজ্ঞাপত্ৰপ্ৰাপ্ত স্মল ফাইনেন্স বেংক। পূৰ্বতে চেণ্ট্ৰাম ফাইনেন্সিয়েল চাৰ্ভিচেজ নামেৰে জনাজাত, বেংকে ১ নৱেম্বৰ, ২০২১-ত স্মল ফাইনেন্স বেংক হিচাপে কাৰ্যকলাপ আৰম্ভ কৰে।',
@@ -7752,7 +7772,7 @@
                 logo_name: 'ৰেপিড<span class="logo-name-loans">লোন্স</span>',
                 dir1_name: 'হেমেন্দ্ৰসিংহ সোলাংকি',
                 dir2_name: 'মহেশ আহুজা',
-                mgmt1_name: 'প্�ৰশান্ত মানে',
+                mgmt1_name: 'ৰাজেন্দ্ৰ থোটে',
                 mgmt2_name: 'ৰাখী শৰ্মা',
                 mgmt3_name: 'মিতালি ক্ৰিশ্চিয়ান',
                 dir1_role: 'প্রতিষ্ঠাতা, Modern Group',
@@ -7762,7 +7782,7 @@
                 dir2_bio: 'Barclays, HSBC এবং ICICI ব্যাংকে 20+ বছরের অভিজ্ঞতা। পরামর্শ ভূমিকায় শ্রেষ্ঠত্ব অর্জন করেছেন এবং সাফল্য চালনা ও উচ্চ-পারফরমিং দল গড়ে তোলার প্রমাণিত ক্ষমতা রয়েছে।',
                 dir2_bio_ext: 'খরচ ব্যবস্থাপনা (P&L), কৌশলগত দৃষ্টিভঙ্গি, উদ্ভাবন এবং আর্থিক বিশ্লেষণে বিশেষজ্ঞ। IIT Bombay এর Technology Innovation Hub (TIH) তে IoT স্টার্টআপগুলিকে পরামর্শ দেন এবং ফিনটেক স্টার্টআপগুলির জন্য ব্র্যান্ড কৌশলবিদ হিসাবে কাজ করেন, বৃদ্ধি কৌশল, বাজার-প্রবেশ উদ্যোগ এবং তহবিল সংগ্রহের নির্দেশনা প্রদান করেন।',
                 mgmt1_role: 'প্রধান আর্থিক কর্মকর্তা',
-                mgmt1_bio: 'একজন চার্টার্ড অ্যাকাউন্ট্যান্ট যিনি আর্থিক পরিচালনা করেন, ICICI ব্যাংক, HDFC ব্যাংক এবং SVC ব্যাংকে কাজ করেছেন। তার ব্যবহারিক নিরীক্ষা এবং অ্যাকাউন্টিং অভিজ্ঞতা দিন 1 থেকে নির্বিঘ্ন আর্থিক ক্রিয়াকলাপ নিশ্চিত করে।',
+                mgmt1_bio: 'বেংকিং, মাইক্ৰʼফাইনেন্স আৰু আৰ্থিক অন্তৰ্ভুক্তিত দুই দশকৰো অধিক অভিজ্ঞতা থকা ফলাফল-কেন্দ্ৰিক নেতা। Rapid Loans ত CEO হোৱাৰ আগতে তেওঁ Saija Finance ৰ COO আছিল, আৰু তাৰ আগতে Janalakshmi Financial Services ত SVP আৰু বিজনেছ হেড - ইণ্ডিভিজুৱেল লʼনছ আৰু VP - ৱেষ্ট জʼন আছিল, য’ত তেওঁ মাইক্ৰʼফাইনেন্স ব্যৱসায়টো 68 টা শাখা আৰু 1,500 কৰ্মচাৰীৰ সৈতে 900 কোটিৰ বুক পৰ্যন্ত বিকশিত কৰিছিল। তেওঁ নিজৰ কেৰিয়াৰ IndusInd Bank ত আৰম্ভ কৰি Deputy Vice President পৰ্যন্ত উন্নীত হৈছিল। তেওঁৰ P&L, ছেলছ, কলেকচন, অপাৰেচন আৰু শাখা সম্প্ৰসাৰণত গভীৰ পাৰদৰ্শিতা আছে।',
                 mgmt2_role: 'পরিচালনা প্রধান',
                 mgmt2_bio: 'একজন প্রবীণ পেশাদার যার সূক্ষ্ম-অর্থায়ন ক্রিয়াকলাপ পরিচালনা, নীতি ডিজাইন, গ্রাহক সেবা তত্ত্বাবধান এবং দ্রুত, দায়বদ্ধ বৃদ্ধির জন্য প্রযুক্তি সমাধান বাস্তবায়নে বিস্তৃত অভিজ্ঞতা রয়েছে।',
                 mgmt3_role: 'মানব সম্পদ প্রধান',
@@ -7832,6 +7852,41 @@
             btn.textContent = open ? (t.read_less || 'Read less') : (t.read_more || 'Read more');
         }
 
+        // Clamp long Management Team bios to ~4 lines and add a Read more toggle when they overflow
+        function setupBioClamps() {
+            document.querySelectorAll('#management .team-card-info').forEach(function (info) {
+                if (info.querySelector('.team-card-bio')) return; // cards using the existing extended-bio toggle
+                var bio = null;
+                info.querySelectorAll('p').forEach(function (p) {
+                    if (!bio && !p.classList.contains('team-card-role')) bio = p;
+                });
+                if (!bio) return;
+                var existing = info.querySelector('.clamp-toggle');
+                if (existing) existing.remove();
+                bio.classList.add('clamp-bio');
+                bio.classList.remove('open');
+                if (bio.scrollHeight - bio.clientHeight > 2) {
+                    var btn = document.createElement('button');
+                    btn.className = 'team-card-toggle clamp-toggle';
+                    btn.setAttribute('data-i18n', 'read_more');
+                    var t = (typeof translations !== 'undefined' && translations[currentLanguage]) || translations.en;
+                    btn.textContent = t.read_more || 'Read more';
+                    btn.onclick = function () {
+                        var open = bio.classList.toggle('open');
+                        var tt = (translations[currentLanguage]) || translations.en;
+                        btn.textContent = open ? (tt.read_less || 'Read less') : (tt.read_more || 'Read more');
+                        btn.setAttribute('data-i18n', open ? 'read_less' : 'read_more');
+                    };
+                    bio.insertAdjacentElement('afterend', btn);
+                } else {
+                    bio.classList.remove('clamp-bio');
+                }
+            });
+        }
+        window.addEventListener('load', setupBioClamps);
+        var __clampRT;
+        window.addEventListener('resize', function () { clearTimeout(__clampRT); __clampRT = setTimeout(setupBioClamps, 200); });
+
         function setLanguage(lang) {
             currentLanguage = lang;
             document.documentElement.setAttribute('data-lang', lang);
@@ -7849,7 +7904,7 @@
 
             // Update active state in dropdown
             document.querySelectorAll('.lang-option').forEach(opt => opt.classList.remove('active'));
-            document.querySelector(`.lang-option[onclick="setLanguage('${lang}')"]`).classList.add('active');
+            var __opt=document.querySelector(`.lang-option[onclick="setLanguage('${lang}')"]`); if(__opt) __opt.classList.add('active');
 
             // Close dropdown
             document.getElementById('langSwitcher').classList.remove('open');
@@ -7859,6 +7914,9 @@
 
             // Check if nav overflows and collapse to hamburger if needed
             if (typeof checkNavOverflow === 'function') setTimeout(checkNavOverflow, 50);
+
+            // Re-evaluate bio clamps after text changes (translated text length differs)
+            setTimeout(setupBioClamps, 60);
         }
 
         function toggleLangDropdown() {

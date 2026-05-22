@@ -28,7 +28,8 @@
         a { color: inherit; text-decoration: none; }
 
         /* ── Navbar ── */
-        .navbar { position: sticky; top: 0; z-index: 1000; background: var(--nav-bg); backdrop-filter: saturate(180%) blur(18px); -webkit-backdrop-filter: saturate(180%) blur(18px); border-bottom: 1px solid var(--border); }
+        .navbar { position: sticky; top: 0; z-index: 1000; background: transparent; border-bottom: 1px solid transparent; transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; }
+        .navbar.scrolled { background: var(--nav-bg); backdrop-filter: saturate(180%) blur(18px); -webkit-backdrop-filter: saturate(180%) blur(18px); border-bottom: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
         .nav-inner { max-width: 1240px; margin: 0 auto; padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
         .logo { display: inline-flex; align-items: center; gap: 10px; }
         .logo-icon { width: 42px; height: 42px; flex-shrink: 0; }
@@ -65,12 +66,12 @@
         /* ── Content ── */
         .wrap { max-width: 820px; margin: 0 auto; padding: 64px 24px 80px; }
         .page-head { text-align: center; margin-bottom: 48px; }
-        h1 { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text-dark); font-size: 2.4rem; letter-spacing: -0.02em; margin-bottom: 14px; }
+        h1 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text-dark); font-size: 2.4rem; letter-spacing: -0.02em; margin-bottom: 14px; }
         .accent-rule { width: 64px; height: 4px; border-radius: 4px; background: linear-gradient(90deg, var(--accent), var(--red)); margin: 0 auto 14px; }
         .subtitle { color: var(--text-muted); font-size: 0.9rem; }
         .card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 44px 48px; }
         .intro { font-size: 1.06rem; color: var(--text-dark); margin-bottom: 8px; }
-        h2 { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text-dark); font-size: 1.18rem; margin: 34px 0 10px; padding-left: 14px; border-left: 3px solid var(--accent); }
+        h2 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text-dark); font-size: 1.18rem; margin: 34px 0 10px; padding-left: 14px; border-left: 3px solid var(--accent); }
         .card p { margin-bottom: 14px; }
         .card a { color: var(--accent); }
 
@@ -131,9 +132,9 @@
                 <a href="../../#board" data-i18n="nav_leadership">Boards &amp; Leadership</a>
                 <a href="../../#calculator" data-i18n="nav_calculator">Loan Calculator</a>
                 <div class="nav-dropdown">
-                    <span class="nav-dropdown-toggle active"><span data-i18n="nav_legal">Legal</span>
+                    <a href="../" class="nav-dropdown-toggle active"><span data-i18n="nav_legal">Legal</span>
                         <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
-                    </span>
+                    </a>
                     <div class="nav-dropdown-menu">
                         <a href="../privacy/" data-i18n="footer_privacy">Privacy Policy</a>
                         <a href="../terms/" data-i18n="footer_terms">Terms &amp; Conditions</a>
@@ -174,43 +175,43 @@
             <div class="accent-rule"></div>
         </div>
         <div class="card">
-            <p class="intro">These Terms &amp; Conditions govern your access to and use of the website and services of Rapid Loans India Pvt. Ltd. ("Rapid Loans", "we", "us"). By using this website, you agree to these terms, which constitute a binding contract under the Indian Contract Act, 1872. Please read them carefully.</p>
+            <p class="intro" data-i18n="tc_b_intro">These Terms &amp; Conditions govern your access to and use of the website and services of Rapid Loans India Pvt. Ltd. ("Rapid Loans", "we", "us"). By using this website, you agree to these terms, which constitute a binding contract under the Indian Contract Act, 1872. Please read them carefully.</p>
 
-            <h2>1. Acceptance of Terms</h2>
-            <p>By accessing or using this website, you confirm that you have read, understood, and agree to be bound by these Terms &amp; Conditions and our Privacy Policy. If you do not agree, please do not use the website or our services.</p>
+            <h2 data-i18n="tc_b_h1">1. Acceptance of Terms</h2>
+            <p data-i18n="tc_b_p1">By accessing or using this website, you confirm that you have read, understood, and agree to be bound by these Terms &amp; Conditions and our Privacy Policy. If you do not agree, please do not use the website or our services.</p>
 
-            <h2>2. Nature of Services</h2>
-            <p>Rapid Loans operates as a Banking Correspondent / Direct Selling Agent and facilitates loan origination, collection, and servicing on behalf of Reserve Bank of India (RBI) regulated banks and Non-Banking Financial Companies (NBFCs). Rapid Loans is not a lender, does not lend on its own books, and does not guarantee approval of any loan. All credit decisions, sanction terms, interest rates, and charges are determined solely by the regulated lending partner.</p>
+            <h2 data-i18n="tc_b_h2">2. Nature of Services</h2>
+            <p data-i18n="tc_b_p2">Rapid Loans operates as a Banking Correspondent / Direct Selling Agent and facilitates loan origination, collection, and servicing on behalf of Reserve Bank of India (RBI) regulated banks and Non-Banking Financial Companies (NBFCs). Rapid Loans is not a lender, does not lend on its own books, and does not guarantee approval of any loan. All credit decisions, sanction terms, interest rates, and charges are determined solely by the regulated lending partner.</p>
 
-            <h2>3. Eligibility</h2>
-            <p>You must be at least 18 years of age and competent to contract under the Indian Contract Act, 1872 to use our services. By using the website, you represent that you meet these requirements and that the information you provide is true and accurate.</p>
+            <h2 data-i18n="tc_b_h3">3. Eligibility</h2>
+            <p data-i18n="tc_b_p3">You must be at least 18 years of age and competent to contract under the Indian Contract Act, 1872 to use our services. By using the website, you represent that you meet these requirements and that the information you provide is true and accurate.</p>
 
-            <h2>4. Intellectual Property</h2>
-            <p>All content on this website, including text, logos, graphics, and software, is the property of Rapid Loans or its licensors and is protected under the Copyright Act, 1957 and the Trade Marks Act, 1999. You may view the content for personal, non-commercial use only; any reproduction or distribution without written permission is prohibited.</p>
+            <h2 data-i18n="tc_b_h4">4. Intellectual Property</h2>
+            <p data-i18n="tc_b_p4">All content on this website, including text, logos, graphics, and software, is the property of Rapid Loans or its licensors and is protected under the Copyright Act, 1957 and the Trade Marks Act, 1999. You may view the content for personal, non-commercial use only; any reproduction or distribution without written permission is prohibited.</p>
 
-            <h2>5. User Obligations</h2>
-            <p>You agree to use the website lawfully and not to engage in any activity prohibited under the Information Technology Act, 2000, including unauthorised access, transmission of unlawful content, or any act that compromises the security or integrity of the platform.</p>
+            <h2 data-i18n="tc_b_h5">5. User Obligations</h2>
+            <p data-i18n="tc_b_p5">You agree to use the website lawfully and not to engage in any activity prohibited under the Information Technology Act, 2000, including unauthorised access, transmission of unlawful content, or any act that compromises the security or integrity of the platform.</p>
 
-            <h2>6. Disclaimer</h2>
-            <p>The website and its content are provided on an "as is" and "as available" basis. To the extent permitted by law, we make no warranties, express or implied, regarding accuracy, completeness, or fitness for a particular purpose. Information on the website does not constitute financial, legal, or investment advice.</p>
+            <h2 data-i18n="tc_b_h6">6. Disclaimer</h2>
+            <p data-i18n="tc_b_p6">The website and its content are provided on an "as is" and "as available" basis. To the extent permitted by law, we make no warranties, express or implied, regarding accuracy, completeness, or fitness for a particular purpose. Information on the website does not constitute financial, legal, or investment advice.</p>
 
-            <h2>7. Limitation of Liability</h2>
-            <p>To the maximum extent permitted under Indian law, Rapid Loans shall not be liable for any indirect, incidental, or consequential damages arising from the use of, or inability to use, this website or our services.</p>
+            <h2 data-i18n="tc_b_h7">7. Limitation of Liability</h2>
+            <p data-i18n="tc_b_p7">To the maximum extent permitted under Indian law, Rapid Loans shall not be liable for any indirect, incidental, or consequential damages arising from the use of, or inability to use, this website or our services.</p>
 
-            <h2>8. Grievance Redressal</h2>
-            <p>For any grievance, you may contact us at <a href="mailto:info@rapidloans.ai">info@rapidloans.ai</a>. Grievances relating to a loan product are also addressable to the concerned RBI-regulated lending partner and, where unresolved, may be escalated under the RBI Integrated Ombudsman Scheme, 2021.</p>
+            <h2 data-i18n="tc_b_h8">8. Grievance Redressal</h2>
+            <p data-i18n="tc_b_p8">For any grievance, you may contact us at <a href="mailto:info@rapidloans.ai">info@rapidloans.ai</a>. Grievances relating to a loan product are also addressable to the concerned RBI-regulated lending partner and, where unresolved, may be escalated under the RBI Integrated Ombudsman Scheme, 2021.</p>
 
-            <h2>9. Governing Law &amp; Jurisdiction</h2>
-            <p>These Terms &amp; Conditions are governed by and construed in accordance with the laws of India. Subject to the dispute-resolution clause below, the courts at Ahmedabad, Gujarat shall have exclusive jurisdiction over any dispute.</p>
+            <h2 data-i18n="tc_b_h9">9. Governing Law &amp; Jurisdiction</h2>
+            <p data-i18n="tc_b_p9">These Terms &amp; Conditions are governed by and construed in accordance with the laws of India. Subject to the dispute-resolution clause below, the courts at Ahmedabad, Gujarat shall have exclusive jurisdiction over any dispute.</p>
 
-            <h2>10. Dispute Resolution</h2>
-            <p>Any dispute arising out of or in connection with these terms shall be resolved by arbitration conducted in accordance with the Arbitration and Conciliation Act, 1996. The seat and venue of arbitration shall be Ahmedabad, Gujarat, and the proceedings shall be conducted in English.</p>
+            <h2 data-i18n="tc_b_h10">10. Dispute Resolution</h2>
+            <p data-i18n="tc_b_p10">Any dispute arising out of or in connection with these terms shall be resolved by arbitration conducted in accordance with the Arbitration and Conciliation Act, 1996. The seat and venue of arbitration shall be Ahmedabad, Gujarat, and the proceedings shall be conducted in English.</p>
 
-            <h2>11. Revisions</h2>
-            <p>We may revise these Terms &amp; Conditions from time to time. The current version will always be available on this page, and your continued use of the website constitutes acceptance of the revised terms.</p>
+            <h2 data-i18n="tc_b_h11">11. Revisions</h2>
+            <p data-i18n="tc_b_p11">We may revise these Terms &amp; Conditions from time to time. The current version will always be available on this page, and your continued use of the website constitutes acceptance of the revised terms.</p>
 
-            <h2>12. Contact</h2>
-            <p>If you have any questions about these Terms &amp; Conditions, please contact us at <a href="mailto:info@rapidloans.ai">info@rapidloans.ai</a>.</p>
+            <h2 data-i18n="tc_b_h12">12. Contact</h2>
+            <p data-i18n="tc_b_p12">If you have any questions about these Terms &amp; Conditions, please contact us at <a href="mailto:info@rapidloans.ai">info@rapidloans.ai</a>.</p>
         </div>
     </main>
 
@@ -258,6 +259,7 @@
             <div class="footer-bottom">
                 <p data-i18n="footer_copy">&copy; 2026 Rapid Loans India Pvt. Ltd. All rights reserved.</p>
                 <p>
+                    <a href="../" data-i18n="nav_legal" style="margin-right:20px;">Legal</a>
                     <a href="../terms/" data-i18n="footer_terms" class="active" style="margin-right:20px;">Terms &amp; Conditions</a>
                     <a href="../privacy/" data-i18n="footer_privacy" style="margin-right:20px;">Privacy Policy</a>
                     <a href="../posh/" data-i18n="footer_pos">POSH</a>
@@ -267,7 +269,199 @@
     </footer>
 
     <script>
-        var L = {"en": {"nav_about": "About", "nav_services": "Services", "nav_network": "Network", "nav_partners": "Partners", "nav_leadership": "Boards & Leadership", "nav_calculator": "Loan Calculator", "nav_legal": "Legal", "nav_contact": "Contact Us", "footer_privacy": "Privacy Policy", "footer_terms": "Terms & Conditions", "footer_pos": "POSH", "footer_company": "Company", "footer_services": "Services", "footer_contact": "Contact", "footer_desc": "A Modern Banking Correspondent providing comprehensive loan origination, collection, and servicing through advanced technology across India.", "footer_board": "Board of Directors", "footer_mgmt": "Management Team", "footer_network": "Our Network", "footer_disclosures": "Partner Disclosures", "footer_calculator": "Loan Calculator", "footer_copy": "&copy; 2026 Rapid Loans India Pvt. Ltd. All rights reserved.", "footer_ahmedabad": "Ahmedabad, Gujarat, India", "svc1_title": "Microloan Origination", "svc2_title": "Banking Correspondent", "svc3_title": "Collection & Servicing", "pp_title": "Privacy Policy", "tc_title": "Terms and Conditions", "posh_title": "POSH Policy", "posh_sub": "Prevention of Sexual Harassment at the Workplace"}, "hi": {"nav_about": "हमारे बारे में", "nav_services": "सेवाएं", "nav_network": "नेटवर्क", "nav_partners": "साझेदार", "nav_leadership": "बोर्ड और नेतृत्व", "nav_calculator": "ऋण कैलकुलेटर", "nav_legal": "कानूनी", "nav_contact": "संपर्क करें", "footer_privacy": "गोपनीयता नीति", "footer_terms": "नियम और शर्तें", "footer_pos": "POSH", "footer_company": "कंपनी", "footer_services": "सेवाएं", "footer_contact": "संपर्क", "footer_desc": "एक आधुनिक बैंकिंग कॉरेस्पोंडेंट जो पूरे भारत में उन्नत तकनीक के माध्यम से व्यापक ऋण उत्पत्ति, संग्रहण और सेवा प्रदान करता है।", "footer_board": "निदेशक मंडल", "footer_mgmt": "प्रबंधन टीम", "footer_network": "हमारा नेटवर्क", "footer_disclosures": "साझेदार प्रकटीकरण", "footer_calculator": "ऋण कैलकुलेटर", "footer_copy": "&copy; 2026 रैपिड लोन्स इंडिया प्रा. लि. सर्वाधिकार सुरक्षित।", "footer_ahmedabad": "अहमदाबाद, गुजरात, भारत", "svc1_title": "माइक्रोलोन उत्पत्ति", "svc2_title": "बैंकिंग कॉरेस्पोंडेंट", "svc3_title": "संग्रहण और सेवा", "pp_title": "गोपनीयता नीति", "tc_title": "नियम और शर्तें", "posh_title": "पॉश नीति", "posh_sub": "कार्यस्थल पर यौन उत्पीड़न की रोकथाम"}, "mr": {"nav_about": "आमच्याबद्दल", "nav_services": "सेवा", "nav_network": "नेटवर्क", "nav_partners": "भागीदार", "nav_leadership": "बोर्ड आणि नेतृत्व", "nav_calculator": "कर्ज कॅल्क्युलेटर", "nav_legal": "कायदेशीर", "nav_contact": "संपर्क करा", "footer_privacy": "गोपनीयता धोरण", "footer_terms": "अटी आणि शर्ती", "footer_pos": "POSH", "footer_company": "कंपनी", "footer_services": "सेवा", "footer_contact": "संपर्क", "footer_desc": "एक आधुनिक बँकिंग कॉरस्पॉन्डंट जे संपूर्ण भारतात प्रगत तंत्रज्ञानाद्वारे सर्वसमावेशक कर्ज उत्पत्ती, वसुली आणि सेवा प्रदान करते.", "footer_board": "संचालक मंडळ", "footer_mgmt": "व्यवस्थापन संघ", "footer_network": "आमचे नेटवर्क", "footer_disclosures": "भागीदार प्रकटीकरणे", "footer_calculator": "कर्ज कॅल्क्युलेटर", "footer_copy": "&copy; 2026 रॅपिड लोन्स इंडिया प्रा. लि. सर्व हक्क राखीव.", "footer_ahmedabad": "अहमदाबाद, गुजरात, भारत", "svc1_title": "मायक्रोलोन उत्पत्ती", "svc2_title": "बँकिंग कॉरस्पॉन्डंट", "svc3_title": "वसुली आणि सेवा", "pp_title": "गोपनीयता धोरण", "tc_title": "अटी व शर्ती", "posh_title": "पॉश धोरण", "posh_sub": "कामाच्या ठिकाणी लैंगिक छळ प्रतिबंध"}, "gu": {"nav_about": "અમારા વિશે", "nav_services": "સેવાઓ", "nav_network": "નેટવર્ક", "nav_partners": "ભાગીદારો", "nav_leadership": "બોર્ડ અને નેતૃત્વ", "nav_calculator": "લોન કેલ્ક્યુલેટર", "nav_legal": "કાનૂની", "nav_contact": "સંપર્ક કરો", "footer_privacy": "ગોપનીયતા નીતિ", "footer_terms": "નિયમો અને શરતો", "footer_pos": "POSH", "footer_company": "કંપની", "footer_services": "સેવાઓ", "footer_contact": "સંપર્ક", "footer_desc": "એક આધુનિક બેંકિંગ કોરસ્પોન્ડન્ટ જે સમગ્ર ભારતમાં અદ્યતન ટેકનોલોજી દ્વારા વ્યાપક લોન ઓરિજિનેશન, કલેક્શન અને સર્વિસિંગ પ્રદાન કરે છે.", "footer_board": "નિયામક મંડળ", "footer_mgmt": "વ્યવસ્થાપન ટીમ", "footer_network": "અમારું નેટવર્ક", "footer_disclosures": "ભાગીદાર જાહેરાતો", "footer_calculator": "લોન કેલ્ક્યુલેટર", "footer_copy": "&copy; 2026 રેપિડ લોન્સ ઈન્ડિયા પ્રા. લિ. સર્વાધિકાર સુરક્ષિત.", "footer_ahmedabad": "અમદાવાદ, ગુજરાત, ભારત", "svc1_title": "માઇક્રોલોન ઓરિજિનેશન", "svc2_title": "બેંકિંગ કોરસ્પોન્ડન્ટ", "svc3_title": "કલેક્શન અને સર્વિસિંગ", "pp_title": "ગોપનીયતા નીતિ", "tc_title": "નિયમો અને શરતો", "posh_title": "POSH નીતિ", "posh_sub": "કાર્યસ્થળે જાતીય સતામણી નિવારણ"}, "te": {"nav_about": "మా గురించి", "nav_services": "సేవలు", "nav_network": "నెట్‌వర్క్", "nav_partners": "భాగస్వాములు", "nav_leadership": "బోర్డులు & నాయకత్వం", "nav_calculator": "రుణ కాల్క్యులేటర్", "nav_legal": "చట్టపరమైన", "nav_contact": "సంప్రదించండి", "footer_privacy": "గోప్యతా విధానం", "footer_terms": "నిబంధనలు & షరతులు", "footer_pos": "POSH", "footer_company": "కంపెనీ", "footer_services": "సేవలు", "footer_contact": "సంప్రదించండి", "footer_desc": "భారతదేశం అంతటా అధునాతన సాంకేతికత ద్వారా సమగ్ర రుణ ఉత్పత్తి, వసూలు మరియు సేవను అందించే ఆధునిక బ్యాంకింగ్ కరస్పాండెంట్.", "footer_board": "డైరెక్టర్ల బోర్డు", "footer_mgmt": "నిర్వహణ బృందం", "footer_network": "మా నెట్‌వర్క్", "footer_disclosures": "భాగస్వామ్య వెల్లడింపులు", "footer_calculator": "రుణ కాల్క్యులేటర్", "footer_copy": "&copy; 2026 రాపిడ్ లోన్స్ ఇండియా ప్రై. లిమి. అన్ని హక్కులు రిజర్వ్ చేయబడ్డాయి.", "footer_ahmedabad": "అహ్మదాబాద్, గుజరాత్, భారతదేశం", "svc1_title": "మైక్రోలోన్ ఉత్పత్తి", "svc2_title": "బ్యాంకింగ్ కరస్పాండెంట్", "svc3_title": "వసూలు & సేవ", "pp_title": "గోప్యతా విధానం", "tc_title": "నిబంధనలు మరియు షరతులు", "posh_title": "POSH విధానం", "posh_sub": "కార్యాలయంలో లైంగిక వేధింపుల నివారణ"}, "ta": {"nav_about": "எங்களைப் பற்றி", "nav_services": "சேவைகள்", "nav_network": "நெட்வொர்க்", "nav_partners": "பங்காளிகள்", "nav_leadership": "வாரியங்கள் & தலைமை", "nav_calculator": "கடன் கால்குலேட்டர்", "nav_legal": "சட்டம்", "nav_contact": "தொடர்பு கொள்ளுங்கள்", "footer_privacy": "தனியுரிமைக் கொள்கை", "footer_terms": "விதிமுறைகள் & நிபந்தனைகள்", "footer_pos": "POSH", "footer_company": "நிறுவனம்", "footer_services": "சேவைகள்", "footer_contact": "தொடர்பு", "footer_desc": "இந்தியா முழுவதும் மேம்பட்ட தொழில்நுட்பம் மூலம் விரிவான கடன் உருவாக்கம், வசூல் மற்றும் சேவையை வழங்கும் நவீன வங்கி நிருபர்.", "footer_board": "இயக்குநர்கள் குழு", "footer_mgmt": "நிர்வாகக் குழு", "footer_network": "எங்கள் நெட்வொர்க்", "footer_disclosures": "கூட்டாளர் வெளிப்படுத்தல்கள்", "footer_calculator": "கடன் கால்குலேட்டர்", "footer_copy": "&copy; 2026 ரேபிட் லோன்ஸ் இந்தியா பிரை. லிட். அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.", "footer_ahmedabad": "அகமதாபாத், குஜராத், இந்தியா", "svc1_title": "மைக்ரோலோன் உருவாக்கம்", "svc2_title": "வங்கி நிருபர்", "svc3_title": "வசூல் & சேவை", "pp_title": "தனியுரிமைக் கொள்கை", "tc_title": "விதிமுறைகள் மற்றும் நிபந்தனைகள்", "posh_title": "POSH கொள்கை", "posh_sub": "பணியிடத்தில் பாலியல் துன்புறுத்தல் தடுப்பு"}, "ml": {"nav_about": "ഞങ്ങളെ കുറിച്ച്", "nav_services": "സേവനങ്ങൾ", "nav_network": "നെറ്റ്‌വർക്ക്", "nav_partners": "പങ്കാളികൾ", "nav_leadership": "ബോർഡുകളും നേതൃത്വവും", "nav_calculator": "ലോണ്‍ കാല്‍ക്കുലേറ്റര്‍", "nav_legal": "നിയമപരം", "nav_contact": "ഞങ്ങളെ ബന്ധപ്പെടുക", "footer_privacy": "സ്വകാര്യത നയം", "footer_terms": "നിബന്ധനകളും സാഹചര്യവും", "footer_pos": "POSH", "footer_company": "കമ്പനി", "footer_services": "സേവനങ്ങൾ", "footer_contact": "സംപർക്കം", "footer_desc": "ഒരു ആധുനിക ബാങ്കിംഗ് പ്രതിനിധി ഇന്ത്യ ജുഡാ അത്യാധുനിക പ്രയുക്തിയിലൂടെ വ്യാപകമായ കടാവലംബനം, ശേഖരണം, സേവനം നൽകുകയാണ്।", "footer_board": "ഡയറക്ടർ ബോർഡ്", "footer_mgmt": "മാനേജ്‌മെന്റ് ടീം", "footer_network": "ഞങ്ങളുടെ നെറ്റ്‌വർക്ക്", "footer_disclosures": "പങ്കാളി വെളിപ്പെടുത്തലുകൾ", "footer_calculator": "ലോണ്‍ കാല്‍ക്കുലേറ്റര്‍", "footer_copy": "&copy; 2026 Rapid Loans India Pvt. Ltd. എല്ലാ അവകാശങ്ങളും നിക്ഷിപ്തം.", "footer_ahmedabad": "അഹമ്മദാബാദ്, ഗുജറാത്ത്, ഇന്ത്യ", "svc1_title": "സൂക്ഷ്മ കടാവലംബനം", "svc2_title": "ബാങ്കിങ് പ്രതിനിധി", "svc3_title": "ശേഖരണം & സേവനം", "pp_title": "സ്വകാര്യതാ നയം", "tc_title": "നിബന്ധനകളും വ്യവസ്ഥകളും", "posh_title": "POSH നയം", "posh_sub": "ജോലിസ്ഥലത്തെ ലൈംഗിക പീഡന തടയല്‍"}};
+        var L = {"en": {"legal_lang_notice": "Note: The navigation and headings on this page adapt to your selected language. The authoritative legal text below is provided in English.", "nav_about": "About", "nav_services": "Services", "nav_network": "Network", "nav_partners": "Partners", "nav_leadership": "Boards & Leadership", "nav_calculator": "Loan Calculator", "nav_legal": "Legal", "nav_contact": "Contact Us", "footer_privacy": "Privacy Policy", "footer_terms": "Terms & Conditions", "footer_pos": "POSH", "footer_company": "Company", "footer_services": "Services", "footer_contact": "Contact", "footer_desc": "A Modern Banking Correspondent providing comprehensive loan origination, collection, and servicing through advanced technology across India.", "footer_board": "Board of Directors", "footer_mgmt": "Management Team", "footer_network": "Our Network", "footer_disclosures": "Partner Disclosures", "footer_calculator": "Loan Calculator", "footer_copy": "&copy; 2026 Rapid Loans India Pvt. Ltd. All rights reserved.", "footer_ahmedabad": "Ahmedabad, Gujarat, India", "svc1_title": "Microloan Origination", "svc2_title": "Banking Correspondent", "svc3_title": "Collection & Servicing", "pp_title": "Privacy Policy", "tc_title": "Terms and Conditions", "posh_title": "POSH Policy", "posh_sub": "Prevention of Sexual Harassment at the Workplace"}, "hi": {"legal_lang_notice": "नोट: इस पृष्ठ का नेविगेशन और शीर्षक आपकी चयनित भाषा के अनुसार बदलते हैं। नीचे दिया गया आधिकारिक कानूनी पाठ अंग्रेज़ी में प्रदान किया गया है।", "nav_about": "हमारे बारे में", "nav_services": "सेवाएं", "nav_network": "नेटवर्क", "nav_partners": "साझेदार", "nav_leadership": "बोर्ड और नेतृत्व", "nav_calculator": "ऋण कैलकुलेटर", "nav_legal": "कानूनी", "nav_contact": "संपर्क करें", "footer_privacy": "गोपनीयता नीति", "footer_terms": "नियम और शर्तें", "footer_pos": "POSH", "footer_company": "कंपनी", "footer_services": "सेवाएं", "footer_contact": "संपर्क", "footer_desc": "एक आधुनिक बैंकिंग कॉरेस्पोंडेंट जो पूरे भारत में उन्नत तकनीक के माध्यम से व्यापक ऋण उत्पत्ति, संग्रहण और सेवा प्रदान करता है।", "footer_board": "निदेशक मंडल", "footer_mgmt": "प्रबंधन टीम", "footer_network": "हमारा नेटवर्क", "footer_disclosures": "साझेदार प्रकटीकरण", "footer_calculator": "ऋण कैलकुलेटर", "footer_copy": "&copy; 2026 रैपिड लोन्स इंडिया प्रा. लि. सर्वाधिकार सुरक्षित।", "footer_ahmedabad": "अहमदाबाद, गुजरात, भारत", "svc1_title": "माइक्रोलोन उत्पत्ति", "svc2_title": "बैंकिंग कॉरेस्पोंडेंट", "svc3_title": "संग्रहण और सेवा", "pp_title": "गोपनीयता नीति", "tc_title": "नियम और शर्तें", "posh_title": "पॉश नीति", "posh_sub": "कार्यस्थल पर यौन उत्पीड़न की रोकथाम"}, "mr": {"legal_lang_notice": "टीप: या पृष्ठावरील नेव्हिगेशन आणि शीर्षके आपल्या निवडलेल्या भाषेनुसार बदलतात. खालील अधिकृत कायदेशीर मजकूर इंग्रजीमध्ये दिलेला आहे.", "nav_about": "आमच्याबद्दल", "nav_services": "सेवा", "nav_network": "नेटवर्क", "nav_partners": "भागीदार", "nav_leadership": "बोर्ड आणि नेतृत्व", "nav_calculator": "कर्ज कॅल्क्युलेटर", "nav_legal": "कायदेशीर", "nav_contact": "संपर्क करा", "footer_privacy": "गोपनीयता धोरण", "footer_terms": "अटी आणि शर्ती", "footer_pos": "POSH", "footer_company": "कंपनी", "footer_services": "सेवा", "footer_contact": "संपर्क", "footer_desc": "एक आधुनिक बँकिंग कॉरस्पॉन्डंट जे संपूर्ण भारतात प्रगत तंत्रज्ञानाद्वारे सर्वसमावेशक कर्ज उत्पत्ती, वसुली आणि सेवा प्रदान करते.", "footer_board": "संचालक मंडळ", "footer_mgmt": "व्यवस्थापन संघ", "footer_network": "आमचे नेटवर्क", "footer_disclosures": "भागीदार प्रकटीकरणे", "footer_calculator": "कर्ज कॅल्क्युलेटर", "footer_copy": "&copy; 2026 रॅपिड लोन्स इंडिया प्रा. लि. सर्व हक्क राखीव.", "footer_ahmedabad": "अहमदाबाद, गुजरात, भारत", "svc1_title": "मायक्रोलोन उत्पत्ती", "svc2_title": "बँकिंग कॉरस्पॉन्डंट", "svc3_title": "वसुली आणि सेवा", "pp_title": "गोपनीयता धोरण", "tc_title": "अटी व शर्ती", "posh_title": "पॉश धोरण", "posh_sub": "कामाच्या ठिकाणी लैंगिक छळ प्रतिबंध"}, "gu": {"legal_lang_notice": "નોંધ: આ પૃષ્ઠનું નેવિગેશન અને શીર્ષકો તમારી પસંદ કરેલી ભાષા પ્રમાણે બદલાય છે. નીચે આપેલ અધિકૃત કાનૂની લખાણ અંગ્રેજીમાં આપવામાં આવ્યું છે.", "nav_about": "અમારા વિશે", "nav_services": "સેવાઓ", "nav_network": "નેટવર્ક", "nav_partners": "ભાગીદારો", "nav_leadership": "બોર્ડ અને નેતૃત્વ", "nav_calculator": "લોન કેલ્ક્યુલેટર", "nav_legal": "કાનૂની", "nav_contact": "સંપર્ક કરો", "footer_privacy": "ગોપનીયતા નીતિ", "footer_terms": "નિયમો અને શરતો", "footer_pos": "POSH", "footer_company": "કંપની", "footer_services": "સેવાઓ", "footer_contact": "સંપર્ક", "footer_desc": "એક આધુનિક બેંકિંગ કોરસ્પોન્ડન્ટ જે સમગ્ર ભારતમાં અદ્યતન ટેકનોલોજી દ્વારા વ્યાપક લોન ઓરિજિનેશન, કલેક્શન અને સર્વિસિંગ પ્રદાન કરે છે.", "footer_board": "નિયામક મંડળ", "footer_mgmt": "વ્યવસ્થાપન ટીમ", "footer_network": "અમારું નેટવર્ક", "footer_disclosures": "ભાગીદાર જાહેરાતો", "footer_calculator": "લોન કેલ્ક્યુલેટર", "footer_copy": "&copy; 2026 રેપિડ લોન્સ ઈન્ડિયા પ્રા. લિ. સર્વાધિકાર સુરક્ષિત.", "footer_ahmedabad": "અમદાવાદ, ગુજરાત, ભારત", "svc1_title": "માઇક્રોલોન ઓરિજિનેશન", "svc2_title": "બેંકિંગ કોરસ્પોન્ડન્ટ", "svc3_title": "કલેક્શન અને સર્વિસિંગ", "pp_title": "ગોપનીયતા નીતિ", "tc_title": "નિયમો અને શરતો", "posh_title": "POSH નીતિ", "posh_sub": "કાર્યસ્થળે જાતીય સતામણી નિવારણ"}, "te": {"legal_lang_notice": "గమనిక: ఈ పేజీలోని నావిగేషన్ మరియు శీర్షికలు మీరు ఎంచుకున్న భాషకు అనుగుణంగా మారతాయి. క్రింద ఇవ్వబడిన అధికారిక చట్టపరమైన వచనం ఆంగ్లంలో అందించబడింది.", "nav_about": "మా గురించి", "nav_services": "సేవలు", "nav_network": "నెట్‌వర్క్", "nav_partners": "భాగస్వాములు", "nav_leadership": "బోర్డులు & నాయకత్వం", "nav_calculator": "రుణ కాల్క్యులేటర్", "nav_legal": "చట్టపరమైన", "nav_contact": "సంప్రదించండి", "footer_privacy": "గోప్యతా విధానం", "footer_terms": "నిబంధనలు & షరతులు", "footer_pos": "POSH", "footer_company": "కంపెనీ", "footer_services": "సేవలు", "footer_contact": "సంప్రదించండి", "footer_desc": "భారతదేశం అంతటా అధునాతన సాంకేతికత ద్వారా సమగ్ర రుణ ఉత్పత్తి, వసూలు మరియు సేవను అందించే ఆధునిక బ్యాంకింగ్ కరస్పాండెంట్.", "footer_board": "డైరెక్టర్ల బోర్డు", "footer_mgmt": "నిర్వహణ బృందం", "footer_network": "మా నెట్‌వర్క్", "footer_disclosures": "భాగస్వామ్య వెల్లడింపులు", "footer_calculator": "రుణ కాల్క్యులేటర్", "footer_copy": "&copy; 2026 రాపిడ్ లోన్స్ ఇండియా ప్రై. లిమి. అన్ని హక్కులు రిజర్వ్ చేయబడ్డాయి.", "footer_ahmedabad": "అహ్మదాబాద్, గుజరాత్, భారతదేశం", "svc1_title": "మైక్రోలోన్ ఉత్పత్తి", "svc2_title": "బ్యాంకింగ్ కరస్పాండెంట్", "svc3_title": "వసూలు & సేవ", "pp_title": "గోప్యతా విధానం", "tc_title": "నిబంధనలు మరియు షరతులు", "posh_title": "POSH విధానం", "posh_sub": "కార్యాలయంలో లైంగిక వేధింపుల నివారణ"}, "ta": {"legal_lang_notice": "குறிப்பு: இந்தப் பக்கத்தின் வழிசெலுத்தல் மற்றும் தலைப்புகள் நீங்கள் தேர்ந்தெடுத்த மொழிக்கு ஏற்ப மாறும். கீழே உள்ள அதிகாரப்பூர்வ சட்ட உரை ஆங்கிலத்தில் வழங்கப்படுகிறது.", "nav_about": "எங்களைப் பற்றி", "nav_services": "சேவைகள்", "nav_network": "நெட்வொர்க்", "nav_partners": "பங்காளிகள்", "nav_leadership": "வாரியங்கள் & தலைமை", "nav_calculator": "கடன் கால்குலேட்டர்", "nav_legal": "சட்டம்", "nav_contact": "தொடர்பு கொள்ளுங்கள்", "footer_privacy": "தனியுரிமைக் கொள்கை", "footer_terms": "விதிமுறைகள் & நிபந்தனைகள்", "footer_pos": "POSH", "footer_company": "நிறுவனம்", "footer_services": "சேவைகள்", "footer_contact": "தொடர்பு", "footer_desc": "இந்தியா முழுவதும் மேம்பட்ட தொழில்நுட்பம் மூலம் விரிவான கடன் உருவாக்கம், வசூல் மற்றும் சேவையை வழங்கும் நவீன வங்கி நிருபர்.", "footer_board": "இயக்குநர்கள் குழு", "footer_mgmt": "நிர்வாகக் குழு", "footer_network": "எங்கள் நெட்வொர்க்", "footer_disclosures": "கூட்டாளர் வெளிப்படுத்தல்கள்", "footer_calculator": "கடன் கால்குலேட்டர்", "footer_copy": "&copy; 2026 ரேபிட் லோன்ஸ் இந்தியா பிரை. லிட். அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.", "footer_ahmedabad": "அகமதாபாத், குஜராத், இந்தியா", "svc1_title": "மைக்ரோலோன் உருவாக்கம்", "svc2_title": "வங்கி நிருபர்", "svc3_title": "வசூல் & சேவை", "pp_title": "தனியுரிமைக் கொள்கை", "tc_title": "விதிமுறைகள் மற்றும் நிபந்தனைகள்", "posh_title": "POSH கொள்கை", "posh_sub": "பணியிடத்தில் பாலியல் துன்புறுத்தல் தடுப்பு"}, "ml": {"legal_lang_notice": "കുറിപ്പ്: ഈ പേജിലെ നാവിഗേഷനും തലക്കെട്ടുകളും നിങ്ങൾ തിരഞ്ഞെടുത്ത ഭാഷയ്ക്ക് അനുസരിച്ച് മാറും. താഴെ നൽകിയിരിക്കുന്ന ഔദ്യോഗിക നിയമ വാചകം ഇംഗ്ലീഷിലാണ് നൽകിയിരിക്കുന്നത്.", "nav_about": "ഞങ്ങളെ കുറിച്ച്", "nav_services": "സേവനങ്ങൾ", "nav_network": "നെറ്റ്‌വർക്ക്", "nav_partners": "പങ്കാളികൾ", "nav_leadership": "ബോർഡുകളും നേതൃത്വവും", "nav_calculator": "ലോണ്‍ കാല്‍ക്കുലേറ്റര്‍", "nav_legal": "നിയമപരം", "nav_contact": "ഞങ്ങളെ ബന്ധപ്പെടുക", "footer_privacy": "സ്വകാര്യത നയം", "footer_terms": "നിബന്ധനകളും സാഹചര്യവും", "footer_pos": "POSH", "footer_company": "കമ്പനി", "footer_services": "സേവനങ്ങൾ", "footer_contact": "സംപർക്കം", "footer_desc": "ഒരു ആധുനിക ബാങ്കിംഗ് പ്രതിനിധി ഇന്ത്യ ജുഡാ അത്യാധുനിക പ്രയുക്തിയിലൂടെ വ്യാപകമായ കടാവലംബനം, ശേഖരണം, സേവനം നൽകുകയാണ്।", "footer_board": "ഡയറക്ടർ ബോർഡ്", "footer_mgmt": "മാനേജ്‌മെന്റ് ടീം", "footer_network": "ഞങ്ങളുടെ നെറ്റ്‌വർക്ക്", "footer_disclosures": "പങ്കാളി വെളിപ്പെടുത്തലുകൾ", "footer_calculator": "ലോണ്‍ കാല്‍ക്കുലേറ്റര്‍", "footer_copy": "&copy; 2026 Rapid Loans India Pvt. Ltd. എല്ലാ അവകാശങ്ങളും നിക്ഷിപ്തം.", "footer_ahmedabad": "അഹമ്മദാബാദ്, ഗുജറാത്ത്, ഇന്ത്യ", "svc1_title": "സൂക്ഷ്മ കടാവലംബനം", "svc2_title": "ബാങ്കിങ് പ്രതിനിധി", "svc3_title": "ശേഖരണം & സേവനം", "pp_title": "സ്വകാര്യതാ നയം", "tc_title": "നിബന്ധനകളും വ്യവസ്ഥകളും", "posh_title": "POSH നയം", "posh_sub": "ജോലിസ്ഥലത്തെ ലൈംഗിക പീഡന തടയല്‍"}};
+        var LB = {
+"en": {
+"tc_b_intro": "These Terms &amp; Conditions govern your access to and use of the website and services of Rapid Loans India Pvt. Ltd. ('Rapid Loans', 'we', 'us'). By using this website, you agree to these terms, which constitute a binding contract under the Indian Contract Act, 1872. Please read them carefully.",
+"tc_b_h1": "1. Acceptance of Terms",
+"tc_b_p1": "By accessing or using this website, you confirm that you have read, understood, and agree to be bound by these Terms &amp; Conditions and our Privacy Policy. If you do not agree, please do not use the website or our services.",
+"tc_b_h2": "2. Nature of Services",
+"tc_b_p2": "Rapid Loans operates as a Banking Correspondent / Direct Selling Agent and facilitates loan origination, collection, and servicing on behalf of Reserve Bank of India (RBI) regulated banks and Non-Banking Financial Companies (NBFCs). Rapid Loans is not a lender, does not lend on its own books, and does not guarantee approval of any loan. All credit decisions, sanction terms, interest rates, and charges are determined solely by the regulated lending partner.",
+"tc_b_h3": "3. Eligibility",
+"tc_b_p3": "You must be at least 18 years of age and competent to contract under the Indian Contract Act, 1872 to use our services. By using the website, you represent that you meet these requirements and that the information you provide is true and accurate.",
+"tc_b_h4": "4. Intellectual Property",
+"tc_b_p4": "All content on this website, including text, logos, graphics, and software, is the property of Rapid Loans or its licensors and is protected under the Copyright Act, 1957 and the Trade Marks Act, 1999. You may view the content for personal, non-commercial use only; any reproduction or distribution without written permission is prohibited.",
+"tc_b_h5": "5. User Obligations",
+"tc_b_p5": "You agree to use the website lawfully and not to engage in any activity prohibited under the Information Technology Act, 2000, including unauthorised access, transmission of unlawful content, or any act that compromises the security or integrity of the platform.",
+"tc_b_h6": "6. Disclaimer",
+"tc_b_p6": "The website and its content are provided on an 'as is' and 'as available' basis. To the extent permitted by law, we make no warranties, express or implied, regarding accuracy, completeness, or fitness for a particular purpose. Information on the website does not constitute financial, legal, or investment advice.",
+"tc_b_h7": "7. Limitation of Liability",
+"tc_b_p7": "To the maximum extent permitted under Indian law, Rapid Loans shall not be liable for any indirect, incidental, or consequential damages arising from the use of, or inability to use, this website or our services.",
+"tc_b_h8": "8. Grievance Redressal",
+"tc_b_p8": "For any grievance, you may contact us at <a href=\"mailto:info@rapidloans.ai\">info@rapidloans.ai</a>. Grievances relating to a loan product are also addressable to the concerned RBI-regulated lending partner and, where unresolved, may be escalated under the RBI Integrated Ombudsman Scheme, 2021.",
+"tc_b_h9": "9. Governing Law &amp; Jurisdiction",
+"tc_b_p9": "These Terms &amp; Conditions are governed by and construed in accordance with the laws of India. Subject to the dispute-resolution clause below, the courts at Ahmedabad, Gujarat shall have exclusive jurisdiction over any dispute.",
+"tc_b_h10": "10. Dispute Resolution",
+"tc_b_p10": "Any dispute arising out of or in connection with these terms shall be resolved by arbitration conducted in accordance with the Arbitration and Conciliation Act, 1996. The seat and venue of arbitration shall be Ahmedabad, Gujarat, and the proceedings shall be conducted in English.",
+"tc_b_h11": "11. Revisions",
+"tc_b_p11": "We may revise these Terms &amp; Conditions from time to time. The current version will always be available on this page, and your continued use of the website constitutes acceptance of the revised terms.",
+"tc_b_h12": "12. Contact",
+"tc_b_p12": "If you have any questions about these Terms &amp; Conditions, please contact us at <a href=\"mailto:info@rapidloans.ai\">info@rapidloans.ai</a>."
+},
+"hi": {
+"tc_b_intro": "ये नियम और शर्तें रैपिड लोन्स इंडिया प्रा. लि. ('रैपिड लोन्स', 'हम', 'हमारा') की वेबसाइट और सेवाओं तक आपकी पहुंच और उपयोग को नियंत्रित करती हैं। इस वेबसाइट का उपयोग करके, आप इन शर्तों से सहमत होते हैं, जो भारतीय अनुबंध अधिनियम, 1872 के अंतर्गत एक बाध्यकारी अनुबंध बनाती हैं। कृपया इन्हें ध्यान से पढ़ें।",
+"tc_b_h1": "1. शर्तों की स्वीकृति",
+"tc_b_p1": "इस वेबसाइट तक पहुंच कर या इसका उपयोग करके, आप पुष्टि करते हैं कि आपने इन नियमों और शर्तों तथा हमारी गोपनीयता नीति को पढ़ा, समझा है और इनसे बाध्य होने के लिए सहमत हैं। यदि आप सहमत नहीं हैं, तो कृपया वेबसाइट या हमारी सेवाओं का उपयोग न करें।",
+"tc_b_h2": "2. सेवाओं की प्रकृति",
+"tc_b_p2": "रैपिड लोन्स एक बैंकिंग कॉरेस्पोंडेंट / डायरेक्ट सेलिंग एजेंट के रूप में कार्य करता है और भारतीय रिज़र्व बैंक (RBI) द्वारा विनियमित बैंकों और गैर-बैंकिंग वित्तीय कंपनियों (NBFCs) की ओर से ऋण उत्पत्ति, संग्रहण और सेवा की सुविधा प्रदान करता है। रैपिड लोन्स एक ऋणदाता नहीं है, अपनी पुस्तकों पर ऋण नहीं देता, और किसी भी ऋण की मंज़ूरी की गारंटी नहीं देता। सभी ऋण निर्णय, स्वीकृति शर्तें, ब्याज दरें और शुल्क केवल विनियमित ऋण भागीदार द्वारा निर्धारित किए जाते हैं।",
+"tc_b_h3": "3. पात्रता",
+"tc_b_p3": "हमारी सेवाओं का उपयोग करने के लिए आपकी आयु कम से कम 18 वर्ष होनी चाहिए और आप भारतीय अनुबंध अधिनियम, 1872 के अंतर्गत अनुबंध करने में सक्षम होने चाहिए। वेबसाइट का उपयोग करके, आप यह प्रतिनिधित्व करते हैं कि आप इन आवश्यकताओं को पूरा करते हैं और आपके द्वारा प्रदान की गई जानकारी सही और सटीक है।",
+"tc_b_h4": "4. बौद्धिक संपदा",
+"tc_b_p4": "इस वेबसाइट की सभी सामग्री, जिसमें पाठ, लोगो, ग्राफ़िक्स और सॉफ़्टवेयर शामिल हैं, रैपिड लोन्स या उसके लाइसेंसदाताओं की संपत्ति है और कॉपीराइट अधिनियम, 1957 तथा ट्रेड मार्क्स अधिनियम, 1999 के अंतर्गत संरक्षित है। आप सामग्री को केवल व्यक्तिगत, गैर-वाणिज्यिक उपयोग के लिए देख सकते हैं; लिखित अनुमति के बिना किसी भी प्रकार का पुनरुत्पादन या वितरण निषिद्ध है।",
+"tc_b_h5": "5. उपयोगकर्ता दायित्व",
+"tc_b_p5": "आप वेबसाइट का कानूनी रूप से उपयोग करने और सूचना प्रौद्योगिकी अधिनियम, 2000 के अंतर्गत निषिद्ध किसी भी गतिविधि में संलग्न न होने के लिए सहमत हैं, जिसमें अनधिकृत पहुंच, गैरकानूनी सामग्री का प्रसारण, या प्लेटफ़ॉर्म की सुरक्षा या अखंडता से समझौता करने वाला कोई भी कार्य शामिल है।",
+"tc_b_h6": "6. अस्वीकरण",
+"tc_b_p6": "वेबसाइट और इसकी सामग्री 'जैसी है' और 'जैसी उपलब्ध है' के आधार पर प्रदान की जाती है। कानून द्वारा अनुमत सीमा तक, हम सटीकता, पूर्णता या किसी विशेष उद्देश्य के लिए उपयुक्तता के संबंध में कोई वारंटी, स्पष्ट या निहित, नहीं देते। वेबसाइट पर दी गई जानकारी वित्तीय, कानूनी या निवेश सलाह नहीं है।",
+"tc_b_h7": "7. दायित्व की सीमा",
+"tc_b_p7": "भारतीय कानून के अंतर्गत अनुमत अधिकतम सीमा तक, रैपिड लोन्स इस वेबसाइट या हमारी सेवाओं के उपयोग, या उपयोग करने में असमर्थता से उत्पन्न किसी भी अप्रत्यक्ष, आकस्मिक या परिणामी क्षति के लिए उत्तरदायी नहीं होगा।",
+"tc_b_h8": "8. शिकायत निवारण",
+"tc_b_p8": "किसी भी शिकायत के लिए, आप हमसे <a href=\"mailto:info@rapidloans.ai\">info@rapidloans.ai</a> पर संपर्क कर सकते हैं। किसी ऋण उत्पाद से संबंधित शिकायतें संबंधित RBI-विनियमित ऋण भागीदार को भी की जा सकती हैं और, यदि अनसुलझी रहती हैं, तो उन्हें RBI एकीकृत लोकपाल योजना, 2021 के अंतर्गत आगे बढ़ाया जा सकता है।",
+"tc_b_h9": "9. शासी कानून और क्षेत्राधिकार",
+"tc_b_p9": "ये नियम और शर्तें भारत के कानूनों द्वारा शासित और उनके अनुसार व्याख्यायित हैं। नीचे दिए गए विवाद-समाधान खंड के अधीन, अहमदाबाद, गुजरात की अदालतों को किसी भी विवाद पर विशेष क्षेत्राधिकार होगा।",
+"tc_b_h10": "10. विवाद समाधान",
+"tc_b_p10": "इन शर्तों से या इनके संबंध में उत्पन्न कोई भी विवाद मध्यस्थता और सुलह अधिनियम, 1996 के अनुसार संचालित मध्यस्थता द्वारा हल किया जाएगा। मध्यस्थता का स्थान और स्थल अहमदाबाद, गुजरात होगा, और कार्यवाही अंग्रेज़ी में संचालित की जाएगी।",
+"tc_b_h11": "11. संशोधन",
+"tc_b_p11": "हम समय-समय पर इन नियमों और शर्तों को संशोधित कर सकते हैं। वर्तमान संस्करण हमेशा इस पृष्ठ पर उपलब्ध रहेगा, और वेबसाइट का आपका निरंतर उपयोग संशोधित शर्तों की स्वीकृति माना जाएगा।",
+"tc_b_h12": "12. संपर्क",
+"tc_b_p12": "यदि इन नियमों और शर्तों के बारे में आपके कोई प्रश्न हैं, तो कृपया हमसे <a href=\"mailto:info@rapidloans.ai\">info@rapidloans.ai</a> पर संपर्क करें।"
+},
+"mr": {
+"tc_b_intro": "या अटी आणि शर्ती रॅपिड लोन्स इंडिया प्रा. लि. ('रॅपिड लोन्स', 'आम्ही', 'आमचे') च्या वेबसाइट आणि सेवांवरील तुमच्या प्रवेश आणि वापरास नियंत्रित करतात. ही वेबसाइट वापरून, तुम्ही या अटींना सहमती देता, ज्या भारतीय करार कायदा, 1872 अंतर्गत बंधनकारक करार बनवतात. कृपया त्या काळजीपूर्वक वाचा.",
+"tc_b_h1": "1. अटींची स्वीकृती",
+"tc_b_p1": "ही वेबसाइट प्रवेश करून किंवा वापरून, तुम्ही पुष्टी करता की तुम्ही या अटी आणि शर्ती तसेच आमचे गोपनीयता धोरण वाचले, समजले आहे आणि त्यांना बांधील राहण्यास सहमत आहात. जर तुम्ही सहमत नसाल, तर कृपया वेबसाइट किंवा आमच्या सेवांचा वापर करू नका.",
+"tc_b_h2": "2. सेवांचे स्वरूप",
+"tc_b_p2": "रॅपिड लोन्स एक बँकिंग कॉरस्पॉन्डंट / डायरेक्ट सेलिंग एजंट म्हणून कार्य करते आणि भारतीय रिझर्व्ह बँक (RBI) नियंत्रित बँका आणि बिगर-बँकिंग वित्तीय कंपन्या (NBFCs) यांच्या वतीने कर्ज उत्पत्ती, वसुली आणि सेवा सुलभ करते. रॅपिड लोन्स कर्जदाता नाही, स्वतःच्या पुस्तकांवर कर्ज देत नाही आणि कोणत्याही कर्जाच्या मंजुरीची हमी देत नाही. सर्व पतनिर्णय, मंजुरी अटी, व्याजदर आणि शुल्क केवळ नियंत्रित कर्ज भागीदाराद्वारे ठरवले जातात.",
+"tc_b_h3": "3. पात्रता",
+"tc_b_p3": "आमच्या सेवांचा वापर करण्यासाठी तुमचे वय किमान 18 वर्षे असावे आणि तुम्ही भारतीय करार कायदा, 1872 अंतर्गत करार करण्यास सक्षम असावे. वेबसाइट वापरून, तुम्ही प्रतिनिधित्व करता की तुम्ही या आवश्यकता पूर्ण करता आणि तुम्ही दिलेली माहिती खरी आणि अचूक आहे.",
+"tc_b_h4": "4. बौद्धिक संपदा",
+"tc_b_p4": "या वेबसाइटवरील सर्व मजकूर, ज्यामध्ये मजकूर, लोगो, ग्राफिक्स आणि सॉफ्टवेअर समाविष्ट आहे, रॅपिड लोन्स किंवा त्याच्या परवानाधारकांची मालमत्ता आहे आणि कॉपीराइट कायदा, 1957 आणि ट्रेड मार्क्स कायदा, 1999 अंतर्गत संरक्षित आहे. तुम्ही मजकूर केवळ वैयक्तिक, गैर-व्यावसायिक वापरासाठी पाहू शकता; लेखी परवानगीशिवाय कोणतेही पुनरुत्पादन किंवा वितरण निषिद्ध आहे.",
+"tc_b_h5": "5. वापरकर्ता दायित्वे",
+"tc_b_p5": "तुम्ही वेबसाइटचा कायदेशीर वापर करण्यास आणि माहिती तंत्रज्ञान कायदा, 2000 अंतर्गत निषिद्ध कोणत्याही क्रियाकलापात सहभागी न होण्यास सहमत आहात, ज्यात अनधिकृत प्रवेश, बेकायदेशीर मजकुराचे प्रसारण, किंवा प्लॅटफॉर्मच्या सुरक्षा किंवा अखंडतेशी तडजोड करणारी कोणतीही कृती समाविष्ट आहे.",
+"tc_b_h6": "6. अस्वीकरण",
+"tc_b_p6": "वेबसाइट आणि तिचा मजकूर 'जसा आहे' आणि 'जसा उपलब्ध आहे' या आधारावर प्रदान केला जातो. कायद्याने परवानगी दिलेल्या मर्यादेपर्यंत, आम्ही अचूकता, पूर्णता किंवा विशिष्ट उद्देशासाठी योग्यतेबाबत कोणतीही हमी, स्पष्ट किंवा निहित, देत नाही. वेबसाइटवरील माहिती आर्थिक, कायदेशीर किंवा गुंतवणूक सल्ला नाही.",
+"tc_b_h7": "7. दायित्वाची मर्यादा",
+"tc_b_p7": "भारतीय कायद्यांतर्गत परवानगी दिलेल्या कमाल मर्यादेपर्यंत, रॅपिड लोन्स या वेबसाइट किंवा आमच्या सेवांच्या वापरामुळे, किंवा वापर करण्यास असमर्थतेमुळे उद्भवणाऱ्या कोणत्याही अप्रत्यक्ष, आनुषंगिक किंवा परिणामी नुकसानीस जबाबदार राहणार नाही.",
+"tc_b_h8": "8. तक्रार निवारण",
+"tc_b_p8": "कोणत्याही तक्रारीसाठी, तुम्ही आमच्याशी <a href=\"mailto:info@rapidloans.ai\">info@rapidloans.ai</a> वर संपर्क साधू शकता. कर्ज उत्पादनाशी संबंधित तक्रारी संबंधित RBI-नियंत्रित कर्ज भागीदारालाही करता येतात आणि, अनिराकृत राहिल्यास, त्या RBI एकात्मिक लोकपाल योजना, 2021 अंतर्गत पुढे नेल्या जाऊ शकतात.",
+"tc_b_h9": "9. शासी कायदा आणि अधिकारक्षेत्र",
+"tc_b_p9": "या अटी आणि शर्ती भारताच्या कायद्यांद्वारे शासित आणि त्यानुसार व्याख्यायित आहेत. खालील वाद-निराकरण कलमाच्या अधीन, अहमदाबाद, गुजरात येथील न्यायालयांना कोणत्याही वादावर विशेष अधिकारक्षेत्र असेल.",
+"tc_b_h10": "10. वाद निराकरण",
+"tc_b_p10": "या अटींमधून किंवा त्यांच्याशी संबंधित उद्भवणारा कोणताही वाद लवाद आणि सलोखा कायदा, 1996 नुसार आयोजित लवादाद्वारे सोडवला जाईल. लवादाचे स्थान आणि ठिकाण अहमदाबाद, गुजरात असेल, आणि कार्यवाही इंग्रजीमध्ये आयोजित केली जाईल.",
+"tc_b_h11": "11. सुधारणा",
+"tc_b_p11": "आम्ही वेळोवेळी या अटी आणि शर्तींमध्ये सुधारणा करू शकतो. सध्याची आवृत्ती नेहमी या पृष्ठावर उपलब्ध असेल, आणि वेबसाइटचा तुमचा सतत वापर सुधारित अटींची स्वीकृती मानला जाईल.",
+"tc_b_h12": "12. संपर्क",
+"tc_b_p12": "या अटी आणि शर्तींबद्दल तुमचे काही प्रश्न असल्यास, कृपया आमच्याशी <a href=\"mailto:info@rapidloans.ai\">info@rapidloans.ai</a> वर संपर्क साधा."
+},
+"gu": {
+"tc_b_intro": "આ નિયમો અને શરતો રેપિડ લોન્સ ઈન્ડિયા પ્રા. લિ. ('રેપિડ લોન્સ', 'અમે', 'અમારું') ની વેબસાઇટ અને સેવાઓ પરની તમારી પહોંચ અને ઉપયોગને નિયંત્રિત કરે છે. આ વેબસાઇટનો ઉપયોગ કરીને, તમે આ શરતો સાથે સંમત થાઓ છો, જે ભારતીય કરાર અધિનિયમ, 1872 અંતર્ગત બંધનકર્તા કરાર બનાવે છે. કૃપા કરીને તેને ધ્યાનથી વાંચો.",
+"tc_b_h1": "1. શરતોની સ્વીકૃતિ",
+"tc_b_p1": "આ વેબસાઇટ પર પહોંચીને અથવા તેનો ઉપયોગ કરીને, તમે પુષ્ટિ કરો છો કે તમે આ નિયમો અને શરતો તથા અમારી ગોપનીયતા નીતિ વાંચી, સમજી છે અને તેનાથી બંધાયેલા રહેવા સંમત છો. જો તમે સંમત ન હો, તો કૃપા કરીને વેબસાઇટ અથવા અમારી સેવાઓનો ઉપયોગ ન કરો.",
+"tc_b_h2": "2. સેવાઓની પ્રકૃતિ",
+"tc_b_p2": "રેપિડ લોન્સ બેંકિંગ કોરસ્પોન્ડન્ટ / ડાયરેક્ટ સેલિંગ એજન્ટ તરીકે કાર્ય કરે છે અને ભારતીય રિઝર્વ બેંક (RBI) દ્વારા નિયંત્રિત બેંકો અને બિન-બેંકિંગ નાણાકીય કંપનીઓ (NBFCs) વતી લોન ઓરિજિનેશન, કલેક્શન અને સર્વિસિંગની સુવિધા આપે છે. રેપિડ લોન્સ ધિરાણકર્તા નથી, પોતાના ચોપડે ધિરાણ આપતું નથી, અને કોઈપણ લોનની મંજૂરીની ખાતરી આપતું નથી. તમામ ધિરાણ નિર્ણયો, મંજૂરી શરતો, વ્યાજ દરો અને ચાર્જ માત્ર નિયંત્રિત ધિરાણ ભાગીદાર દ્વારા નક્કી કરવામાં આવે છે.",
+"tc_b_h3": "3. પાત્રતા",
+"tc_b_p3": "અમારી સેવાઓનો ઉપયોગ કરવા માટે તમારી ઉંમર ઓછામાં ઓછી 18 વર્ષ હોવી જોઈએ અને તમે ભારતીય કરાર અધિનિયમ, 1872 અંતર્ગત કરાર કરવા સક્ષમ હોવા જોઈએ. વેબસાઇટનો ઉપયોગ કરીને, તમે પ્રતિનિધિત્વ કરો છો કે તમે આ આવશ્યકતાઓ પૂર્ણ કરો છો અને તમે આપેલી માહિતી સાચી અને સચોટ છે.",
+"tc_b_h4": "4. બૌદ્ધિક સંપદા",
+"tc_b_p4": "આ વેબસાઇટ પરની તમામ સામગ્રી, જેમાં લખાણ, લોગો, ગ્રાફિક્સ અને સોફ્ટવેર સામેલ છે, રેપિડ લોન્સ અથવા તેના લાઇસન્સધારકોની મિલકત છે અને કોપીરાઇટ અધિનિયમ, 1957 અને ટ્રેડ માર્ક્સ અધિનિયમ, 1999 અંતર્ગત સુરક્ષિત છે. તમે સામગ્રીને માત્ર વ્યક્તિગત, બિન-વાણિજ્યિક ઉપયોગ માટે જોઈ શકો છો; લેખિત પરવાનગી વિના કોઈપણ પ્રજનન અથવા વિતરણ પ્રતિબંધિત છે.",
+"tc_b_h5": "5. વપરાશકર્તાની જવાબદારીઓ",
+"tc_b_p5": "તમે વેબસાઇટનો કાનૂની રીતે ઉપયોગ કરવા અને માહિતી પ્રૌદ્યોગિકી અધિનિયમ, 2000 અંતર્ગત પ્રતિબંધિત કોઈપણ પ્રવૃત્તિમાં સામેલ ન થવા સંમત છો, જેમાં અનધિકૃત પહોંચ, ગેરકાયદેસર સામગ્રીનું પ્રસારણ, અથવા પ્લેટફોર્મની સુરક્ષા અથવા અખંડિતતા સાથે સમાધાન કરતું કોઈપણ કૃત્ય સામેલ છે.",
+"tc_b_h6": "6. અસ્વીકરણ",
+"tc_b_p6": "વેબસાઇટ અને તેની સામગ્રી 'જેવી છે' અને 'જેવી ઉપલબ્ધ છે' તેવા આધારે પૂરી પાડવામાં આવે છે. કાયદા દ્વારા મંજૂર હદ સુધી, અમે સચોટતા, સંપૂર્ણતા અથવા કોઈ ચોક્કસ હેતુ માટે યોગ્યતા અંગે કોઈ વોરંટી, સ્પષ્ટ કે ગર્ભિત, આપતા નથી. વેબસાઇટ પરની માહિતી નાણાકીય, કાનૂની અથવા રોકાણ સલાહ નથી.",
+"tc_b_h7": "7. જવાબદારીની મર્યાદા",
+"tc_b_p7": "ભારતીય કાયદા અંતર્ગત મંજૂર મહત્તમ હદ સુધી, રેપિડ લોન્સ આ વેબસાઇટ અથવા અમારી સેવાઓના ઉપયોગથી, અથવા ઉપયોગ કરવામાં અસમર્થતાથી ઉદ્ભવતા કોઈપણ પરોક્ષ, આકસ્મિક અથવા પરિણામી નુકસાન માટે જવાબદાર રહેશે નહીં.",
+"tc_b_h8": "8. ફરિયાદ નિવારણ",
+"tc_b_p8": "કોઈપણ ફરિયાદ માટે, તમે અમારો <a href=\"mailto:info@rapidloans.ai\">info@rapidloans.ai</a> પર સંપર્ક કરી શકો છો. લોન ઉત્પાદનને લગતી ફરિયાદો સંબંધિત RBI-નિયંત્રિત ધિરાણ ભાગીદારને પણ કરી શકાય છે અને, જો ઉકેલ ન આવે, તો તેને RBI સંકલિત લોકપાલ યોજના, 2021 અંતર્ગત આગળ વધારી શકાય છે.",
+"tc_b_h9": "9. શાસક કાયદો અને અધિકારક્ષેત્ર",
+"tc_b_p9": "આ નિયમો અને શરતો ભારતના કાયદાઓ દ્વારા સંચાલિત અને તે મુજબ અર્થઘટિત છે. નીચેના વિવાદ-નિરાકરણ કલમને આધીન, અમદાવાદ, ગુજરાતની અદાલતોને કોઈપણ વિવાદ પર વિશિષ્ટ અધિકારક્ષેત્ર રહેશે.",
+"tc_b_h10": "10. વિવાદ નિરાકરણ",
+"tc_b_p10": "આ શરતોમાંથી અથવા તેના સંબંધમાં ઉદ્ભવતો કોઈપણ વિવાદ લવાદ અને સમાધાન અધિનિયમ, 1996 મુજબ હાથ ધરાયેલા લવાદ દ્વારા ઉકેલવામાં આવશે. લવાદનું સ્થાન અને સ્થળ અમદાવાદ, ગુજરાત રહેશે, અને કાર્યવાહી અંગ્રેજીમાં હાથ ધરવામાં આવશે.",
+"tc_b_h11": "11. સુધારાઓ",
+"tc_b_p11": "અમે સમયાંતરે આ નિયમો અને શરતોમાં સુધારો કરી શકીએ છીએ. વર્તમાન સંસ્કરણ હંમેશા આ પૃષ્ઠ પર ઉપલબ્ધ રહેશે, અને વેબસાઇટનો તમારો સતત ઉપયોગ સુધારેલી શરતોની સ્વીકૃતિ ગણાશે.",
+"tc_b_h12": "12. સંપર્ક",
+"tc_b_p12": "જો આ નિયમો અને શરતો વિશે તમારા કોઈ પ્રશ્નો હોય, તો કૃપા કરીને અમારો <a href=\"mailto:info@rapidloans.ai\">info@rapidloans.ai</a> પર સંપર્ક કરો."
+},
+"te": {
+"tc_b_intro": "ఈ నిబంధనలు మరియు షరతులు రాపిడ్ లోన్స్ ఇండియా ప్రై. లిమి. ('రాపిడ్ లోన్స్', 'మేము', 'మాది') యొక్క వెబ్‌సైట్ మరియు సేవలకు మీ ప్రవేశం మరియు వినియోగాన్ని నియంత్రిస్తాయి. ఈ వెబ్‌సైట్‌ను ఉపయోగించడం ద్వారా, మీరు ఈ నిబంధనలకు అంగీకరిస్తారు, ఇవి భారతీయ ఒప్పంద చట్టం, 1872 ప్రకారం బంధకరమైన ఒప్పందాన్ని ఏర్పరుస్తాయి. దయచేసి వాటిని జాగ్రత్తగా చదవండి.",
+"tc_b_h1": "1. నిబంధనల అంగీకారం",
+"tc_b_p1": "ఈ వెబ్‌సైట్‌ను యాక్సెస్ చేయడం లేదా ఉపయోగించడం ద్వారా, మీరు ఈ నిబంధనలు మరియు షరతులు అలాగే మా గోప్యతా విధానాన్ని చదివి, అర్థం చేసుకుని, వాటికి కట్టుబడి ఉండటానికి అంగీకరిస్తారని ధృవీకరిస్తారు. మీరు అంగీకరించకపోతే, దయచేసి వెబ్‌సైట్ లేదా మా సేవలను ఉపయోగించవద్దు.",
+"tc_b_h2": "2. సేవల స్వభావం",
+"tc_b_p2": "రాపిడ్ లోన్స్ బ్యాంకింగ్ కరస్పాండెంట్ / డైరెక్ట్ సెల్లింగ్ ఏజెంట్‌గా పనిచేస్తుంది మరియు భారతీయ రిజర్వ్ బ్యాంక్ (RBI) నియంత్రిత బ్యాంకులు మరియు బ్యాంకింగేతర ఆర్థిక సంస్థల (NBFCs) తరపున రుణ ఉత్పత్తి, వసూలు మరియు సేవను సులభతరం చేస్తుంది. రాపిడ్ లోన్స్ రుణదాత కాదు, తన సొంత పుస్తకాలపై రుణం ఇవ్వదు మరియు ఏ రుణం ఆమోదానికి హామీ ఇవ్వదు. అన్ని క్రెడిట్ నిర్ణయాలు, మంజూరు నిబంధనలు, వడ్డీ రేట్లు మరియు ఛార్జీలు కేవలం నియంత్రిత రుణ భాగస్వామిచే నిర్ణయించబడతాయి.",
+"tc_b_h3": "3. అర్హత",
+"tc_b_p3": "మా సేవలను ఉపయోగించడానికి మీరు కనీసం 18 సంవత్సరాల వయస్సు కలిగి ఉండాలి మరియు భారతీయ ఒప్పంద చట్టం, 1872 ప్రకారం ఒప్పందం చేసుకోవడానికి సమర్థులై ఉండాలి. వెబ్‌సైట్‌ను ఉపయోగించడం ద్వారా, మీరు ఈ అవసరాలను తీర్చారని మరియు మీరు అందించిన సమాచారం నిజమైనది మరియు ఖచ్చితమైనది అని ప్రాతినిధ్యం వహిస్తారు.",
+"tc_b_h4": "4. మేధో సంపత్తి",
+"tc_b_p4": "ఈ వెబ్‌సైట్‌లోని వచనం, లోగోలు, గ్రాఫిక్స్ మరియు సాఫ్ట్‌వేర్‌తో సహా అన్ని కంటెంట్ రాపిడ్ లోన్స్ లేదా దాని లైసెన్సుదారుల ఆస్తి మరియు కాపీరైట్ చట్టం, 1957 మరియు ట్రేడ్ మార్క్స్ చట్టం, 1999 ప్రకారం రక్షించబడింది. మీరు కంటెంట్‌ను కేవలం వ్యక్తిగత, వాణిజ్యేతర వినియోగం కోసం మాత్రమే చూడవచ్చు; లిఖితపూర్వక అనుమతి లేకుండా ఏదైనా పునరుత్పత్తి లేదా పంపిణీ నిషేధించబడింది.",
+"tc_b_h5": "5. వినియోగదారు బాధ్యతలు",
+"tc_b_p5": "మీరు వెబ్‌సైట్‌ను చట్టబద్ధంగా ఉపయోగించడానికి మరియు సమాచార సాంకేతిక చట్టం, 2000 ప్రకారం నిషేధించబడిన ఏ కార్యకలాపంలోనూ పాల్గొనకుండా ఉండటానికి అంగీకరిస్తారు, ఇందులో అనధికార ప్రవేశం, చట్టవిరుద్ధ కంటెంట్ ప్రసారం, లేదా ప్లాట్‌ఫారమ్ భద్రత లేదా సమగ్రతను రాజీపరిచే ఏదైనా చర్య ఉంటుంది.",
+"tc_b_h6": "6. నిరాకరణ",
+"tc_b_p6": "వెబ్‌సైట్ మరియు దాని కంటెంట్ 'ఉన్నది ఉన్నట్లుగా' మరియు 'అందుబాటులో ఉన్నట్లుగా' ప్రాతిపదికన అందించబడుతుంది. చట్టం అనుమతించిన మేరకు, ఖచ్చితత్వం, పరిపూర్ణత లేదా నిర్దిష్ట ప్రయోజనానికి అనుకూలత గురించి మేము ఎటువంటి హామీలు, స్పష్టమైనవి లేదా అంతర్లీనమైనవి, ఇవ్వము. వెబ్‌సైట్‌లోని సమాచారం ఆర్థిక, చట్టపరమైన లేదా పెట్టుబడి సలహా కాదు.",
+"tc_b_h7": "7. బాధ్యత పరిమితి",
+"tc_b_p7": "భారతీయ చట్టం ప్రకారం అనుమతించిన గరిష్ట మేరకు, ఈ వెబ్‌సైట్ లేదా మా సేవల వినియోగం, లేదా ఉపయోగించలేకపోవడం వల్ల తలెత్తే ఏదైనా పరోక్ష, ఆనుషంగిక లేదా పర్యవసాన నష్టాలకు రాపిడ్ లోన్స్ బాధ్యత వహించదు.",
+"tc_b_h8": "8. ఫిర్యాదు పరిష్కారం",
+"tc_b_p8": "ఏదైనా ఫిర్యాదు కోసం, మీరు మమ్మల్ని <a href=\"mailto:info@rapidloans.ai\">info@rapidloans.ai</a> వద్ద సంప్రదించవచ్చు. రుణ ఉత్పత్తికి సంబంధించిన ఫిర్యాదులను సంబంధిత RBI-నియంత్రిత రుణ భాగస్వామికి కూడా చేయవచ్చు మరియు, పరిష్కారం కానట్లయితే, వాటిని RBI సమగ్ర అంబుడ్స్‌మన్ పథకం, 2021 ప్రకారం ముందుకు తీసుకెళ్లవచ్చు.",
+"tc_b_h9": "9. పాలక చట్టం మరియు అధికార పరిధి",
+"tc_b_p9": "ఈ నిబంధనలు మరియు షరతులు భారత చట్టాల ద్వారా పాలించబడతాయి మరియు వాటి ప్రకారం వ్యాఖ్యానించబడతాయి. క్రింది వివాద-పరిష్కార నిబంధనకు లోబడి, అహ్మదాబాద్, గుజరాత్‌లోని న్యాయస్థానాలకు ఏదైనా వివాదంపై ప్రత్యేక అధికార పరిధి ఉంటుంది.",
+"tc_b_h10": "10. వివాద పరిష్కారం",
+"tc_b_p10": "ఈ నిబంధనల నుండి లేదా వాటికి సంబంధించి తలెత్తే ఏదైనా వివాదం మధ్యవర్తిత్వం మరియు సయోధ్య చట్టం, 1996 ప్రకారం నిర్వహించబడే మధ్యవర్తిత్వం ద్వారా పరిష్కరించబడుతుంది. మధ్యవర్తిత్వ స్థానం మరియు వేదిక అహ్మదాబాద్, గుజరాత్ అవుతుంది, మరియు చర్యలు ఆంగ్లంలో నిర్వహించబడతాయి.",
+"tc_b_h11": "11. సవరణలు",
+"tc_b_p11": "మేము ఎప్పటికప్పుడు ఈ నిబంధనలు మరియు షరతులను సవరించవచ్చు. ప్రస్తుత వెర్షన్ ఎల్లప్పుడూ ఈ పేజీలో అందుబాటులో ఉంటుంది, మరియు వెబ్‌సైట్‌ను మీరు కొనసాగించి ఉపయోగించడం సవరించిన నిబంధనల అంగీకారంగా పరిగణించబడుతుంది.",
+"tc_b_h12": "12. సంప్రదింపు",
+"tc_b_p12": "ఈ నిబంధనలు మరియు షరతుల గురించి మీకు ఏవైనా ప్రశ్నలు ఉంటే, దయచేసి మమ్మల్ని <a href=\"mailto:info@rapidloans.ai\">info@rapidloans.ai</a> వద్ద సంప్రదించండి."
+},
+"ta": {
+"tc_b_intro": "இந்த விதிமுறைகள் மற்றும் நிபந்தனைகள் ரேபிட் லோன்ஸ் இந்தியா பிரை. லிட். ('ரேபிட் லோன்ஸ்', 'நாங்கள்', 'எங்கள்') இன் வலைத்தளம் மற்றும் சேவைகளுக்கான உங்கள் அணுகல் மற்றும் பயன்பாட்டை நிர்வகிக்கின்றன. இந்த வலைத்தளத்தைப் பயன்படுத்துவதன் மூலம், இந்திய ஒப்பந்தச் சட்டம், 1872 இன் கீழ் கட்டுப்படுத்தும் ஒப்பந்தத்தை உருவாக்கும் இந்த விதிமுறைகளுக்கு நீங்கள் ஒப்புக்கொள்கிறீர்கள். தயவுசெய்து அவற்றை கவனமாகப் படிக்கவும்.",
+"tc_b_h1": "1. விதிமுறைகளை ஏற்றல்",
+"tc_b_p1": "இந்த வலைத்தளத்தை அணுகுவதன் அல்லது பயன்படுத்துவதன் மூலம், இந்த விதிமுறைகள் மற்றும் நிபந்தனைகள் மற்றும் எங்கள் தனியுரிமைக் கொள்கையை நீங்கள் படித்து, புரிந்துகொண்டு, அவற்றுக்குக் கட்டுப்படுவதற்கு ஒப்புக்கொள்கிறீர்கள் என்பதை உறுதிப்படுத்துகிறீர்கள். நீங்கள் ஒப்புக்கொள்ளவில்லை என்றால், தயவுசெய்து வலைத்தளம் அல்லது எங்கள் சேவைகளைப் பயன்படுத்த வேண்டாம்.",
+"tc_b_h2": "2. சேவைகளின் தன்மை",
+"tc_b_p2": "ரேபிட் லோன்ஸ் ஒரு வங்கி நிருபர் / நேரடி விற்பனை முகவராக செயல்படுகிறது மற்றும் இந்திய ரிசர்வ் வங்கி (RBI) ஒழுங்குபடுத்தப்பட்ட வங்கிகள் மற்றும் வங்கி அல்லாத நிதி நிறுவனங்கள் (NBFCs) சார்பாக கடன் உருவாக்கம், வசூல் மற்றும் சேவையை எளிதாக்குகிறது. ரேபிட் லோன்ஸ் ஒரு கடன் வழங்குநர் அல்ல, தனது சொந்த கணக்குகளில் கடன் வழங்காது, மேலும் எந்தக் கடன் ஒப்புதலுக்கும் உத்தரவாதம் அளிக்காது. அனைத்து கடன் முடிவுகள், அனுமதி விதிமுறைகள், வட்டி விகிதங்கள் மற்றும் கட்டணங்கள் ஒழுங்குபடுத்தப்பட்ட கடன் கூட்டாளரால் மட்டுமே தீர்மானிக்கப்படுகின்றன.",
+"tc_b_h3": "3. தகுதி",
+"tc_b_p3": "எங்கள் சேவைகளைப் பயன்படுத்த நீங்கள் குறைந்தது 18 வயது நிரம்பியவராகவும், இந்திய ஒப்பந்தச் சட்டம், 1872 இன் கீழ் ஒப்பந்தம் செய்யத் தகுதியுடையவராகவும் இருக்க வேண்டும். வலைத்தளத்தைப் பயன்படுத்துவதன் மூலம், நீங்கள் இந்தத் தேவைகளைப் பூர்த்தி செய்கிறீர்கள் என்பதையும், நீங்கள் வழங்கும் தகவல் உண்மையானது மற்றும் துல்லியமானது என்பதையும் உறுதிப்படுத்துகிறீர்கள்.",
+"tc_b_h4": "4. அறிவுசார் சொத்து",
+"tc_b_p4": "உரை, லோகோக்கள், கிராபிக்ஸ் மற்றும் மென்பொருள் உள்ளிட்ட இந்த வலைத்தளத்தில் உள்ள அனைத்து உள்ளடக்கமும் ரேபிட் லோன்ஸ் அல்லது அதன் உரிமம் வழங்குநர்களின் சொத்து மற்றும் பதிப்புரிமைச் சட்டம், 1957 மற்றும் வர்த்தக முத்திரைகள் சட்டம், 1999 இன் கீழ் பாதுகாக்கப்படுகிறது. நீங்கள் உள்ளடக்கத்தை தனிப்பட்ட, வணிகம் அல்லாத பயன்பாட்டிற்கு மட்டுமே பார்க்கலாம்; எழுத்துப்பூர்வ அனுமதியின்றி எந்த இனப்பெருக்கம் அல்லது விநியோகமும் தடைசெய்யப்பட்டுள்ளது.",
+"tc_b_h5": "5. பயனர் கடமைகள்",
+"tc_b_p5": "நீங்கள் வலைத்தளத்தை சட்டப்பூர்வமாகப் பயன்படுத்த ஒப்புக்கொள்கிறீர்கள் மற்றும் தகவல் தொழில்நுட்பச் சட்டம், 2000 இன் கீழ் தடைசெய்யப்பட்ட எந்த செயலிலும் ஈடுபடாமல் இருக்க ஒப்புக்கொள்கிறீர்கள், இதில் அங்கீகரிக்கப்படாத அணுகல், சட்டவிரோத உள்ளடக்க பரிமாற்றம், அல்லது தளத்தின் பாதுகாப்பு அல்லது ஒருமைப்பாட்டை சமரசம் செய்யும் எந்த செயலும் அடங்கும்.",
+"tc_b_h6": "6. மறுப்பு",
+"tc_b_p6": "வலைத்தளமும் அதன் உள்ளடக்கமும் 'உள்ளபடி' மற்றும் 'கிடைக்கும்படி' அடிப்படையில் வழங்கப்படுகின்றன. சட்டத்தால் அனுமதிக்கப்பட்ட அளவிற்கு, துல்லியம், முழுமை அல்லது ஒரு குறிப்பிட்ட நோக்கத்திற்கான பொருத்தம் தொடர்பாக நாங்கள் எந்த உத்தரவாதங்களையும், வெளிப்படையான அல்லது மறைமுகமான, அளிக்கவில்லை. வலைத்தளத்தில் உள்ள தகவல் நிதி, சட்ட அல்லது முதலீட்டு ஆலோசனை அல்ல.",
+"tc_b_h7": "7. பொறுப்பு வரம்பு",
+"tc_b_p7": "இந்திய சட்டத்தின் கீழ் அனுமதிக்கப்பட்ட அதிகபட்ச அளவிற்கு, இந்த வலைத்தளம் அல்லது எங்கள் சேவைகளைப் பயன்படுத்துவதால், அல்லது பயன்படுத்த இயலாமையால் ஏற்படும் எந்த மறைமுக, தற்செயல் அல்லது விளைவான சேதங்களுக்கும் ரேபிட் லோன்ஸ் பொறுப்பேற்காது.",
+"tc_b_h8": "8. குறை தீர்ப்பு",
+"tc_b_p8": "எந்தவொரு குறைபாட்டிற்கும், நீங்கள் எங்களை <a href=\"mailto:info@rapidloans.ai\">info@rapidloans.ai</a> இல் தொடர்பு கொள்ளலாம். கடன் தயாரிப்பு தொடர்பான குறைகளை சம்பந்தப்பட்ட RBI-ஒழுங்குபடுத்தப்பட்ட கடன் கூட்டாளருக்கும் தெரிவிக்கலாம் மற்றும், தீர்க்கப்படாவிட்டால், அவற்றை RBI ஒருங்கிணைந்த குறைதீர்ப்பாளர் திட்டம், 2021 இன் கீழ் மேலெடுக்கலாம்.",
+"tc_b_h9": "9. ஆளும் சட்டம் மற்றும் அதிகார வரம்பு",
+"tc_b_p9": "இந்த விதிமுறைகள் மற்றும் நிபந்தனைகள் இந்தியச் சட்டங்களால் நிர்வகிக்கப்படுகின்றன மற்றும் அவற்றுக்கு ஏற்ப விளக்கப்படுகின்றன. கீழே உள்ள தகராறு-தீர்வு பிரிவுக்கு உட்பட்டு, அகமதாபாத், குஜராத்தில் உள்ள நீதிமன்றங்கள் எந்தவொரு தகராற்றின் மீதும் பிரத்யேக அதிகார வரம்பைக் கொண்டிருக்கும்.",
+"tc_b_h10": "10. தகராறு தீர்வு",
+"tc_b_p10": "இந்த விதிமுறைகளிலிருந்து அல்லது அவற்றுடன் தொடர்புடைய எந்தவொரு தகராறும் நடுவர் மற்றும் சமரசச் சட்டம், 1996 இன்படி நடத்தப்படும் நடுவர் மன்றத்தால் தீர்க்கப்படும். நடுவர் மன்றத்தின் இடம் மற்றும் களம் அகமதாபாத், குஜராத் ஆகும், மேலும் நடவடிக்கைகள் ஆங்கிலத்தில் நடத்தப்படும்.",
+"tc_b_h11": "11. திருத்தங்கள்",
+"tc_b_p11": "நாங்கள் அவ்வப்போது இந்த விதிமுறைகள் மற்றும் நிபந்தனைகளைத் திருத்தலாம். தற்போதைய பதிப்பு எப்போதும் இந்தப் பக்கத்தில் கிடைக்கும், மேலும் நீங்கள் வலைத்தளத்தைத் தொடர்ந்து பயன்படுத்துவது திருத்தப்பட்ட விதிமுறைகளை ஏற்பதாகக் கருதப்படும்.",
+"tc_b_h12": "12. தொடர்பு",
+"tc_b_p12": "இந்த விதிமுறைகள் மற்றும் நிபந்தனைகள் குறித்து உங்களுக்கு ஏதேனும் கேள்விகள் இருந்தால், தயவுசெய்து எங்களை <a href=\"mailto:info@rapidloans.ai\">info@rapidloans.ai</a> இல் தொடர்பு கொள்ளவும்."
+},
+"ml": {
+"tc_b_intro": "ഈ നിബന്ധനകളും വ്യവസ്ഥകളും റാപ്പിഡ് ലോൺസ് ഇന്ത്യ പ്രൈ. ലിമി. ('റാപ്പിഡ് ലോൺസ്', 'ഞങ്ങൾ', 'ഞങ്ങളുടെ') യുടെ വെബ്‌സൈറ്റിലേക്കും സേവനങ്ങളിലേക്കുമുള്ള നിങ്ങളുടെ പ്രവേശനവും ഉപയോഗവും നിയന്ത്രിക്കുന്നു. ഈ വെബ്‌സൈറ്റ് ഉപയോഗിക്കുന്നതിലൂടെ, ഇന്ത്യൻ കരാർ നിയമം, 1872 പ്രകാരം ബാധ്യതാപരമായ കരാർ രൂപപ്പെടുത്തുന്ന ഈ നിബന്ധനകൾ നിങ്ങൾ അംഗീകരിക്കുന്നു. ദയവായി അവ ശ്രദ്ധയോടെ വായിക്കുക.",
+"tc_b_h1": "1. നിബന്ധനകളുടെ സ്വീകാര്യത",
+"tc_b_p1": "ഈ വെബ്‌സൈറ്റ് ആക്‌സസ് ചെയ്യുകയോ ഉപയോഗിക്കുകയോ ചെയ്യുന്നതിലൂടെ, ഈ നിബന്ധനകളും വ്യവസ്ഥകളും ഞങ്ങളുടെ സ്വകാര്യതാ നയവും നിങ്ങൾ വായിച്ച്, മനസ്സിലാക്കി, അവയ്ക്ക് വിധേയമാകാൻ സമ്മതിക്കുന്നുവെന്ന് നിങ്ങൾ സ്ഥിരീകരിക്കുന്നു. നിങ്ങൾ സമ്മതിക്കുന്നില്ലെങ്കിൽ, ദയവായി വെബ്‌സൈറ്റോ ഞങ്ങളുടെ സേവനങ്ങളോ ഉപയോഗിക്കരുത്.",
+"tc_b_h2": "2. സേവനങ്ങളുടെ സ്വഭാവം",
+"tc_b_p2": "റാപ്പിഡ് ലോൺസ് ഒരു ബാങ്കിങ് കറസ്‌പോണ്ടന്റ് / ഡയറക്ട് സെല്ലിങ് ഏജന്റ് ആയി പ്രവർത്തിക്കുന്നു, കൂടാതെ റിസർവ് ബാങ്ക് ഓഫ് ഇന്ത്യ (RBI) നിയന്ത്രിത ബാങ്കുകൾക്കും ബാങ്കിങ് ഇതര ധനകാര്യ കമ്പനികൾക്കും (NBFCs) വേണ്ടി വായ്പാ ഉത്ഭവം, ശേഖരണം, സേവനം എന്നിവ സുഗമമാക്കുന്നു. റാപ്പിഡ് ലോൺസ് ഒരു വായ്പാദാതാവല്ല, സ്വന്തം ബുക്കുകളിൽ വായ്പ നൽകുന്നില്ല, ഒരു വായ്പയുടെയും അനുമതി ഉറപ്പുനൽകുന്നില്ല. എല്ലാ ക്രെഡിറ്റ് തീരുമാനങ്ങളും, അനുമതി വ്യവസ്ഥകളും, പലിശ നിരക്കുകളും, ചാർജുകളും നിയന്ത്രിത വായ്പാ പങ്കാളി മാത്രമാണ് നിർണ്ണയിക്കുന്നത്.",
+"tc_b_h3": "3. യോഗ്യത",
+"tc_b_p3": "ഞങ്ങളുടെ സേവനങ്ങൾ ഉപയോഗിക്കാൻ നിങ്ങൾ കുറഞ്ഞത് 18 വയസ്സ് പ്രായമുള്ളവരും ഇന്ത്യൻ കരാർ നിയമം, 1872 പ്രകാരം കരാർ ചെയ്യാൻ പ്രാപ്തരുമായിരിക്കണം. വെബ്‌സൈറ്റ് ഉപയോഗിക്കുന്നതിലൂടെ, നിങ്ങൾ ഈ ആവശ്യകതകൾ പാലിക്കുന്നുവെന്നും നിങ്ങൾ നൽകുന്ന വിവരങ്ങൾ സത്യവും കൃത്യവുമാണെന്നും നിങ്ങൾ പ്രതിനിധീകരിക്കുന്നു.",
+"tc_b_h4": "4. ബൗദ്ധിക സ്വത്ത്",
+"tc_b_p4": "വാചകം, ലോഗോകൾ, ഗ്രാഫിക്‌സ്, സോഫ്റ്റ്‌വെയർ എന്നിവയുൾപ്പെടെ ഈ വെബ്‌സൈറ്റിലെ എല്ലാ ഉള്ളടക്കവും റാപ്പിഡ് ലോൺസിന്റെയോ അതിന്റെ ലൈസൻസ് ഉടമകളുടെയോ സ്വത്താണ്, കൂടാതെ പകർപ്പവകാശ നിയമം, 1957, ട്രേഡ് മാർക്സ് നിയമം, 1999 എന്നിവ പ്രകാരം സംരക്ഷിക്കപ്പെട്ടിരിക്കുന്നു. നിങ്ങൾക്ക് ഉള്ളടക്കം വ്യക്തിഗത, വാണിജ്യേതര ഉപയോഗത്തിന് മാത്രമേ കാണാൻ കഴിയൂ; ലിഖിത അനുമതിയില്ലാതെ ഏതെങ്കിലും പുനരുൽപാദനമോ വിതരണമോ നിരോധിച്ചിരിക്കുന്നു.",
+"tc_b_h5": "5. ഉപയോക്തൃ ബാധ്യതകൾ",
+"tc_b_p5": "നിങ്ങൾ വെബ്‌സൈറ്റ് നിയമപരമായി ഉപയോഗിക്കാനും വിവര സാങ്കേതിക നിയമം, 2000 പ്രകാരം നിരോധിച്ചിട്ടുള്ള ഏതെങ്കിലും പ്രവർത്തനത്തിൽ ഏർപ്പെടാതിരിക്കാനും സമ്മതിക്കുന്നു, അനധികൃത പ്രവേശനം, നിയമവിരുദ്ധ ഉള്ളടക്കം കൈമാറൽ, അല്ലെങ്കിൽ പ്ലാറ്റ്‌ഫോമിന്റെ സുരക്ഷയോ സമഗ്രതയോ വിട്ടുവീഴ്ച ചെയ്യുന്ന ഏതെങ്കിലും പ്രവൃത്തി ഇതിൽ ഉൾപ്പെടുന്നു.",
+"tc_b_h6": "6. നിരാകരണം",
+"tc_b_p6": "വെബ്‌സൈറ്റും അതിന്റെ ഉള്ളടക്കവും 'ഉള്ളതുപോലെ', 'ലഭ്യമായതുപോലെ' എന്ന അടിസ്ഥാനത്തിലാണ് നൽകുന്നത്. നിയമം അനുവദിക്കുന്ന പരിധി വരെ, കൃത്യത, പൂർണ്ണത, അല്ലെങ്കിൽ ഒരു പ്രത്യേക ഉദ്ദേശ്യത്തിനുള്ള അനുയോജ്യത സംബന്ധിച്ച് ഞങ്ങൾ വ്യക്തമോ പരോക്ഷമോ ആയ ഒരു ഉറപ്പും നൽകുന്നില്ല. വെബ്‌സൈറ്റിലെ വിവരങ്ങൾ സാമ്പത്തികമോ നിയമപരമോ നിക്ഷേപമോ ഉപദേശമല്ല.",
+"tc_b_h7": "7. ബാധ്യതയുടെ പരിമിതി",
+"tc_b_p7": "ഇന്ത്യൻ നിയമപ്രകാരം അനുവദനീയമായ പരമാവധി പരിധി വരെ, ഈ വെബ്‌സൈറ്റിന്റെയോ ഞങ്ങളുടെ സേവനങ്ങളുടെയോ ഉപയോഗത്തിൽ നിന്നോ ഉപയോഗിക്കാനുള്ള കഴിവില്ലായ്മയിൽ നിന്നോ ഉണ്ടാകുന്ന ഏതെങ്കിലും പരോക്ഷമോ ആനുഷംഗികമോ പരിണിതഫലമോ ആയ നാശനഷ്ടങ്ങൾക്ക് റാപ്പിഡ് ലോൺസ് ഉത്തരവാദിയായിരിക്കില്ല.",
+"tc_b_h8": "8. പരാതി പരിഹാരം",
+"tc_b_p8": "ഏതെങ്കിലും പരാതിക്ക്, നിങ്ങൾക്ക് ഞങ്ങളെ <a href=\"mailto:info@rapidloans.ai\">info@rapidloans.ai</a> ൽ ബന്ധപ്പെടാം. ഒരു വായ്പാ ഉൽപ്പന്നവുമായി ബന്ധപ്പെട്ട പരാതികൾ ബന്ധപ്പെട്ട RBI-നിയന്ത്രിത വായ്പാ പങ്കാളിയോടും ഉന്നയിക്കാം, പരിഹരിക്കപ്പെടാത്ത പക്ഷം, അവ RBI സംയോജിത ഓംബുഡ്‌സ്മാൻ പദ്ധതി, 2021 പ്രകാരം മുന്നോട്ട് കൊണ്ടുപോകാം.",
+"tc_b_h9": "9. ഭരണ നിയമവും അധികാരപരിധിയും",
+"tc_b_p9": "ഈ നിബന്ധനകളും വ്യവസ്ഥകളും ഇന്ത്യയുടെ നിയമങ്ങളാൽ ഭരിക്കപ്പെടുകയും അവയ്ക്ക് അനുസൃതമായി വ്യാഖ്യാനിക്കപ്പെടുകയും ചെയ്യുന്നു. താഴെയുള്ള തർക്ക-പരിഹാര വ്യവസ്ഥയ്ക്ക് വിധേയമായി, അഹമ്മദാബാദ്, ഗുജറാത്തിലെ കോടതികൾക്ക് ഏതെങ്കിലും തർക്കത്തിന്മേൽ പ്രത്യേക അധികാരപരിധി ഉണ്ടായിരിക്കും.",
+"tc_b_h10": "10. തർക്ക പരിഹാരം",
+"tc_b_p10": "ഈ നിബന്ധനകളിൽ നിന്നോ അവയുമായി ബന്ധപ്പെട്ടോ ഉണ്ടാകുന്ന ഏതെങ്കിലും തർക്കം ആർബിട്രേഷൻ ആൻഡ് കൺസിലിയേഷൻ നിയമം, 1996 പ്രകാരം നടത്തുന്ന ആർബിട്രേഷൻ വഴി പരിഹരിക്കും. ആർബിട്രേഷന്റെ ഇരിപ്പിടവും വേദിയും അഹമ്മദാബാദ്, ഗുജറാത്ത് ആയിരിക്കും, നടപടികൾ ഇംഗ്ലീഷിൽ നടത്തപ്പെടും.",
+"tc_b_h11": "11. പുതുക്കലുകൾ",
+"tc_b_p11": "ഞങ്ങൾ കാലാകാലങ്ങളിൽ ഈ നിബന്ധനകളും വ്യവസ്ഥകളും പുതുക്കിയേക്കാം. നിലവിലെ പതിപ്പ് എപ്പോഴും ഈ പേജിൽ ലഭ്യമായിരിക്കും, വെബ്‌സൈറ്റിന്റെ നിങ്ങളുടെ തുടർച്ചയായ ഉപയോഗം പുതുക്കിയ നിബന്ധനകളുടെ സ്വീകാര്യതയായി കണക്കാക്കും.",
+"tc_b_h12": "12. ബന്ധപ്പെടുക",
+"tc_b_p12": "ഈ നിബന്ധനകളും വ്യവസ്ഥകളും സംബന്ധിച്ച് നിങ്ങൾക്ക് എന്തെങ്കിലും ചോദ്യങ്ങളുണ്ടെങ്കിൽ, ദയവായി ഞങ്ങളെ <a href=\"mailto:info@rapidloans.ai\">info@rapidloans.ai</a> ൽ ബന്ധപ്പെടുക."
+}
+};
+        Object.keys(LB).forEach(function(lang){ if(!L[lang]) L[lang]={}; for(var k in LB[lang]){ L[lang][k]=LB[lang][k]; } });
         var langLabels = {en:'EN',hi:'हिं',gu:'ગુ',mr:'मरा',te:'తె',ta:'த',ml:'മല'};
         function toggleLangDropdown(e){ e.stopPropagation(); document.getElementById('langSwitcher').classList.toggle('open'); }
         function setLanguage(lang){
@@ -277,15 +471,18 @@
             document.querySelectorAll('.lang-option').forEach(function(o){ o.classList.remove('active'); });
             var b=document.querySelector('.lang-option[onclick="setLanguage(\''+lang+'\')"]'); if(b) b.classList.add('active');
             document.getElementById('langSwitcher').classList.remove('open');
-            try{ localStorage.setItem('rl-lang', lang); }catch(e){}
+            /* language is session-only; default is English (no persistence) */
         }
         document.addEventListener('click', function(e){ var s=document.getElementById('langSwitcher'); if(s && !s.contains(e.target)) s.classList.remove('open'); });
-        (function(){ try{ var l=localStorage.getItem('rl-lang'); if(l && L[l]) setLanguage(l); }catch(e){} })();
+        /* default language is English; do not auto-switch from saved value */
 
         function toggleTheme() {
             var dark = document.documentElement.classList.toggle('theme-dark');
             try { localStorage.setItem('rl-theme', dark ? 'dark' : 'light'); } catch (e) {}
         }
+
+        // Navbar stays transparent at the top and gains a background/border only after scrolling
+        (function(){ var nb=document.querySelector('.navbar'); function onScroll(){ if(nb) nb.classList.toggle('scrolled', window.scrollY > 50); } window.addEventListener('scroll', onScroll, {passive:true}); onScroll(); })();
     </script>
 </body>
 </html>
