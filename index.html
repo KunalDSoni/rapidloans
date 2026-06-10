@@ -120,6 +120,15 @@
             padding: 18px;
             box-shadow: 0 16px 48px rgba(0,0,0,0.55);
         }
+        /* The stat pills anchor to the 1100px outer container; the dark-mode
+           light panel is only 700px wide, so without this they straddle the
+           panel edge. Tuck them inside the panel's bottom-right corner. */
+        @media (min-width: 769px) {
+            html.theme-dark .map-stats-overlay {
+                right: max(36px, calc((100% - 700px) / 2 + 36px));
+                bottom: 42px;
+            }
+        }
 
         html { scroll-behavior: smooth; font-size: 16px; }
 
