@@ -312,15 +312,15 @@
            that push the hamburger off-screen unless we shrink them. */
         @media (max-width: 600px) {
             [data-lang="ta"] .logo-name,
-            [data-lang="ml"] .logo-name { font-size: 1rem; }
+            [data-lang="ml"] .logo-name { font-size: 1.1rem; }
             [data-lang="ta"] .logo-icon,
-            [data-lang="ml"] .logo-icon { width: 38px; height: 38px; }
+            [data-lang="ml"] .logo-icon { width: 42px; height: 42px; }
             [data-lang="ta"] .logo,
             [data-lang="ml"] .logo { gap: 8px; }
         }
         @media (max-width: 400px) {
             [data-lang="ta"] .logo-name,
-            [data-lang="ml"] .logo-name { font-size: 0.88rem; }
+            [data-lang="ml"] .logo-name { font-size: 0.95rem; }
         }
 
         [data-lang="ta"] .btn,
@@ -593,14 +593,14 @@
         .navbar.scrolled .logo { color: var(--primary); }
 
         .logo-icon {
-            width: 52px;
-            height: 52px;
+            width: 66px;
+            height: 66px;
             object-fit: contain;
             flex-shrink: 0;
         }
         .navbar.scrolled .logo-icon {
-            width: 44px;
-            height: 44px;
+            width: 56px;
+            height: 56px;
         }
 
         .logo-text-wrap {
@@ -611,7 +611,7 @@
 
         .logo-name {
             font-family: 'Inter', -apple-system, sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.75rem;
             font-weight: 800;
             letter-spacing: -0.02em;
             color: var(--brand-blue);
@@ -639,7 +639,7 @@
 
         .logo-sub {
             font-family: 'Inter', -apple-system, sans-serif;
-            font-size: 0.58rem;
+            font-size: 0.68rem;
             font-weight: 500;
             color: var(--t-text-muted);
             letter-spacing: 0.06em;
@@ -670,13 +670,13 @@
 
         .logo-icon-wrap {
             position: relative;
-            width: 54px; height: 54px;
+            width: 66px; height: 66px;
             flex-shrink: 0;
             display: flex; align-items: center; justify-content: center;
         }
 
         .logo-icon {
-            width: 54px; height: 54px;
+            width: 66px; height: 66px;
             display: flex; align-items: center; justify-content: center;
             flex-shrink: 0;
             position: relative;
@@ -790,10 +790,17 @@
            to fit the full menu on desktop without collapsing to hamburger.
            JS checkNavOverflow() is the safety net for genuinely narrow widths. */
         @media (min-width: 901px) {
+            /* Tamil/Malayalam labels are very long: shrink links and the
+               logo wordmark so the whole navbar fits the 1200px container,
+               otherwise the JS overflow check permanently collapses the nav. */
             [data-lang="ta"] .nav-links a,
-            [data-lang="ml"] .nav-links a { font-size: 0.78rem; }
+            [data-lang="ml"] .nav-links a { font-size: 0.67rem; }
             [data-lang="ta"] .nav-links,
-            [data-lang="ml"] .nav-links { gap: 14px; }
+            [data-lang="ml"] .nav-links { gap: 7px; }
+            [data-lang="ta"] .logo-name,
+            [data-lang="ml"] .logo-name { font-size: 1.3rem; }
+            [data-lang="ta"] .logo-icon,
+            [data-lang="ml"] .logo-icon { width: 56px; height: 56px; }
         }
 
         .nav-right {
@@ -3581,10 +3588,10 @@
             .section { padding: 44px 0; }
 
             /* Logo smaller on mobile */
-            .logo-icon { width: 38px; height: 38px; }
-            .navbar.scrolled .logo-icon { width: 34px; height: 34px; }
-            .logo-name { font-size: 1.1rem; }
-            .logo-sub { font-size: 0.45rem; letter-spacing: 0.03em; }
+            .logo-icon { width: 46px; height: 46px; }
+            .navbar.scrolled .logo-icon { width: 42px; height: 42px; }
+            .logo-name { font-size: 1.35rem; }
+            .logo-sub { font-size: 0.52rem; letter-spacing: 0.03em; }
 
             /* Hero */
             .hero h1 { font-size: 1.6rem; line-height: 1.25; }
@@ -3656,9 +3663,9 @@
             .trust-card:last-child { border-bottom: none; }
             .service-card { width: 200px; padding: 14px; }
             .services-carousel-track { height: 240px; }
-            .logo-name { font-size: 1rem; }
-            .logo-icon { width: 34px; height: 34px; }
-            .navbar.scrolled .logo-icon { width: 30px; height: 30px; }
+            .logo-name { font-size: 1.2rem; }
+            .logo-icon { width: 42px; height: 42px; }
+            .navbar.scrolled .logo-icon { width: 38px; height: 38px; }
         }
 
         /* ═══════════════════════════════════════════
