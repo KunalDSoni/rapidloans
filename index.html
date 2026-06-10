@@ -7922,8 +7922,15 @@
             // Refresh calculator dynamic labels for current language
             if (typeof updateCalc === 'function') updateCalc();
 
-            // Check if nav overflows and collapse to hamburger if needed
-            if (typeof checkNavOverflow === 'function') setTimeout(checkNavOverflow, 50);
+            // Check if nav overflows and collapse to hamburger if needed.
+            // Re-check once the script's web font finishes loading: measuring
+            // with the wider fallback font wrongly collapses the nav and no
+            // resize event ever corrects it.
+            if (typeof checkNavOverflow === 'function') {
+                setTimeout(checkNavOverflow, 50);
+                if (document.fonts && document.fonts.ready) document.fonts.ready.then(function() { checkNavOverflow(); });
+                setTimeout(checkNavOverflow, 700);
+            }
 
             // Re-evaluate bio clamps after text changes (translated text length differs)
             setTimeout(setupBioClamps, 60);
@@ -8047,8 +8054,10 @@
             if (wasActive) navLinks.classList.add('active');
         }
 
-        // Run on load and resize
+        // Run on load and resize (and again once web fonts are in, since a
+        // saved non-Latin language measures wrong with the fallback font)
         checkNavOverflow();
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(function() { checkNavOverflow(); });
         window.addEventListener('resize', function() {
             clearTimeout(window._navResizeTimer);
             window._navResizeTimer = setTimeout(checkNavOverflow, 100);
