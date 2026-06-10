@@ -120,15 +120,6 @@
             padding: 18px;
             box-shadow: 0 16px 48px rgba(0,0,0,0.55);
         }
-        /* The stat pills anchor to the 1100px outer container; the dark-mode
-           light panel is only 700px wide, so without this they straddle the
-           panel edge. Tuck them inside the panel's bottom-right corner. */
-        @media (min-width: 769px) {
-            html.theme-dark .map-stats-overlay {
-                right: max(36px, calc((100% - 700px) / 2 + 36px));
-                bottom: 42px;
-            }
-        }
 
         html { scroll-behavior: smooth; font-size: 16px; }
 
@@ -1852,13 +1843,17 @@
         @media (max-width: 480px) {
             .map-state-label { font-size: 0.52rem; }
         }
+        /* Stat pills flow in a row below the map — same placement in light and
+           dark themes. Overlaying them on the map collides with the dark-mode
+           light panel and long translations. */
         .map-stats-overlay {
-            position: absolute;
-            right: 24px;
-            bottom: 24px;
+            position: relative;
             display: flex;
-            flex-direction: column;
-            gap: 10px;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 24px;
             z-index: 5;
         }
         .map-stat-pill {
