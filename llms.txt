@@ -1,0 +1,11 @@
+# Rapid Loans
+
+> Rapid Loans is a tech-first banking correspondent providing inclusive microloans and financial services across rural India through advanced technology.
+
+## Pages
+
+- [Rapid Loans - Modern Banking Correspondent | Empowering Rural India](https://rapidloans.ai/): Rapid Loans is a tech-first banking correspondent providing inclusive microloans and financial services across rural Ind
+- [Legal | Rapid Loans](https://rapidloans.ai/legal/): Legal policies for Rapid Loans India Pvt. Ltd. — Privacy Policy, Terms & Conditions, and POSH Policy.
+- [POSH Policy | Rapid Loans](https://rapidloans.ai/legal/posh/): Prevention of Sexual Harassment (POSH) Policy for Rapid Loans India Pvt. Ltd.
+- [Privacy Policy | Rapid Loans](https://rapidloans.ai/legal/privacy/): Privacy Policy for Rapid Loans India Pvt. Ltd.
+- [Terms & Conditions | Rapid Loans](https://rapidloans.ai/legal/terms/): Terms and Conditions for Rapid Loans India Pvt. Ltd.
